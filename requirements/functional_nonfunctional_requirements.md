@@ -4,7 +4,7 @@
 - **Document Version**: Version 1.0 — Validated Methodology
 - **Date**: 2026-09-25
 - **Project**: Automated Code Review and Bug Detection System (AI Code Auditor)
-- **Student**: Bùi Vạn Khải (MSSV: 24520719)
+- **Student**: Bui Van Khai (MSSV: 24520719)
 - **Supervisor**: ThS. Tran Thi Hong Yen
 - **Institution**: University of Information Technology — VNU-HCM
 - **Status**: VALIDATED DELIVERABLE — Core evaluation methodology, locked 6-category taxonomy, locked ±10 lines matching tolerance, and research target metrics finalized. Ready for test-case construction.
