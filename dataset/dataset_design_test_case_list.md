@@ -4,7 +4,7 @@
 - **Document Version**: Version 1.1 — Test-Case Construction Workflow & Candidate Ingestion Schema Defined
 - **Date**: 2026-09-25
 - **Project**: Automated Code Review and Bug Detection System (AI Code Auditor)
-- **Student**: Bui Van Khai (MSSV: 24520719)
+- **Student**: Bùi Vạn Khải (MSSV: 24520719)
 - **Supervisor**: ThS. Tran Thi Hong Yen
 - **Institution**: University of Information Technology — VNU-HCM
 - **Status**: VALIDATED DELIVERABLE — Benchmark dataset design, schema, locked 6-category taxonomy, locked ±10 lines matching tolerance, candidate-ingestion schema, and test-case construction workflow finalized. Candidate inventory = 0; benchmark harvesting ready to begin.

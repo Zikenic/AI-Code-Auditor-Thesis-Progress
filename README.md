@@ -5,7 +5,7 @@
 
 ## 📌 Thông tin Đề tài
 
-- **Sinh viên thực hiện**: Bùi Văn Khải — MSSV: **24520719**
+- **Sinh viên thực hiện**: Bùi Vạn Khải — MSSV: **24520719**
 - **Giảng viên hướng dẫn**: ThS. Trần Thị Hồng Yến
 - **Đơn vị**: Khoa Kỹ thuật Phần mềm — Trường Đại học Công nghệ Thông tin, ĐHQG-HCM
 - **Học kỳ**: Học kỳ 1, Năm học 2026–2027

@@ -7,7 +7,7 @@
 
 - **Tên đề tài tiếng Việt**: Nghiên cứu, xây dựng hệ thống tự động đánh giá và phát hiện lỗi trong mã nguồn trên môi trường Pull Request
 - **Tên đề tài tiếng Anh**: Research and Development of an Automated Code Review and Bug Detection System for Pull Request Environments
-- **Sinh viên thực hiện**: Bùi Văn Khải — MSSV: 24520719
+- **Sinh viên thực hiện**: Bùi Vạn Khải — MSSV: 24520719
 - **Giảng viên hướng dẫn**: ThS. Trần Thị Hồng Yến
 - **Đơn vị đào tạo**: Khoa Kỹ thuật Phần mềm — Trường Đại học Công nghệ Thông tin, ĐHQG-HCM
 - **Thời gian thực hiện**: Học kỳ 1, Năm học 2026–2027
