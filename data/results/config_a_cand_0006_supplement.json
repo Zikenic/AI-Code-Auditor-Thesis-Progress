@@ -1,0 +1,120 @@
+{
+  "benchmark_run_metadata": {
+    "configuration": "A",
+    "configuration_name": "Configuration A \u2014 Deterministic Static Analysis Baseline",
+    "timestamp_iso": "2026-10-09T16:58:43Z",
+    "total_cases": 1,
+    "total_duration_seconds": 4.294,
+    "tools": {
+      "ruff": {
+        "version": "0.16.10",
+        "linters": [
+          "flake8-bandit",
+          "flake8-bugbear",
+          "pyflakes"
+        ]
+      },
+      "semgrep": {
+        "version": "1.180.0",
+        "edition": "Community Edition (CE)",
+        "rules_count": 198
+      }
+    },
+    "tolerance_window": "+-10 lines",
+    "suppression_isolation": true
+  },
+  "aggregate_metrics": {
+    "true_positives": 0,
+    "false_positives": 2,
+    "false_negatives": 1,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": null,
+    "false_positive_rate": null,
+    "clean_cases_evaluated": 0,
+    "clean_cases_flagged": 0,
+    "buggy_cases_evaluated": 1,
+    "total_predictions": 2,
+    "total_ground_truth_defects": 1
+  },
+  "cases": [
+    {
+      "case_id": "CAND-0006",
+      "repository": "scrapy/scrapy",
+      "commit_hash": "f02c3d1dcf3e4880388d19e961e7911be5dc54ff",
+      "target_file": "scrapy/utils/datatypes.py",
+      "category_id": 1,
+      "primary_cwe": "CWE-476",
+      "gt_loci": [
+        [
+          318,
+          319
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 4.262,
+      "emitted_findings_count": 2,
+      "findings": [
+        {
+          "finding_id": "static-ruff-9793292e19",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "scrapy/utils/datatypes.py",
+          "start_line": 69,
+          "end_line": 69,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-013ac92986",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "scrapy/utils/datatypes.py",
+          "start_line": 158,
+          "end_line": 158,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0006",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 2,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-9793292e19",
+          "static-ruff-013ac92986"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0006-DEF-1"
+        ]
+      }
+    }
+  ]
+}

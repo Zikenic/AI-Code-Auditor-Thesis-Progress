@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ConfigBAuditResponseSchema",
+  "description": "Structured JSON schema for Configuration B LLM-only audit findings.",
+  "type": "object",
+  "required": ["findings"],
+  "properties": {
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FindingItem"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "FindingItem": {
+      "type": "object",
+      "required": [
+        "file_path",
+        "start_line",
+        "end_line",
+        "category_id",
+        "primary_cwe",
+        "severity",
+        "confidence",
+        "title",
+        "description"
+      ],
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "Normalized repository-relative file path matching the audited target."
+        },
+        "start_line": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Exact 1-indexed starting line number of the defect."
+        },
+        "end_line": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Exact 1-indexed ending line number of the defect (must be >= start_line)."
+        },
+        "category_id": {
+          "type": "integer",
+          "enum": [1, 2, 3, 4, 5, 6],
+          "description": "Locked taxonomy category ID (1 to 6)."
+        },
+        "primary_cwe": {
+          "type": "string",
+          "pattern": "^CWE-\\d+$",
+          "description": "Canonical Common Weakness Enumeration identifier (e.g. CWE-476, CWE-89)."
+        },
+        "alternative_cwes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CWE-\\d+$"
+          },
+          "maxItems": 2,
+          "description": "Up to 2 additional alternative CWE identifiers."
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"],
+          "description": "Severity assessment of the finding."
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "description": "Confidence level of the finding."
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Concise summary title of the defect."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed explanation of the flaw, root cause, and failure mechanism."
+        },
+        "suggestion": {
+          "type": ["string", "null"],
+          "description": "Remediation suggestion or minimal fix guidance."
+        },
+        "category_1_impact": {
+          "type": ["string", "null"],
+          "enum": ["denial_of_service", "incorrect_computation", "unhandled_exception", "state_corruption", "inconsistent_return", "data_loss", null],
+          "description": "Mandatory failure impact attribute when category_id == 1. Explains runtime consequence."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

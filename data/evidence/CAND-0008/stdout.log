@@ -1,0 +1,42 @@
+﻿Source integrity verification passed: All source files match authentic upstream git objects 100%.
+========================================================================
+CAND-0008 (CVE-2024-24762) BOUNDED REDOS REPRODUCIBILITY EXPERIMENT
+Advisory ID:      GHSA-2jv5-9r88-3w3p
+Buggy Revision:   d3d16dae4b061c34fe9d3c9081d9800c49fc1f7a
+Fixed Revision:   20f0ef6b4e4caf7d69a667c54dff57fe467109a4
+Platform:         Windows-10-10.0.19045-SP0 | Python 3.12.10
+Repetitions:      5 runs per data point (Median-of-5)
+Hard Timeout:     10.0s per subprocess
+========================================================================
+
+Evaluating N=20 (Payload length: 58 chars)...
+  Direct Parser: Buggy=0.000639s | Fixed=0.000024s | Slowdown=26.1x
+  Raw Buggy runs: ['0.00063', '0.00064', '0.00065', '0.00064', '0.00063']
+
+Evaluating N=24 (Payload length: 62 chars)...
+  Direct Parser: Buggy=0.004228s | Fixed=0.000025s | Slowdown=169.8x
+  Raw Buggy runs: ['0.00423', '0.00431', '0.00420', '0.00423', '0.00440']
+
+Evaluating N=28 (Payload length: 66 chars)...
+  Direct Parser: Buggy=0.028332s | Fixed=0.000025s | Slowdown=1,115.4x
+  Raw Buggy runs: ['0.02814', '0.02824', '0.02833', '0.02847', '0.02836']
+
+Evaluating N=30 (Payload length: 68 chars)...
+  Direct Parser: Buggy=0.073783s | Fixed=0.000025s | Slowdown=2,951.3x
+  Raw Buggy runs: ['0.07343', '0.07411', '0.07494', '0.07337', '0.07378']
+
+Evaluating N=32 (Payload length: 70 chars)...
+  Direct Parser: Buggy=0.193354s | Fixed=0.000025s | Slowdown=7,703.3x
+  Raw Buggy runs: ['0.18750', '0.19335', '0.19116', '0.19349', '0.19379']
+
+Evaluating N=34 (Payload length: 72 chars)...
+  Direct Parser: Buggy=0.502742s | Fixed=0.000025s | Slowdown=20,029.6x
+  Raw Buggy runs: ['0.50274', '0.50278', '0.50472', '0.48314', '0.49563']
+
+Evaluating N=36 (Payload length: 74 chars)...
+  Direct Parser: Buggy=1.265499s | Fixed=0.000025s | Slowdown=51,234.8x
+  Raw Buggy runs: ['1.25440', '1.26550', '1.30691', '1.25887', '1.31948']
+
+========================================================================
+Measurements saved to: D:\Khai Van\KhaiVan Data\CODE\AI_Code_Auditor_Thesis1\data\evidence\CAND-0008\results.json
+========================================================================

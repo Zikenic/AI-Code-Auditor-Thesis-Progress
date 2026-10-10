@@ -1,0 +1,578 @@
+{
+  "benchmark_run_metadata": {
+    "configuration": "A-FILTERED",
+    "configuration_name": "Configuration A \u2014 Changed-Line Filtered Baseline",
+    "parent_run_artifact": "data/results/config_a_pilot_run.json",
+    "filter_specification": "Project Documents/dataset/evaluation_input_scope_and_filter_spec.md",
+    "filter_rule": "Range-overlap with canonical defect locus lines",
+    "total_cases": 17,
+    "tools": {
+      "ruff": {
+        "version": "0.16.10",
+        "linters": [
+          "flake8-bandit",
+          "flake8-bugbear",
+          "pyflakes"
+        ]
+      },
+      "semgrep": {
+        "version": "1.180.0",
+        "edition": "Community Edition (CE)",
+        "rules_count": 198
+      }
+    },
+    "tolerance_window": "+-10 lines",
+    "suppression_isolation": true
+  },
+  "aggregate_metrics": {
+    "true_positives": 0,
+    "false_positives": 0,
+    "false_negatives": 22,
+    "precision": null,
+    "recall": 0.0,
+    "f1_score": null,
+    "false_positive_rate": null,
+    "clean_cases_evaluated": 0,
+    "clean_cases_flagged": 0,
+    "buggy_cases_evaluated": 17,
+    "total_predictions": 0,
+    "total_ground_truth_defects": 22
+  },
+  "cases": [
+    {
+      "case_id": "CAND-0001",
+      "repository": "tornadoweb/tornado",
+      "commit_hash": "2ca8821d006f6693f920a4b183a3a7c985a5c8ad",
+      "target_file": "tornado/http1connection.py",
+      "category_id": 1,
+      "primary_cwe": "CWE-670",
+      "gt_loci": [
+        [
+          390,
+          394
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 9,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0001",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0001-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0002",
+      "repository": "tiangolo/fastapi",
+      "commit_hash": "210af1fd3dc0f612a08fa02a0cb3f5adb81e5bfb",
+      "target_file": "fastapi/routing.py",
+      "category_id": 1,
+      "primary_cwe": "CWE-670",
+      "gt_loci": [
+        [
+          498,
+          502
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 22,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0002",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0002-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0007",
+      "repository": "tiangolo/fastapi",
+      "commit_hash": "90120dd6e83d997fa2f7f54119a2e0cf906b1ded",
+      "target_file": "fastapi/routing.py",
+      "category_id": 2,
+      "primary_cwe": "CWE-352",
+      "gt_loci": [
+        [
+          182,
+          184
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 25,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0007",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0007-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0009",
+      "repository": "pallets/jinja",
+      "commit_hash": "a7863ba9d3521f1450f821119c50d19d7ecea329",
+      "target_file": "src/jinja2/filters.py",
+      "category_id": 2,
+      "primary_cwe": "CWE-79",
+      "gt_loci": [
+        [
+          250,
+          250
+        ],
+        [
+          292,
+          293
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 7,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0009",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0009-DEF-1",
+          "CAND-0009-DEF-2"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0014",
+      "repository": "django/django",
+      "commit_hash": "425718726b7d2edd7b8a043f8976e437262b5098",
+      "target_file": "django/db/models/functions/datetime.py",
+      "category_id": 3,
+      "primary_cwe": "CWE-89",
+      "gt_loci": [
+        [
+          45,
+          51
+        ],
+        [
+          225,
+          236
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 2,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0014",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0014-DEF-1",
+          "CAND-0014-DEF-2"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0017",
+      "repository": "tortoise/tortoise-orm",
+      "commit_hash": "816ff00e988f79b4ff1601f247062bb5eb9db802",
+      "target_file": "tortoise/backends/mysql/executor.py",
+      "category_id": 3,
+      "primary_cwe": "CWE-89",
+      "gt_loci": [
+        [
+          19,
+          45
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 0,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0017",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0017-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0019",
+      "repository": "aio-libs/aiohttp",
+      "commit_hash": "33ccdfb0a12690af5bb49bda2319ec0907fa7827",
+      "target_file": "aiohttp/web_urldispatcher.py",
+      "category_id": 4,
+      "primary_cwe": "CWE-22",
+      "gt_loci": [
+        [
+          643,
+          645
+        ],
+        [
+          574,
+          576
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 16,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0019",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0019-DEF-2",
+          "CAND-0019-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0021",
+      "repository": "encode/starlette",
+      "commit_hash": "24c1fac62a80bb153c6548145334fc643991e35a",
+      "target_file": "starlette/staticfiles.py",
+      "category_id": 4,
+      "primary_cwe": "CWE-22",
+      "gt_loci": [
+        [
+          172,
+          172
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 5,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0021",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0021-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0025",
+      "repository": "jpadilla/pyjwt",
+      "commit_hash": "24b29adfebcb4f057a3cef5aaf35653bc0c1c8cc",
+      "target_file": "jwt/algorithms.py",
+      "category_id": 5,
+      "primary_cwe": "CWE-347",
+      "gt_loci": [
+        [
+          186,
+          197
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 4,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0025",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0025-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0027",
+      "repository": "lepture/authlib",
+      "commit_hash": "bb7a315befbad333faf9a23ef574d6e3134a6774",
+      "target_file": "authlib/jose/__init__.py",
+      "category_id": 5,
+      "primary_cwe": "CWE-347",
+      "gt_loci": [
+        [
+          49,
+          49
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 0,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0027",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0027-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0031",
+      "repository": "jupyterhub/jupyterhub",
+      "commit_hash": "b4053616743eb011e5bb568700f25afca17aef53",
+      "target_file": "jupyterhub/apihandlers/users.py",
+      "category_id": 6,
+      "primary_cwe": "CWE-269",
+      "gt_loci": [
+        [
+          265,
+          267
+        ],
+        [
+          328,
+          331
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 8,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0031",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0031-DEF-1",
+          "CAND-0031-DEF-2"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0032",
+      "repository": "zulip/zulip",
+      "commit_hash": "ea0b8cc01133c79033868efee3edc6c1e3fa0f2b",
+      "target_file": "zerver/lib/message.py",
+      "category_id": 6,
+      "primary_cwe": "CWE-863",
+      "gt_loci": [
+        [
+          825,
+          827
+        ],
+        [
+          842,
+          856
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 13,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0032",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0032-DEF-1",
+          "CAND-0032-DEF-2"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0008",
+      "repository": "Kludex/python-multipart",
+      "commit_hash": "d3d16dae4b061c34fe9d3c9081d9800c49fc1f7a",
+      "target_file": "multipart/multipart.py",
+      "category_id": 2,
+      "primary_cwe": "CWE-1333",
+      "gt_loci": [
+        [
+          72,
+          75
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 8,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0008",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0008-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0015",
+      "repository": "django/django",
+      "commit_hash": "6b178a3e930f72069f3cda2e6a09d1b320fc09ec",
+      "target_file": "django/contrib/postgres/aggregates/general.py",
+      "category_id": 3,
+      "primary_cwe": "CWE-89",
+      "gt_loci": [
+        [
+          54,
+          58
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 0,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0015",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0015-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0020",
+      "repository": "pallets/werkzeug",
+      "commit_hash": "50cfeebcb0727e18cc52ffbeb125f4a66551179b",
+      "target_file": "src/werkzeug/security.py",
+      "category_id": 4,
+      "primary_cwe": "CWE-22",
+      "gt_loci": [
+        [
+          151,
+          157
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 0,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0020",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0020-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0026",
+      "repository": "paramiko/paramiko",
+      "commit_hash": "aefd28a7f00c4250d113d375e96abf5da3eb89f9",
+      "target_file": "paramiko/transport.py",
+      "category_id": 5,
+      "primary_cwe": "CWE-287",
+      "gt_loci": [
+        [
+          1822,
+          1828
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 7,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0026",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0026-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0033",
+      "repository": "zulip/zulip",
+      "commit_hash": "b1007916b03a40841ba141f5e4f041aeaeaaa010",
+      "target_file": "zerver/actions/typing.py",
+      "category_id": 6,
+      "primary_cwe": "CWE-863",
+      "gt_loci": [
+        [
+          83,
+          85
+        ]
+      ],
+      "execution_status": "success",
+      "original_findings_count": 1,
+      "retained_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0033",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0033-DEF-1"
+        ]
+      }
+    }
+  ]
+}

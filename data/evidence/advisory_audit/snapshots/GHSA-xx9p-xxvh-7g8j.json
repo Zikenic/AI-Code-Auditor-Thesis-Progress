@@ -1,0 +1,98 @@
+{
+  "ghsa_id": "GHSA-xx9p-xxvh-7g8j",
+  "cve_id": "CVE-2023-47641",
+  "url": "https://api.github.com/advisories/GHSA-xx9p-xxvh-7g8j",
+  "html_url": "https://github.com/advisories/GHSA-xx9p-xxvh-7g8j",
+  "summary": "Aiohttp has inconsistent interpretation of `Content-Length` vs. `Transfer-Encoding` differing in C and Python fallbacks",
+  "description": "### Impact\n\nAiohttp has a security vulnerability regarding the inconsistent interpretation of the http protocol. As we know that HTTP/1.1 is persistent, if we have both Content-Length(CL) and Transfer-Encoding(TE) it can lead to incorrect interpretation of two entities that parse the HTTP and we can poison other sockets with this incorrect interpretation.\n\nA possible Proof-of-Concept (POC) would be a configuration with a reverse proxy(frontend) that accepts both CL and TE headers and aiohttp as backend. As aiohttp parses anything with chunked, we can pass a chunked123 as TE, the frontend entity will ignore this header and will parse Content-Length. I can give a Dockerfile with the configuration if you want.\n\nThe impact of this vulnerability is that it is possible to bypass any proxy rule, poisoning sockets to other users like passing Authentication Headers, also if it is present an Open Redirect (just like CVE-2021-21330) we can combine it to redirect random users to our website and log the request.\n\n\n### References\n\n- https://github.com/aio-libs/aiohttp/commit/f016f0680e4ace6742b03a70cb0382ce86abe371",
+  "type": "reviewed",
+  "severity": "low",
+  "repository_advisory_url": "https://api.github.com/repos/aio-libs/aiohttp/security-advisories/GHSA-xx9p-xxvh-7g8j",
+  "source_code_location": "https://github.com/aio-libs/aiohttp",
+  "identifiers": [
+    {
+      "value": "GHSA-xx9p-xxvh-7g8j",
+      "type": "GHSA"
+    },
+    {
+      "value": "CVE-2023-47641",
+      "type": "CVE"
+    }
+  ],
+  "references": [
+    "https://github.com/aio-libs/aiohttp/security/advisories/GHSA-xx9p-xxvh-7g8j",
+    "https://github.com/aio-libs/aiohttp/commit/f016f0680e4ace6742b03a70cb0382ce86abe371",
+    "https://github.com/aio-libs/aiohttp/releases/tag/v3.8.0",
+    "https://nvd.nist.gov/vuln/detail/CVE-2023-47641",
+    "https://github.com/pypa/advisory-database/tree/main/vulns/aiohttp/PYSEC-2023-247.yaml",
+    "https://lists.debian.org/debian-lts-announce/2025/02/msg00002.html",
+    "https://github.com/advisories/GHSA-xx9p-xxvh-7g8j"
+  ],
+  "published_at": "2023-11-14T20:36:25Z",
+  "updated_at": "2025-11-03T22:31:38Z",
+  "github_reviewed_at": "2023-11-14T20:36:25Z",
+  "nvd_published_at": "2023-11-14T21:15:13Z",
+  "withdrawn_at": null,
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "pip",
+        "name": "aiohttp"
+      },
+      "vulnerable_version_range": "< 3.8.0",
+      "first_patched_version": "3.8.0",
+      "vulnerable_functions": []
+    }
+  ],
+  "cvss_severities": {
+    "cvss_v3": {
+      "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:N/A:N",
+      "score": 3.4
+    },
+    "cvss_v4": {
+      "vector_string": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N",
+      "score": 2.3
+    }
+  },
+  "cwes": [
+    {
+      "cwe_id": "CWE-444",
+      "name": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')"
+    }
+  ],
+  "credits": [
+    {
+      "user": {
+        "login": "chinchila",
+        "id": 3947315,
+        "node_id": "MDQ6VXNlcjM5NDczMTU=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3947315?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/chinchila",
+        "html_url": "https://github.com/chinchila",
+        "followers_url": "https://api.github.com/users/chinchila/followers",
+        "following_url": "https://api.github.com/users/chinchila/following{/other_user}",
+        "gists_url": "https://api.github.com/users/chinchila/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/chinchila/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/chinchila/subscriptions",
+        "organizations_url": "https://api.github.com/users/chinchila/orgs",
+        "repos_url": "https://api.github.com/users/chinchila/repos",
+        "events_url": "https://api.github.com/users/chinchila/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/chinchila/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "type": "analyst"
+    }
+  ],
+  "comments": 11,
+  "cvss": {
+    "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:N/A:N",
+    "score": 3.4
+  },
+  "epss": {
+    "percentage": 0.00834,
+    "percentile": 0.55874
+  }
+}

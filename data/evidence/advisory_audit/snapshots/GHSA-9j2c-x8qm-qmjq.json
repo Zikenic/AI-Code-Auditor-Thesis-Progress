@@ -1,0 +1,80 @@
+{
+  "ghsa_id": "GHSA-9j2c-x8qm-qmjq",
+  "cve_id": "CVE-2020-11010",
+  "url": "https://api.github.com/advisories/GHSA-9j2c-x8qm-qmjq",
+  "html_url": "https://github.com/advisories/GHSA-9j2c-x8qm-qmjq",
+  "summary": "SQL injection in Tortoise ORM",
+  "description": "### Impact\nVarious forms of SQL injection has been found, for MySQL and when filtering or doing mass-updates on char/text fields.\nSQLite & PostgreSQL was only affected when filtering with ``contains``, ``starts_with`` or ``ends_with`` filters (and their case-insensitive counterparts)\n\n\n### Patches\nPlease upgrade to 0.15.23+ or 0.16.6+\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [Github](https://github.com/tortoise/tortoise-orm/issues)\n* Chat to us on [Gitter](https://gitter.im/tortoise/community)",
+  "type": "reviewed",
+  "severity": "medium",
+  "repository_advisory_url": "https://api.github.com/repos/tortoise/tortoise-orm/security-advisories/GHSA-9j2c-x8qm-qmjq",
+  "source_code_location": "https://github.com/tortoise/tortoise-orm",
+  "identifiers": [
+    {
+      "value": "GHSA-9j2c-x8qm-qmjq",
+      "type": "GHSA"
+    },
+    {
+      "value": "CVE-2020-11010",
+      "type": "CVE"
+    }
+  ],
+  "references": [
+    "https://github.com/tortoise/tortoise-orm/security/advisories/GHSA-9j2c-x8qm-qmjq",
+    "https://github.com/tortoise/tortoise-orm/commit/91c364053e0ddf77edc5442914c6f049512678b3",
+    "https://nvd.nist.gov/vuln/detail/CVE-2020-11010",
+    "https://github.com/pypa/advisory-database/tree/main/vulns/tortoise-orm/PYSEC-2020-144.yaml",
+    "https://github.com/advisories/GHSA-9j2c-x8qm-qmjq"
+  ],
+  "published_at": "2020-04-20T21:31:23Z",
+  "updated_at": "2024-11-13T22:53:30Z",
+  "github_reviewed_at": "2020-04-20T21:31:05Z",
+  "nvd_published_at": null,
+  "withdrawn_at": null,
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "pip",
+        "name": "tortoise-orm"
+      },
+      "vulnerable_version_range": "< 0.15.23",
+      "first_patched_version": "0.15.23",
+      "vulnerable_functions": []
+    },
+    {
+      "package": {
+        "ecosystem": "pip",
+        "name": "tortoise-orm"
+      },
+      "vulnerable_version_range": ">= 0.16.0, < 0.16.6",
+      "first_patched_version": "0.16.6",
+      "vulnerable_functions": []
+    }
+  ],
+  "cvss_severities": {
+    "cvss_v3": {
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+      "score": 6.3
+    },
+    "cvss_v4": {
+      "vector_string": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N",
+      "score": 5.3
+    }
+  },
+  "cwes": [
+    {
+      "cwe_id": "CWE-89",
+      "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+    }
+  ],
+  "credits": [],
+  "comments": 1,
+  "cvss": {
+    "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+    "score": 6.3
+  },
+  "epss": {
+    "percentage": 0.01047,
+    "percentile": 0.62719
+  }
+}

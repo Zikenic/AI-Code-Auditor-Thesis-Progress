@@ -1,13 +1,16 @@
-# Byte-compiled / optimized / DLL files
+# Development tools and isolated research runners
+.agent-tools/
+scratch/
+
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-
-# Distribution / packaging
 .Python
+env/
+venv/
+.venv/
 build/
 develop-eggs/
 dist/
@@ -20,51 +23,34 @@ parts/
 sdist/
 var/
 wheels/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
 
-# Virtual Environments
+# Environment variables & secrets
 .env
 .env.*
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+!.env.example
 
-# IDE and Editors
+# Specify / Spec Kit local artifacts and internal cache
+.specify/local/
+.specify/*.log
+
+# Testing, typecheck, linting & code coverage
+*.log
+!data/evidence/**/*.log
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.pyright/
+.ruff_cache/
+
+# IDE & Editor caches
 .idea/
 .vscode/
-*.sublime-project
-*.sublime-workspace
 *.swp
 *.swo
 
-# Operating System Files
-.DS_Store
-Thumbs.db
-ehthumbs.db
-desktop.ini
-
-# Logs and databases
-*.log
-*.sqlite3
-*.db
-
-# Security & Secrets
-*.pem
-*.key
-*.cert
-*.p12
-credentials.json
-*token*
-*secret*
-
-# Agent / Tool cache
-.agent-tools/
-.gemini/
-scratch/
-tmp/
+# Evidence extracted revisions (fetched dynamically on demand)
+data/evidence/*/revisions/

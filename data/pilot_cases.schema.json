@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/khai-van/ai-code-auditor/schemas/pilot_cases.schema.json",
+  "title": "AICodeAuditorPilotCases",
+  "description": "Schema for ground-truth verified benchmark pilot cases in AI Code Auditor.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "description",
+    "case_count",
+    "cases"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "case_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/BenchmarkCaseItem"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "DefectItem": {
+      "type": "object",
+      "required": [
+        "defect_id",
+        "category_id",
+        "primary_cwe",
+        "file_path",
+        "start_line",
+        "end_line"
+      ],
+      "properties": {
+        "defect_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "category_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "impact": {
+          "type": ["string", "null"],
+          "enum": ["functional", "security", null]
+        },
+        "primary_cwe": {
+          "type": "string",
+          "pattern": "^CWE-\\d+$"
+        },
+        "acceptable_alternative_cwes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CWE-\\d+$"
+          },
+          "maxItems": 2
+        },
+        "file_path": {
+          "type": "string"
+        },
+        "start_line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "end_line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "description": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "BenchmarkCaseItem": {
+      "type": "object",
+      "required": [
+        "case_id",
+        "repository",
+        "commit_hash",
+        "is_buggy",
+        "defects"
+      ],
+      "properties": {
+        "case_id": {
+          "type": "string"
+        },
+        "candidate_id": {
+          "type": "string"
+        },
+        "verification_status": {
+          "type": "string"
+        },
+        "reproducer_status": {
+          "type": "string",
+          "enum": [
+            "executed_confirmed",
+            "executed_not_reproduced",
+            "attempted_blocked",
+            "cited_not_run",
+            "historical_claim_unverified",
+            "not_attempted"
+          ]
+        },
+        "contextual_files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "quality_level": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "commit_hash": {
+          "type": "string"
+        },
+        "buggy_commit": {
+          "type": "string"
+        },
+        "fixed_commit": {
+          "type": ["string", "null"]
+        },
+        "is_buggy": {
+          "type": "boolean"
+        },
+        "category_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "impact": {
+          "type": ["string", "null"],
+          "enum": ["functional", "security", null]
+        },
+        "primary_cwe": {
+          "type": "string",
+          "pattern": "^CWE-\\d+$"
+        },
+        "acceptable_alternative_cwes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 2
+        },
+        "target_file": {
+          "type": ["string", "null"]
+        },
+        "line_ranges": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "defects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DefectItem"
+          }
+        },
+        "reproducer": {
+          "type": ["string", "null"]
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "advisory": {
+              "type": ["string", "null"]
+            },
+            "source_doc": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

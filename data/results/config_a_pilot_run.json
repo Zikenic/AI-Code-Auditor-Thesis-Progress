@@ -1,0 +1,3788 @@
+{
+  "benchmark_run_metadata": {
+    "configuration": "A",
+    "configuration_name": "Configuration A \u2014 Deterministic Static Analysis Baseline",
+    "timestamp_iso": "2026-10-09T02:48:49Z",
+    "total_cases": 17,
+    "total_duration_seconds": 71.233,
+    "tools": {
+      "ruff": {
+        "version": "0.16.10",
+        "linters": [
+          "flake8-bandit",
+          "flake8-bugbear",
+          "pyflakes"
+        ]
+      },
+      "semgrep": {
+        "version": "1.180.0",
+        "edition": "Community Edition (CE)",
+        "rules_count": 198
+      }
+    },
+    "tolerance_window": "+-10 lines",
+    "suppression_isolation": true
+  },
+  "aggregate_metrics": {
+    "true_positives": 3,
+    "false_positives": 124,
+    "false_negatives": 19,
+    "precision": 0.0236,
+    "recall": 0.1364,
+    "f1_score": 0.0403,
+    "false_positive_rate": null,
+    "clean_cases_evaluated": 0,
+    "clean_cases_flagged": 0,
+    "buggy_cases_evaluated": 17,
+    "total_predictions": 127,
+    "total_ground_truth_defects": 22
+  },
+  "cases": [
+    {
+      "case_id": "CAND-0001",
+      "repository": "tornadoweb/tornado",
+      "commit_hash": "2ca8821d006f6693f920a4b183a3a7c985a5c8ad",
+      "target_file": "tornado/http1connection.py",
+      "category_id": 1,
+      "primary_cwe": "CWE-670",
+      "gt_loci": [
+        [
+          390,
+          394
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 4.197,
+      "emitted_findings_count": 9,
+      "findings": [
+        {
+          "finding_id": "static-ruff-491595140e",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 66,
+          "end_line": 66,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-019265cf12",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 226,
+          "end_line": 226,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-0ec1cd5a0f",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 385,
+          "end_line": 385,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-d03d954d8c",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 396,
+          "end_line": 396,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-95d5a2fac2",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 616,
+          "end_line": 619,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-1c628d105f",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 687,
+          "end_line": 687,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-75fed60184",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 789,
+          "end_line": 789,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-cdda0a00d0",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-703",
+          "alternative_cwes": [
+            "CWE-670"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 792,
+          "end_line": 793,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S110]: try-except-pass detected",
+          "description": "`try`-`except`-`pass` detected, consider logging the exception",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S110",
+            "url": "https://docs.astral.sh/ruff/rules/try-except-pass",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-731bbf35bb",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 800,
+          "end_line": 800,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0001",
+        "is_buggy": true,
+        "true_positives": 1,
+        "false_positives": 8,
+        "false_negatives": 0,
+        "matched_pairs": [
+          {
+            "finding_id": "static-ruff-0ec1cd5a0f",
+            "defect_id": "CAND-0001-DEF-1",
+            "file_path": "tornado/http1connection.py",
+            "is_direct_overlap": false,
+            "matched_cwe": "CWE-670"
+          }
+        ],
+        "unmatched_prediction_ids": [
+          "static-ruff-491595140e",
+          "static-ruff-019265cf12",
+          "static-ruff-d03d954d8c",
+          "static-ruff-95d5a2fac2",
+          "static-ruff-1c628d105f",
+          "static-ruff-75fed60184",
+          "static-ruff-cdda0a00d0",
+          "static-ruff-731bbf35bb"
+        ],
+        "unmatched_defect_ids": []
+      }
+    },
+    {
+      "case_id": "CAND-0002",
+      "repository": "tiangolo/fastapi",
+      "commit_hash": "210af1fd3dc0f612a08fa02a0cb3f5adb81e5bfb",
+      "target_file": "fastapi/routing.py",
+      "category_id": 1,
+      "primary_cwe": "CWE-670",
+      "gt_loci": [
+        [
+          498,
+          502
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 4.238,
+      "emitted_findings_count": 22,
+      "findings": [
+        {
+          "finding_id": "static-ruff-7936a439b7",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 78,
+          "end_line": 78,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-dac11d5107",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 116,
+          "end_line": 116,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-b72daf5d80",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 131,
+          "end_line": 131,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-8f672f35ac",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 136,
+          "end_line": 136,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-56997bf922",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 208,
+          "end_line": 208,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-fa1f2c5201",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 255,
+          "end_line": 255,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-51ee532a75",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 275,
+          "end_line": 275,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-aa86c6bd46",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 310,
+          "end_line": 310,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-8ea02d9dda",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 313,
+          "end_line": 313,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-d6e75200f9",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 332,
+          "end_line": 332,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-5c6868a304",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 399,
+          "end_line": 399,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-ccbd13e4ba",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 456,
+          "end_line": 456,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-d3e5d28782",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 522,
+          "end_line": 522,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-bead8d1860",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 528,
+          "end_line": 528,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B009]: Unmapped rule: B009",
+          "description": "Do not call `getattr` with a constant attribute value. It is not any safer than normal property access.",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B009",
+            "url": "https://docs.astral.sh/ruff/rules/get-attr-with-constant",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-6517aca246",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 600,
+          "end_line": 600,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-95f8339a48",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 651,
+          "end_line": 651,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-b9cbc75452",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 702,
+          "end_line": 702,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-f3e288c66c",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 753,
+          "end_line": 753,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-b058900574",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 804,
+          "end_line": 804,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-f3cdbc9e67",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 855,
+          "end_line": 855,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-e754844f3c",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 906,
+          "end_line": 906,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-2da886ef6c",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 957,
+          "end_line": 957,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0002",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 22,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-7936a439b7",
+          "static-ruff-dac11d5107",
+          "static-ruff-b72daf5d80",
+          "static-ruff-8f672f35ac",
+          "static-ruff-56997bf922",
+          "static-ruff-fa1f2c5201",
+          "static-ruff-51ee532a75",
+          "static-ruff-aa86c6bd46",
+          "static-ruff-8ea02d9dda",
+          "static-ruff-d6e75200f9",
+          "static-ruff-5c6868a304",
+          "static-ruff-ccbd13e4ba",
+          "static-ruff-d3e5d28782",
+          "static-ruff-bead8d1860",
+          "static-ruff-6517aca246",
+          "static-ruff-95f8339a48",
+          "static-ruff-b9cbc75452",
+          "static-ruff-f3e288c66c",
+          "static-ruff-b058900574",
+          "static-ruff-f3cdbc9e67",
+          "static-ruff-e754844f3c",
+          "static-ruff-2da886ef6c"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0002-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0007",
+      "repository": "tiangolo/fastapi",
+      "commit_hash": "90120dd6e83d997fa2f7f54119a2e0cf906b1ded",
+      "target_file": "fastapi/routing.py",
+      "category_id": 2,
+      "primary_cwe": "CWE-352",
+      "gt_loci": [
+        [
+          182,
+          184
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 4.278,
+      "emitted_findings_count": 25,
+      "findings": [
+        {
+          "finding_id": "static-ruff-3a673fd147",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 145,
+          "end_line": 145,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-b35bd5fb08",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 157,
+          "end_line": 157,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-869e956079",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 167,
+          "end_line": 167,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-923ae26884",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 186,
+          "end_line": 186,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-162ed576a1",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 246,
+          "end_line": 246,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-e9edfb5b2d",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 299,
+          "end_line": 301,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-62fcd8b29a",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 320,
+          "end_line": 320,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-69bd4b4664",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 355,
+          "end_line": 355,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-509629213b",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 358,
+          "end_line": 358,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-87cf8b3e29",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 379,
+          "end_line": 379,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-ba30e013f2",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 415,
+          "end_line": 415,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-ca8fe95849",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 436,
+          "end_line": 436,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-0a17fd2a5f",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 474,
+          "end_line": 476,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-5627697026",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 546,
+          "end_line": 546,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-cb53f77e42",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 607,
+          "end_line": 607,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-23efd0fb38",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 614,
+          "end_line": 614,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-fc54caea55",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 620,
+          "end_line": 620,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B009]: Unmapped rule: B009",
+          "description": "Do not call `getattr` with a constant attribute value. It is not any safer than normal property access.",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B009",
+            "url": "https://docs.astral.sh/ruff/rules/get-attr-with-constant",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-5b8f76bcb8",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 723,
+          "end_line": 723,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-faf51e4aa6",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 773,
+          "end_line": 773,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-4d336ede11",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 823,
+          "end_line": 823,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-d91594f82d",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 873,
+          "end_line": 873,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-3d86fddb95",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 923,
+          "end_line": 923,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-e391308533",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 973,
+          "end_line": 973,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-7e9bcbf76a",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 1023,
+          "end_line": 1023,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-6a146a2326",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "fastapi/routing.py",
+          "start_line": 1073,
+          "end_line": 1073,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `Default` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0007",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 25,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-3a673fd147",
+          "static-ruff-b35bd5fb08",
+          "static-ruff-869e956079",
+          "static-ruff-923ae26884",
+          "static-ruff-162ed576a1",
+          "static-ruff-e9edfb5b2d",
+          "static-ruff-62fcd8b29a",
+          "static-ruff-69bd4b4664",
+          "static-ruff-509629213b",
+          "static-ruff-87cf8b3e29",
+          "static-ruff-ba30e013f2",
+          "static-ruff-ca8fe95849",
+          "static-ruff-0a17fd2a5f",
+          "static-ruff-5627697026",
+          "static-ruff-cb53f77e42",
+          "static-ruff-23efd0fb38",
+          "static-ruff-fc54caea55",
+          "static-ruff-5b8f76bcb8",
+          "static-ruff-faf51e4aa6",
+          "static-ruff-4d336ede11",
+          "static-ruff-d91594f82d",
+          "static-ruff-3d86fddb95",
+          "static-ruff-e391308533",
+          "static-ruff-7e9bcbf76a",
+          "static-ruff-6a146a2326"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0007-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0009",
+      "repository": "pallets/jinja",
+      "commit_hash": "a7863ba9d3521f1450f821119c50d19d7ecea329",
+      "target_file": "src/jinja2/filters.py",
+      "category_id": 2,
+      "primary_cwe": "CWE-79",
+      "gt_loci": [
+        [
+          250,
+          250
+        ],
+        [
+          292,
+          293
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 4.359,
+      "emitted_findings_count": 7,
+      "findings": [
+        {
+          "finding_id": "static-ruff-9cc283b341",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 2,
+          "primary_cwe": "CWE-79",
+          "alternative_cwes": [
+            "CWE-116"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 303,
+          "end_line": 303,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S704]: Unsafe HTML markup usage",
+          "description": "Unsafe use of `markupsafe.Markup` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S704",
+            "url": "https://docs.astral.sh/ruff/rules/unsafe-markup-use",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-fde4aea089",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 5,
+          "primary_cwe": "CWE-330",
+          "alternative_cwes": [],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 674,
+          "end_line": 674,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S311]: Pseudo-random generator not suitable for cryptographic use",
+          "description": "Standard pseudo-random generators are not suitable for cryptographic purposes",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S311",
+            "url": "https://docs.astral.sh/ruff/rules/suspicious-non-cryptographic-random-usage",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-0dda43aa49",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 2,
+          "primary_cwe": "CWE-79",
+          "alternative_cwes": [
+            "CWE-116"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 795,
+          "end_line": 795,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S704]: Unsafe HTML markup usage",
+          "description": "Unsafe use of `markupsafe.Markup` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S704",
+            "url": "https://docs.astral.sh/ruff/rules/unsafe-markup-use",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-226c4a8ea8",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 2,
+          "primary_cwe": "CWE-79",
+          "alternative_cwes": [
+            "CWE-116"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 826,
+          "end_line": 826,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S704]: Unsafe HTML markup usage",
+          "description": "Unsafe use of `markupsafe.Markup` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S704",
+            "url": "https://docs.astral.sh/ruff/rules/unsafe-markup-use",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-47a0740500",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 883,
+          "end_line": 883,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-0c95565524",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 2,
+          "primary_cwe": "CWE-79",
+          "alternative_cwes": [
+            "CWE-116"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 1031,
+          "end_line": 1031,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S704]: Unsafe HTML markup usage",
+          "description": "Unsafe use of `markupsafe.Markup` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S704",
+            "url": "https://docs.astral.sh/ruff/rules/unsafe-markup-use",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-9f9b9adc35",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 2,
+          "primary_cwe": "CWE-79",
+          "alternative_cwes": [
+            "CWE-116"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 1352,
+          "end_line": 1352,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S704]: Unsafe HTML markup usage",
+          "description": "Unsafe use of `markupsafe.Markup` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S704",
+            "url": "https://docs.astral.sh/ruff/rules/unsafe-markup-use",
+            "is_unmapped": false
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0009",
+        "is_buggy": true,
+        "true_positives": 1,
+        "false_positives": 6,
+        "false_negatives": 1,
+        "matched_pairs": [
+          {
+            "finding_id": "static-ruff-9cc283b341",
+            "defect_id": "CAND-0009-DEF-2",
+            "file_path": "src/jinja2/filters.py",
+            "is_direct_overlap": false,
+            "matched_cwe": "CWE-79"
+          }
+        ],
+        "unmatched_prediction_ids": [
+          "static-ruff-fde4aea089",
+          "static-ruff-0dda43aa49",
+          "static-ruff-226c4a8ea8",
+          "static-ruff-47a0740500",
+          "static-ruff-0c95565524",
+          "static-ruff-9f9b9adc35"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0009-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0014",
+      "repository": "django/django",
+      "commit_hash": "425718726b7d2edd7b8a043f8976e437262b5098",
+      "target_file": "django/db/models/functions/datetime.py",
+      "category_id": 3,
+      "primary_cwe": "CWE-89",
+      "gt_loci": [
+        [
+          45,
+          51
+        ],
+        [
+          225,
+          236
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 3.887,
+      "emitted_findings_count": 2,
+      "findings": [
+        {
+          "finding_id": "static-ruff-bee2d1e47e",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "django/db/models/functions/datetime.py",
+          "start_line": 74,
+          "end_line": 74,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-semgrep-4f93739313",
+          "detection_layer": "deterministic_static",
+          "tool_name": "semgrep",
+          "category_id": 3,
+          "primary_cwe": "CWE-89",
+          "alternative_cwes": [
+            "CWE-943"
+          ],
+          "file_path": "django/db/models/functions/datetime.py",
+          "start_line": 206,
+          "end_line": 216,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Semgrep [python.django.security.audit.extends-custom-expression.extends-custom-expression]: Found extension of custom expression: Now. Extending expressions in this way could inadvertently lead to a SQL injection",
+          "description": "Found extension of custom expression: Now. Extending expressions in this way could inadvertently lead to a SQL injection vulnerability, which can result in attackers exfiltrating sensitive data. Instead, ensure no user input enters this function or that user input is properly sanitized.",
+          "suggestion": null,
+          "provenance": {
+            "tool": "semgrep",
+            "check_id": "src.auditor.static_analysis.rules.semgrep.python.django.security.audit.extends-custom-expression.extends-custom-expression",
+            "metadata": {
+              "cwe": [
+                "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+              ],
+              "owasp": [
+                "A01:2017 - Injection",
+                "A03:2021 - Injection",
+                "A05:2025 - Injection"
+              ],
+              "references": [
+                "https://docs.djangoproject.com/en/3.0/ref/models/expressions/#avoiding-sql-injection",
+                "https://semgrep.dev/blog/2020/preventing-sql-injection-a-django-authors-perspective/"
+              ],
+              "category": "security",
+              "technology": [
+                "django"
+              ],
+              "cwe2022-top25": true,
+              "cwe2021-top25": true,
+              "subcategory": [
+                "audit"
+              ],
+              "likelihood": "LOW",
+              "impact": "HIGH",
+              "confidence": "LOW",
+              "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+              "vulnerability_class": [
+                "SQL Injection"
+              ],
+              "source": "https://semgrep.dev/r/python.django.security.audit.extends-custom-expression.extends-custom-expression",
+              "shortlink": "https://sg.run/N4Ay"
+            },
+            "is_unmapped": false,
+            "tools": [
+              "semgrep"
+            ]
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0014",
+        "is_buggy": true,
+        "true_positives": 1,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "matched_pairs": [
+          {
+            "finding_id": "static-semgrep-4f93739313",
+            "defect_id": "CAND-0014-DEF-2",
+            "file_path": "django/db/models/functions/datetime.py",
+            "is_direct_overlap": false,
+            "matched_cwe": "CWE-89"
+          }
+        ],
+        "unmatched_prediction_ids": [
+          "static-ruff-bee2d1e47e"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0014-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0017",
+      "repository": "tortoise/tortoise-orm",
+      "commit_hash": "816ff00e988f79b4ff1601f247062bb5eb9db802",
+      "target_file": "tortoise/backends/mysql/executor.py",
+      "category_id": 3,
+      "primary_cwe": "CWE-89",
+      "gt_loci": [
+        [
+          19,
+          45
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 3.773,
+      "emitted_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0017",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0017-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0019",
+      "repository": "aio-libs/aiohttp",
+      "commit_hash": "33ccdfb0a12690af5bb49bda2319ec0907fa7827",
+      "target_file": "aiohttp/web_urldispatcher.py",
+      "category_id": 4,
+      "primary_cwe": "CWE-22",
+      "gt_loci": [
+        [
+          643,
+          645
+        ],
+        [
+          574,
+          576
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 4.496,
+      "emitted_findings_count": 16,
+      "findings": [
+        {
+          "finding_id": "static-ruff-5d5361cde2",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 169,
+          "end_line": 169,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-e01c3d0d1a",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 262,
+          "end_line": 262,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-7490711516",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 342,
+          "end_line": 342,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-421536abfd",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 379,
+          "end_line": 379,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-59fdf02bba",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 391,
+          "end_line": 391,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-7372af79c0",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 450,
+          "end_line": 450,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-e3a3d5c50d",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 460,
+          "end_line": 460,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-9a6d8dc5fc",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 494,
+          "end_line": 494,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-8aab7ff4fb",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 505,
+          "end_line": 505,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-b1929a1388",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 664,
+          "end_line": 664,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-ddf9f49be0",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 676,
+          "end_line": 676,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-18ba092086",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 796,
+          "end_line": 796,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-8046bfa02c",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 889,
+          "end_line": 889,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-118c63070c",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 893,
+          "end_line": 893,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-cdf1a33d6a",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 1051,
+          "end_line": 1051,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-ba1bb71687",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 1153,
+          "end_line": 1153,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0019",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 16,
+        "false_negatives": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-5d5361cde2",
+          "static-ruff-e01c3d0d1a",
+          "static-ruff-7490711516",
+          "static-ruff-421536abfd",
+          "static-ruff-59fdf02bba",
+          "static-ruff-7372af79c0",
+          "static-ruff-e3a3d5c50d",
+          "static-ruff-9a6d8dc5fc",
+          "static-ruff-8aab7ff4fb",
+          "static-ruff-b1929a1388",
+          "static-ruff-ddf9f49be0",
+          "static-ruff-18ba092086",
+          "static-ruff-8046bfa02c",
+          "static-ruff-118c63070c",
+          "static-ruff-cdf1a33d6a",
+          "static-ruff-ba1bb71687"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0019-DEF-2",
+          "CAND-0019-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0021",
+      "repository": "encode/starlette",
+      "commit_hash": "24c1fac62a80bb153c6548145334fc643991e35a",
+      "target_file": "starlette/staticfiles.py",
+      "category_id": 4,
+      "primary_cwe": "CWE-22",
+      "gt_loci": [
+        [
+          172,
+          172
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 3.869,
+      "emitted_findings_count": 5,
+      "findings": [
+        {
+          "finding_id": "static-ruff-79b4cd429d",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "starlette/staticfiles.py",
+          "start_line": 80,
+          "end_line": 80,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-d4a7d6c258",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "starlette/staticfiles.py",
+          "start_line": 85,
+          "end_line": 85,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-653322a852",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "starlette/staticfiles.py",
+          "start_line": 96,
+          "end_line": 96,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-4f8afc9190",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "starlette/staticfiles.py",
+          "start_line": 125,
+          "end_line": 125,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-df62af2c1c",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "starlette/staticfiles.py",
+          "start_line": 211,
+          "end_line": 213,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0021",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 5,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-79b4cd429d",
+          "static-ruff-d4a7d6c258",
+          "static-ruff-653322a852",
+          "static-ruff-4f8afc9190",
+          "static-ruff-df62af2c1c"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0021-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0025",
+      "repository": "jpadilla/pyjwt",
+      "commit_hash": "24b29adfebcb4f057a3cef5aaf35653bc0c1c8cc",
+      "target_file": "jwt/algorithms.py",
+      "category_id": 5,
+      "primary_cwe": "CWE-347",
+      "gt_loci": [
+        [
+          186,
+          197
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 3.915,
+      "emitted_findings_count": 4,
+      "findings": [
+        {
+          "finding_id": "static-ruff-14e8d942f9",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jwt/algorithms.py",
+          "start_line": 220,
+          "end_line": 220,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-f47db5018f",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jwt/algorithms.py",
+          "start_line": 313,
+          "end_line": 313,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-046998ed57",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jwt/algorithms.py",
+          "start_line": 457,
+          "end_line": 457,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-033aa0400b",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jwt/algorithms.py",
+          "start_line": 657,
+          "end_line": 657,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0025",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 4,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-14e8d942f9",
+          "static-ruff-f47db5018f",
+          "static-ruff-046998ed57",
+          "static-ruff-033aa0400b"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0025-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0027",
+      "repository": "lepture/authlib",
+      "commit_hash": "bb7a315befbad333faf9a23ef574d6e3134a6774",
+      "target_file": "authlib/jose/__init__.py",
+      "category_id": 5,
+      "primary_cwe": "CWE-347",
+      "gt_loci": [
+        [
+          49,
+          49
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 3.753,
+      "emitted_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0027",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0027-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0031",
+      "repository": "jupyterhub/jupyterhub",
+      "commit_hash": "b4053616743eb011e5bb568700f25afca17aef53",
+      "target_file": "jupyterhub/apihandlers/users.py",
+      "category_id": 6,
+      "primary_cwe": "CWE-269",
+      "gt_loci": [
+        [
+          265,
+          267
+        ],
+        [
+          328,
+          331
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 4.292,
+      "emitted_findings_count": 8,
+      "findings": [
+        {
+          "finding_id": "static-ruff-fd20b0f3c5",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 225,
+          "end_line": 225,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-fb6a0af44d",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 276,
+          "end_line": 276,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-b3e478b7e2",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 390,
+          "end_line": 390,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-4ac24dd9e2",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 397,
+          "end_line": 397,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-f13d3a07c8",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 437,
+          "end_line": 437,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-6b10d12f53",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 478,
+          "end_line": 478,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-6bcdbe9165",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 676,
+          "end_line": 676,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-fa09a578b0",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 805,
+          "end_line": 805,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0031",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 8,
+        "false_negatives": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-fd20b0f3c5",
+          "static-ruff-fb6a0af44d",
+          "static-ruff-b3e478b7e2",
+          "static-ruff-4ac24dd9e2",
+          "static-ruff-f13d3a07c8",
+          "static-ruff-6b10d12f53",
+          "static-ruff-6bcdbe9165",
+          "static-ruff-fa09a578b0"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0031-DEF-1",
+          "CAND-0031-DEF-2"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0032",
+      "repository": "zulip/zulip",
+      "commit_hash": "ea0b8cc01133c79033868efee3edc6c1e3fa0f2b",
+      "target_file": "zerver/lib/message.py",
+      "category_id": 6,
+      "primary_cwe": "CWE-863",
+      "gt_loci": [
+        [
+          825,
+          827
+        ],
+        [
+          842,
+          856
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 4.49,
+      "emitted_findings_count": 13,
+      "findings": [
+        {
+          "finding_id": "static-ruff-942c382e0b",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 554,
+          "end_line": 554,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-deacb3df28",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 573,
+          "end_line": 573,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-aa0dc19468",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 650,
+          "end_line": 650,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-e4ca433764",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 758,
+          "end_line": 758,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-fc1fc76df6",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 785,
+          "end_line": 785,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-2314adbf62",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 794,
+          "end_line": 794,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-68a2a442d4",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 798,
+          "end_line": 798,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-2a7c994a06",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 801,
+          "end_line": 801,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-afb900cf1a",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 836,
+          "end_line": 836,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-b659898c83",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 971,
+          "end_line": 971,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-f9f6ac35eb",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 3,
+          "primary_cwe": "CWE-89",
+          "alternative_cwes": [
+            "CWE-943"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 1012,
+          "end_line": 1014,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S610]: Django extra() query SQL injection",
+          "description": "Use of Django `extra` can lead to SQL injection vulnerabilities",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S610",
+            "url": "https://docs.astral.sh/ruff/rules/django-extra",
+            "is_unmapped": false,
+            "tools": [
+              "ruff",
+              "semgrep"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-2a14fb3eca",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 3,
+          "primary_cwe": "CWE-89",
+          "alternative_cwes": [
+            "CWE-943"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 1052,
+          "end_line": 1054,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S610]: Django extra() query SQL injection",
+          "description": "Use of Django `extra` can lead to SQL injection vulnerabilities",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S610",
+            "url": "https://docs.astral.sh/ruff/rules/django-extra",
+            "is_unmapped": false,
+            "tools": [
+              "ruff",
+              "semgrep"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-43e4fca127",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-703"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 1640,
+          "end_line": 1640,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [S101]: Use of assert detected",
+          "description": "Use of `assert` detected",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "S101",
+            "url": "https://docs.astral.sh/ruff/rules/assert",
+            "is_unmapped": false
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0032",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 13,
+        "false_negatives": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-942c382e0b",
+          "static-ruff-deacb3df28",
+          "static-ruff-aa0dc19468",
+          "static-ruff-e4ca433764",
+          "static-ruff-fc1fc76df6",
+          "static-ruff-2314adbf62",
+          "static-ruff-68a2a442d4",
+          "static-ruff-2a7c994a06",
+          "static-ruff-afb900cf1a",
+          "static-ruff-b659898c83",
+          "static-ruff-f9f6ac35eb",
+          "static-ruff-2a14fb3eca",
+          "static-ruff-43e4fca127"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0032-DEF-1",
+          "CAND-0032-DEF-2"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0008",
+      "repository": "Kludex/python-multipart",
+      "commit_hash": "d3d16dae4b061c34fe9d3c9081d9800c49fc1f7a",
+      "target_file": "multipart/multipart.py",
+      "category_id": 2,
+      "primary_cwe": "CWE-1333",
+      "gt_loci": [
+        [
+          72,
+          75
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 4.472,
+      "emitted_findings_count": 8,
+      "findings": [
+        {
+          "finding_id": "static-ruff-21bdb04656",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "multipart/multipart.py",
+          "start_line": 303,
+          "end_line": 303,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-7d64dc9425",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "multipart/multipart.py",
+          "start_line": 431,
+          "end_line": 431,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-0ab11eadd2",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "multipart/multipart.py",
+          "start_line": 458,
+          "end_line": 458,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-093e843f49",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "multipart/multipart.py",
+          "start_line": 641,
+          "end_line": 641,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-1cc102abe4",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "multipart/multipart.py",
+          "start_line": 733,
+          "end_line": 733,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-13d48af097",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "multipart/multipart.py",
+          "start_line": 995,
+          "end_line": 995,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-f43e9f8f9a",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "multipart/multipart.py",
+          "start_line": 1538,
+          "end_line": 1538,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-c9b24849c0",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [
+            "CWE-193"
+          ],
+          "file_path": "multipart/multipart.py",
+          "start_line": 1797,
+          "end_line": 1797,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B006]: Mutable default argument in function definition",
+          "description": "Do not use mutable data structures for argument defaults",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B006",
+            "url": "https://docs.astral.sh/ruff/rules/mutable-argument-default",
+            "is_unmapped": false
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0008",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 8,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-21bdb04656",
+          "static-ruff-7d64dc9425",
+          "static-ruff-0ab11eadd2",
+          "static-ruff-093e843f49",
+          "static-ruff-1cc102abe4",
+          "static-ruff-13d48af097",
+          "static-ruff-f43e9f8f9a",
+          "static-ruff-c9b24849c0"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0008-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0015",
+      "repository": "django/django",
+      "commit_hash": "6b178a3e930f72069f3cda2e6a09d1b320fc09ec",
+      "target_file": "django/contrib/postgres/aggregates/general.py",
+      "category_id": 3,
+      "primary_cwe": "CWE-89",
+      "gt_loci": [
+        [
+          54,
+          58
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 3.786,
+      "emitted_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0015",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0015-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0020",
+      "repository": "pallets/werkzeug",
+      "commit_hash": "50cfeebcb0727e18cc52ffbeb125f4a66551179b",
+      "target_file": "src/werkzeug/security.py",
+      "category_id": 4,
+      "primary_cwe": "CWE-22",
+      "gt_loci": [
+        [
+          151,
+          157
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 3.801,
+      "emitted_findings_count": 0,
+      "findings": [],
+      "evaluation": {
+        "case_id": "CAND-0020",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [
+          "CAND-0020-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0026",
+      "repository": "paramiko/paramiko",
+      "commit_hash": "aefd28a7f00c4250d113d375e96abf5da3eb89f9",
+      "target_file": "paramiko/transport.py",
+      "category_id": 5,
+      "primary_cwe": "CWE-287",
+      "gt_loci": [
+        [
+          1822,
+          1828
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 5.291,
+      "emitted_findings_count": 7,
+      "findings": [
+        {
+          "finding_id": "static-ruff-c7bc725265",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "paramiko/transport.py",
+          "start_line": 299,
+          "end_line": 299,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B007]: Unmapped rule: B007",
+          "description": "Loop control variable `proto` not used within loop body",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B007",
+            "url": "https://docs.astral.sh/ruff/rules/unused-loop-control-variable",
+            "is_unmapped": true,
+            "tools": [
+              "ruff"
+            ]
+          }
+        },
+        {
+          "finding_id": "static-ruff-993b676f44",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-670",
+          "alternative_cwes": [],
+          "file_path": "paramiko/transport.py",
+          "start_line": 305,
+          "end_line": 305,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B023]: Function definition uses loop variable (late binding bug)",
+          "description": "Function definition does not bind loop variable `sock`",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B023",
+            "url": "https://docs.astral.sh/ruff/rules/function-uses-loop-variable",
+            "is_unmapped": false
+          }
+        },
+        {
+          "finding_id": "static-ruff-731a47cfa9",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "paramiko/transport.py",
+          "start_line": 982,
+          "end_line": 982,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B008]: Unmapped rule: B008",
+          "description": "Do not perform function call `weakref.proxy` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B008",
+            "url": "https://docs.astral.sh/ruff/rules/function-call-in-default-argument",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-ad6b927e35",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "paramiko/transport.py",
+          "start_line": 1329,
+          "end_line": 1329,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-53a1cd013d",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "paramiko/transport.py",
+          "start_line": 1448,
+          "end_line": 1448,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B007]: Unmapped rule: B007",
+          "description": "Loop control variable `show_input` not used within loop body",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B007",
+            "url": "https://docs.astral.sh/ruff/rules/unused-loop-control-variable",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-12cf45548b",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "paramiko/transport.py",
+          "start_line": 1701,
+          "end_line": 1701,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B010]: Unmapped rule: B010",
+          "description": "Do not call `setattr` with a constant attribute value. It is not any safer than normal property access.",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B010",
+            "url": "https://docs.astral.sh/ruff/rules/set-attr-with-constant",
+            "is_unmapped": true
+          }
+        },
+        {
+          "finding_id": "static-ruff-2e481e6192",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "paramiko/transport.py",
+          "start_line": 1938,
+          "end_line": 1940,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0026",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 7,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-c7bc725265",
+          "static-ruff-993b676f44",
+          "static-ruff-731a47cfa9",
+          "static-ruff-ad6b927e35",
+          "static-ruff-53a1cd013d",
+          "static-ruff-12cf45548b",
+          "static-ruff-2e481e6192"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0026-DEF-1"
+        ]
+      }
+    },
+    {
+      "case_id": "CAND-0033",
+      "repository": "zulip/zulip",
+      "commit_hash": "b1007916b03a40841ba141f5e4f041aeaeaaa010",
+      "target_file": "zerver/actions/typing.py",
+      "category_id": 6,
+      "primary_cwe": "CWE-863",
+      "gt_loci": [
+        [
+          83,
+          85
+        ]
+      ],
+      "execution_status": "success",
+      "duration_seconds": 3.809,
+      "emitted_findings_count": 1,
+      "findings": [
+        {
+          "finding_id": "static-ruff-ba53b2abc4",
+          "detection_layer": "deterministic_static",
+          "tool_name": "ruff",
+          "category_id": 1,
+          "primary_cwe": "CWE-UNMAPPED",
+          "alternative_cwes": [],
+          "file_path": "zerver/actions/typing.py",
+          "start_line": 82,
+          "end_line": 82,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Ruff [B904]: Unmapped rule: B904",
+          "description": "Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling",
+          "suggestion": null,
+          "provenance": {
+            "tool": "ruff",
+            "rule_code": "B904",
+            "url": "https://docs.astral.sh/ruff/rules/raise-without-from-inside-except",
+            "is_unmapped": true
+          }
+        }
+      ],
+      "evaluation": {
+        "case_id": "CAND-0033",
+        "is_buggy": true,
+        "true_positives": 0,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "static-ruff-ba53b2abc4"
+        ],
+        "unmatched_defect_ids": [
+          "CAND-0033-DEF-1"
+        ]
+      }
+    }
+  ]
+}

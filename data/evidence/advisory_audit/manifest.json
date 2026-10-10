@@ -1,0 +1,393 @@
+{
+  "audit_name": "Advisory-ID Existence Audit",
+  "timestamp_iso": "2026-10-09T02:30:23Z",
+  "total_candidates": 36,
+  "category_1_functional_flaws_count": 6,
+  "security_candidates_checked": 30,
+  "unique_ghsa_ids_count": 30,
+  "global_ecosystem_queries_count": 27,
+  "repo_scoped_queries_count": 3,
+  "total_advisories": 30,
+  "total_200_ok": 30,
+  "total_errors": 0,
+  "snapshots_count": 30,
+  "audit_reconciliation": {
+    "discrepancy_explanation": "Prior reports cited 27/27 verified advisories by referencing only the 27 global ecosystem queries (/advisories/{id}), omitting the 3 repository-scoped Zulip advisories (/repos/zulip/zulip/security-advisories/{id}). Across all 36 candidates, exactly 6 are Category 1 functional flaws (no advisory), leaving 30 security candidates. All 30 security advisories are verified (27 global ecosystem + 3 repository-scoped = 30 total, 100% 200 OK)."
+  },
+  "zulip_investigation": {
+    "summary": "Zulip advisories GHSA-wj5v-8mqg-gvqw, GHSA-5r8f-gq2h-fcgp, and GHSA-q3wg-jm9p-35fj return 404 on the global ecosystem endpoint /advisories/{id} because Zulip is a self-hosted server application, not a package distributed on PyPI. They resolve with HTTP 200 OK when queried via the official GitHub repository advisory endpoint /repos/zulip/zulip/security-advisories/{id}.",
+    "dual_probe_results": {
+      "GHSA-q3wg-jm9p-35fj": {
+        "global_endpoint": {
+          "url": "https://api.github.com/advisories/GHSA-q3wg-jm9p-35fj",
+          "status": 404,
+          "error": "HTTP 404: Not Found"
+        },
+        "repo_endpoint": {
+          "url": "https://api.github.com/repos/zulip/zulip/security-advisories/GHSA-q3wg-jm9p-35fj",
+          "status": 200,
+          "data_summary": "Insufficient authorization check for edition/deletion of messages and topics in private streams by former subscribers"
+        },
+        "conclusion": "Global ecosystem endpoint returns 404 because Zulip is a standalone server application, not a PyPI package. The repository security advisory endpoint resolves with 200 OK."
+      },
+      "GHSA-wj5v-8mqg-gvqw": {
+        "global_endpoint": {
+          "url": "https://api.github.com/advisories/GHSA-wj5v-8mqg-gvqw",
+          "status": 404,
+          "error": "HTTP 404: Not Found"
+        },
+        "repo_endpoint": {
+          "url": "https://api.github.com/repos/zulip/zulip/security-advisories/GHSA-wj5v-8mqg-gvqw",
+          "status": 200,
+          "data_summary": "Missing access check in typing endpoint exposed inaccessible users' IDs and emails "
+        },
+        "conclusion": "Global ecosystem endpoint returns 404 because Zulip is a standalone server application, not a PyPI package. The repository security advisory endpoint resolves with 200 OK."
+      },
+      "GHSA-5r8f-gq2h-fcgp": {
+        "global_endpoint": {
+          "url": "https://api.github.com/advisories/GHSA-5r8f-gq2h-fcgp",
+          "status": 404,
+          "error": "HTTP 404: Not Found"
+        },
+        "repo_endpoint": {
+          "url": "https://api.github.com/repos/zulip/zulip/security-advisories/GHSA-5r8f-gq2h-fcgp",
+          "status": 200,
+          "data_summary": "Guests can read new messages in non-subscribed public channels"
+        },
+        "conclusion": "Global ecosystem endpoint returns 404 because Zulip is a standalone server application, not a PyPI package. The repository security advisory endpoint resolves with 200 OK."
+      }
+    }
+  },
+  "advisories": [
+    {
+      "ghsa_id": "GHSA-8h2j-cgx8-6xv7",
+      "cve_id": "CVE-2021-32677",
+      "url": "https://api.github.com/advisories/GHSA-8h2j-cgx8-6xv7",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Cross-Site Request Forgery (CSRF) in FastAPI",
+      "severity": "high",
+      "published_at": "2021-06-10T15:43:54Z",
+      "snapshot_file": "GHSA-8h2j-cgx8-6xv7.json"
+    },
+    {
+      "ghsa_id": "GHSA-2jv5-9r88-3w3p",
+      "cve_id": "CVE-2024-24762",
+      "url": "https://api.github.com/advisories/GHSA-2jv5-9r88-3w3p",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "python-multipart vulnerable to Content-Type Header ReDoS",
+      "severity": "high",
+      "published_at": "2024-02-12T17:28:12Z",
+      "snapshot_file": "GHSA-2jv5-9r88-3w3p.json"
+    },
+    {
+      "ghsa_id": "GHSA-h75v-3vvj-5mfj",
+      "cve_id": "CVE-2024-34064",
+      "url": "https://api.github.com/advisories/GHSA-h75v-3vvj-5mfj",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter",
+      "severity": "medium",
+      "published_at": "2024-05-06T14:20:59Z",
+      "snapshot_file": "GHSA-h75v-3vvj-5mfj.json"
+    },
+    {
+      "ghsa_id": "GHSA-v845-jxx5-vc9f",
+      "cve_id": "CVE-2023-43804",
+      "url": "https://api.github.com/advisories/GHSA-v845-jxx5-vc9f",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "`Cookie` HTTP header isn't stripped on cross-origin redirects",
+      "severity": "high",
+      "published_at": "2023-10-02T23:27:05Z",
+      "snapshot_file": "GHSA-v845-jxx5-vc9f.json"
+    },
+    {
+      "ghsa_id": "GHSA-xx9p-xxvh-7g8j",
+      "cve_id": "CVE-2023-49082",
+      "url": "https://api.github.com/advisories/GHSA-xx9p-xxvh-7g8j",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Aiohttp has inconsistent interpretation of `Content-Length` vs. `Transfer-Encoding` differing in C and Python fallbacks",
+      "severity": "low",
+      "published_at": "2023-11-14T20:36:25Z",
+      "snapshot_file": "GHSA-xx9p-xxvh-7g8j.json"
+    },
+    {
+      "ghsa_id": "GHSA-j8r2-6x86-q33q",
+      "cve_id": "CVE-2023-32681",
+      "url": "https://api.github.com/advisories/GHSA-j8r2-6x86-q33q",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Unintended leak of Proxy-Authorization header in requests",
+      "severity": "medium",
+      "published_at": "2023-05-22T20:36:32Z",
+      "snapshot_file": "GHSA-j8r2-6x86-q33q.json"
+    },
+    {
+      "ghsa_id": "GHSA-wpjr-j57x-wxfw",
+      "cve_id": "CVE-2020-13254",
+      "url": "https://api.github.com/advisories/GHSA-wpjr-j57x-wxfw",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Data leakage via cache key collision in Django",
+      "severity": "high",
+      "published_at": "2020-06-05T16:20:44Z",
+      "snapshot_file": "GHSA-wpjr-j57x-wxfw.json"
+    },
+    {
+      "ghsa_id": "GHSA-frmv-pr5f-9mcr",
+      "cve_id": "CVE-2025-64459",
+      "url": "https://api.github.com/advisories/GHSA-frmv-pr5f-9mcr",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Django vulnerable to SQL injection via _connector keyword argument in QuerySet and Q objects.",
+      "severity": "critical",
+      "published_at": "2025-11-05T15:31:07Z",
+      "snapshot_file": "GHSA-frmv-pr5f-9mcr.json"
+    },
+    {
+      "ghsa_id": "GHSA-p64x-8rxx-wf6q",
+      "cve_id": "CVE-2022-34265",
+      "url": "https://api.github.com/advisories/GHSA-p64x-8rxx-wf6q",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Django `Trunc()` and `Extract()` database functions vulnerable to SQL Injection",
+      "severity": "critical",
+      "published_at": "2022-07-05T00:00:53Z",
+      "snapshot_file": "GHSA-p64x-8rxx-wf6q.json"
+    },
+    {
+      "ghsa_id": "GHSA-hmr4-m2h5-33qx",
+      "cve_id": "CVE-2020-7471",
+      "url": "https://api.github.com/advisories/GHSA-hmr4-m2h5-33qx",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "SQL injection in Django",
+      "severity": "critical",
+      "published_at": "2020-02-11T21:03:20Z",
+      "snapshot_file": "GHSA-hmr4-m2h5-33qx.json"
+    },
+    {
+      "ghsa_id": "GHSA-xpfp-f569-q3p2",
+      "cve_id": "CVE-2021-35042",
+      "url": "https://api.github.com/advisories/GHSA-xpfp-f569-q3p2",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "SQL Injection in Django",
+      "severity": "critical",
+      "published_at": "2021-09-22T17:34:49Z",
+      "snapshot_file": "GHSA-xpfp-f569-q3p2.json"
+    },
+    {
+      "ghsa_id": "GHSA-9j2c-x8qm-qmjq",
+      "cve_id": "CVE-2020-11010",
+      "url": "https://api.github.com/advisories/GHSA-9j2c-x8qm-qmjq",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "SQL injection in Tortoise ORM",
+      "severity": "medium",
+      "published_at": "2020-04-20T21:31:23Z",
+      "snapshot_file": "GHSA-9j2c-x8qm-qmjq.json"
+    },
+    {
+      "ghsa_id": "GHSA-887w-45rq-vxgf",
+      "cve_id": "CVE-2019-7164",
+      "url": "https://api.github.com/advisories/GHSA-887w-45rq-vxgf",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "SQLAlchemy vulnerable to SQL Injection via order_by parameter",
+      "severity": "critical",
+      "published_at": "2019-04-16T15:50:41Z",
+      "snapshot_file": "GHSA-887w-45rq-vxgf.json"
+    },
+    {
+      "ghsa_id": "GHSA-5h86-8mv2-jq9f",
+      "cve_id": "CVE-2024-23334",
+      "url": "https://api.github.com/advisories/GHSA-5h86-8mv2-jq9f",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "aiohttp is vulnerable to directory traversal",
+      "severity": "high",
+      "published_at": "2024-01-29T22:31:03Z",
+      "snapshot_file": "GHSA-5h86-8mv2-jq9f.json"
+    },
+    {
+      "ghsa_id": "GHSA-f9vj-2wh5-fj8j",
+      "cve_id": "CVE-2024-49766",
+      "url": "https://api.github.com/advisories/GHSA-f9vj-2wh5-fj8j",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Werkzeug safe_join not safe on Windows",
+      "severity": "medium",
+      "published_at": "2024-10-25T19:43:41Z",
+      "snapshot_file": "GHSA-f9vj-2wh5-fj8j.json"
+    },
+    {
+      "ghsa_id": "GHSA-v5gw-mw7f-84px",
+      "cve_id": "CVE-2023-29159",
+      "url": "https://api.github.com/advisories/GHSA-v5gw-mw7f-84px",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Starlette has Path Traversal vulnerability in StaticFiles",
+      "severity": "medium",
+      "published_at": "2023-05-17T03:49:14Z",
+      "snapshot_file": "GHSA-v5gw-mw7f-84px.json"
+    },
+    {
+      "ghsa_id": "GHSA-rxjp-mfm9-w4wr",
+      "cve_id": "CVE-2021-31542",
+      "url": "https://api.github.com/advisories/GHSA-rxjp-mfm9-w4wr",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Path Traversal in Django",
+      "severity": "high",
+      "published_at": "2021-06-04T21:15:56Z",
+      "snapshot_file": "GHSA-rxjp-mfm9-w4wr.json"
+    },
+    {
+      "ghsa_id": "GHSA-hj3f-6gcp-jg8j",
+      "cve_id": "CVE-2023-28370",
+      "url": "https://api.github.com/advisories/GHSA-hj3f-6gcp-jg8j",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Open redirect in Tornado",
+      "severity": "medium",
+      "published_at": "2023-05-25T12:30:16Z",
+      "snapshot_file": "GHSA-hj3f-6gcp-jg8j.json"
+    },
+    {
+      "ghsa_id": "GHSA-xg73-94fp-g449",
+      "cve_id": "CVE-2023-1177",
+      "url": "https://api.github.com/advisories/GHSA-xg73-94fp-g449",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "mlflow is vulnerable to remote file access in `mlflow server` and `mlflow ui` CLIs",
+      "severity": "critical",
+      "published_at": "2023-03-24T22:01:09Z",
+      "snapshot_file": "GHSA-xg73-94fp-g449.json"
+    },
+    {
+      "ghsa_id": "GHSA-ffqj-6fqr-9h24",
+      "cve_id": "CVE-2022-29217",
+      "url": "https://api.github.com/advisories/GHSA-ffqj-6fqr-9h24",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Key confusion through non-blocklisted public key formats",
+      "severity": "high",
+      "published_at": "2022-05-24T22:17:27Z",
+      "snapshot_file": "GHSA-ffqj-6fqr-9h24.json"
+    },
+    {
+      "ghsa_id": "GHSA-232r-66cg-79px",
+      "cve_id": "CVE-2018-7750",
+      "url": "https://api.github.com/advisories/GHSA-232r-66cg-79px",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Paramiko not properly checking authentication before processing other requests",
+      "severity": "critical",
+      "published_at": "2018-07-12T20:29:30Z",
+      "snapshot_file": "GHSA-232r-66cg-79px.json"
+    },
+    {
+      "ghsa_id": "GHSA-7wc2-qxgw-g8gg",
+      "cve_id": "CVE-2026-28802",
+      "url": "https://api.github.com/advisories/GHSA-7wc2-qxgw-g8gg",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Authlib: Setting `alg: none` and a blank signature appears to bypass signature verification",
+      "severity": "high",
+      "published_at": "2026-03-04T20:55:47Z",
+      "snapshot_file": "GHSA-7wc2-qxgw-g8gg.json"
+    },
+    {
+      "ghsa_id": "GHSA-5357-c2jx-v7qh",
+      "cve_id": "CVE-2024-37568",
+      "url": "https://api.github.com/advisories/GHSA-5357-c2jx-v7qh",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Authlib has algorithm confusion with asymmetric public keys",
+      "severity": "high",
+      "published_at": "2024-06-09T21:30:33Z",
+      "snapshot_file": "GHSA-5357-c2jx-v7qh.json"
+    },
+    {
+      "ghsa_id": "GHSA-rrqc-c2jx-6jgv",
+      "cve_id": "CVE-2024-45231",
+      "url": "https://api.github.com/advisories/GHSA-rrqc-c2jx-6jgv",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Django allows enumeration of user e-mail addresses",
+      "severity": "medium",
+      "published_at": "2024-10-08T18:33:13Z",
+      "snapshot_file": "GHSA-rrqc-c2jx-6jgv.json"
+    },
+    {
+      "ghsa_id": "GHSA-6c5p-j8vq-pqhj",
+      "cve_id": "CVE-2024-33663",
+      "url": "https://api.github.com/advisories/GHSA-6c5p-j8vq-pqhj",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "python-jose algorithm confusion with OpenSSH ECDSA keys",
+      "severity": "critical",
+      "published_at": "2024-04-26T00:30:35Z",
+      "snapshot_file": "GHSA-6c5p-j8vq-pqhj.json"
+    },
+    {
+      "ghsa_id": "GHSA-9x4q-3gxw-849f",
+      "cve_id": "CVE-2024-41942",
+      "url": "https://api.github.com/advisories/GHSA-9x4q-3gxw-849f",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "JupyterHub has a privilege escalation vulnerability with the `admin:users` scope",
+      "severity": "high",
+      "published_at": "2024-08-08T14:37:06Z",
+      "snapshot_file": "GHSA-9x4q-3gxw-849f.json"
+    },
+    {
+      "ghsa_id": "GHSA-q3wg-jm9p-35fj",
+      "cve_id": "CVE-2023-32678",
+      "url": "https://api.github.com/repos/zulip/zulip/security-advisories/GHSA-q3wg-jm9p-35fj",
+      "advisory_type": "repo_scoped",
+      "http_status": 200,
+      "summary": "Insufficient authorization check for edition/deletion of messages and topics in private streams by former subscribers",
+      "severity": "medium",
+      "published_at": "2023-08-25T18:10:44Z",
+      "snapshot_file": "GHSA-q3wg-jm9p-35fj.json"
+    },
+    {
+      "ghsa_id": "GHSA-wj5v-8mqg-gvqw",
+      "cve_id": null,
+      "url": "https://api.github.com/repos/zulip/zulip/security-advisories/GHSA-wj5v-8mqg-gvqw",
+      "advisory_type": "repo_scoped",
+      "http_status": 200,
+      "summary": "Missing access check in typing endpoint exposed inaccessible users' IDs and emails ",
+      "severity": "medium",
+      "published_at": "2026-09-21T17:16:21Z",
+      "snapshot_file": "GHSA-wj5v-8mqg-gvqw.json"
+    },
+    {
+      "ghsa_id": "GHSA-5r8f-gq2h-fcgp",
+      "cve_id": "CVE-2026-100404",
+      "url": "https://api.github.com/repos/zulip/zulip/security-advisories/GHSA-5r8f-gq2h-fcgp",
+      "advisory_type": "repo_scoped",
+      "http_status": 200,
+      "summary": "Guests can read new messages in non-subscribed public channels",
+      "severity": "medium",
+      "published_at": "2026-08-10T17:23:15Z",
+      "snapshot_file": "GHSA-5r8f-gq2h-fcgp.json"
+    },
+    {
+      "ghsa_id": "GHSA-w6c7-j32f-rq8j",
+      "cve_id": "CVE-2025-27696",
+      "url": "https://api.github.com/advisories/GHSA-w6c7-j32f-rq8j",
+      "advisory_type": "global_ecosystem",
+      "http_status": 200,
+      "summary": "Apache Superset Allows Ownership Takeover",
+      "severity": "medium",
+      "published_at": "2025-05-13T09:31:09Z",
+      "snapshot_file": "GHSA-w6c7-j32f-rq8j.json"
+    }
+  ]
+}

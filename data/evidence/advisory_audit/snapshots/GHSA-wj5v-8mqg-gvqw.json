@@ -1,0 +1,108 @@
+{
+  "ghsa_id": "GHSA-wj5v-8mqg-gvqw",
+  "cve_id": null,
+  "url": "https://api.github.com/repos/zulip/zulip/security-advisories/GHSA-wj5v-8mqg-gvqw",
+  "html_url": "https://github.com/zulip/zulip/security/advisories/GHSA-wj5v-8mqg-gvqw",
+  "summary": "Missing access check in typing endpoint exposed inaccessible users' IDs and emails ",
+  "description": "### Impact\r\n\r\nIn organizations that limit which users a guest can see, the direct-message typing notification endpoint failed to apply the recipient access checks that sending an actual direct message enforces. A guest could therefore address a typing notification to a user they were not permitted to access, and because the server echoes the notification's recipient list back to the sender, confirm that user's existence and learn identifying information about them (their user ID, and, depending on the organization's email visibility setting, possibly their email address). Exploiting the issue required an authenticated guest account in an affected organization.\r\n\r\nThe impact was limited in the following ways:\r\n- In the majority of organizations, which don't enable the setting for limiting which users a guest can see, this bug had no impact, as all users can see each other anyway.\r\n- Users who restrict the visibility of their email address, wouldn't have their email address leaked due to the above bug - only the dummy email in the form `user<id>@<dummy domain of the organization>` would be leaked. Only users who set `Who can access user\u2019s email address.` to `Admins, moderators, members and guests` would have their email address revealed.\r\n\r\n\r\n### Patches\r\n\r\nFixed in Zulip server 12.3\r\n\r\n### References\r\n\r\nSetting for restricting whether guests can see other users: https://zulip.com/help/guest-users#configure-whether-guests-can-see-all-other-users\r\nSetting for configuring email visiblity: https://zulip.com/help/configure-email-visibility",
+  "severity": "medium",
+  "author": null,
+  "publisher": {
+    "login": "mateuszmandera",
+    "id": 45007152,
+    "node_id": "MDQ6VXNlcjQ1MDA3MTUy",
+    "avatar_url": "https://avatars.githubusercontent.com/u/45007152?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/mateuszmandera",
+    "html_url": "https://github.com/mateuszmandera",
+    "followers_url": "https://api.github.com/users/mateuszmandera/followers",
+    "following_url": "https://api.github.com/users/mateuszmandera/following{/other_user}",
+    "gists_url": "https://api.github.com/users/mateuszmandera/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/mateuszmandera/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/mateuszmandera/subscriptions",
+    "organizations_url": "https://api.github.com/users/mateuszmandera/orgs",
+    "repos_url": "https://api.github.com/users/mateuszmandera/repos",
+    "events_url": "https://api.github.com/users/mateuszmandera/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/mateuszmandera/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "identifiers": [
+    {
+      "value": "GHSA-wj5v-8mqg-gvqw",
+      "type": "GHSA"
+    }
+  ],
+  "state": "published",
+  "created_at": null,
+  "updated_at": "2026-09-21T17:16:21Z",
+  "published_at": "2026-09-21T17:16:21Z",
+  "closed_at": null,
+  "withdrawn_at": null,
+  "submission": null,
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "",
+        "name": "Zulip Server"
+      },
+      "vulnerable_version_range": ">= 8.0",
+      "patched_versions": "12.3",
+      "vulnerable_functions": []
+    }
+  ],
+  "cvss_severities": {
+    "cvss_v3": {
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "score": 4.3
+    },
+    "cvss_v4": {
+      "vector_string": null,
+      "score": null
+    }
+  },
+  "cwes": [],
+  "cwe_ids": [],
+  "credits": [
+    {
+      "login": "JebeenLee",
+      "type": "reporter"
+    }
+  ],
+  "credits_detailed": [
+    {
+      "user": {
+        "login": "JebeenLee",
+        "id": 117744306,
+        "node_id": "U_kgDOBwSisg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/117744306?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/JebeenLee",
+        "html_url": "https://github.com/JebeenLee",
+        "followers_url": "https://api.github.com/users/JebeenLee/followers",
+        "following_url": "https://api.github.com/users/JebeenLee/following{/other_user}",
+        "gists_url": "https://api.github.com/users/JebeenLee/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/JebeenLee/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/JebeenLee/subscriptions",
+        "organizations_url": "https://api.github.com/users/JebeenLee/orgs",
+        "repos_url": "https://api.github.com/users/JebeenLee/repos",
+        "events_url": "https://api.github.com/users/JebeenLee/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/JebeenLee/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "type": "reporter",
+      "state": "accepted"
+    }
+  ],
+  "collaborating_users": null,
+  "collaborating_teams": null,
+  "private_fork": null,
+  "comments": 0,
+  "cvss": {
+    "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+    "score": 4.3
+  }
+}

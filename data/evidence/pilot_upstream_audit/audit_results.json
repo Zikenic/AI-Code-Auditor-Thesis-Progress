@@ -1,0 +1,781 @@
+{
+  "timestamp_iso": "2026-10-09T02:30:23Z",
+  "total_cases_audited": 13,
+  "total_passed": 13,
+  "total_failed": 0,
+  "all_passed": true,
+  "cases": [
+    {
+      "candidate_id": "CAND-0001",
+      "category": "Category 1 \u2014 Boundary / Conditional / Logic",
+      "repo_slug": "tornadoweb/tornado",
+      "affected_file": "tornado/http1connection.py",
+      "buggy_commit": "2ca8821d006f6693f920a4b183a3a7c985a5c8ad",
+      "fixed_commit": "4f486a4aec746e9d66441600ee3b0743228b061c",
+      "fixed_commit_meta": {
+        "short_sha": "4f486a4",
+        "author": "Ben Darnell",
+        "date": "2019-01-01",
+        "subject": "http1connection: Fix a bug with redirects and chunked requests"
+      },
+      "cwe_primary": "CWE-670",
+      "cwe_alternatives": [
+        "CWE-440",
+        "CWE-20"
+      ],
+      "advisory_or_cve": "N/A (Functional logic flaw)",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            390,
+            394
+          ],
+          "line_count": 5,
+          "snippet": "            self._chunking_output = (\n                start_line.method in (\"POST\", \"PUT\", \"PATCH\")\n                and \"Content-Length\" not in headers\n                and \"Transfer-Encoding\" not in headers\n            )"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "and \"Transfer-Encoding\" not in headers",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "headers[\"Transfer-Encoding\"] == \"chunked\"",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "Logic error in write_headers suppressed chunking when Transfer-Encoding explicitly present."
+    },
+    {
+      "candidate_id": "CAND-0002",
+      "category": "Category 1 \u2014 Boundary / Conditional / Logic",
+      "repo_slug": "tiangolo/fastapi",
+      "affected_file": "fastapi/routing.py",
+      "buggy_commit": "210af1fd3dc0f612a08fa02a0cb3f5adb81e5bfb",
+      "fixed_commit": "02441ff0313d5b471b662293244c53e712f1243f",
+      "fixed_commit_meta": {
+        "short_sha": "02441ff",
+        "author": "amitlissack",
+        "date": "2020-03-30",
+        "subject": ":bug: Fix dependency overrides in WebSockets (#1122)"
+      },
+      "cwe_primary": "CWE-670",
+      "cwe_alternatives": [
+        "CWE-440"
+      ],
+      "advisory_or_cve": "N/A (Functional logic flaw)",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            498,
+            502
+          ],
+          "line_count": 5,
+          "snippet": "    def add_api_websocket_route(\n        self, path: str, endpoint: Callable, name: str = None\n    ) -> None:\n        route = APIWebSocketRoute(path, endpoint=endpoint, name=name)\n        self.routes.append(route)"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "route = APIWebSocketRoute(path, endpoint=endpoint, name=name)",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "dependency_overrides_provider=self.dependency_overrides_provider",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "add_api_websocket_route failed to propagate dependency_overrides_provider."
+    },
+    {
+      "candidate_id": "CAND-0007",
+      "category": "Category 2 \u2014 Input Validation / Sanitization",
+      "repo_slug": "tiangolo/fastapi",
+      "affected_file": "fastapi/routing.py",
+      "buggy_commit": "90120dd6e83d997fa2f7f54119a2e0cf906b1ded",
+      "fixed_commit": "fa7e3c996edf2d5482fff8f9d890ac2390dede4d",
+      "fixed_commit_meta": {
+        "short_sha": "fa7e3c9",
+        "author": "Patrick Wang",
+        "date": "2021-06-07",
+        "subject": "\ud83d\udc1b Check Content-Type request header before assuming JSON (#2118)"
+      },
+      "cwe_primary": "CWE-352",
+      "cwe_alternatives": [
+        "CWE-20",
+        "CWE-345"
+      ],
+      "advisory_or_cve": "GHSA-8h2j-cgx8-6xv7 / CVE-2021-32677",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {
+        "unguarded_assignment_absent_in_fixed": true,
+        "content_type_absent_in_buggy": true,
+        "content_type_present_in_fixed": true,
+        "notes": "Verified that unvalidated JSON parsing is abolished in fixed revision and guarded by Content-Type header inspection."
+      },
+      "extracted_loci": [
+        {
+          "range": [
+            182,
+            184
+          ],
+          "line_count": 3,
+          "snippet": "                    body_bytes = await request.body()\n                    if body_bytes:\n                        body = await request.json()"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "body_bytes = await request.body()",
+          "present_in_locus": true,
+          "present_in_file": true
+        },
+        {
+          "anchor": "body = await request.json()",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "content_type_value = request.headers.get(\"content-type\")",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "message.get_content_maintype() == \"application\"",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "FastAPI parsed JSON bodies without checking Content-Type header, enabling simple-request CSRF."
+    },
+    {
+      "candidate_id": "CAND-0009",
+      "category": "Category 2 \u2014 Input Validation / Sanitization",
+      "repo_slug": "pallets/jinja",
+      "affected_file": "src/jinja2/filters.py",
+      "buggy_commit": "a7863ba9d3521f1450f821119c50d19d7ecea329",
+      "fixed_commit": "0668239dc6b44ef38e7a6c9f91f312fd4ca581cb",
+      "fixed_commit_meta": {
+        "short_sha": "0668239",
+        "author": "David Lord",
+        "date": "2024-05-05",
+        "subject": "Merge pull request from GHSA-h75v-3vvj-5mfj"
+      },
+      "cwe_primary": "CWE-79",
+      "cwe_alternatives": [
+        "CWE-20",
+        "CWE-116"
+      ],
+      "advisory_or_cve": "GHSA-h75v-3vvj-5mfj / CVE-2024-34064",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            250,
+            250
+          ],
+          "line_count": 1,
+          "snippet": "    yield from value.items()"
+        },
+        {
+          "range": [
+            292,
+            293
+          ],
+          "line_count": 2,
+          "snippet": "        if _space_re.search(key) is not None:\n            raise ValueError(f\"Spaces are not allowed in attributes: '{key}'\")"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "yield from value.items()",
+          "present_in_locus": true,
+          "present_in_file": true
+        },
+        {
+          "anchor": "if _space_re.search(key) is not None:",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "_attr_key_re = re.compile(r\"[\\s/>=]\", flags=re.ASCII)",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "if _attr_key_re.search(key) is not None:",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "xmlattr filter permitted '/', '>', '=' in attribute keys, allowing quote breakout and attribute injection."
+    },
+    {
+      "candidate_id": "CAND-0014",
+      "category": "Category 3 \u2014 SQL / ORM Injection",
+      "repo_slug": "django/django",
+      "affected_file": "django/db/models/functions/datetime.py",
+      "buggy_commit": "425718726b7d2edd7b8a043f8976e437262b5098",
+      "fixed_commit": "54eb8a374d5d98594b264e8ec22337819b37443c",
+      "fixed_commit_meta": {
+        "short_sha": "54eb8a3",
+        "author": "Mariusz Felisiak",
+        "date": "2022-06-22",
+        "subject": "Fixed CVE-2022-34265 -- Protected Trunc(kind)/Extract(lookup_name) against SQL injection."
+      },
+      "cwe_primary": "CWE-89",
+      "cwe_alternatives": [
+        "CWE-20",
+        "CWE-943"
+      ],
+      "advisory_or_cve": "GHSA-p64x-8rxx-wf6q / CVE-2022-34265",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            45,
+            51
+          ],
+          "line_count": 7,
+          "snippet": "    def __init__(self, expression, lookup_name=None, tzinfo=None, **extra):\n        if self.lookup_name is None:\n            self.lookup_name = lookup_name\n        if self.lookup_name is None:\n            raise ValueError(\"lookup_name must be provided\")\n        self.tzinfo = tzinfo\n        super().__init__(expression, **extra)"
+        },
+        {
+          "range": [
+            225,
+            236
+          ],
+          "line_count": 12,
+          "snippet": "    def __init__(\n        self,\n        expression,\n        output_field=None,\n        tzinfo=None,\n        is_dst=timezone.NOT_PASSED,\n        **extra,\n    ):\n        self.tzinfo = tzinfo\n        self.is_dst = is_dst\n        super().__init__(expression, output_field=output_field, **extra)\n"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "self.lookup_name = lookup_name",
+          "present_in_locus": true,
+          "present_in_file": true
+        },
+        {
+          "anchor": "super().__init__(expression, output_field=output_field, **extra)",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "extract_trunc_lookup_pattern",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "raise ValueError(\"Invalid lookup_name: %s\" % self.lookup_name)",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "Unsanitized lookup_name and kind in Trunc/Extract allowed SQL injection via crafted date part names."
+    },
+    {
+      "candidate_id": "CAND-0017",
+      "category": "Category 3 \u2014 SQL / ORM Injection",
+      "repo_slug": "tortoise/tortoise-orm",
+      "affected_file": "tortoise/backends/mysql/executor.py",
+      "buggy_commit": "816ff00e988f79b4ff1601f247062bb5eb9db802",
+      "fixed_commit": "91c364053e0ddf77edc5442914c6f049512678b3",
+      "fixed_commit_meta": {
+        "short_sha": "91c3640",
+        "author": "Grigi",
+        "date": "2020-04-18",
+        "subject": "Fixed various SQL generation issues"
+      },
+      "cwe_primary": "CWE-89",
+      "cwe_alternatives": [
+        "CWE-943",
+        "CWE-20"
+      ],
+      "advisory_or_cve": "GHSA-9j2c-x8qm-qmjq / CVE-2020-11010",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {
+        "raw_like_absent_in_fixed": true,
+        "escape_like_absent_in_buggy": true,
+        "escape_like_present_in_fixed": true,
+        "notes": "Verified that unescaped LIKE interpolation is eliminated in fixed revision and replaced by escape_like sanitizer."
+      },
+      "extracted_loci": [
+        {
+          "range": [
+            19,
+            45
+          ],
+          "line_count": 27,
+          "snippet": "def mysql_contains(field: Field, value: str) -> Criterion:\n    return functions.Cast(field, SqlTypes.CHAR).like(f\"%{value}%\")\n\n\ndef mysql_starts_with(field: Field, value: str) -> Criterion:\n    return functions.Cast(field, SqlTypes.CHAR).like(f\"{value}%\")\n\n\ndef mysql_ends_with(field: Field, value: str) -> Criterion:\n    return functions.Cast(field, SqlTypes.CHAR).like(f\"%{value}\")\n\n\ndef mysql_insensitive_exact(field: Field, value: str) -> Criterion:\n    return functions.Upper(functions.Cast(field, SqlTypes.CHAR)).eq(functions.Upper(f\"{value}\"))\n\n\ndef mysql_insensitive_contains(field: Field, value: str) -> Criterion:\n    return functions.Upper(functions.Cast(field, SqlTypes.CHAR)).like(functions.Upper(f\"%{value}%\"))\n\n\ndef mysql_insensitive_starts_with(field: Field, value: str) -> Criterion:\n    return functions.Upper(functions.Cast(field, SqlTypes.CHAR)).like(functions.Upper(f\"{value}%\"))\n\n\ndef mysql_insensitive_ends_with(field: Field, value: str) -> Criterion:\n    return functions.Upper(functions.Cast(field, SqlTypes.CHAR)).like(functions.Upper(f\"%{value}\"))\n"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "functions.Cast(field, SqlTypes.CHAR).like(f\"%{value}%\")",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "escape_like",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "StrWrapper",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "MySQL filter functions formatted user input directly into LIKE clauses without wildcard or delimiter escaping."
+    },
+    {
+      "candidate_id": "CAND-0019",
+      "category": "Category 4 \u2014 Path Traversal / Unsafe File Operations",
+      "repo_slug": "aio-libs/aiohttp",
+      "affected_file": "aiohttp/web_urldispatcher.py",
+      "buggy_commit": "33ccdfb0a12690af5bb49bda2319ec0907fa7827",
+      "fixed_commit": "1c335944d6a8b1298baf179b7c0b3069f10c514b",
+      "fixed_commit_meta": {
+        "short_sha": "1c33594",
+        "author": "Sam Bull",
+        "date": "2024-01-28",
+        "subject": "Validate static paths (#8079)"
+      },
+      "cwe_primary": "CWE-22",
+      "cwe_alternatives": [
+        "CWE-59",
+        "CWE-20"
+      ],
+      "advisory_or_cve": "GHSA-5h86-8mv2-jq9f / CVE-2024-23334",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            574,
+            576
+          ],
+          "line_count": 3,
+          "snippet": "\n        if append_version:\n            try:"
+        },
+        {
+          "range": [
+            643,
+            645
+          ],
+          "line_count": 3,
+          "snippet": "            filepath = self._directory.joinpath(filename).resolve()\n            if not self._follow_symlinks:\n                filepath.relative_to(self._directory)"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "if not self._follow_symlinks:",
+          "present_in_locus": true,
+          "present_in_file": true
+        },
+        {
+          "anchor": "filepath.relative_to(self._directory)",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "normalized_path = Path(os.path.normpath(unresolved_path))",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "normalized_path.relative_to(self._directory)",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "Path boundary check was gated behind 'if not self._follow_symlinks', allowing directory escape when symlinks enabled."
+    },
+    {
+      "candidate_id": "CAND-0021",
+      "category": "Category 4 \u2014 Path Traversal / Unsafe File Operations",
+      "repo_slug": "encode/starlette",
+      "affected_file": "starlette/staticfiles.py",
+      "buggy_commit": "24c1fac62a80bb153c6548145334fc643991e35a",
+      "fixed_commit": "1797de464124b090f10cf570441e8292936d63e3",
+      "fixed_commit_meta": {
+        "short_sha": "1797de4",
+        "author": "Amin Alaee",
+        "date": "2023-05-16",
+        "subject": "Merge pull request from GHSA-v5gw-mw7f-84px"
+      },
+      "cwe_primary": "CWE-22",
+      "cwe_alternatives": [
+        "CWE-20"
+      ],
+      "advisory_or_cve": "GHSA-v5gw-mw7f-84px / CVE-2023-29159",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            172,
+            172
+          ],
+          "line_count": 1,
+          "snippet": "            if os.path.commonprefix([full_path, directory]) != directory:"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "if os.path.commonprefix([full_path, directory]) != directory:",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "if os.path.commonpath([full_path, directory]) != directory:",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "commonprefix operates on string characters rather than path segments, allowing sibling directory escape."
+    },
+    {
+      "candidate_id": "CAND-0025",
+      "category": "Category 5 \u2014 Authentication",
+      "repo_slug": "jpadilla/pyjwt",
+      "affected_file": "jwt/algorithms.py",
+      "buggy_commit": "24b29adfebcb4f057a3cef5aaf35653bc0c1c8cc",
+      "fixed_commit": "9c528670c455b8d948aff95ed50e22940d1ad3fc",
+      "fixed_commit_meta": {
+        "short_sha": "9c52867",
+        "author": "Jos\u00e9 Padilla",
+        "date": "2022-05-12",
+        "subject": "Merge pull request from GHSA-ffqj-6fqr-9h24"
+      },
+      "cwe_primary": "CWE-347",
+      "cwe_alternatives": [
+        "CWE-287",
+        "CWE-327"
+      ],
+      "advisory_or_cve": "GHSA-ffqj-6fqr-9h24 / CVE-2022-29217",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            186,
+            197
+          ],
+          "line_count": 12,
+          "snippet": "        invalid_strings = [\n            b\"-----BEGIN PUBLIC KEY-----\",\n            b\"-----BEGIN CERTIFICATE-----\",\n            b\"-----BEGIN RSA PUBLIC KEY-----\",\n            b\"ssh-rsa\",\n        ]\n\n        if any(string_value in key for string_value in invalid_strings):\n            raise InvalidKeyError(\n                \"The specified key is an asymmetric key or x509 certificate and\"\n                \" should not be used as an HMAC secret.\"\n            )"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "b\"ssh-rsa\"",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "is_pem_format(key) or is_ssh_key(key)",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "InvalidKeyError",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "Incomplete blacklist of asymmetric key headers allowed OpenSSH Ed25519 and ECDSA public keys to be parsed as HMAC secrets."
+    },
+    {
+      "candidate_id": "CAND-0027",
+      "category": "Category 5 \u2014 Authentication",
+      "repo_slug": "lepture/authlib",
+      "affected_file": "authlib/jose/__init__.py",
+      "buggy_commit": "bb7a315befbad333faf9a23ef574d6e3134a6774",
+      "fixed_commit": "b87c32ed07b8ae7f805873e1c9cafd1016761df7",
+      "fixed_commit_meta": {
+        "short_sha": "b87c32e",
+        "author": "Hsiaoming Yang",
+        "date": "2026-02-06",
+        "subject": "fix: remove \"none\" algorithm from default jwt instance"
+      },
+      "cwe_primary": "CWE-347",
+      "cwe_alternatives": [
+        "CWE-287",
+        "CWE-327"
+      ],
+      "advisory_or_cve": "GHSA-7wc2-qxgw-g8gg / CVE-2026-28802",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            49,
+            49
+          ],
+          "line_count": 1,
+          "snippet": "jwt = JsonWebToken(list(JsonWebSignature.ALGORITHMS_REGISTRY.keys()))"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "jwt = JsonWebToken(list(JsonWebSignature.ALGORITHMS_REGISTRY.keys()))",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "\"HS256\"",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "jwt = JsonWebToken(",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "Default JsonWebToken singleton initialized with all registry algorithms including insecure 'none'."
+    },
+    {
+      "candidate_id": "CAND-0031",
+      "category": "Category 6 \u2014 Authorization",
+      "repo_slug": "jupyterhub/jupyterhub",
+      "affected_file": "jupyterhub/apihandlers/users.py",
+      "buggy_commit": "b4053616743eb011e5bb568700f25afca17aef53",
+      "fixed_commit": "99e2720b0fc626cbeeca3c6337f917fdacfaa428",
+      "fixed_commit_meta": {
+        "short_sha": "99e2720",
+        "author": "Min RK",
+        "date": "2024-07-02",
+        "subject": "only admins can modify admins"
+      },
+      "cwe_primary": "CWE-269",
+      "cwe_alternatives": [
+        "CWE-863",
+        "CWE-285"
+      ],
+      "advisory_or_cve": "GHSA-9x4q-3gxw-849f / CVE-2024-41942",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            265,
+            267
+          ],
+          "line_count": 3,
+          "snippet": "            if 'admin' in data:\n                user.admin = data['admin']\n                assign_default_roles(self.db, entity=user)"
+        },
+        {
+          "range": [
+            328,
+            331
+          ],
+          "line_count": 4,
+          "snippet": "            else:\n                setattr(user, key, value)\n                if key == 'admin':\n                    assign_default_roles(self.db, entity=user)"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "user.admin = data['admin']",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "if not self.current_user.admin:",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "raise web.HTTPError(403, \"Only admins can grant admin permissions\")",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "admin:users scoped user could grant admin=True without requiring caller to possess admin status."
+    },
+    {
+      "candidate_id": "CAND-0032",
+      "category": "Category 6 \u2014 Authorization",
+      "repo_slug": "zulip/zulip",
+      "affected_file": "zerver/lib/message.py",
+      "buggy_commit": "ea0b8cc01133c79033868efee3edc6c1e3fa0f2b",
+      "fixed_commit": "a30cd12433e3a9f7764763ba38849ac635da5283",
+      "fixed_commit_meta": {
+        "short_sha": "a30cd12",
+        "author": "Mateusz Mandera",
+        "date": "2023-06-15",
+        "subject": "CVE-2023-32678: Prevent unauthorized editing/deletion in priv streams."
+      },
+      "cwe_primary": "CWE-863",
+      "cwe_alternatives": [
+        "CWE-285",
+        "CWE-639"
+      ],
+      "advisory_or_cve": "GHSA-q3wg-jm9p-35fj / CVE-2023-32678",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            825,
+            827
+          ],
+          "line_count": 3,
+          "snippet": "    # If you have a user_message object, you have access.\n    if has_user_message:\n        return True"
+        },
+        {
+          "range": [
+            842,
+            856
+          ],
+          "line_count": 15,
+          "snippet": "    if not stream.is_history_public_to_subscribers():\n        # You can't access messages you didn't directly receive\n        # unless history is public to subscribers.\n        return False\n\n    if stream.is_public() and user_profile.can_access_public_streams():\n        return True\n\n    # is_history_public_to_subscribers, so check if you're subscribed\n    if is_subscribed is not None:\n        return is_subscribed\n\n    return Subscription.objects.filter(\n        user_profile=user_profile, active=True, recipient=message.recipient\n    ).exists()"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "if has_user_message:\n        return True",
+          "present_in_locus": true,
+          "present_in_file": true
+        },
+        {
+          "anchor": "return Subscription.objects.filter(",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "def is_subscribed_helper() -> bool:",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "return has_user_message and is_subscribed_helper()",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "has_message_access granted access to any user with a user_message row, enabling unsubscribed private stream edits."
+    },
+    {
+      "candidate_id": "CAND-0036",
+      "category": "Category 2 \u2014 Input Validation / Sanitization (Reserve)",
+      "repo_slug": "django/django",
+      "affected_file": "django/core/cache/backends/memcached.py",
+      "buggy_commit": "1f2dd37f6fcefdd10ed44cb233b2e62b520afb38",
+      "fixed_commit": "84b2da5552e100ae3294f564f6c862fef8d0e693",
+      "fixed_commit_meta": {
+        "short_sha": "84b2da5",
+        "author": "Dan Palmer",
+        "date": "2020-05-20",
+        "subject": "[3.0.x] Fixed CVE-2020-13254 -- Enforced cache key validation in memcached backends."
+      },
+      "cwe_primary": "CWE-20",
+      "cwe_alternatives": [
+        "CWE-116",
+        "CWE-200"
+      ],
+      "advisory_or_cve": "GHSA-wpjr-j57x-wxfw / CVE-2020-13254",
+      "audit_pass": true,
+      "loci_verified": true,
+      "buggy_anchors_verified": true,
+      "fixed_anchors_verified": true,
+      "distinction_verified": true,
+      "distinction_details": {},
+      "extracted_loci": [
+        {
+          "range": [
+            65,
+            86
+          ],
+          "line_count": 22,
+          "snippet": "    def add(self, key, value, timeout=DEFAULT_TIMEOUT, version=None):\n        key = self.make_key(key, version=version)\n        return self._cache.add(key, value, self.get_backend_timeout(timeout))\n\n    def get(self, key, default=None, version=None):\n        key = self.make_key(key, version=version)\n        return self._cache.get(key, default)\n\n    def set(self, key, value, timeout=DEFAULT_TIMEOUT, version=None):\n        key = self.make_key(key, version=version)\n        if not self._cache.set(key, value, self.get_backend_timeout(timeout)):\n            # make sure the key doesn't keep its old value in case of failure to set (memcached's 1MB limit)\n            self._cache.delete(key)\n\n    def delete(self, key, version=None):\n        key = self.make_key(key, version=version)\n        self._cache.delete(key)\n\n    def get_many(self, keys, version=None):\n        key_map = {self.make_key(key, version=version): key for key in keys}\n        ret = self._cache.get_multi(key_map.keys())\n        return {key_map[k]: v for k, v in ret.items()}"
+        }
+      ],
+      "buggy_anchor_results": [
+        {
+          "anchor": "def add(self, key, value, timeout=DEFAULT_TIMEOUT, version=None):",
+          "present_in_locus": true,
+          "present_in_file": true
+        },
+        {
+          "anchor": "def get(self, key, default=None, version=None):",
+          "present_in_locus": true,
+          "present_in_file": true
+        }
+      ],
+      "fixed_anchor_results": [
+        {
+          "anchor": "self.validate_key(key)",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "def validate_key(self, key):",
+          "present_in_fixed": true
+        },
+        {
+          "anchor": "InvalidCacheKey",
+          "present_in_fixed": true
+        }
+      ],
+      "notes": "Omission of validate_key(key) allowed control characters and whitespace in Memcached keys causing cache poisoning/collision."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+﻿Verified pilot cases in canonical dataset: 17
+Cases in benchmark results: 17
+
+SUCCESS: 100% agreement between data/pilot_cases.json and data/results/config_a_pilot_run.json across all 17 cases!
+Cases verified (17): CAND-0001, CAND-0002, CAND-0007, CAND-0008, CAND-0009, CAND-0014, CAND-0015, CAND-0017, CAND-0019, CAND-0020, CAND-0021, CAND-0025, CAND-0026, CAND-0027, CAND-0031, CAND-0032, CAND-0033

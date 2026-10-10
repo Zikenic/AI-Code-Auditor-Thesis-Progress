@@ -1,0 +1,88 @@
+{
+  "ghsa_id": "GHSA-q3wg-jm9p-35fj",
+  "cve_id": "CVE-2023-32678",
+  "url": "https://api.github.com/repos/zulip/zulip/security-advisories/GHSA-q3wg-jm9p-35fj",
+  "html_url": "https://github.com/zulip/zulip/security/advisories/GHSA-q3wg-jm9p-35fj",
+  "summary": "Insufficient authorization check for edition/deletion of messages and topics in private streams by former subscribers",
+  "description": "### Impact\r\nUsers who used to be subscribed to a private stream and have been removed from it since retain the ability to edit messages/topics,  and delete messages that they used to have access to, if other relevant organization permissions allow these actions. For example, a  user may be able to edit or delete their old messages they posted in such a private stream. An administrator will be able to delete old messages (that they had access to) from the private stream.\r\n\r\n### Workaround\r\n\r\nIf the organization permissions for message and topic edition, as well as message deletion are disabled, regular users can't exploit the vulnerability. The ability of administrators to delete messages **can't** be disabled.",
+  "severity": "medium",
+  "author": null,
+  "publisher": {
+    "login": "alexmv",
+    "id": 28347,
+    "node_id": "MDQ6VXNlcjI4MzQ3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/28347?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/alexmv",
+    "html_url": "https://github.com/alexmv",
+    "followers_url": "https://api.github.com/users/alexmv/followers",
+    "following_url": "https://api.github.com/users/alexmv/following{/other_user}",
+    "gists_url": "https://api.github.com/users/alexmv/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/alexmv/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/alexmv/subscriptions",
+    "organizations_url": "https://api.github.com/users/alexmv/orgs",
+    "repos_url": "https://api.github.com/users/alexmv/repos",
+    "events_url": "https://api.github.com/users/alexmv/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/alexmv/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "identifiers": [
+    {
+      "value": "GHSA-q3wg-jm9p-35fj",
+      "type": "GHSA"
+    },
+    {
+      "value": "CVE-2023-32678",
+      "type": "CVE"
+    }
+  ],
+  "state": "published",
+  "created_at": null,
+  "updated_at": "2023-08-25T18:10:44Z",
+  "published_at": "2023-08-25T18:10:44Z",
+  "closed_at": null,
+  "withdrawn_at": null,
+  "submission": null,
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "",
+        "name": "Zulip"
+      },
+      "vulnerable_version_range": "<=6.0",
+      "patched_versions": "",
+      "vulnerable_functions": []
+    }
+  ],
+  "cvss_severities": {
+    "cvss_v3": {
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+      "score": 6.5
+    },
+    "cvss_v4": {
+      "vector_string": null,
+      "score": null
+    }
+  },
+  "cwes": [
+    {
+      "cwe_id": "CWE-285",
+      "name": "Improper Authorization"
+    }
+  ],
+  "cwe_ids": [
+    "CWE-285"
+  ],
+  "credits": [],
+  "credits_detailed": [],
+  "collaborating_users": null,
+  "collaborating_teams": null,
+  "private_fork": null,
+  "comments": 2,
+  "cvss": {
+    "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+    "score": 6.5
+  }
+}

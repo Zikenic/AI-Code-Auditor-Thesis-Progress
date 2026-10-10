@@ -1,0 +1,2196 @@
+{
+  "metadata": {
+    "tool": "tools/print_abcd_rows.py",
+    "offline_only": true,
+    "matcher": "OfflineEvaluationMatcher(tolerance_lines=10)",
+    "input_hashes": {
+      "pilot": "ca6dd7cb99c8c94f44bbbbe9e4e49bcec4800ff4183c7c9330754af806fe0a65",
+      "config_a_pilot": "18de0e31410533a623b399bc62b9196fe6cf34108c1503b2e506d3691a4aca9a",
+      "config_a_derived": "daabf98331a17a18fb0fa9835e79cf9f9f0cf1b046a54b5664a3538979c1fac2",
+      "config_b": "d8a121c7849ecf2544750137e1be75f434594c32358a50720e09596d896007b5",
+      "config_c": "c81f8a53e6499aace1bd9be8e52c8834ea99305e3918ff3c04b328e15a334cd7",
+      "config_d": "4c3601a813731d387825435afb0e30d6ec7986bf6c81caae5cad741651a45135"
+    }
+  },
+  "per_case_audit": [
+    {
+      "case_id": "CAND-0001",
+      "category_id": 1,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0001-DEF-1",
+          "file_path": "tornado/http1connection.py",
+          "start_line": 390,
+          "end_line": 394,
+          "primary_cwe": "CWE-670"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 9,
+          "tp": 1,
+          "fp": 8,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "static-ruff-0ec1cd5a0f",
+              "defect_id": "CAND-0001-DEF-1",
+              "file_path": "tornado/http1connection.py",
+              "is_direct_overlap": false,
+              "matched_cwe": "CWE-670"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 8,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "static-ruff-0ec1cd5a0f",
+              "defect_id": "CAND-0001-DEF-1",
+              "file_path": "tornado/http1connection.py",
+              "is_direct_overlap": false,
+              "matched_cwe": "CWE-670"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 6,
+          "tp": 0,
+          "fp": 6,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 6,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 6,
+          "tp": 0,
+          "fp": 6,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 6,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 7,
+          "tp": 0,
+          "fp": 7,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 7,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0002",
+      "category_id": 1,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0002-DEF-1",
+          "file_path": "fastapi/routing.py",
+          "start_line": 498,
+          "end_line": 502,
+          "primary_cwe": "CWE-670"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 22,
+          "tp": 0,
+          "fp": 22,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 22,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 7,
+          "tp": 0,
+          "fp": 7,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 7,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 7,
+          "tp": 0,
+          "fp": 7,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 7,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 6,
+          "tp": 0,
+          "fp": 6,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 6,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0007",
+      "category_id": 2,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0007-DEF-1",
+          "file_path": "fastapi/routing.py",
+          "start_line": 182,
+          "end_line": 184,
+          "primary_cwe": "CWE-352"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 25,
+          "tp": 0,
+          "fp": 25,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 25,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 5,
+          "tp": 0,
+          "fp": 5,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 5,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 8,
+          "tp": 1,
+          "fp": 7,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-b884c5f510",
+              "defect_id": "CAND-0007-DEF-1",
+              "file_path": "fastapi/routing.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-20"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 7,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-b884c5f510",
+              "defect_id": "CAND-0007-DEF-1",
+              "file_path": "fastapi/routing.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-20"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 9,
+          "tp": 1,
+          "fp": 8,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-89945e4935",
+              "defect_id": "CAND-0007-DEF-1",
+              "file_path": "fastapi/routing.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-20"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 8,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-89945e4935",
+              "defect_id": "CAND-0007-DEF-1",
+              "file_path": "fastapi/routing.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-20"
+            }
+          ],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0009",
+      "category_id": 2,
+      "gt_defect_count": 2,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0009-DEF-1",
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 250,
+          "end_line": 250,
+          "primary_cwe": "CWE-79"
+        },
+        {
+          "defect_id": "CAND-0009-DEF-2",
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 292,
+          "end_line": 293,
+          "primary_cwe": "CWE-79"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 7,
+          "tp": 1,
+          "fp": 6,
+          "fn": 1,
+          "matched_pairs": [
+            {
+              "finding_id": "static-ruff-9cc283b341",
+              "defect_id": "CAND-0009-DEF-2",
+              "file_path": "src/jinja2/filters.py",
+              "is_direct_overlap": false,
+              "matched_cwe": "CWE-79"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 6,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "static-ruff-9cc283b341",
+              "defect_id": "CAND-0009-DEF-2",
+              "file_path": "src/jinja2/filters.py",
+              "is_direct_overlap": false,
+              "matched_cwe": "CWE-79"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 7,
+          "tp": 1,
+          "fp": 6,
+          "fn": 1,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-ae88f3f255",
+              "defect_id": "CAND-0009-DEF-2",
+              "file_path": "src/jinja2/filters.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-116"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 6,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-ae88f3f255",
+              "defect_id": "CAND-0009-DEF-2",
+              "file_path": "src/jinja2/filters.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-116"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 8,
+          "tp": 0,
+          "fp": 8,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 8,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 9,
+          "tp": 0,
+          "fp": 9,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 9,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0014",
+      "category_id": 3,
+      "gt_defect_count": 2,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0014-DEF-1",
+          "file_path": "django/db/models/functions/datetime.py",
+          "start_line": 45,
+          "end_line": 51,
+          "primary_cwe": "CWE-89"
+        },
+        {
+          "defect_id": "CAND-0014-DEF-2",
+          "file_path": "django/db/models/functions/datetime.py",
+          "start_line": 225,
+          "end_line": 236,
+          "primary_cwe": "CWE-89"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 2,
+          "tp": 1,
+          "fp": 1,
+          "fn": 1,
+          "matched_pairs": [
+            {
+              "finding_id": "static-semgrep-4f93739313",
+              "defect_id": "CAND-0014-DEF-2",
+              "file_path": "django/db/models/functions/datetime.py",
+              "is_direct_overlap": false,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 1,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "static-semgrep-4f93739313",
+              "defect_id": "CAND-0014-DEF-2",
+              "file_path": "django/db/models/functions/datetime.py",
+              "is_direct_overlap": false,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 1,
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 1,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 2,
+          "tp": 0,
+          "fp": 2,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 2,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 1,
+          "tp": 0,
+          "fp": 1,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 1,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0017",
+      "category_id": 3,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0017-DEF-1",
+          "file_path": "tortoise/backends/mysql/executor.py",
+          "start_line": 19,
+          "end_line": 45,
+          "primary_cwe": "CWE-89"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 1,
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-df2e870ccf",
+              "defect_id": "CAND-0017-DEF-1",
+              "file_path": "tortoise/backends/mysql/executor.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 0,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-df2e870ccf",
+              "defect_id": "CAND-0017-DEF-1",
+              "file_path": "tortoise/backends/mysql/executor.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 1,
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-661f1ee46d",
+              "defect_id": "CAND-0017-DEF-1",
+              "file_path": "tortoise/backends/mysql/executor.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 0,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-661f1ee46d",
+              "defect_id": "CAND-0017-DEF-1",
+              "file_path": "tortoise/backends/mysql/executor.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 2,
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-607b19bc01",
+              "defect_id": "CAND-0017-DEF-1",
+              "file_path": "tortoise/backends/mysql/executor.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 1,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-607b19bc01",
+              "defect_id": "CAND-0017-DEF-1",
+              "file_path": "tortoise/backends/mysql/executor.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0019",
+      "category_id": 4,
+      "gt_defect_count": 2,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0019-DEF-1",
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 643,
+          "end_line": 645,
+          "primary_cwe": "CWE-22"
+        },
+        {
+          "defect_id": "CAND-0019-DEF-2",
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 574,
+          "end_line": 576,
+          "primary_cwe": "CWE-22"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 16,
+          "tp": 0,
+          "fp": 16,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 16,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 6,
+          "tp": 1,
+          "fp": 5,
+          "fn": 1,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-043f756df6",
+              "defect_id": "CAND-0019-DEF-2",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": false,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 5,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-043f756df6",
+              "defect_id": "CAND-0019-DEF-2",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": false,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 7,
+          "tp": 2,
+          "fp": 5,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-91395a191b",
+              "defect_id": "CAND-0019-DEF-2",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            },
+            {
+              "finding_id": "llm-18e60f4b15",
+              "defect_id": "CAND-0019-DEF-1",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "recomputed_tp": 2,
+          "recomputed_fp": 5,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-91395a191b",
+              "defect_id": "CAND-0019-DEF-2",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            },
+            {
+              "finding_id": "llm-18e60f4b15",
+              "defect_id": "CAND-0019-DEF-1",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 6,
+          "tp": 2,
+          "fp": 4,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-a38a061d03",
+              "defect_id": "CAND-0019-DEF-2",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            },
+            {
+              "finding_id": "llm-d4ef6fda4b",
+              "defect_id": "CAND-0019-DEF-1",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "recomputed_tp": 2,
+          "recomputed_fp": 4,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-a38a061d03",
+              "defect_id": "CAND-0019-DEF-2",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            },
+            {
+              "finding_id": "llm-d4ef6fda4b",
+              "defect_id": "CAND-0019-DEF-1",
+              "file_path": "aiohttp/web_urldispatcher.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0021",
+      "category_id": 4,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0021-DEF-1",
+          "file_path": "starlette/staticfiles.py",
+          "start_line": 172,
+          "end_line": 172,
+          "primary_cwe": "CWE-22"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 5,
+          "tp": 0,
+          "fp": 5,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 5,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 5,
+          "tp": 1,
+          "fp": 4,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-0d1cdb819d",
+              "defect_id": "CAND-0021-DEF-1",
+              "file_path": "starlette/staticfiles.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 4,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-0d1cdb819d",
+              "defect_id": "CAND-0021-DEF-1",
+              "file_path": "starlette/staticfiles.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 6,
+          "tp": 1,
+          "fp": 5,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-bf2fbd812b",
+              "defect_id": "CAND-0021-DEF-1",
+              "file_path": "starlette/staticfiles.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 5,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-bf2fbd812b",
+              "defect_id": "CAND-0021-DEF-1",
+              "file_path": "starlette/staticfiles.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 5,
+          "tp": 1,
+          "fp": 4,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-6441e52b1b",
+              "defect_id": "CAND-0021-DEF-1",
+              "file_path": "starlette/staticfiles.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 4,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-6441e52b1b",
+              "defect_id": "CAND-0021-DEF-1",
+              "file_path": "starlette/staticfiles.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0025",
+      "category_id": 5,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0025-DEF-1",
+          "file_path": "jwt/algorithms.py",
+          "start_line": 186,
+          "end_line": 197,
+          "primary_cwe": "CWE-347"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 4,
+          "tp": 0,
+          "fp": 4,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 4,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 6,
+          "tp": 0,
+          "fp": 6,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 6,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 5,
+          "tp": 0,
+          "fp": 5,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 5,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 5,
+          "tp": 0,
+          "fp": 5,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 5,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0027",
+      "category_id": 5,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0027-DEF-1",
+          "file_path": "authlib/jose/__init__.py",
+          "start_line": 49,
+          "end_line": 49,
+          "primary_cwe": "CWE-347"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0031",
+      "category_id": 6,
+      "gt_defect_count": 2,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0031-DEF-1",
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 265,
+          "end_line": 267,
+          "primary_cwe": "CWE-269"
+        },
+        {
+          "defect_id": "CAND-0031-DEF-2",
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 328,
+          "end_line": 331,
+          "primary_cwe": "CWE-269"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 8,
+          "tp": 0,
+          "fp": 8,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 8,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 7,
+          "tp": 0,
+          "fp": 7,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 7,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 7,
+          "tp": 0,
+          "fp": 7,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 7,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 8,
+          "tp": 0,
+          "fp": 8,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 8,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0032",
+      "category_id": 6,
+      "gt_defect_count": 2,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0032-DEF-1",
+          "file_path": "zerver/lib/message.py",
+          "start_line": 825,
+          "end_line": 827,
+          "primary_cwe": "CWE-863"
+        },
+        {
+          "defect_id": "CAND-0032-DEF-2",
+          "file_path": "zerver/lib/message.py",
+          "start_line": 842,
+          "end_line": 856,
+          "primary_cwe": "CWE-863"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 13,
+          "tp": 0,
+          "fp": 13,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 13,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 8,
+          "tp": 0,
+          "fp": 8,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 8,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 9,
+          "tp": 0,
+          "fp": 9,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 9,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 10,
+          "tp": 0,
+          "fp": 10,
+          "fn": 2,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 10,
+          "recomputed_fn": 2,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0006",
+      "category_id": 1,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0006-DEF-1",
+          "file_path": "scrapy/utils/datatypes.py",
+          "start_line": 318,
+          "end_line": 319,
+          "primary_cwe": "CWE-476"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 2,
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 2,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 4,
+          "tp": 1,
+          "fp": 3,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-e5318502e2",
+              "defect_id": "CAND-0006-DEF-1",
+              "file_path": "scrapy/utils/datatypes.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-476"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 3,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-e5318502e2",
+              "defect_id": "CAND-0006-DEF-1",
+              "file_path": "scrapy/utils/datatypes.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-476"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 4,
+          "tp": 1,
+          "fp": 3,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-98ecf4d1f2",
+              "defect_id": "CAND-0006-DEF-1",
+              "file_path": "scrapy/utils/datatypes.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-476"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 3,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-98ecf4d1f2",
+              "defect_id": "CAND-0006-DEF-1",
+              "file_path": "scrapy/utils/datatypes.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-476"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 6,
+          "tp": 1,
+          "fp": 5,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-34ab7f41ca",
+              "defect_id": "CAND-0006-DEF-1",
+              "file_path": "scrapy/utils/datatypes.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-476"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 5,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-34ab7f41ca",
+              "defect_id": "CAND-0006-DEF-1",
+              "file_path": "scrapy/utils/datatypes.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-476"
+            }
+          ],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0008",
+      "category_id": 2,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0008-DEF-1",
+          "file_path": "multipart/multipart.py",
+          "start_line": 72,
+          "end_line": 75,
+          "primary_cwe": "CWE-1333"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 8,
+          "tp": 0,
+          "fp": 8,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 8,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 15,
+          "tp": 0,
+          "fp": 15,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 15,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "failed",
+          "failure_reason": "Parsing failed on chunk 1: Failed to parse LLM response as valid JSON: Invalid \\escape: line 27 column 464 (char 1796)",
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 16,
+          "tp": 0,
+          "fp": 16,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 16,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0015",
+      "category_id": 3,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0015-DEF-1",
+          "file_path": "django/contrib/postgres/aggregates/general.py",
+          "start_line": 54,
+          "end_line": 58,
+          "primary_cwe": "CWE-89"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 2,
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 2,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 3,
+          "tp": 1,
+          "fp": 2,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-82bb619df2",
+              "defect_id": "CAND-0015-DEF-1",
+              "file_path": "django/contrib/postgres/aggregates/general.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 2,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-82bb619df2",
+              "defect_id": "CAND-0015-DEF-1",
+              "file_path": "django/contrib/postgres/aggregates/general.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 2,
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-a03cfc86c4",
+              "defect_id": "CAND-0015-DEF-1",
+              "file_path": "django/contrib/postgres/aggregates/general.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 1,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-a03cfc86c4",
+              "defect_id": "CAND-0015-DEF-1",
+              "file_path": "django/contrib/postgres/aggregates/general.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-89"
+            }
+          ],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0020",
+      "category_id": 4,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0020-DEF-1",
+          "file_path": "src/werkzeug/security.py",
+          "start_line": 151,
+          "end_line": 157,
+          "primary_cwe": "CWE-22"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 2,
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-3c902e8f3a",
+              "defect_id": "CAND-0020-DEF-1",
+              "file_path": "src/werkzeug/security.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 1,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-3c902e8f3a",
+              "defect_id": "CAND-0020-DEF-1",
+              "file_path": "src/werkzeug/security.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 2,
+          "tp": 1,
+          "fp": 1,
+          "fn": 0,
+          "matched_pairs": [
+            {
+              "finding_id": "llm-0bd9c334da",
+              "defect_id": "CAND-0020-DEF-1",
+              "file_path": "src/werkzeug/security.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "recomputed_tp": 1,
+          "recomputed_fp": 1,
+          "recomputed_fn": 0,
+          "recomputed_matched_pairs": [
+            {
+              "finding_id": "llm-0bd9c334da",
+              "defect_id": "CAND-0020-DEF-1",
+              "file_path": "src/werkzeug/security.py",
+              "is_direct_overlap": true,
+              "matched_cwe": "CWE-22"
+            }
+          ],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "failed",
+          "failure_reason": "Parsing failed on chunk 1: Failed to parse LLM response as valid JSON: Invalid \\escape: line 27 column 1642 (char 3837)",
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0026",
+      "category_id": 5,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0026-DEF-1",
+          "file_path": "paramiko/transport.py",
+          "start_line": 1822,
+          "end_line": 1828,
+          "primary_cwe": "CWE-287"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 7,
+          "tp": 0,
+          "fp": 7,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 7,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 16,
+          "tp": 0,
+          "fp": 16,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 16,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 17,
+          "tp": 0,
+          "fp": 17,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 17,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "failed",
+          "failure_reason": "Chunk 3 failed after 3 attempts: HTTP error 503 during LLM generation: {\"error\":{\"message\":\"[antigravity/claude-sonnet-4-6] Unavailable (reset after 3h 16m 32s)\"}}",
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    },
+    {
+      "case_id": "CAND-0033",
+      "category_id": 6,
+      "gt_defect_count": 1,
+      "gt_loci": [
+        {
+          "defect_id": "CAND-0033-DEF-1",
+          "file_path": "zerver/actions/typing.py",
+          "start_line": 83,
+          "end_line": 85,
+          "primary_cwe": "CWE-863"
+        }
+      ],
+      "configurations": {
+        "Config A": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 1,
+          "tp": 0,
+          "fp": 1,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 1,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config B": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 2,
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 2,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config C": {
+          "status": "success",
+          "failure_reason": null,
+          "predictions_count": 3,
+          "tp": 0,
+          "fp": 3,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 3,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        },
+        "Config D": {
+          "status": "failed",
+          "failure_reason": "Chunk 1 failed after 3 attempts: HTTP error 503 during LLM generation: {\"error\":{\"message\":\"[antigravity/claude-sonnet-4-6] Unavailable (reset after 3h 15m 6s)\"}}",
+          "predictions_count": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "matched_pairs": [],
+          "recomputed_tp": 0,
+          "recomputed_fp": 0,
+          "recomputed_fn": 1,
+          "recomputed_matched_pairs": [],
+          "match_parity": true
+        }
+      }
+    }
+  ],
+  "primary_aggregates": {
+    "Config A": {
+      "total_cases": 18,
+      "completed_cases": 18,
+      "failed_cases": 0,
+      "gt_denominator": 23,
+      "predictions_count": 129,
+      "tp": 3,
+      "fp": 126,
+      "fn": 20,
+      "precision": 0.023256,
+      "recall": 0.130435,
+      "f1": 0.039474,
+      "precision_pct": 2.33,
+      "recall_pct": 13.04,
+      "f1_pct": 3.95
+    },
+    "Config B": {
+      "total_cases": 18,
+      "completed_cases": 18,
+      "failed_cases": 0,
+      "gt_denominator": 23,
+      "predictions_count": 100,
+      "tp": 6,
+      "fp": 94,
+      "fn": 17,
+      "precision": 0.06,
+      "recall": 0.26087,
+      "f1": 0.097561,
+      "precision_pct": 6.0,
+      "recall_pct": 26.09,
+      "f1_pct": 9.76
+    },
+    "Config C": {
+      "total_cases": 18,
+      "completed_cases": 17,
+      "failed_cases": 1,
+      "gt_denominator": 23,
+      "predictions_count": 95,
+      "tp": 8,
+      "fp": 87,
+      "fn": 15,
+      "precision": 0.084211,
+      "recall": 0.347826,
+      "f1": 0.135593,
+      "precision_pct": 8.42,
+      "recall_pct": 34.78,
+      "f1_pct": 13.56
+    },
+    "Config D": {
+      "total_cases": 18,
+      "completed_cases": 15,
+      "failed_cases": 3,
+      "gt_denominator": 23,
+      "predictions_count": 92,
+      "tp": 7,
+      "fp": 85,
+      "fn": 16,
+      "precision": 0.076087,
+      "recall": 0.304348,
+      "f1": 0.121739,
+      "precision_pct": 7.61,
+      "recall_pct": 30.43,
+      "f1_pct": 12.17
+    }
+  },
+  "paired_17_cases": {
+    "included_case_ids": [
+      "CAND-0001",
+      "CAND-0002",
+      "CAND-0007",
+      "CAND-0009",
+      "CAND-0014",
+      "CAND-0017",
+      "CAND-0019",
+      "CAND-0021",
+      "CAND-0025",
+      "CAND-0027",
+      "CAND-0031",
+      "CAND-0032",
+      "CAND-0006",
+      "CAND-0015",
+      "CAND-0020",
+      "CAND-0026",
+      "CAND-0033"
+    ],
+    "Config B": {
+      "gt_denominator": 22,
+      "predictions_count": 85,
+      "tp": 6,
+      "fp": 79,
+      "fn": 16,
+      "precision": 0.070588,
+      "recall": 0.272727,
+      "f1": 0.11215,
+      "precision_pct": 7.06,
+      "recall_pct": 27.27,
+      "f1_pct": 11.21,
+      "per_case_fp": {
+        "CAND-0001": 6,
+        "CAND-0002": 7,
+        "CAND-0007": 5,
+        "CAND-0009": 6,
+        "CAND-0014": 1,
+        "CAND-0017": 0,
+        "CAND-0019": 5,
+        "CAND-0021": 4,
+        "CAND-0025": 6,
+        "CAND-0027": 0,
+        "CAND-0031": 7,
+        "CAND-0032": 8,
+        "CAND-0006": 3,
+        "CAND-0015": 2,
+        "CAND-0020": 1,
+        "CAND-0026": 16,
+        "CAND-0033": 2
+      }
+    },
+    "Config C": {
+      "gt_denominator": 22,
+      "predictions_count": 95,
+      "tp": 8,
+      "fp": 87,
+      "fn": 14,
+      "precision": 0.084211,
+      "recall": 0.363636,
+      "f1": 0.136752,
+      "precision_pct": 8.42,
+      "recall_pct": 36.36,
+      "f1_pct": 13.68,
+      "per_case_fp": {
+        "CAND-0001": 6,
+        "CAND-0002": 7,
+        "CAND-0007": 7,
+        "CAND-0009": 8,
+        "CAND-0014": 2,
+        "CAND-0017": 0,
+        "CAND-0019": 5,
+        "CAND-0021": 5,
+        "CAND-0025": 5,
+        "CAND-0027": 0,
+        "CAND-0031": 7,
+        "CAND-0032": 9,
+        "CAND-0006": 3,
+        "CAND-0015": 2,
+        "CAND-0020": 1,
+        "CAND-0026": 17,
+        "CAND-0033": 3
+      }
+    },
+    "config_b_cand_0008_fp": 15,
+    "config_b_reconciliation_math": "18-case FP (94) - CAND-0008 FP (15) = 79"
+  },
+  "common_completed_subset": {
+    "included_case_ids": [
+      "CAND-0001",
+      "CAND-0002",
+      "CAND-0007",
+      "CAND-0009",
+      "CAND-0014",
+      "CAND-0017",
+      "CAND-0019",
+      "CAND-0021",
+      "CAND-0025",
+      "CAND-0027",
+      "CAND-0031",
+      "CAND-0032",
+      "CAND-0006",
+      "CAND-0015"
+    ],
+    "excluded_cases": {
+      "CAND-0008": {
+        "Config B": "success",
+        "Config C": "failed",
+        "Config D": "success"
+      },
+      "CAND-0020": {
+        "Config B": "success",
+        "Config C": "success",
+        "Config D": "failed"
+      },
+      "CAND-0026": {
+        "Config B": "success",
+        "Config C": "success",
+        "Config D": "failed"
+      },
+      "CAND-0033": {
+        "Config B": "success",
+        "Config C": "success",
+        "Config D": "failed"
+      }
+    },
+    "Config B": {
+      "gt_denominator": 19,
+      "predictions_count": 65,
+      "tp": 5,
+      "fp": 60,
+      "fn": 14,
+      "precision": 0.076923,
+      "recall": 0.263158,
+      "f1": 0.119048,
+      "precision_pct": 7.69,
+      "recall_pct": 26.32,
+      "f1_pct": 11.9,
+      "per_case_fp": {
+        "CAND-0001": 6,
+        "CAND-0002": 7,
+        "CAND-0007": 5,
+        "CAND-0009": 6,
+        "CAND-0014": 1,
+        "CAND-0017": 0,
+        "CAND-0019": 5,
+        "CAND-0021": 4,
+        "CAND-0025": 6,
+        "CAND-0027": 0,
+        "CAND-0031": 7,
+        "CAND-0032": 8,
+        "CAND-0006": 3,
+        "CAND-0015": 2
+      }
+    },
+    "Config C": {
+      "gt_denominator": 19,
+      "predictions_count": 73,
+      "tp": 7,
+      "fp": 66,
+      "fn": 12,
+      "precision": 0.09589,
+      "recall": 0.368421,
+      "f1": 0.152174,
+      "precision_pct": 9.59,
+      "recall_pct": 36.84,
+      "f1_pct": 15.22,
+      "per_case_fp": {
+        "CAND-0001": 6,
+        "CAND-0002": 7,
+        "CAND-0007": 7,
+        "CAND-0009": 8,
+        "CAND-0014": 2,
+        "CAND-0017": 0,
+        "CAND-0019": 5,
+        "CAND-0021": 5,
+        "CAND-0025": 5,
+        "CAND-0027": 0,
+        "CAND-0031": 7,
+        "CAND-0032": 9,
+        "CAND-0006": 3,
+        "CAND-0015": 2
+      }
+    },
+    "Config D": {
+      "gt_denominator": 19,
+      "predictions_count": 76,
+      "tp": 7,
+      "fp": 69,
+      "fn": 12,
+      "precision": 0.092105,
+      "recall": 0.368421,
+      "f1": 0.147368,
+      "precision_pct": 9.21,
+      "recall_pct": 36.84,
+      "f1_pct": 14.74,
+      "per_case_fp": {
+        "CAND-0001": 7,
+        "CAND-0002": 6,
+        "CAND-0007": 8,
+        "CAND-0009": 9,
+        "CAND-0014": 1,
+        "CAND-0017": 1,
+        "CAND-0019": 4,
+        "CAND-0021": 4,
+        "CAND-0025": 5,
+        "CAND-0027": 0,
+        "CAND-0031": 8,
+        "CAND-0032": 10,
+        "CAND-0006": 5,
+        "CAND-0015": 1
+      }
+    }
+  },
+  "per_category_reconciliation": {
+    "1": {
+      "category_id": 1,
+      "cases_count": 3,
+      "gt_defects": 3,
+      "configurations": {
+        "Config A": {
+          "tp": 1,
+          "fn": 2,
+          "recall_pct": 33.33,
+          "fp_by_case_category": 32
+        },
+        "Config B": {
+          "tp": 1,
+          "fn": 2,
+          "recall_pct": 33.33,
+          "fp_by_case_category": 16
+        },
+        "Config C": {
+          "tp": 1,
+          "fn": 2,
+          "recall_pct": 33.33,
+          "fp_by_case_category": 16
+        },
+        "Config D": {
+          "tp": 1,
+          "fn": 2,
+          "recall_pct": 33.33,
+          "fp_by_case_category": 18
+        }
+      }
+    },
+    "2": {
+      "category_id": 2,
+      "cases_count": 3,
+      "gt_defects": 4,
+      "configurations": {
+        "Config A": {
+          "tp": 1,
+          "fn": 3,
+          "recall_pct": 25.0,
+          "fp_by_case_category": 39
+        },
+        "Config B": {
+          "tp": 1,
+          "fn": 3,
+          "recall_pct": 25.0,
+          "fp_by_case_category": 26
+        },
+        "Config C": {
+          "tp": 1,
+          "fn": 3,
+          "recall_pct": 25.0,
+          "fp_by_case_category": 15
+        },
+        "Config D": {
+          "tp": 1,
+          "fn": 3,
+          "recall_pct": 25.0,
+          "fp_by_case_category": 33
+        }
+      }
+    },
+    "3": {
+      "category_id": 3,
+      "cases_count": 3,
+      "gt_defects": 4,
+      "configurations": {
+        "Config A": {
+          "tp": 1,
+          "fn": 3,
+          "recall_pct": 25.0,
+          "fp_by_case_category": 1
+        },
+        "Config B": {
+          "tp": 1,
+          "fn": 3,
+          "recall_pct": 25.0,
+          "fp_by_case_category": 3
+        },
+        "Config C": {
+          "tp": 2,
+          "fn": 2,
+          "recall_pct": 50.0,
+          "fp_by_case_category": 4
+        },
+        "Config D": {
+          "tp": 2,
+          "fn": 2,
+          "recall_pct": 50.0,
+          "fp_by_case_category": 3
+        }
+      }
+    },
+    "4": {
+      "category_id": 4,
+      "cases_count": 3,
+      "gt_defects": 4,
+      "configurations": {
+        "Config A": {
+          "tp": 0,
+          "fn": 4,
+          "recall_pct": 0.0,
+          "fp_by_case_category": 21
+        },
+        "Config B": {
+          "tp": 3,
+          "fn": 1,
+          "recall_pct": 75.0,
+          "fp_by_case_category": 10
+        },
+        "Config C": {
+          "tp": 4,
+          "fn": 0,
+          "recall_pct": 100.0,
+          "fp_by_case_category": 11
+        },
+        "Config D": {
+          "tp": 3,
+          "fn": 1,
+          "recall_pct": 75.0,
+          "fp_by_case_category": 8
+        }
+      }
+    },
+    "5": {
+      "category_id": 5,
+      "cases_count": 3,
+      "gt_defects": 3,
+      "configurations": {
+        "Config A": {
+          "tp": 0,
+          "fn": 3,
+          "recall_pct": 0.0,
+          "fp_by_case_category": 11
+        },
+        "Config B": {
+          "tp": 0,
+          "fn": 3,
+          "recall_pct": 0.0,
+          "fp_by_case_category": 22
+        },
+        "Config C": {
+          "tp": 0,
+          "fn": 3,
+          "recall_pct": 0.0,
+          "fp_by_case_category": 22
+        },
+        "Config D": {
+          "tp": 0,
+          "fn": 3,
+          "recall_pct": 0.0,
+          "fp_by_case_category": 5
+        }
+      }
+    },
+    "6": {
+      "category_id": 6,
+      "cases_count": 3,
+      "gt_defects": 5,
+      "configurations": {
+        "Config A": {
+          "tp": 0,
+          "fn": 5,
+          "recall_pct": 0.0,
+          "fp_by_case_category": 22
+        },
+        "Config B": {
+          "tp": 0,
+          "fn": 5,
+          "recall_pct": 0.0,
+          "fp_by_case_category": 17
+        },
+        "Config C": {
+          "tp": 0,
+          "fn": 5,
+          "recall_pct": 0.0,
+          "fp_by_case_category": 19
+        },
+        "Config D": {
+          "tp": 0,
+          "fn": 5,
+          "recall_pct": 0.0,
+          "fp_by_case_category": 18
+        }
+      }
+    }
+  }
+}

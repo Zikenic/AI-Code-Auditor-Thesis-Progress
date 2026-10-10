@@ -1,0 +1,434 @@
+{
+  "audit_name": "Candidate-to-Advisory Relevance Audit",
+  "total_cases_audited": 19,
+  "exempt_functional_logic_count": 3,
+  "security_advisories_verified": 16,
+  "cases": [
+    {
+      "candidate_id": "CAND-0001",
+      "category": "Category 1",
+      "repo_slug": "tornadoweb/tornado",
+      "defect_type": "functional_logic",
+      "has_security_advisory": false,
+      "relevance_status": "EXEMPT_FUNCTIONAL_LOGIC",
+      "package_match": true,
+      "description_match": true,
+      "version_ranges": "N/A (Commit-level functional bug)",
+      "upstream_fix_reference": "Verified via commit diff and upstream test suite",
+      "deployment_model": "Git repository commit",
+      "taxonomy_evaluation": "Functional logic defect; verified via Tier 1 git diff and upstream tests."
+    },
+    {
+      "candidate_id": "CAND-0002",
+      "category": "Category 1",
+      "repo_slug": "tiangolo/fastapi",
+      "defect_type": "functional_logic",
+      "has_security_advisory": false,
+      "relevance_status": "EXEMPT_FUNCTIONAL_LOGIC",
+      "package_match": true,
+      "description_match": true,
+      "version_ranges": "N/A (Commit-level functional bug)",
+      "upstream_fix_reference": "Verified via commit diff and upstream test suite",
+      "deployment_model": "Git repository commit",
+      "taxonomy_evaluation": "Functional logic defect; verified via Tier 1 git diff and upstream tests."
+    },
+    {
+      "candidate_id": "CAND-0003",
+      "category": "Category 1",
+      "repo_slug": "cookiecutter/cookiecutter",
+      "defect_type": "functional_logic",
+      "has_security_advisory": false,
+      "relevance_status": "EXEMPT_FUNCTIONAL_LOGIC",
+      "package_match": true,
+      "description_match": true,
+      "version_ranges": "N/A (Commit-level functional bug)",
+      "upstream_fix_reference": "Verified via commit diff and upstream test suite",
+      "deployment_model": "Git repository commit",
+      "taxonomy_evaluation": "Functional logic defect; verified via Tier 1 git diff and upstream tests."
+    },
+    {
+      "candidate_id": "CAND-0007",
+      "category": "Category 2",
+      "repo_slug": "tiangolo/fastapi",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-8h2j-cgx8-6xv7",
+      "cve_id": "CVE-2021-32677",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "fastapi"
+      ],
+      "description_match": true,
+      "advisory_summary": "Cross-Site Request Forgery (CSRF) in FastAPI",
+      "affected_and_patched_versions": "fastapi: vulnerable=< 0.65.2, patched=0.65.2",
+      "upstream_references_count": 6,
+      "upstream_fix_references": [
+        "https://github.com/tiangolo/fastapi/commit/fa7e3c996edf2d5482fff8f9d890ac2390dede4d"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-352 (Cross-Site Request Forgery) via missing Content-Type validation."
+    },
+    {
+      "candidate_id": "CAND-0008",
+      "category": "Category 2",
+      "repo_slug": "Kludex/python-multipart",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-2jv5-9r88-3w3p",
+      "cve_id": "CVE-2024-24762",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "python-multipart"
+      ],
+      "description_match": true,
+      "advisory_summary": "python-multipart vulnerable to Content-Type Header ReDoS",
+      "affected_and_patched_versions": "python-multipart: vulnerable=<= 0.0.6, patched=0.0.7",
+      "upstream_references_count": 10,
+      "upstream_fix_references": [
+        "https://github.com/Kludex/python-multipart/commit/20f0ef6b4e4caf7d69a667c54dff57fe467109a4",
+        "https://github.com/encode/starlette/commit/13e5c26a27f4903924624736abd6131b2da80cc5",
+        "https://github.com/tiangolo/fastapi/commit/9d34ad0ee8a0dfbbcce06f76c2d5d851085024fc"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-1333 / CWE-400 Regular expression catastrophic backtracking."
+    },
+    {
+      "candidate_id": "CAND-0009",
+      "category": "Category 2",
+      "repo_slug": "pallets/jinja",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-h75v-3vvj-5mfj",
+      "cve_id": "CVE-2024-34064",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "jinja2"
+      ],
+      "description_match": true,
+      "advisory_summary": "Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter",
+      "affected_and_patched_versions": "Jinja2: vulnerable=< 3.1.4, patched=3.1.4",
+      "upstream_references_count": 9,
+      "upstream_fix_references": [
+        "https://github.com/pallets/jinja/commit/0668239dc6b44ef38e7a6c9f91f312fd4ca581cb"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-79 (Cross-Site Scripting) via attribute injection in xmlattr filter."
+    },
+    {
+      "candidate_id": "CAND-0036",
+      "category": "Category 2",
+      "repo_slug": "django/django",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-wpjr-j57x-wxfw",
+      "cve_id": "CVE-2020-13254",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "django",
+        "django"
+      ],
+      "description_match": true,
+      "advisory_summary": "Data leakage via cache key collision in Django",
+      "affected_and_patched_versions": "Django: vulnerable=>= 2.2, < 2.2.13, patched=2.2.13; Django: vulnerable=>= 3.0, < 3.0.7, patched=3.0.7",
+      "upstream_references_count": 15,
+      "upstream_fix_references": [
+        "https://github.com/django/django/commit/07e59caa02831c4569bbebb9eb773bdd9cb4b206",
+        "https://github.com/django/django/commit/84b2da5552e100ae3294f564f6c862fef8d0e693",
+        "https://docs.djangoproject.com/en/3.0/releases/security"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "NVD lists erroneous CWE-295 (certificate validation); actual defect and patch validate cache keys against control characters/spaces, establishing canonical CWE-20 (Improper Input Validation)."
+    },
+    {
+      "candidate_id": "CAND-0014",
+      "category": "Category 3",
+      "repo_slug": "django/django",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-p64x-8rxx-wf6q",
+      "cve_id": "CVE-2022-34265",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "django",
+        "django"
+      ],
+      "description_match": true,
+      "advisory_summary": "Django `Trunc()` and `Extract()` database functions vulnerable to SQL Injection",
+      "affected_and_patched_versions": "Django: vulnerable=>= 3.2a1, < 3.2.14, patched=3.2.14; Django: vulnerable=>= 4.0a1, < 4.0.6, patched=4.0.6",
+      "upstream_references_count": 14,
+      "upstream_fix_references": [
+        "https://github.com/django/django/commit/5e2f4ddf2940704a26a4ac782b851989668d74db",
+        "https://github.com/django/django/commit/877c800f255ccaa7abde1fb944de45d1616f5cc9",
+        "https://github.com/django/django/commit/0dc9c016fadb71a067e5a42be30164e3f96c0492"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-89 (SQL Injection) via unsanitized date/time part parameters in Trunc/Extract."
+    },
+    {
+      "candidate_id": "CAND-0016",
+      "category": "Category 3",
+      "repo_slug": "django/django",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-xpfp-f569-q3p2",
+      "cve_id": "CVE-2021-35042",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "django",
+        "django"
+      ],
+      "description_match": true,
+      "advisory_summary": "SQL Injection in Django",
+      "affected_and_patched_versions": "Django: vulnerable=>= 3.2a1, < 3.2.5, patched=3.2.5; Django: vulnerable=>= 3.0a1, < 3.1.13, patched=3.1.13",
+      "upstream_references_count": 12,
+      "upstream_fix_references": [
+        "https://github.com/django/django/commit/0bd57a879a0d54920bb9038a732645fb917040e9",
+        "https://github.com/django/django/commit/a34a5f724c5d5adb2109374ba3989ebb7b11f81f",
+        "https://github.com/django/django/commit/dae83a24519d6f284c74414e0b81d64d9b5a0db4"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-89 (SQL Injection) in order_by clause via raw column name pass-through."
+    },
+    {
+      "candidate_id": "CAND-0017",
+      "category": "Category 3",
+      "repo_slug": "tortoise/tortoise-orm",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-9j2c-x8qm-qmjq",
+      "cve_id": "CVE-2020-11010",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "tortoise-orm",
+        "tortoise-orm"
+      ],
+      "description_match": true,
+      "advisory_summary": "SQL injection in Tortoise ORM",
+      "affected_and_patched_versions": "tortoise-orm: vulnerable=< 0.15.23, patched=0.15.23; tortoise-orm: vulnerable=>= 0.16.0, < 0.16.6, patched=0.16.6",
+      "upstream_references_count": 5,
+      "upstream_fix_references": [
+        "https://github.com/tortoise/tortoise-orm/commit/91c364053e0ddf77edc5442914c6f049512678b3"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-89 (SQL Injection) via unescaped LIKE wildcard interpolation in MySQL executor."
+    },
+    {
+      "candidate_id": "CAND-0019",
+      "category": "Category 4",
+      "repo_slug": "aio-libs/aiohttp",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-5h86-8mv2-jq9f",
+      "cve_id": "CVE-2024-23334",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "aiohttp"
+      ],
+      "description_match": true,
+      "advisory_summary": "aiohttp is vulnerable to directory traversal",
+      "affected_and_patched_versions": "aiohttp: vulnerable=>= 1.0.5, < 3.9.2, patched=3.9.2",
+      "upstream_references_count": 11,
+      "upstream_fix_references": [
+        "https://github.com/aio-libs/aiohttp/pull/8079/files",
+        "https://github.com/aio-libs/aiohttp/commit/1c335944d6a8b1298baf179b7c0b3069f10c514b",
+        "https://github.com/aio-libs/aiohttp/pull/8079"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-22 (Path Traversal) in static file serving when follow_symlinks is enabled."
+    },
+    {
+      "candidate_id": "CAND-0020",
+      "category": "Category 4",
+      "repo_slug": "pallets/werkzeug",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-f9vj-2wh5-fj8j",
+      "cve_id": "CVE-2024-49766",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "werkzeug"
+      ],
+      "description_match": true,
+      "advisory_summary": "Werkzeug safe_join not safe on Windows",
+      "affected_and_patched_versions": "Werkzeug: vulnerable=<= 3.0.5, patched=3.0.6",
+      "upstream_references_count": 6,
+      "upstream_fix_references": [
+        "https://github.com/pallets/werkzeug/commit/2767bcb10a7dd1c297d812cc5e6d11a474c1f092",
+        "https://github.com/pallets/werkzeug/releases/tag/3.0.6"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-22 (Path Traversal) in safe_join via Windows drive-letter / device name bypass."
+    },
+    {
+      "candidate_id": "CAND-0021",
+      "category": "Category 4",
+      "repo_slug": "encode/starlette",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-v5gw-mw7f-84px",
+      "cve_id": "CVE-2023-29159",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "starlette"
+      ],
+      "description_match": true,
+      "advisory_summary": "Starlette has Path Traversal vulnerability in StaticFiles",
+      "affected_and_patched_versions": "starlette: vulnerable=>= 0.13.5, < 0.27.0, patched=0.27.0",
+      "upstream_references_count": 8,
+      "upstream_fix_references": [
+        "https://github.com/encode/starlette/commit/1797de464124b090f10cf570441e8292936d63e3",
+        "https://github.com/encode/starlette/releases/tag/0.27.0"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-22 (Path Traversal) in StaticFiles via string-based commonprefix check."
+    },
+    {
+      "candidate_id": "CAND-0025",
+      "category": "Category 5",
+      "repo_slug": "jpadilla/pyjwt",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-ffqj-6fqr-9h24",
+      "cve_id": "CVE-2022-29217",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "pyjwt"
+      ],
+      "description_match": true,
+      "advisory_summary": "Key confusion through non-blocklisted public key formats",
+      "affected_and_patched_versions": "pyjwt: vulnerable=>= 1.5.0, < 2.4.0, patched=2.4.0",
+      "upstream_references_count": 8,
+      "upstream_fix_references": [
+        "https://github.com/jpadilla/pyjwt/commit/9c528670c455b8d948aff95ed50e22940d1ad3fc",
+        "https://github.com/jpadilla/pyjwt/releases/tag/2.4.0"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-347 (Improper Signature Verification) via algorithm confusion on OpenSSH keys."
+    },
+    {
+      "candidate_id": "CAND-0027",
+      "category": "Category 5",
+      "repo_slug": "lepture/authlib",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-7wc2-qxgw-g8gg",
+      "cve_id": "CVE-2026-28802",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "authlib"
+      ],
+      "description_match": true,
+      "advisory_summary": "Authlib: Setting `alg: none` and a blank signature appears to bypass signature verification",
+      "affected_and_patched_versions": "authlib: vulnerable=>= 1.6.5, <= 1.6.6, patched=1.6.7",
+      "upstream_references_count": 5,
+      "upstream_fix_references": [
+        "https://github.com/authlib/authlib/commit/a61c2acb807496e67f32051b5f1b1d5ccf8f0a75",
+        "https://github.com/authlib/authlib/commit/b87c32ed07b8ae7f805873e1c9cafd1016761df7"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-347 (Improper Signature Verification) in default JsonWebToken algorithms."
+    },
+    {
+      "candidate_id": "CAND-0028",
+      "category": "Category 5",
+      "repo_slug": "lepture/authlib",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-5357-c2jx-v7qh",
+      "cve_id": "CVE-2024-37568",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "authlib"
+      ],
+      "description_match": true,
+      "advisory_summary": "Authlib has algorithm confusion with asymmetric public keys",
+      "affected_and_patched_versions": "authlib: vulnerable=>= 0, < 1.3.1, patched=1.3.1",
+      "upstream_references_count": 8,
+      "upstream_fix_references": [],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-347 (Improper Signature Verification) via public key format confusion."
+    },
+    {
+      "candidate_id": "CAND-0031",
+      "category": "Category 6",
+      "repo_slug": "jupyterhub/jupyterhub",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-9x4q-3gxw-849f",
+      "cve_id": "CVE-2024-41942",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "jupyterhub",
+        "jupyterhub"
+      ],
+      "description_match": true,
+      "advisory_summary": "JupyterHub has a privilege escalation vulnerability with the `admin:users` scope",
+      "affected_and_patched_versions": "jupyterhub: vulnerable=< 4.1.6, patched=4.1.6; jupyterhub: vulnerable=>= 5.0.0, < 5.1.0, patched=5.1.0",
+      "upstream_references_count": 6,
+      "upstream_fix_references": [
+        "https://github.com/jupyterhub/jupyterhub/commit/99e2720b0fc626cbeeca3c6337f917fdacfaa428",
+        "https://github.com/jupyterhub/jupyterhub/commit/ff2db557a85b6980f90c3158634bf924063ab8ba"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-269 (Improper Privilege Management) permitting admin escalation via API token."
+    },
+    {
+      "candidate_id": "CAND-0032",
+      "category": "Category 6",
+      "repo_slug": "zulip/zulip",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-q3wg-jm9p-35fj",
+      "cve_id": "CVE-2023-32678",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "zulip"
+      ],
+      "description_match": true,
+      "advisory_summary": "Insufficient authorization check for edition/deletion of messages and topics in private streams by former subscribers",
+      "affected_and_patched_versions": "Zulip: vulnerable=<=6.0, patched=None",
+      "upstream_references_count": 0,
+      "upstream_fix_references": [],
+      "deployment_model": "Standalone Server Application (Zulip: deployed via Git checkout/tag; tracked via repository security endpoint)",
+      "taxonomy_evaluation": "CWE-863 (BOLA / Incorrect Authorization) in private stream message editing. Server application deployed via git commit/tag, queried via repository advisory endpoint."
+    },
+    {
+      "candidate_id": "CAND-0035",
+      "category": "Category 6",
+      "repo_slug": "apache/superset",
+      "defect_type": "security_vulnerability",
+      "has_security_advisory": true,
+      "ghsa_id": "GHSA-w6c7-j32f-rq8j",
+      "cve_id": "CVE-2025-27696",
+      "relevance_status": "VERIFIED_RELEVANT",
+      "package_match": true,
+      "package_names_in_advisory": [
+        "apache-superset"
+      ],
+      "description_match": true,
+      "advisory_summary": "Apache Superset Allows Ownership Takeover",
+      "affected_and_patched_versions": "apache-superset: vulnerable=< 4.1.2, patched=4.1.2",
+      "upstream_references_count": 5,
+      "upstream_fix_references": [
+        "https://github.com/apache/superset/commit/fc844d3dfdace890b32c00a507a959b81122b425"
+      ],
+      "deployment_model": "PyPI Package Release (distributed library; tracked via global ecosystem API)",
+      "taxonomy_evaluation": "CWE-863 (Incorrect Authorization) via API endpoint permission check bypass."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "candidate_id": "CAND-0006",
+  "category_id": 1,
+  "impact": "functional",
+  "repository": "scrapy/scrapy",
+  "buggy_commit": "f02c3d1dcf3e4880388d19e961e7911be5dc54ff",
+  "fixed_commit": "439a3e59b8e858441f8d97dbc32f398db392330d",
+  "target_file": "scrapy/utils/datatypes.py",
+  "pre_fix_locus": [
+    318,
+    319
+  ],
+  "primary_cwe": "CWE-476",
+  "acceptable_alternative_cwes": [
+    "CWE-670"
+  ],
+  "reproducer_status": "executed_confirmed",
+  "reproduced": true,
+  "buggy_run": {
+    "without_limit_ok": false,
+    "without_limit_result": "TypeError: '>=' not supported between instances of 'int' and 'NoneType'",
+    "with_limit_ok": true,
+    "execution_time_seconds": 1.670000347075984e-05
+  },
+  "fixed_run": {
+    "without_limit_ok": true,
+    "without_limit_result": "Success without limit",
+    "with_limit_ok": true,
+    "execution_time_seconds": 2.7099995349999517e-05
+  },
+  "environment": {
+    "python_version": "3.12.10",
+    "python_implementation": "CPython",
+    "os": "Windows",
+    "os_release": "10",
+    "machine": "AMD64"
+  }
+}

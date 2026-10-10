@@ -1,0 +1,106 @@
+{
+  "ghsa_id": "GHSA-9x4q-3gxw-849f",
+  "cve_id": "CVE-2024-41942",
+  "url": "https://api.github.com/advisories/GHSA-9x4q-3gxw-849f",
+  "html_url": "https://github.com/advisories/GHSA-9x4q-3gxw-849f",
+  "summary": "JupyterHub has a privilege escalation vulnerability with the `admin:users` scope",
+  "description": "### Summary\n\nIf a user is granted the `admin:users` scope, they may escalate their own privileges by making themselves a full admin user.\n\n### Details\n\nThe `admin:users` scope allows a user to edit user records:\n\n> admin:users\n>\n> Read, write, create and delete users and their authentication state, not including their servers or tokens.\n>\n> -- https://jupyterhub.readthedocs.io/en/stable/rbac/scopes.html#available-scopes\n\nHowever, this includes making users admins. Admin users are granted scopes beyond `admin:users` making this a mechanism by which granted scopes may be escalated.\n\n### Impact\n\nThe impact is relatively small in that `admin:users` is already an extremely privileged scope only granted to trusted users.\nIn effect, `admin:users` is equivalent to `admin=True`, which is not intended.\n\nNote that the change here only prevents escalation to the built-in JupyterHub admin role that has unrestricted permissions. It does not prevent users with e.g. `groups` permissions from granting themselves or other users permissions via group membership, which is intentional.",
+  "type": "reviewed",
+  "severity": "high",
+  "repository_advisory_url": "https://api.github.com/repos/jupyterhub/jupyterhub/security-advisories/GHSA-9x4q-3gxw-849f",
+  "source_code_location": "https://github.com/jupyterhub/jupyterhub",
+  "identifiers": [
+    {
+      "value": "GHSA-9x4q-3gxw-849f",
+      "type": "GHSA"
+    },
+    {
+      "value": "CVE-2024-41942",
+      "type": "CVE"
+    }
+  ],
+  "references": [
+    "https://github.com/jupyterhub/jupyterhub/security/advisories/GHSA-9x4q-3gxw-849f",
+    "https://github.com/jupyterhub/jupyterhub/commit/99e2720b0fc626cbeeca3c6337f917fdacfaa428",
+    "https://github.com/jupyterhub/jupyterhub/commit/ff2db557a85b6980f90c3158634bf924063ab8ba",
+    "https://nvd.nist.gov/vuln/detail/CVE-2024-41942",
+    "https://github.com/pypa/advisory-database/tree/main/vulns/jupyterhub/PYSEC-2024-200.yaml",
+    "https://github.com/advisories/GHSA-9x4q-3gxw-849f"
+  ],
+  "published_at": "2024-08-08T14:37:06Z",
+  "updated_at": "2025-01-21T17:56:42Z",
+  "github_reviewed_at": "2024-08-08T14:37:06Z",
+  "nvd_published_at": "2024-08-08T15:15:17Z",
+  "withdrawn_at": null,
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "pip",
+        "name": "jupyterhub"
+      },
+      "vulnerable_version_range": "< 4.1.6",
+      "first_patched_version": "4.1.6",
+      "vulnerable_functions": []
+    },
+    {
+      "package": {
+        "ecosystem": "pip",
+        "name": "jupyterhub"
+      },
+      "vulnerable_version_range": ">= 5.0.0, < 5.1.0",
+      "first_patched_version": "5.1.0",
+      "vulnerable_functions": []
+    }
+  ],
+  "cvss_severities": {
+    "cvss_v3": {
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "score": 7.2
+    },
+    "cvss_v4": {
+      "vector_string": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
+      "score": 8.6
+    }
+  },
+  "cwes": [
+    {
+      "cwe_id": "CWE-274",
+      "name": "Improper Handling of Insufficient Privileges"
+    }
+  ],
+  "credits": [
+    {
+      "user": {
+        "login": "oliver-sanders",
+        "id": 16705946,
+        "node_id": "MDQ6VXNlcjE2NzA1OTQ2",
+        "avatar_url": "https://avatars.githubusercontent.com/u/16705946?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/oliver-sanders",
+        "html_url": "https://github.com/oliver-sanders",
+        "followers_url": "https://api.github.com/users/oliver-sanders/followers",
+        "following_url": "https://api.github.com/users/oliver-sanders/following{/other_user}",
+        "gists_url": "https://api.github.com/users/oliver-sanders/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/oliver-sanders/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/oliver-sanders/subscriptions",
+        "organizations_url": "https://api.github.com/users/oliver-sanders/orgs",
+        "repos_url": "https://api.github.com/users/oliver-sanders/repos",
+        "events_url": "https://api.github.com/users/oliver-sanders/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/oliver-sanders/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "type": "reporter"
+    }
+  ],
+  "comments": 21,
+  "cvss": {
+    "vector_string": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+    "score": 7.2
+  },
+  "epss": {
+    "percentage": 0.0059,
+    "percentile": 0.46507
+  }
+}

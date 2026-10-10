@@ -1,0 +1,81 @@
+{
+  "ghsa_id": "GHSA-5r8f-gq2h-fcgp",
+  "cve_id": "CVE-2026-100404",
+  "url": "https://api.github.com/repos/zulip/zulip/security-advisories/GHSA-5r8f-gq2h-fcgp",
+  "html_url": "https://github.com/zulip/zulip/security/advisories/GHSA-5r8f-gq2h-fcgp",
+  "summary": "Guests can read new messages in non-subscribed public channels",
+  "description": "### Impact\r\n\r\nGuest users could receive events for new messages in public channels they are not\r\nsubscribed to, either by registering an event queue with appropriate parameters, or\r\nvia an existing event queue registered before their access to the channel was\r\nremoved.\r\n\r\n### Patches\r\n\r\nFixed in Zulip server 12.2.\r\n",
+  "severity": "medium",
+  "author": null,
+  "publisher": {
+    "login": "mateuszmandera",
+    "id": 45007152,
+    "node_id": "MDQ6VXNlcjQ1MDA3MTUy",
+    "avatar_url": "https://avatars.githubusercontent.com/u/45007152?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/mateuszmandera",
+    "html_url": "https://github.com/mateuszmandera",
+    "followers_url": "https://api.github.com/users/mateuszmandera/followers",
+    "following_url": "https://api.github.com/users/mateuszmandera/following{/other_user}",
+    "gists_url": "https://api.github.com/users/mateuszmandera/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/mateuszmandera/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/mateuszmandera/subscriptions",
+    "organizations_url": "https://api.github.com/users/mateuszmandera/orgs",
+    "repos_url": "https://api.github.com/users/mateuszmandera/repos",
+    "events_url": "https://api.github.com/users/mateuszmandera/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/mateuszmandera/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "identifiers": [
+    {
+      "value": "GHSA-5r8f-gq2h-fcgp",
+      "type": "GHSA"
+    },
+    {
+      "value": "CVE-2026-100404",
+      "type": "CVE"
+    }
+  ],
+  "state": "published",
+  "created_at": null,
+  "updated_at": "2026-09-28T13:47:09Z",
+  "published_at": "2026-08-10T17:23:15Z",
+  "closed_at": null,
+  "withdrawn_at": null,
+  "submission": null,
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "",
+        "name": "Zulip server"
+      },
+      "vulnerable_version_range": "<= 12.1",
+      "patched_versions": "12.2",
+      "vulnerable_functions": []
+    }
+  ],
+  "cvss_severities": {
+    "cvss_v3": {
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "score": 6.5
+    },
+    "cvss_v4": {
+      "vector_string": null,
+      "score": null
+    }
+  },
+  "cwes": [],
+  "cwe_ids": [],
+  "credits": [],
+  "credits_detailed": [],
+  "collaborating_users": null,
+  "collaborating_teams": null,
+  "private_fork": null,
+  "comments": 1,
+  "cvss": {
+    "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+    "score": 6.5
+  }
+}

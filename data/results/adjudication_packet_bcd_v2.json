@@ -1,0 +1,551 @@
+{
+  "metadata": {
+    "title": "Human Adjudication Packet (Configurations B, C, D)",
+    "version": "2.0 (Phase 5D Reconstructed)",
+    "total_unique_gt_defects": 9,
+    "total_matched_rows": 21,
+    "config_counts": {
+      "Config B": 6,
+      "Config C": 8,
+      "Config D": 7
+    }
+  },
+  "grouped_defects": [
+    {
+      "defect_id": "CAND-0006-DEF-1",
+      "case_id": "CAND-0006",
+      "category_id": 1,
+      "file_path": "scrapy/utils/datatypes.py",
+      "gt_lines": "318-319",
+      "primary_cwe": "CWE-476",
+      "acceptable_alternative_cwes": [
+        "CWE-670"
+      ],
+      "gt_description": "Missing NoneType boundary check on self.limit before relational comparison len(self) >= self.limit in LocalCache.__setitem__",
+      "matching_configurations": [
+        "Config B",
+        "Config C",
+        "Config D"
+      ],
+      "matches_count": 3,
+      "matches": [
+        {
+          "config": "Config B",
+          "case_id": "CAND-0006",
+          "defect_id": "CAND-0006-DEF-1",
+          "finding_id": "llm-e5318502e2",
+          "finding_file": "scrapy/utils/datatypes.py",
+          "finding_lines": "317-319",
+          "finding_title": "LocalCache.__setitem__ crashes with TypeError when limit is None",
+          "finding_description": "When `LocalCache` is instantiated with the default `limit=None` (e.g., `LocalCache()`), the `__setitem__` method executes `while len(self) >= self.limit`, which compares an integer to `None`. In Python 3, this raises a `TypeError: '>=' not supported between instances of 'int' and 'NoneType'`. This means any attempt to store a value in an unlimited `LocalCache` will raise an unhandled exception, completely breaking the intended 'no limit' semantics.",
+          "finding_cwe": "CWE-476",
+          "finding_category": 1,
+          "matched_cwe": "CWE-476",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config C",
+          "case_id": "CAND-0006",
+          "defect_id": "CAND-0006-DEF-1",
+          "finding_id": "llm-98ecf4d1f2",
+          "finding_file": "scrapy/utils/datatypes.py",
+          "finding_lines": "317-319",
+          "finding_title": "LocalCache.__setitem__ crashes with TypeError when limit is None",
+          "finding_description": "In LocalCache.__setitem__, the condition `while len(self) >= self.limit` is evaluated unconditionally. When `limit=None` (the default value), Python raises `TypeError: '>=' not supported between instances of 'int' and 'NoneType'`. The docstring and constructor signature imply that `limit=None` is a valid state (meaning no limit), but the __setitem__ method does not guard against this. Any attempt to insert an item into a LocalCache with no limit will raise a TypeError instead of behaving as an unlimited cache.",
+          "finding_cwe": "CWE-476",
+          "finding_category": 1,
+          "matched_cwe": "CWE-476",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config D",
+          "case_id": "CAND-0006",
+          "defect_id": "CAND-0006-DEF-1",
+          "finding_id": "llm-34ab7f41ca",
+          "finding_file": "scrapy/utils/datatypes.py",
+          "finding_lines": "317-319",
+          "finding_title": "LocalCache.__setitem__ raises TypeError when limit is None",
+          "finding_description": "In LocalCache.__setitem__ (line 318), the condition `while len(self) >= self.limit` will raise a TypeError (`'>=' not supported between instances of 'int' and 'NoneType'`) when `self.limit` is None (the default value set in __init__ at line 315). If a user constructs `LocalCache()` without specifying a limit and then tries to set an item, the comparison against None will crash. The docstring implies `limit=None` should mean unlimited capacity, but no guard exists for this case.",
+          "finding_cwe": "CWE-476",
+          "finding_category": 1,
+          "matched_cwe": "CWE-476",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        }
+      ]
+    },
+    {
+      "defect_id": "CAND-0007-DEF-1",
+      "case_id": "CAND-0007",
+      "category_id": 2,
+      "file_path": "fastapi/routing.py",
+      "gt_lines": "182-184",
+      "primary_cwe": "CWE-352",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-345"
+      ],
+      "gt_description": "Ground-truth locus 182-184",
+      "matching_configurations": [
+        "Config C",
+        "Config D"
+      ],
+      "matches_count": 2,
+      "matches": [
+        {
+          "config": "Config C",
+          "case_id": "CAND-0007",
+          "defect_id": "CAND-0007-DEF-1",
+          "finding_id": "llm-b884c5f510",
+          "finding_file": "fastapi/routing.py",
+          "finding_lines": "182-184",
+          "finding_title": "JSON body parsed without size limit allowing potential DoS",
+          "finding_description": "When a non-form body is expected, the code reads the entire request body with `await request.body()` and then calls `await request.json()` if the body is non-empty. There is no size limit enforced at this level. An attacker can send an extremely large JSON body, causing excessive memory consumption and CPU usage (parsing a huge JSON document). While Starlette/uvicorn may have their own limits that can be configured, the routing layer itself imposes no guard, so a misconfigured or default deployment is vulnerable.",
+          "finding_cwe": "CWE-20",
+          "finding_category": 2,
+          "matched_cwe": "CWE-20",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "REVIEW FLAG: Finding reports JSON parsing DoS (CWE-400) at CSRF defect locus (CWE-352/20)"
+        },
+        {
+          "config": "Config D",
+          "case_id": "CAND-0007",
+          "defect_id": "CAND-0007-DEF-1",
+          "finding_id": "llm-89945e4935",
+          "finding_file": "fastapi/routing.py",
+          "finding_lines": "184-184",
+          "finding_title": "Raw JSON body parsed without size or content-type validation",
+          "finding_description": "At line 184, `await request.json()` is called unconditionally on any non-empty body whenever a body field is expected. There is no validation of Content-Type header before attempting JSON parsing. A client sending a non-JSON Content-Type (e.g., `application/xml`) with a body will still trigger JSON parsing. While `json.JSONDecodeError` is caught, other exceptions from the JSON parsing stage (e.g., memory errors from a huge payload) fall through to the generic `except Exception` handler at line 187 which returns a generic 400, potentially masking real issues. More critically, there is no body size limit enforced here, leaving the endpoint vulnerable to large-body denial-of-service if Starlette's default limits are not configured.",
+          "finding_cwe": "CWE-20",
+          "finding_category": 2,
+          "matched_cwe": "CWE-20",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "REVIEW FLAG: Finding reports JSON parsing DoS (CWE-400) at CSRF defect locus (CWE-352/20)"
+        }
+      ]
+    },
+    {
+      "defect_id": "CAND-0009-DEF-2",
+      "case_id": "CAND-0009",
+      "category_id": 2,
+      "file_path": "src/jinja2/filters.py",
+      "gt_lines": "292-293",
+      "primary_cwe": "CWE-79",
+      "acceptable_alternative_cwes": [
+        "CWE-116",
+        "CWE-20"
+      ],
+      "gt_description": "Ground-truth locus 292-293",
+      "matching_configurations": [
+        "Config B"
+      ],
+      "matches_count": 1,
+      "matches": [
+        {
+          "config": "Config B",
+          "case_id": "CAND-0009",
+          "defect_id": "CAND-0009-DEF-2",
+          "finding_id": "llm-ae88f3f255",
+          "finding_file": "src/jinja2/filters.py",
+          "finding_lines": "292-293",
+          "finding_title": "do_xmlattr only checks for space characters in keys but not other invalid XML attribute name characters",
+          "finding_description": "The `do_xmlattr` filter checks for whitespace in attribute keys using `_space_re = re.compile(r'\\s', flags=re.ASCII)`. This prevents space-separated attribute injection but does not validate the full set of characters that are illegal in XML/HTML attribute names. For example, characters like `>`, `<`, `/`, `=`, or quotes in attribute names (though unlikely in practice) are not rejected. While `escape(key)` is called, if a key contains a `>` or `=` character, the resulting HTML attribute string could be malformed. The check is narrower than required by the XML specification for attribute names.",
+          "finding_cwe": "CWE-116",
+          "finding_category": 2,
+          "matched_cwe": "CWE-116",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        }
+      ]
+    },
+    {
+      "defect_id": "CAND-0015-DEF-1",
+      "case_id": "CAND-0015",
+      "category_id": 3,
+      "file_path": "django/contrib/postgres/aggregates/general.py",
+      "gt_lines": "54-58",
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-943"
+      ],
+      "gt_description": "Raw string interpolation of delimiter in StringAgg SQL template",
+      "matching_configurations": [
+        "Config C",
+        "Config D"
+      ],
+      "matches_count": 2,
+      "matches": [
+        {
+          "config": "Config C",
+          "case_id": "CAND-0015",
+          "defect_id": "CAND-0015-DEF-1",
+          "finding_id": "llm-82bb619df2",
+          "finding_file": "django/contrib/postgres/aggregates/general.py",
+          "finding_lines": "54-58",
+          "finding_title": "StringAgg delimiter injected unsanitized into SQL template via string interpolation",
+          "finding_description": "The `StringAgg` class embeds the `delimiter` parameter directly into the SQL template string using Python's `%`-style string formatting: `\"%(function)s(%(distinct)s%(expressions)s, '%(delimiter)s'%(ordering)s)\"`. The delimiter value is passed by the caller at construction time and is interpolated verbatim into the SQL fragment. A delimiter containing a single-quote character (e.g., `delimiter=\"'; DROP TABLE users; --\"`) can break out of the surrounding SQL string literal and inject arbitrary SQL, leading to SQL injection. Because the template is rendered before parameterization, the delimiter is never treated as a bound parameter by the database driver.",
+          "finding_cwe": "CWE-89",
+          "finding_category": 2,
+          "matched_cwe": "CWE-89",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config D",
+          "case_id": "CAND-0015",
+          "defect_id": "CAND-0015-DEF-1",
+          "finding_id": "llm-a03cfc86c4",
+          "finding_file": "django/contrib/postgres/aggregates/general.py",
+          "finding_lines": "54-54",
+          "finding_title": "StringAgg delimiter inserted unescaped into SQL template via string formatting",
+          "finding_description": "The `StringAgg` class uses a template string `\"%(function)s(%(distinct)s%(expressions)s, '%(delimiter)s'%(ordering)s)\"` where the `delimiter` parameter is interpolated directly into the SQL string without any escaping or parameterization. If a caller passes a delimiter containing a single quote or other SQL metacharacters (e.g., `\"'\"`, `\"'; DROP TABLE--\"`), the resulting SQL will be malformed or exploitable. Because Django's template substitution for aggregate `extra` kwargs uses Python string `%` formatting rather than database-level parameterization, the delimiter value is embedded verbatim into the SQL query string. An attacker who can influence the `delimiter` argument (e.g., via user-controlled input passed to `StringAgg`) can break out of the string literal and inject arbitrary SQL.",
+          "finding_cwe": "CWE-89",
+          "finding_category": 2,
+          "matched_cwe": "CWE-89",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        }
+      ]
+    },
+    {
+      "defect_id": "CAND-0017-DEF-1",
+      "case_id": "CAND-0017",
+      "category_id": 3,
+      "file_path": "tortoise/backends/mysql/executor.py",
+      "gt_lines": "19-45",
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-943"
+      ],
+      "gt_description": "Ground-truth locus 19-45",
+      "matching_configurations": [
+        "Config B",
+        "Config C",
+        "Config D"
+      ],
+      "matches_count": 3,
+      "matches": [
+        {
+          "config": "Config B",
+          "case_id": "CAND-0017",
+          "defect_id": "CAND-0017-DEF-1",
+          "finding_id": "llm-df2e870ccf",
+          "finding_file": "tortoise/backends/mysql/executor.py",
+          "finding_lines": "20-44",
+          "finding_title": "SQL injection via unsanitized LIKE pattern interpolation",
+          "finding_description": "The functions mysql_contains (line 20), mysql_starts_with (line 24), mysql_ends_with (line 28), mysql_insensitive_contains (line 36), mysql_insensitive_starts_with (line 40), and mysql_insensitive_ends_with (line 44) directly interpolate the `value` parameter into LIKE pattern strings using f-strings (e.g., `f\"%{value}%\"`). The `value` string is not escaped before being embedded in the LIKE expression. If `value` contains the SQL LIKE wildcard characters `%` or `_`, those characters will be interpreted as wildcards by MySQL, altering the intended query semantics. More critically, if the underlying query builder does not properly parameterize the resulting literal string (i.e., if the constructed expression is rendered as a raw SQL string rather than a bound parameter), an attacker-controlled `value` can inject arbitrary SQL fragments. Even if only wildcard injection is possible, this allows matching far more rows than intended, potentially leaking data. For the insensitive variants, the pattern is passed to `functions.Upper()` rather than as a bound parameter, increasing the risk of SQL injection depending on how pypika renders that call.",
+          "finding_cwe": "CWE-89",
+          "finding_category": 2,
+          "matched_cwe": "CWE-89",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config C",
+          "case_id": "CAND-0017",
+          "defect_id": "CAND-0017-DEF-1",
+          "finding_id": "llm-661f1ee46d",
+          "finding_file": "tortoise/backends/mysql/executor.py",
+          "finding_lines": "19-44",
+          "finding_title": "LIKE pattern injection via unescaped wildcard characters in filter functions",
+          "finding_description": "The filter functions mysql_contains, mysql_starts_with, mysql_ends_with, and their case-insensitive variants interpolate the `value` parameter directly into LIKE patterns using f-strings (e.g., `f\"%{value}%\"`). If `value` contains SQL LIKE wildcard metacharacters `%` or `_`, they will be interpreted as wildcards by the MySQL engine rather than as literal characters. This allows an attacker to craft filter values that match unintended rows, effectively bypassing exact-match semantics. For example, a `contains` filter with value `%` would match every row, and a value like `a_c` would match 'abc', 'aXc', etc. The characters `%`, `_`, and `\\` must be escaped before embedding in LIKE patterns.",
+          "finding_cwe": "CWE-89",
+          "finding_category": 2,
+          "matched_cwe": "CWE-89",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config D",
+          "case_id": "CAND-0017",
+          "defect_id": "CAND-0017-DEF-1",
+          "finding_id": "llm-607b19bc01",
+          "finding_file": "tortoise/backends/mysql/executor.py",
+          "finding_lines": "19-44",
+          "finding_title": "LIKE-pattern injection via unsanitized value in filter functions",
+          "finding_description": "All seven MySQL filter functions (mysql_contains, mysql_starts_with, mysql_ends_with, mysql_insensitive_exact, mysql_insensitive_contains, mysql_insensitive_starts_with, mysql_insensitive_ends_with) interpolate the `value` parameter directly into LIKE-pattern strings using f-strings (e.g., `f\"%{value}%\"`). MySQL LIKE patterns treat `%` and `_` as wildcards. If a caller passes a value containing `%` or `_`, the resulting LIKE clause will match more rows than intended. For example, a value of `%` in mysql_contains produces `LIKE \"%%%\"`, which matches every row. This allows users to craft filter inputs that bypass intended filtering constraints and extract more data than authorized, constituting a LIKE wildcard injection vulnerability. The `value` should be escaped so that literal `%` and `_` characters in the search term are treated as literals (e.g., via `value.replace('%', '\\\\%').replace('_', '\\\\_')`).",
+          "finding_cwe": "CWE-89",
+          "finding_category": 2,
+          "matched_cwe": "CWE-89",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        }
+      ]
+    },
+    {
+      "defect_id": "CAND-0019-DEF-1",
+      "case_id": "CAND-0019",
+      "category_id": 4,
+      "file_path": "aiohttp/web_urldispatcher.py",
+      "gt_lines": "643-645",
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-59"
+      ],
+      "gt_description": "Ground-truth locus 643-645",
+      "matching_configurations": [
+        "Config C",
+        "Config D"
+      ],
+      "matches_count": 2,
+      "matches": [
+        {
+          "config": "Config C",
+          "case_id": "CAND-0019",
+          "defect_id": "CAND-0019-DEF-1",
+          "finding_id": "llm-18e60f4b15",
+          "finding_file": "aiohttp/web_urldispatcher.py",
+          "finding_lines": "634-654",
+          "finding_title": "Potential path traversal when follow_symlinks is True",
+          "finding_description": "In the `_handle` method, when `self._follow_symlinks` is True, the check `filepath.relative_to(self._directory)` on line 645 is skipped entirely. This means that if a symlink within the static directory points to a file or directory outside the static directory, and `follow_symlinks=True` is configured, the server will serve files from arbitrary locations on the filesystem. The `filepath.resolve()` call on line 643 resolves symlinks, and without the `relative_to` check, there is no validation that the resolved path stays within the intended directory.",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config D",
+          "case_id": "CAND-0019",
+          "defect_id": "CAND-0019-DEF-1",
+          "finding_id": "llm-d4ef6fda4b",
+          "finding_file": "aiohttp/web_urldispatcher.py",
+          "finding_lines": "634-670",
+          "finding_title": "Potential path traversal when follow_symlinks is False via TOCTOU race",
+          "finding_description": "In `_handle`, after calling `filepath.resolve()` on line 643, the code checks `filepath.relative_to(self._directory)` on line 645 to prevent path traversal. However, `resolve()` is called at check time, and `FileResponse` on line 668 subsequently opens the file independently. On some platforms or under specific race conditions (TOCTOU), a symlink could be swapped between the check and the open. Additionally, `filepath.resolve()` resolves symlinks by following them even when `self._follow_symlinks` is `False`\u2014the check `filepath.relative_to(self._directory)` only verifies the resolved path is within the directory, but when follow_symlinks is False, a symlink pointing outside should be rejected. The actual rejection relies solely on the `relative_to` ValueError, which may not cover all edge cases if the resolved symlink destination is accidentally inside the allowed directory.",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        }
+      ]
+    },
+    {
+      "defect_id": "CAND-0019-DEF-2",
+      "case_id": "CAND-0019",
+      "category_id": 4,
+      "file_path": "aiohttp/web_urldispatcher.py",
+      "gt_lines": "574-576",
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-59"
+      ],
+      "gt_description": "Ground-truth locus 574-576",
+      "matching_configurations": [
+        "Config B",
+        "Config C",
+        "Config D"
+      ],
+      "matches_count": 3,
+      "matches": [
+        {
+          "config": "Config B",
+          "case_id": "CAND-0019",
+          "defect_id": "CAND-0019-DEF-2",
+          "finding_id": "llm-043f756df6",
+          "finding_file": "aiohttp/web_urldispatcher.py",
+          "finding_lines": "577-579",
+          "finding_title": "Path traversal check in url_for not enforced when follow_symlinks=True",
+          "finding_description": "In `StaticResource.url_for`, when `append_version=True`, the code resolves `filepath` and then checks `filepath.relative_to(self._directory)` only if `not self._follow_symlinks` (lines 578-579). When `follow_symlinks=True`, this check is skipped entirely. An attacker who can influence the `filename` argument to `url_for` with a path like `../../etc/passwd` could potentially read and hash arbitrary files on the filesystem, leaking their SHA-256 hash via the version query parameter.",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": false,
+          "distance_lines": 1,
+          "match_type": "Tolerance-Only (+1 lines)",
+          "review_notes": "Tolerance-only match: distance = 1 lines (within \u00b110)"
+        },
+        {
+          "config": "Config C",
+          "case_id": "CAND-0019",
+          "defect_id": "CAND-0019-DEF-2",
+          "finding_id": "llm-91395a191b",
+          "finding_file": "aiohttp/web_urldispatcher.py",
+          "finding_lines": "575-591",
+          "finding_title": "Path traversal bypass possible in url_for version appending when follow_symlinks is False",
+          "finding_description": "In `StaticResource.url_for()`, when `append_version=True` and `follow_symlinks=False`, the code on line 579 calls `filepath.relative_to(self._directory)` but catches `ValueError` silently and returns the URL without a version hash. However, on line 577, `filepath = self._directory.joinpath(filename).resolve()` resolves symlinks before the check. The `filename` comes from `str(filename).lstrip(\"/\")` on line 566 which only strips leading slashes but does not prevent `..` sequences. A path like `../../etc/passwd` after lstrip would still contain `..` and could potentially escape the directory, though `resolve()` mitigates direct traversal. The concern is that the error is silently swallowed rather than raising an error.",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config D",
+          "case_id": "CAND-0019",
+          "defect_id": "CAND-0019-DEF-2",
+          "finding_id": "llm-a38a061d03",
+          "finding_file": "aiohttp/web_urldispatcher.py",
+          "finding_lines": "575-591",
+          "finding_title": "Path traversal bypass in `url_for` version hashing when follow_symlinks is False",
+          "finding_description": "In `StaticResource.url_for` (lines 558-592), when `append_version=True`, the code resolves the filepath at line 577 and then checks `filepath.relative_to(self._directory)` on line 579 to prevent path traversal. However, this check happens on the resolved (symlink-followed) path, even when `self._follow_symlinks` is False. If `filepath.resolve()` follows a symlink to a location that happens to be a subdirectory of `self._directory` (e.g., a symlink from inside the static dir pointing to another subdirectory of it), the check would pass and the file's hash would be computed and exposed\u2014even though the symlink should be rejected by the serve logic. This inconsistency between `url_for` and `_handle` means version hashes can be returned for files that cannot actually be served.",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        }
+      ]
+    },
+    {
+      "defect_id": "CAND-0020-DEF-1",
+      "case_id": "CAND-0020",
+      "category_id": 4,
+      "file_path": "src/werkzeug/security.py",
+      "gt_lines": "151-157",
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "gt_description": "safe_join fails to block UNC / leading slash paths on Windows",
+      "matching_configurations": [
+        "Config B",
+        "Config C"
+      ],
+      "matches_count": 2,
+      "matches": [
+        {
+          "config": "Config B",
+          "case_id": "CAND-0020",
+          "defect_id": "CAND-0020-DEF-1",
+          "finding_id": "llm-3c902e8f3a",
+          "finding_file": "src/werkzeug/security.py",
+          "finding_lines": "147-157",
+          "finding_title": "safe_join does not block path components starting with '../' after normpath on Windows alt-sep paths",
+          "finding_description": "The `safe_join` function normalizes the filename using `posixpath.normpath` and then checks for `..` or `../` prefixes, as well as OS alternative separators. However, on Windows, `posixpath.normpath` may not normalize backslash-based paths correctly since it is POSIX-specific. More critically, the empty-string check `if filename != \"\"` means empty-string filenames bypass normpath normalization. An empty string passes all the security checks (not abs, not `..`, not starting with `../`, no alt-seps) and gets appended to parts. While `posixpath.join` with an empty component is likely benign, the combination of not normalizing empty strings could lead to subtle path construction issues. Additionally, the check `filename.startswith(\"../\")` only applies after normpath, which converts `..` to `..` \u2014 but intermediate `..` components like `a/../../../etc/passwd` become `../../etc/passwd` after normpath, which does start with `../` and would be caught. However, a filename of exactly `..` after normpath would be caught by `filename == \"..\"`. This appears largely correct but the empty-string bypass is a subtle edge case.",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config C",
+          "case_id": "CAND-0020",
+          "defect_id": "CAND-0020-DEF-1",
+          "finding_id": "llm-0bd9c334da",
+          "finding_file": "src/werkzeug/security.py",
+          "finding_lines": "147-157",
+          "finding_title": "safe_join may not detect traversal via posixpath.normpath resolving to '..'",
+          "finding_description": "After calling posixpath.normpath(filename), the code checks if the result equals '..' or starts with '../'. However, posixpath.normpath can produce paths that begin with multiple '..' components such as '../../etc/passwd' which would be caught by the startswith('../') check. However, if filename is an empty string (filename == ''), normpath is skipped entirely and '' is appended to parts. While an empty part in posixpath.join is benign, the bypass of normpath means other edge cases might exist. More critically, on Windows systems, _os_alt_seps includes backslash, but the check only covers known alt separators. A path like '..' passed through normpath remains '..' and is caught. However, paths like 'foo/../../bar' normalize to '../bar' which starts with '../' and is caught. The logic appears mostly correct, but the empty string bypass of normpath deserves scrutiny: posixpath.join with an empty string component is a no-op, so this seems safe.",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        }
+      ]
+    },
+    {
+      "defect_id": "CAND-0021-DEF-1",
+      "case_id": "CAND-0021",
+      "category_id": 4,
+      "file_path": "starlette/staticfiles.py",
+      "gt_lines": "172-172",
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "gt_description": "Ground-truth locus 172-172",
+      "matching_configurations": [
+        "Config B",
+        "Config C",
+        "Config D"
+      ],
+      "matches_count": 3,
+      "matches": [
+        {
+          "config": "Config B",
+          "case_id": "CAND-0021",
+          "defect_id": "CAND-0021-DEF-1",
+          "finding_id": "llm-0d1cdb819d",
+          "finding_file": "starlette/staticfiles.py",
+          "finding_lines": "162-175",
+          "finding_title": "Path traversal check uses os.path.commonprefix which is not directory-aware",
+          "finding_description": "`os.path.commonprefix` operates on strings character-by-character, not path-component-by-component. For example, if the static directory is `/static/foo` and the resolved full_path is `/static/foobar/secret.txt`, then `os.path.commonprefix(['/static/foobar/secret.txt', '/static/foo'])` returns `/static/foo`, which equals `directory`, so the check passes even though `/static/foobar/` is outside `/static/foo/`. An attacker could potentially access files in sibling directories named with a shared prefix. The correct check should verify that `full_path` starts with `directory + os.sep` (or use `pathlib.Path.is_relative_to()` in Python 3.9+).",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config C",
+          "case_id": "CAND-0021",
+          "defect_id": "CAND-0021-DEF-1",
+          "finding_id": "llm-bf2fbd812b",
+          "finding_file": "starlette/staticfiles.py",
+          "finding_lines": "172-172",
+          "finding_title": "Path traversal bypass via commonprefix directory check",
+          "finding_description": "`os.path.commonprefix` operates on raw strings, not path components. This means a directory `/srv/static` and a path `/srv/static_evil/secret.txt` would share the common prefix `/srv/static`, causing the check `os.path.commonprefix([full_path, directory]) != directory` to incorrectly pass (evaluate as equal to `directory`), thereby allowing access to files outside the intended static directory. An attacker who can craft a request path that resolves to a sibling directory starting with the same string as the static directory could bypass this path containment check.",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        },
+        {
+          "config": "Config D",
+          "case_id": "CAND-0021",
+          "defect_id": "CAND-0021-DEF-1",
+          "finding_id": "llm-6441e52b1b",
+          "finding_file": "starlette/staticfiles.py",
+          "finding_lines": "172-172",
+          "finding_title": "Path traversal via os.path.commonprefix directory containment bypass",
+          "finding_description": "`os.path.commonprefix` is a purely string-based operation and does not understand directory boundaries. For example, if `directory` is `/srv/static` and `full_path` is `/srv/static_evil/file.txt`, then `commonprefix(['/srv/static_evil/file.txt', '/srv/static'])` returns `/srv/static`, which equals `directory`, so the check passes and the file outside the intended directory would be served. This allows a path traversal attack where files in sibling directories whose names share a prefix with the intended static directory could be read.",
+          "finding_cwe": "CWE-22",
+          "finding_category": 4,
+          "matched_cwe": "CWE-22",
+          "is_direct_overlap": true,
+          "distance_lines": 0,
+          "match_type": "Direct Overlap",
+          "review_notes": "Clean direct match"
+        }
+      ]
+    }
+  ]
+}

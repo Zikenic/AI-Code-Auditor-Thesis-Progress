@@ -1,0 +1,948 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Ground-truth verified cases (12 pilot cases + 6 Batch 1 cases) for AI Code Auditor benchmark evaluation.",
+  "case_count": 18,
+  "cases": [
+    {
+      "case_id": "CAND-0001",
+      "candidate_id": "CAND-0001",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "tornadoweb/tornado",
+      "commit_hash": "2ca8821d006f6693f920a4b183a3a7c985a5c8ad",
+      "buggy_commit": "2ca8821d006f6693f920a4b183a3a7c985a5c8ad",
+      "fixed_commit": "4f486a4aec746e9d66441600ee3b0743228b061c",
+      "is_buggy": true,
+      "category_id": 1,
+      "impact": "functional",
+      "primary_cwe": "CWE-670",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-440"
+      ],
+      "target_file": "tornado/http1connection.py",
+      "line_ranges": [
+        [
+          390,
+          394
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0001-DEF-1",
+          "category_id": 1,
+          "impact": "functional",
+          "primary_cwe": "CWE-670",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-440"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 390,
+          "end_line": 394,
+          "description": "Ground-truth locus 390-394"
+        }
+      ],
+      "reproducer": "Upstream regression test `tornado/test/httpclient_test.py::test_redirect_put_with_body`.",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0002",
+      "candidate_id": "CAND-0002",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "tiangolo/fastapi",
+      "commit_hash": "210af1fd3dc0f612a08fa02a0cb3f5adb81e5bfb",
+      "buggy_commit": "210af1fd3dc0f612a08fa02a0cb3f5adb81e5bfb",
+      "fixed_commit": "02441ff0313d5b471b662293244c53e712f1243f",
+      "is_buggy": true,
+      "category_id": 1,
+      "impact": "functional",
+      "primary_cwe": "CWE-670",
+      "acceptable_alternative_cwes": [
+        "CWE-440"
+      ],
+      "target_file": "fastapi/routing.py",
+      "line_ranges": [
+        [
+          498,
+          502
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0002-DEF-1",
+          "category_id": 1,
+          "impact": "functional",
+          "primary_cwe": "CWE-670",
+          "acceptable_alternative_cwes": [
+            "CWE-440"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 498,
+          "end_line": 502,
+          "description": "Ground-truth locus 498-502"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_ws_router.py::test_router_ws_depends_with_override`.",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0007",
+      "candidate_id": "CAND-0007",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "tiangolo/fastapi",
+      "commit_hash": "90120dd6e83d997fa2f7f54119a2e0cf906b1ded",
+      "buggy_commit": "90120dd6e83d997fa2f7f54119a2e0cf906b1ded",
+      "fixed_commit": "fa7e3c996edf2d5482fff8f9d890ac2390dede4d",
+      "is_buggy": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-352",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-345"
+      ],
+      "target_file": "fastapi/routing.py",
+      "line_ranges": [
+        [
+          182,
+          184
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0007-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-352",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-345"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 182,
+          "end_line": 184,
+          "description": "Ground-truth locus 182-184"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_tutorial/test_body/test_tutorial001.py::test_wrong_headers`.",
+      "provenance": {
+        "advisory": "GHSA-8h2j-cgx8-6xv7 / CVE-2021-32677",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0009",
+      "candidate_id": "CAND-0009",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "pallets/jinja",
+      "commit_hash": "a7863ba9d3521f1450f821119c50d19d7ecea329",
+      "buggy_commit": "a7863ba9d3521f1450f821119c50d19d7ecea329",
+      "fixed_commit": "0668239dc6b44ef38e7a6c9f91f312fd4ca581cb",
+      "is_buggy": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-79",
+      "acceptable_alternative_cwes": [
+        "CWE-116",
+        "CWE-20"
+      ],
+      "target_file": "src/jinja2/filters.py",
+      "line_ranges": [
+        [
+          250,
+          250
+        ],
+        [
+          292,
+          293
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0009-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-79",
+          "acceptable_alternative_cwes": [
+            "CWE-116",
+            "CWE-20"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 250,
+          "end_line": 250,
+          "description": "Ground-truth locus 250-250"
+        },
+        {
+          "defect_id": "CAND-0009-DEF-2",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-79",
+          "acceptable_alternative_cwes": [
+            "CWE-116",
+            "CWE-20"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 292,
+          "end_line": 293,
+          "description": "Ground-truth locus 292-293"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_filters.py::test_xmlattr_key_invalid`.",
+      "provenance": {
+        "advisory": "GHSA-h75v-3vvj-5mfj / CVE-2024-34064",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0014",
+      "candidate_id": "CAND-0014",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "django/django",
+      "commit_hash": "425718726b7d2edd7b8a043f8976e437262b5098",
+      "buggy_commit": "425718726b7d2edd7b8a043f8976e437262b5098",
+      "fixed_commit": "54eb8a374d5d98594b264e8ec22337819b37443c",
+      "is_buggy": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-943"
+      ],
+      "target_file": "django/db/models/functions/datetime.py",
+      "line_ranges": [
+        [
+          45,
+          51
+        ],
+        [
+          225,
+          236
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0014-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-943"
+          ],
+          "file_path": "django/db/models/functions/datetime.py",
+          "start_line": 45,
+          "end_line": 51,
+          "description": "Ground-truth locus 45-51"
+        },
+        {
+          "defect_id": "CAND-0014-DEF-2",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-943"
+          ],
+          "file_path": "django/db/models/functions/datetime.py",
+          "start_line": 225,
+          "end_line": 236,
+          "description": "Ground-truth locus 225-236"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/db_functions/datetime/test_extract_trunc.py::test_extract_lookup_name_sql_injection`.",
+      "provenance": {
+        "advisory": "GHSA-p64x-8rxx-wf6q / CVE-2022-34265",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0017",
+      "candidate_id": "CAND-0017",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "tortoise/tortoise-orm",
+      "commit_hash": "816ff00e988f79b4ff1601f247062bb5eb9db802",
+      "buggy_commit": "816ff00e988f79b4ff1601f247062bb5eb9db802",
+      "fixed_commit": "91c364053e0ddf77edc5442914c6f049512678b3",
+      "is_buggy": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-943"
+      ],
+      "target_file": "tortoise/backends/mysql/executor.py",
+      "line_ranges": [
+        [
+          19,
+          45
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0017-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-943"
+          ],
+          "file_path": "tortoise/backends/mysql/executor.py",
+          "start_line": 19,
+          "end_line": 45,
+          "description": "Ground-truth locus 19-45"
+        }
+      ],
+      "reproducer": "Upstream fuzz test harness `tests/test_fuzz.py`.",
+      "provenance": {
+        "advisory": "GHSA-9j2c-x8qm-qmjq / CVE-2020-11010",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0019",
+      "candidate_id": "CAND-0019",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "aio-libs/aiohttp",
+      "commit_hash": "33ccdfb0a12690af5bb49bda2319ec0907fa7827",
+      "buggy_commit": "33ccdfb0a12690af5bb49bda2319ec0907fa7827",
+      "fixed_commit": "1c335944d6a8b1298baf179b7c0b3069f10c514b",
+      "is_buggy": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-59"
+      ],
+      "target_file": "aiohttp/web_urldispatcher.py",
+      "line_ranges": [
+        [
+          643,
+          645
+        ],
+        [
+          574,
+          576
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0019-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-59"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 643,
+          "end_line": 645,
+          "description": "Ground-truth locus 643-645"
+        },
+        {
+          "defect_id": "CAND-0019-DEF-2",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-59"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 574,
+          "end_line": 576,
+          "description": "Ground-truth locus 574-576"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_web_urldispatcher.py::test_follow_symlink_directory_traversal`.",
+      "provenance": {
+        "advisory": "GHSA-5h86-8mv2-jq9f / CVE-2024-23334",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0021",
+      "candidate_id": "CAND-0021",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "encode/starlette",
+      "commit_hash": "24c1fac62a80bb153c6548145334fc643991e35a",
+      "buggy_commit": "24c1fac62a80bb153c6548145334fc643991e35a",
+      "fixed_commit": "1797de464124b090f10cf570441e8292936d63e3",
+      "is_buggy": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "starlette/staticfiles.py",
+      "line_ranges": [
+        [
+          172,
+          172
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0021-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "starlette/staticfiles.py",
+          "start_line": 172,
+          "end_line": 172,
+          "description": "Ground-truth locus 172-172"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_staticfiles.py::test_staticfiles_avoids_path_traversal`.",
+      "provenance": {
+        "advisory": "GHSA-v5gw-mw7f-84px / CVE-2023-29159",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0025",
+      "candidate_id": "CAND-0025",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "jpadilla/pyjwt",
+      "commit_hash": "24b29adfebcb4f057a3cef5aaf35653bc0c1c8cc",
+      "buggy_commit": "24b29adfebcb4f057a3cef5aaf35653bc0c1c8cc",
+      "fixed_commit": "9c528670c455b8d948aff95ed50e22940d1ad3fc",
+      "is_buggy": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-347",
+      "acceptable_alternative_cwes": [
+        "CWE-287",
+        "CWE-327"
+      ],
+      "target_file": "jwt/algorithms.py",
+      "line_ranges": [
+        [
+          186,
+          197
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0025-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-347",
+          "acceptable_alternative_cwes": [
+            "CWE-287",
+            "CWE-327"
+          ],
+          "file_path": "jwt/algorithms.py",
+          "start_line": 186,
+          "end_line": 197,
+          "description": "Ground-truth locus 186-197"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_advisory.py::TestAdvisory::test_ghsa_ffqj_6fqr_9h24`.",
+      "provenance": {
+        "advisory": "GHSA-ffqj-6fqr-9h24 / CVE-2022-29217",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0027",
+      "candidate_id": "CAND-0027",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "lepture/authlib",
+      "commit_hash": "bb7a315befbad333faf9a23ef574d6e3134a6774",
+      "buggy_commit": "bb7a315befbad333faf9a23ef574d6e3134a6774",
+      "fixed_commit": "b87c32ed07b8ae7f805873e1c9cafd1016761df7",
+      "is_buggy": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-347",
+      "acceptable_alternative_cwes": [
+        "CWE-287",
+        "CWE-327"
+      ],
+      "target_file": "authlib/jose/__init__.py",
+      "line_ranges": [
+        [
+          49,
+          49
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0027-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-347",
+          "acceptable_alternative_cwes": [
+            "CWE-287",
+            "CWE-327"
+          ],
+          "file_path": "authlib/jose/__init__.py",
+          "start_line": 49,
+          "end_line": 49,
+          "description": "Ground-truth locus 49-49"
+        }
+      ],
+      "reproducer": "Upstream tests in `tests/flask/test_oauth2/test_jwt_authorization_request.py::test_server_require_request_object_alg_none`.",
+      "provenance": {
+        "advisory": "GHSA-7wc2-qxgw-g8gg / CVE-2026-28802",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0031",
+      "candidate_id": "CAND-0031",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "jupyterhub/jupyterhub",
+      "commit_hash": "b4053616743eb011e5bb568700f25afca17aef53",
+      "buggy_commit": "b4053616743eb011e5bb568700f25afca17aef53",
+      "fixed_commit": "99e2720b0fc626cbeeca3c6337f917fdacfaa428",
+      "is_buggy": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-269",
+      "acceptable_alternative_cwes": [
+        "CWE-285",
+        "CWE-863"
+      ],
+      "target_file": "jupyterhub/apihandlers/users.py",
+      "line_ranges": [
+        [
+          265,
+          267
+        ],
+        [
+          328,
+          331
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0031-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-269",
+          "acceptable_alternative_cwes": [
+            "CWE-285",
+            "CWE-863"
+          ],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 265,
+          "end_line": 267,
+          "description": "Ground-truth locus 265-267"
+        },
+        {
+          "defect_id": "CAND-0031-DEF-2",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-269",
+          "acceptable_alternative_cwes": [
+            "CWE-285",
+            "CWE-863"
+          ],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 328,
+          "end_line": 331,
+          "description": "Ground-truth locus 328-331"
+        }
+      ],
+      "reproducer": "Upstream regression tests `jupyterhub/tests/test_api.py::test_add_admin` and `test_user_make_admin` (parametrized across `is_admin: True, False`).",
+      "provenance": {
+        "advisory": "GHSA-9x4q-3gxw-849f / CVE-2024-41942",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0032",
+      "candidate_id": "CAND-0032",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "zulip/zulip",
+      "commit_hash": "ea0b8cc01133c79033868efee3edc6c1e3fa0f2b",
+      "buggy_commit": "ea0b8cc01133c79033868efee3edc6c1e3fa0f2b",
+      "fixed_commit": "a30cd12433e3a9f7764763ba38849ac635da5283",
+      "is_buggy": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-863",
+      "acceptable_alternative_cwes": [
+        "CWE-285",
+        "CWE-639"
+      ],
+      "target_file": "zerver/lib/message.py",
+      "line_ranges": [
+        [
+          825,
+          827
+        ],
+        [
+          842,
+          856
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0032-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-863",
+          "acceptable_alternative_cwes": [
+            "CWE-285",
+            "CWE-639"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 825,
+          "end_line": 827,
+          "description": "Ground-truth locus 825-827"
+        },
+        {
+          "defect_id": "CAND-0032-DEF-2",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-863",
+          "acceptable_alternative_cwes": [
+            "CWE-285",
+            "CWE-639"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 842,
+          "end_line": 856,
+          "description": "Ground-truth locus 842-856"
+        }
+      ],
+      "reproducer": "Upstream regression test `zerver/tests/test_message_edit.py::test_edit_message_in_unsubscribed_private_stream`.",
+      "provenance": {
+        "advisory": "GHSA-q3wg-jm9p-35fj / CVE-2023-32678",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md"
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0006",
+      "candidate_id": "CAND-0006",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "scrapy/scrapy",
+      "commit_hash": "f02c3d1dcf3e4880388d19e961e7911be5dc54ff",
+      "buggy_commit": "f02c3d1dcf3e4880388d19e961e7911be5dc54ff",
+      "fixed_commit": "439a3e59b8e858441f8d97dbc32f398db392330d",
+      "is_buggy": true,
+      "category_id": 1,
+      "impact": "functional",
+      "primary_cwe": "CWE-476",
+      "acceptable_alternative_cwes": [
+        "CWE-670"
+      ],
+      "target_file": "scrapy/utils/datatypes.py",
+      "line_ranges": [
+        [
+          318,
+          319
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0006-DEF-1",
+          "category_id": 1,
+          "impact": "functional",
+          "primary_cwe": "CWE-476",
+          "acceptable_alternative_cwes": [
+            "CWE-670"
+          ],
+          "file_path": "scrapy/utils/datatypes.py",
+          "start_line": 318,
+          "end_line": 319,
+          "description": "Missing NoneType boundary check on self.limit before relational comparison len(self) >= self.limit in LocalCache.__setitem__"
+        }
+      ],
+      "reproducer": "Executed test reproducing TypeError ('>=' not supported between 'int' and 'NoneType') on LocalCache() without limit; verified fixed revision resolves defect (tests/test_utils_datatypes.py::LocalCacheTest::test_cache_without_limit).",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md",
+        "replaces_case_id": "CAND-0003"
+      },
+      "reproducer_status": "executed_confirmed",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0008",
+      "candidate_id": "CAND-0008",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "Kludex/python-multipart",
+      "commit_hash": "d3d16dae4b061c34fe9d3c9081d9800c49fc1f7a",
+      "buggy_commit": "d3d16dae4b061c34fe9d3c9081d9800c49fc1f7a",
+      "fixed_commit": "20f0ef6b4e4caf7d69a667c54dff57fe467109a4",
+      "is_buggy": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-1333",
+      "acceptable_alternative_cwes": [
+        "CWE-400"
+      ],
+      "target_file": "multipart/multipart.py",
+      "line_ranges": [
+        [
+          72,
+          75
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0008-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-1333",
+          "acceptable_alternative_cwes": [
+            "CWE-400"
+          ],
+          "file_path": "multipart/multipart.py",
+          "start_line": 72,
+          "end_line": 75,
+          "description": "Vulnerable OPTION_RE regular expression prone to ReDoS (call site in parse_options_header at lines 101-117)"
+        }
+      ],
+      "reproducer": "Exact advisory PoC payload (`header = 'application/x-www-form-urlencoded; !=\"' + ('\\\\' * N)`) executed locally in controlled benchmark subprocess across commits `d3d16dae` vs `20f0ef6b`; demonstrated exponential backtracking (O(2^(N/2))), stalling at 2.1266s at N=37 on buggy unpatched revision vs 0.00002s on fixed (92,461.7x slowdown).",
+      "provenance": {
+        "advisory": "GHSA-2jv5-9r88-3w3p / CVE-2024-24762",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md"
+      },
+      "reproducer_status": "executed_confirmed",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0015",
+      "candidate_id": "CAND-0015",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "django/django",
+      "commit_hash": "6b178a3e930f72069f3cda2e6a09d1b320fc09ec",
+      "buggy_commit": "6b178a3e930f72069f3cda2e6a09d1b320fc09ec",
+      "fixed_commit": "eb31d845323618d688ad429479c6dda973056136",
+      "is_buggy": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-943"
+      ],
+      "target_file": "django/contrib/postgres/aggregates/general.py",
+      "line_ranges": [
+        [
+          54,
+          58
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0015-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-943"
+          ],
+          "file_path": "django/contrib/postgres/aggregates/general.py",
+          "start_line": 54,
+          "end_line": 58,
+          "description": "Raw string interpolation of delimiter in StringAgg SQL template"
+        }
+      ],
+      "reproducer": "Cited upstream regression test tests/postgres_tests/test_aggregates.py::test_string_agg_delimiter_escaping (requires PostgreSQL database setup; not run locally).",
+      "provenance": {
+        "advisory": "GHSA-hmr4-m2h5-33qx / CVE-2020-7471",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md"
+      },
+      "reproducer_status": "cited_not_run",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0020",
+      "candidate_id": "CAND-0020",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "pallets/werkzeug",
+      "commit_hash": "50cfeebcb0727e18cc52ffbeb125f4a66551179b",
+      "buggy_commit": "50cfeebcb0727e18cc52ffbeb125f4a66551179b",
+      "fixed_commit": "2767bcb10a7dd1c297d812cc5e6d11a474c1f092",
+      "is_buggy": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "src/werkzeug/security.py",
+      "line_ranges": [
+        [
+          151,
+          157
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0020-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "src/werkzeug/security.py",
+          "start_line": 151,
+          "end_line": 157,
+          "description": "safe_join fails to block UNC / leading slash paths on Windows"
+        }
+      ],
+      "reproducer": "Cited upstream regression test tests/test_security.py::test_safe_join with //b/c UNC path. Defect requires Windows + Python < 3.11; not reproducible in local Windows Python 3.12.10 environment because ntpath.isabs already treats //b/c as absolute.",
+      "provenance": {
+        "advisory": "GHSA-f9vj-2wh5-fj8j / CVE-2024-49766",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md"
+      },
+      "reproducer_status": "attempted_blocked",
+      "contextual_files": []
+    },
+    {
+      "case_id": "CAND-0026",
+      "candidate_id": "CAND-0026",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "paramiko/paramiko",
+      "commit_hash": "aefd28a7f00c4250d113d375e96abf5da3eb89f9",
+      "buggy_commit": "aefd28a7f00c4250d113d375e96abf5da3eb89f9",
+      "fixed_commit": "fa29bd8446c8eab237f5187d28787727b4610516",
+      "is_buggy": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-287",
+      "acceptable_alternative_cwes": [
+        "CWE-305"
+      ],
+      "target_file": "paramiko/transport.py",
+      "contextual_files": [
+        "paramiko/common.py"
+      ],
+      "line_ranges": [
+        [
+          1822,
+          1828
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0026-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-287",
+          "acceptable_alternative_cwes": [
+            "CWE-305"
+          ],
+          "file_path": "paramiko/transport.py",
+          "start_line": 1822,
+          "end_line": 1828,
+          "description": "Transport dispatch loop executes message handlers before authentication"
+        }
+      ],
+      "reproducer": "Cited upstream issue #1175. End-to-end SSH protocol verification requires interactive SSH test harness; not run locally.",
+      "provenance": {
+        "advisory": "GHSA-232r-66cg-79px / CVE-2018-7750",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md"
+      },
+      "reproducer_status": "cited_not_run"
+    },
+    {
+      "case_id": "CAND-0033",
+      "candidate_id": "CAND-0033",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "zulip/zulip",
+      "commit_hash": "b1007916b03a40841ba141f5e4f041aeaeaaa010",
+      "buggy_commit": "b1007916b03a40841ba141f5e4f041aeaeaaa010",
+      "fixed_commit": "0cdfe767edca25901ae0922e4e71bd1d2e96084a",
+      "is_buggy": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-863",
+      "acceptable_alternative_cwes": [
+        "CWE-639"
+      ],
+      "target_file": "zerver/actions/typing.py",
+      "line_ranges": [
+        [
+          83,
+          85
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0033-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-863",
+          "acceptable_alternative_cwes": [
+            "CWE-639"
+          ],
+          "file_path": "zerver/actions/typing.py",
+          "start_line": 83,
+          "end_line": 85,
+          "description": "check_send_typing_notification fails to verify sender access to recipients"
+        }
+      ],
+      "reproducer": "Cited upstream regression test zerver/tests/test_typing.py::TypingRestrictedUserAccessTest::test_direct_typing_notification_to_inaccessible_user (requires Zulip backend services; not run locally).",
+      "provenance": {
+        "advisory": "GHSA-wj5v-8mqg-gvqw",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md"
+      },
+      "reproducer_status": "cited_not_run",
+      "contextual_files": []
+    }
+  ]
+}
