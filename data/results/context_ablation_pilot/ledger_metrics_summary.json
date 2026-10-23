@@ -1,0 +1,363 @@
+{
+  "canonical_run_id": "ablation-run-1d21ebe5",
+  "total_raw_findings": 27,
+  "methodological_interpretation": "Tiers 1, 2, and 3 are overlapping, post-hoc exploratory sensitivity subsets derived from the same six matched fixture pairs evaluated in a single run. They reuse identical underlying model outputs and do NOT constitute independent replications or formal statistical hypothesis tests.",
+  "all_fixtures_cohort": {
+    "denominator": 6,
+    "arm_n": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 2,
+      "plausible_or_unresolved_concerns": 2,
+      "supported_false_positives": 10,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 14
+    },
+    "arm_r": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 2,
+      "plausible_or_unresolved_concerns": 4,
+      "supported_false_positives": 7,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 13
+    }
+  },
+  "operational_clean_cohort_d5": {
+    "tier_name": "Tier 1: Operational Online-Authentication Cohort",
+    "denominator": 5,
+    "eligible_fixtures": [
+      "ABL-0001",
+      "ABL-0002",
+      "ABL-0003",
+      "ABL-0004",
+      "ABL-0005"
+    ],
+    "eligibility_rule": "OPERATIONAL_ONLINE_AUTH_ONLY (Narrow single-account guessing defense; excludes distributed credential stuffing, offline cracking, and unbounded payload memory exhaustion; ABL-0004-v1 conditionally retained under narrow scope only)",
+    "arm_n": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 2,
+      "supported_false_positives": 8,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 10
+    },
+    "arm_r": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 4,
+      "supported_false_positives": 5,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 9
+    },
+    "delta_r_minus_n": {
+      "false_positives": -3,
+      "total_findings": -1
+    }
+  },
+  "comprehensive_security_clean_cohort_d4": {
+    "tier_name": "Tier 2: Comprehensive Security-Clean Cohort",
+    "denominator": 4,
+    "eligible_fixtures": [
+      "ABL-0001",
+      "ABL-0002",
+      "ABL-0003",
+      "ABL-0005"
+    ],
+    "eligibility_rule": "COMPREHENSIVE_SECURITY_CLEAN (Self-contained defensive hygiene; excludes ABL-0006 reliability defects and ABL-0004 unverified caller salt, 100k < 600k OWASP work factor, and unvalidated input length)",
+    "arm_n": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 1,
+      "supported_false_positives": 6,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 7
+    },
+    "arm_r": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 3,
+      "supported_false_positives": 3,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 6
+    },
+    "delta_r_minus_n": {
+      "false_positives": -3,
+      "total_findings": -1
+    }
+  },
+  "strict_clean_cohort_d4": {
+    "tier_name": "Tier 2: Comprehensive Security-Clean Cohort",
+    "denominator": 4,
+    "eligible_fixtures": [
+      "ABL-0001",
+      "ABL-0002",
+      "ABL-0003",
+      "ABL-0005"
+    ],
+    "eligibility_rule": "COMPREHENSIVE_SECURITY_CLEAN (Self-contained defensive hygiene; excludes ABL-0006 reliability defects and ABL-0004 unverified caller salt, 100k < 600k OWASP work factor, and unvalidated input length)",
+    "arm_n": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 1,
+      "supported_false_positives": 6,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 7
+    },
+    "arm_r": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 3,
+      "supported_false_positives": 3,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 6
+    },
+    "delta_r_minus_n": {
+      "false_positives": -3,
+      "total_findings": -1
+    }
+  },
+  "zero_code_smell_cohort_d1": {
+    "tier_name": "Tier 3: Lint-Clean / Zero-Code-Smell Cohort",
+    "denominator": 1,
+    "eligible_fixtures": [
+      "ABL-0003"
+    ],
+    "eligibility_rule": "LINT_CLEAN_ZERO_CODE_SMELL (Zero linter/maintainability smells; single matched illustrative case ABL-0003; excludes ABL-0001 prefix-check, ABL-0002 unused param, ABL-0004 unverified salt/100k, ABL-0005 unused import, ABL-0006 reliability defects)",
+    "arm_n": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 0,
+      "supported_false_positives": 2,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 2
+    },
+    "arm_r": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 0,
+      "supported_false_positives": 0,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 0
+    },
+    "delta_r_minus_n": {
+      "false_positives": -2,
+      "total_findings": -2
+    }
+  },
+  "excluded_cohort_abl0006": {
+    "denominator": 1,
+    "fixture": "ABL-0006",
+    "exclusion_rationale": "MIXED_OR_DEFECTIVE: Confirmed unhandled decode exception (binascii.Error) and session invalidation upon single-key rotation.",
+    "arm_n": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 2,
+      "plausible_or_unresolved_concerns": 0,
+      "supported_false_positives": 2,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 4
+    },
+    "arm_r": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 2,
+      "plausible_or_unresolved_concerns": 0,
+      "supported_false_positives": 2,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 4
+    },
+    "excluded_finding_ids": {
+      "arm_n": [
+        "ABL-0006-N-1",
+        "ABL-0006-N-2",
+        "ABL-0006-N-3",
+        "ABL-0006-N-4"
+      ],
+      "arm_r": [
+        "ABL-0006-R-1",
+        "ABL-0006-R-2",
+        "ABL-0006-R-3",
+        "ABL-0006-R-4"
+      ]
+    }
+  },
+  "excluded_cohort_abl0004": {
+    "denominator": 1,
+    "fixture": "ABL-0004",
+    "exclusion_rationale": "UNRESOLVED_SECURITY_CONCERN: Caller-provided salt without generation or validation, hardcoded 100k iterations below OWASP recommendation (600k), and unvalidated input length.",
+    "arm_n": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 1,
+      "supported_false_positives": 2,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 3
+    },
+    "arm_r": {
+      "confirmed_security_vulnerabilities": 0,
+      "confirmed_correctness_reliability_defects": 0,
+      "plausible_or_unresolved_concerns": 1,
+      "supported_false_positives": 2,
+      "duplicate_findings": 0,
+      "not_adjudicable": 0,
+      "total_candidate_findings": 3
+    },
+    "excluded_finding_ids": {
+      "arm_n": [
+        "ABL-0004-N-1",
+        "ABL-0004-N-2",
+        "ABL-0004-N-3"
+      ],
+      "arm_r": [
+        "ABL-0004-R-1",
+        "ABL-0004-R-2",
+        "ABL-0004-R-3"
+      ]
+    }
+  },
+  "per_fixture_breakdown": {
+    "ABL-0001": {
+      "arm_n": {
+        "total": 2,
+        "false_positives": 2,
+        "defects": 0,
+        "concerns": 0,
+        "finding_ids": [
+          "ABL-0001-N-1",
+          "ABL-0001-N-2"
+        ]
+      },
+      "arm_r": {
+        "total": 3,
+        "false_positives": 2,
+        "defects": 0,
+        "concerns": 1,
+        "finding_ids": [
+          "ABL-0001-R-1",
+          "ABL-0001-R-2",
+          "ABL-0001-R-3"
+        ]
+      }
+    },
+    "ABL-0002": {
+      "arm_n": {
+        "total": 3,
+        "false_positives": 2,
+        "defects": 0,
+        "concerns": 1,
+        "finding_ids": [
+          "ABL-0002-N-1",
+          "ABL-0002-N-2",
+          "ABL-0002-N-3"
+        ]
+      },
+      "arm_r": {
+        "total": 2,
+        "false_positives": 1,
+        "defects": 0,
+        "concerns": 1,
+        "finding_ids": [
+          "ABL-0002-R-1",
+          "ABL-0002-R-2"
+        ]
+      }
+    },
+    "ABL-0003": {
+      "arm_n": {
+        "total": 2,
+        "false_positives": 2,
+        "defects": 0,
+        "concerns": 0,
+        "finding_ids": [
+          "ABL-0003-N-1",
+          "ABL-0003-N-2"
+        ]
+      },
+      "arm_r": {
+        "total": 0,
+        "false_positives": 0,
+        "defects": 0,
+        "concerns": 0,
+        "finding_ids": []
+      }
+    },
+    "ABL-0004": {
+      "arm_n": {
+        "total": 3,
+        "false_positives": 2,
+        "defects": 0,
+        "concerns": 1,
+        "finding_ids": [
+          "ABL-0004-N-1",
+          "ABL-0004-N-2",
+          "ABL-0004-N-3"
+        ]
+      },
+      "arm_r": {
+        "total": 3,
+        "false_positives": 2,
+        "defects": 0,
+        "concerns": 1,
+        "finding_ids": [
+          "ABL-0004-R-1",
+          "ABL-0004-R-2",
+          "ABL-0004-R-3"
+        ]
+      }
+    },
+    "ABL-0005": {
+      "arm_n": {
+        "total": 0,
+        "false_positives": 0,
+        "defects": 0,
+        "concerns": 0,
+        "finding_ids": []
+      },
+      "arm_r": {
+        "total": 1,
+        "false_positives": 0,
+        "defects": 0,
+        "concerns": 1,
+        "finding_ids": [
+          "ABL-0005-R-1"
+        ]
+      }
+    },
+    "ABL-0006": {
+      "arm_n": {
+        "total": 4,
+        "false_positives": 2,
+        "defects": 2,
+        "concerns": 0,
+        "finding_ids": [
+          "ABL-0006-N-1",
+          "ABL-0006-N-2",
+          "ABL-0006-N-3",
+          "ABL-0006-N-4"
+        ]
+      },
+      "arm_r": {
+        "total": 4,
+        "false_positives": 2,
+        "defects": 2,
+        "concerns": 0,
+        "finding_ids": [
+          "ABL-0006-R-1",
+          "ABL-0006-R-2",
+          "ABL-0006-R-3",
+          "ABL-0006-R-4"
+        ]
+      }
+    }
+  }
+}

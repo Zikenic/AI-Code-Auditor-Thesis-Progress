@@ -1,0 +1,13 @@
+Fixture ID,Arm,Status,Target File,Findings Count,Context Symbols,Prompt Tokens,Completion Tokens,Cost USD,Duration (s)
+ABL-0001,Arm N,success,storage.py,2,None,2426,867,$0.0203,16.16
+ABL-0001,Arm R,success,storage.py,3,sanitize_filename,2856,1179,$0.0263,24.06
+ABL-0002,Arm N,success,documents.py,3,None,2467,1135,$0.0244,22.77
+ABL-0002,Arm R,success,documents.py,2,assert_tenant_boundary,2798,942,$0.0225,20.97
+ABL-0003,Arm N,success,reports.py,2,None,2346,967,$0.0215,19.22
+ABL-0003,Arm R,success,reports.py,0,validate_table_whitelist,2644,8,$0.0081,3.30
+ABL-0004,Arm N,success,login_handler.py,3,None,2466,1481,$0.0296,30.36
+ABL-0004,Arm R,success,login_handler.py,3,"RateLimitExceeded, SlidingWindowRateLimiter, check_and_record",3201,1056,$0.0254,22.88
+ABL-0005,Arm N,success,chunk_consumer.py,0,None,2372,13,$0.0073,3.83
+ABL-0005,Arm R,success,chunk_consumer.py,1,"StreamCapExceeded, BoundedStreamReader, read_chunk",3229,932,$0.0237,19.69
+ABL-0006,Arm N,success,token_signer.py,4,None,2647,1494,$0.0304,30.34
+ABL-0006,Arm R,success,token_signer.py,4,"EphemeralSigningKeyVault, get_signing_key",3309,1712,$0.0356,34.78

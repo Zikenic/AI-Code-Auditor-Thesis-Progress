@@ -1,0 +1,88 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "description": "Controlled Repository-Context Ablation Pilot Fixtures (6 Multi-File Micro-Repositories)",
+    "total_fixtures": 6,
+    "created_at": "2026-10-24T00:15:00Z"
+  },
+  "fixtures": [
+    {
+      "fixture_id": "ABL-0001",
+      "repo_name": "repo_01_storage",
+      "repo_dir": "data/fixtures/ablation_fixtures/repo_01_storage",
+      "target_file": "storage.py",
+      "helper_files": ["validators.py"],
+      "test_file": "test_storage.py",
+      "target_function": "save_user_upload",
+      "helper_function": "sanitize_filename",
+      "security_pattern": "Path Traversal Sanitization",
+      "expected_clean_rationale": "File writes use path containment verification after sanitize_filename strips directory traversal markers, null bytes, and path separators.",
+      "cross_file_relationship": "storage.py delegates filename safety to validators.sanitize_filename; inspecting storage.py in isolation may prompt an unanchored LLM to warn of unconstrained user filename traversal."
+    },
+    {
+      "fixture_id": "ABL-0002",
+      "repo_name": "repo_02_tenant_doc",
+      "repo_dir": "data/fixtures/ablation_fixtures/repo_02_tenant_doc",
+      "target_file": "documents.py",
+      "helper_files": ["authz.py"],
+      "test_file": "test_documents.py",
+      "target_function": "retrieve_tenant_document",
+      "helper_function": "assert_tenant_boundary",
+      "security_pattern": "Multi-Tenant Authorization & IDOR Protection",
+      "expected_clean_rationale": "Document retrieval enforces strict tenant boundary check via assert_tenant_boundary before returning sensitive payload.",
+      "cross_file_relationship": "documents.py queries by primary document ID without tenant filter in the query itself, but immediately invokes authz.assert_tenant_boundary; without context, an LLM may flag IDOR or missing tenant isolation."
+    },
+    {
+      "fixture_id": "ABL-0003",
+      "repo_name": "repo_03_query_builder",
+      "repo_dir": "data/fixtures/ablation_fixtures/repo_03_query_builder",
+      "target_file": "reports.py",
+      "helper_files": ["schema_whitelist.py"],
+      "test_file": "test_reports.py",
+      "target_function": "build_metric_query",
+      "helper_function": "validate_table_whitelist",
+      "security_pattern": "Dynamic SQL Identifier Whitelisting",
+      "expected_clean_rationale": "Dynamic table identifier interpolation is safe because validate_table_whitelist validates against an immutable frozenset, and query values use parameter markers.",
+      "cross_file_relationship": "reports.py uses f-string formatting for table identifier; in isolation, this looks like classic SQL injection, but schema_whitelist.py proves table identifier is strictly whitelisted."
+    },
+    {
+      "fixture_id": "ABL-0004",
+      "repo_name": "repo_04_auth_service",
+      "repo_dir": "data/fixtures/ablation_fixtures/repo_04_auth_service",
+      "target_file": "login_handler.py",
+      "helper_files": ["rate_limiter.py"],
+      "test_file": "test_login.py",
+      "target_function": "process_login_attempt",
+      "helper_function": "check_and_record",
+      "security_pattern": "Brute-Force Rate Limiting",
+      "expected_clean_rationale": "Login verification uses PBKDF2-HMAC-SHA256 with constant-time comparison, preceded by sliding-window rate limit enforcement on username.",
+      "cross_file_relationship": "login_handler.py relies on SlidingWindowRateLimiter to guard credential verification; in isolation, reviewer cannot verify rate limiting implementation details."
+    },
+    {
+      "fixture_id": "ABL-0005",
+      "repo_name": "repo_05_stream_parser",
+      "repo_dir": "data/fixtures/ablation_fixtures/repo_05_stream_parser",
+      "target_file": "chunk_consumer.py",
+      "helper_files": ["bounded_stream.py"],
+      "test_file": "test_chunk_consumer.py",
+      "target_function": "process_stream_payload",
+      "helper_function": "read_chunk",
+      "security_pattern": "Bounded Stream Consumption & DoS Protection",
+      "expected_clean_rationale": "Stream reading loop is bounded by BoundedStreamReader which enforces hard caps on cumulative bytes read and chunk count, preventing memory exhaustion.",
+      "cross_file_relationship": "chunk_consumer.py runs a while-True chunk reading loop; in isolation, this can be mistaken for unbounded memory consumption or denial of service."
+    },
+    {
+      "fixture_id": "ABL-0006",
+      "repo_name": "repo_06_crypto_signer",
+      "repo_dir": "data/fixtures/ablation_fixtures/repo_06_crypto_signer",
+      "target_file": "token_signer.py",
+      "helper_files": ["key_vault.py"],
+      "test_file": "test_token_signer.py",
+      "target_function": "issue_signed_session_token",
+      "helper_function": "get_signing_key",
+      "security_pattern": "CSPRNG Key Management & HMAC Token Signing",
+      "expected_clean_rationale": "Session tokens are signed with HMAC-SHA256 using 256-bit CSPRNG keys with automatic rotation and constant-time verification.",
+      "cross_file_relationship": "token_signer.py calls vault.get_signing_key(); in isolation, a reviewer might hallucinate that keys are static, predictable, or unrotated."
+    }
+  ]
+}

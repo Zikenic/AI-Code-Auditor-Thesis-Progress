@@ -2,6 +2,26 @@
 
 > Append-only. One entry per session. Never edit or delete past entries — if a decision changes, add a new entry that supersedes it and say so explicitly. Newest entry at the top.
 
+## [2026-10-24] Session 52 — Final Week 5–6 Publication Integrity Audit & Test Scope Reconciliation
+
+- **Target Files**:
+  - Acceptance Report: `Project Documents/reports/week5_6_deliverables_acceptance_report.md`
+  - Public Staging Data: `data/ablation_manifest.json`, `data/ablation_adjudication_manifest.json`, `data/ablation_canonical_ledger.json`, `data/results/context_ablation_pilot/`, `data/results/historical_18_case_eval/`, `data/results/real_model_clean_control_evaluation/`
+- **Purpose**: Independently audit the published Week 5–6 deliverables, reconcile numerical and test scope differences between private canonical and public staging environments, verify benchmark provenance and SHA256 integrity, verify tokenizer and backend claims, and publish sanitized updates without regressions.
+- **Audit Findings & Reconciliations**:
+  - *No Local-Path Leaks in Published Report*: Verified that `reports/week5_6_deliverables_acceptance_report.md` contains 0 instances of `file:///`, local drive letters (`D:\`, `C:\`), or machine-specific user paths.
+  - *Test Scope Reconciliation*:
+    - Private Canonical: 306 passing tests (285 in `tests/` + 21 in `data/fixtures/ablation_fixtures_v2/`), 0 skipped, 0 failed.
+    - Public Staging: 305 passing tests, 1 skipped (284 passed, 1 skipped in `tests/` + 21 in `data/fixtures/ablation_fixtures_v2/`), 0 failed.
+    - Skipped Test: `tests/test_token_counting.py::test_live_gateway_token_counting_without_generation` is explicitly skipped in the public environment because `.env` is omitted by design to guarantee zero secret leakage.
+    - Targeted Week 5–6 Acceptance Suite: 43 passed, 1 skipped (out of 44 collected across `test_benchmark_100_provenance.py`, `test_token_counting.py`, `test_api_physical_db.py`, `test_webhook_intake.py`).
+  - *Benchmark Provenance Verified*: Independently re-verified all 100 cases in `data/benchmark_manifest.json` (50 defective, 50 clean; 18 upstream, 82 synthetic/handcrafted). 100% of fixtures exist on disk; 18/18 upstream snapshots match recorded SHA256 hashes and have valid, non-empty defect line loci.
+  - *Public Staging Test Completeness*: Transferred sanitized ablation evaluation data (`ablation_manifest.json`, `ablation_adjudication_manifest.json`, `ablation_canonical_ledger.json`, historical evaluation results) to `pub_staging` so that historical evaluation tests run green in the public checkout.
+- **Verification Outcomes**:
+  - Private canonical: 306 passed, 0 failed. Ruff clean.
+  - Public staging: 305 passed, 1 skipped, 0 failed. Ruff clean.
+  - Private `master` untouched; zero live LLM generation calls ($0.00 spent).
+
 ## [2026-10-24] Session 51 — Week 5–6 Milestone Closeout: 100-Case Benchmark, Tokenizer Fidelity, and Backend Integration
 
 - **Target Files**:

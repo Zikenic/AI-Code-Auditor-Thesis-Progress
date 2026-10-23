@@ -136,7 +136,7 @@ The webhook intake path implements the complete 10-step lifecycle:
 
 ## 5. Automated Verification Results
 
-All automated test suites, linting checks, and provenance tests passed with zero failures.
+All automated test suites, linting checks, and provenance tests passed with zero unexpected failures or regressions across both environments.
 
 ### Test Execution Summary
 
@@ -144,13 +144,24 @@ All automated test suites, linting checks, and provenance tests passed with zero
 | :--- | :---: | :--- | :--- |
 | `uv run ruff check src tests tools` | **0** | `All checks passed!` (0 lint errors) | Static Code Quality |
 | `uv run pytest tests/test_benchmark_100_provenance.py` | **0** | `6 passed in 0.41s` | Benchmark Census & Provenance |
-| `uv run pytest tests/test_token_counting.py` | **0** | `18 passed in 2.33s` | Model-Compatible Tokenizer Fidelity |
+| `uv run pytest tests/test_token_counting.py` | **0** | `18 passed in 2.33s` (Private) / `17 passed, 1 skipped` (Public) | Model-Compatible Tokenizer Fidelity |
 | `uv run pytest tests/test_api_physical_db.py` | **0** | `8 passed in 2.08s` | Physical DB & Subprocess Restart |
 | `uv run pytest tests/test_webhook_intake.py` | **0** | `12 passed in 3.76s` | Webhook Intake, HMAC & Retrievability |
-| `uv run pytest tests/` | **0** | `283 passed in 58.62s` | Full Project Test Suite |
-| `uv run pytest data/fixtures/ablation_fixtures_v2/` | **0** | `21 passed in 0.24s` | Context-Ablation V2 Fixtures |
+| `uv run pytest tests/` | **0** | `285 passed in 68.38s` (Private) / `284 passed, 1 skipped` (Public) | Full Project Test Suite |
+| `uv run pytest data/fixtures/ablation_fixtures_v2/` | **0** | `21 passed in 0.25s` | Context-Ablation V2 Fixtures |
 
-**Total Regression Tests**: **304 passing tests**, 0 failures, 0 regressions.
+### Test Scope and Environment Reconciliation
+
+1. **Private Canonical Environment**:
+   - Total Tests Executed: **306 tests** (285 tests in `tests/` + 21 tests in `data/fixtures/ablation_fixtures_v2/`).
+   - Outcome: **306 passed, 0 skipped, 0 failed** in 68.63s.
+   - All tests pass including `test_live_gateway_token_counting`, which validates the non-generating gateway token counting contract using local credentials.
+
+2. **Public Staging Environment**:
+   - Total Tests Executed: **306 tests** (285 tests in `tests/` + 21 tests in `data/fixtures/ablation_fixtures_v2/`).
+   - Outcome: **305 passed, 1 skipped, 0 failed** in 14.88s.
+   - Skipped Test: `tests/test_token_counting.py::test_live_gateway_token_counting_without_generation` is explicitly skipped because `.env` and live API credentials are strictly excluded from the public repository to guarantee credential safety.
+   - Targeted Week 5–6 Acceptance Suite: Running the 4 core deliverable test files (`test_benchmark_100_provenance.py`, `test_token_counting.py`, `test_api_physical_db.py`, `test_webhook_intake.py`) yields **43 passed, 1 skipped** (out of 44 collected tests).
 
 ---
 

@@ -1,0 +1,106 @@
+{
+  "benchmark_metadata": {
+    "timestamp_utc": "2026-10-23T18:55:09.762745+00:00",
+    "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "num_repetitions": 10,
+    "warmup_runs": 1,
+    "methodology_notes": [
+      "Payload strings are pre-allocated in memory before timing starts to isolate hashing/encoding from garbage collection",
+      "Timing measures UTF-8 encoding of pre-allocated string + hashlib.pbkdf2_hmac execution using time.perf_counter()",
+      "Does NOT include HTTP transport, network framing, or server request body limits"
+    ]
+  },
+  "measurements": [
+    {
+      "name": "typical_password_100k",
+      "description": "Baseline: 12-byte password, 100,000 iterations",
+      "payload_size_bytes": 12,
+      "iterations": 100000,
+      "raw_timings_ms": [
+        25.356399943120778,
+        25.28100006747991,
+        25.47790005337447,
+        27.386400033719838,
+        25.244000018574297,
+        25.304000009782612,
+        25.42740001808852,
+        25.3800000064075,
+        25.31179995276034,
+        25.537399924360216
+      ],
+      "mean_ms": 25.57,
+      "stdev_ms": 0.64,
+      "min_ms": 25.24,
+      "max_ms": 27.39
+    },
+    {
+      "name": "large_password_1mb_100k",
+      "description": "Oversized payload: 1 Megabyte string, 100,000 iterations",
+      "payload_size_bytes": 1000000,
+      "iterations": 100000,
+      "raw_timings_ms": [
+        26.348400046117604,
+        26.605500024743378,
+        26.992599945515394,
+        26.537699974142015,
+        26.4270999468863,
+        26.271300041116774,
+        26.411699946038425,
+        26.414899970404804,
+        26.93269995506853,
+        27.195499977096915
+      ],
+      "mean_ms": 26.61,
+      "stdev_ms": 0.31,
+      "min_ms": 26.27,
+      "max_ms": 27.2
+    },
+    {
+      "name": "extreme_password_10mb_100k",
+      "description": "Extreme payload: 10 Megabytes string, 100,000 iterations",
+      "payload_size_bytes": 10000000,
+      "iterations": 100000,
+      "raw_timings_ms": [
+        31.967799994163215,
+        33.034599968232214,
+        33.167899935506284,
+        33.353300066664815,
+        33.05660001933575,
+        32.78369992040098,
+        33.85210002306849,
+        33.262499957345426,
+        32.44670003186911,
+        33.4724000422284
+      ],
+      "mean_ms": 33.04,
+      "stdev_ms": 0.54,
+      "min_ms": 31.97,
+      "max_ms": 33.85
+    },
+    {
+      "name": "owasp_hardened_600k",
+      "description": "OWASP FIPS-140 recommended work factor: 12-byte password, 600,000 iterations",
+      "payload_size_bytes": 12,
+      "iterations": 600000,
+      "raw_timings_ms": [
+        153.03829999174923,
+        152.101100073196,
+        152.261900017038,
+        152.71270007360727,
+        151.02260001003742,
+        150.56750003714114,
+        151.50469995569438,
+        151.69289999175817,
+        153.38589996099472,
+        153.9653999498114
+      ],
+      "mean_ms": 152.23,
+      "stdev_ms": 1.07,
+      "min_ms": 150.57,
+      "max_ms": 153.97
+    }
+  ]
+}

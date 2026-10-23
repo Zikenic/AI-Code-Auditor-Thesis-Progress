@@ -1,0 +1,5 @@
+Configuration,Total Cases,Buggy Cases,Clean Cases,True Positives,False Positives,False Negatives,Total Predictions,Ground Truth Defects,Precision (%),Recall (%),F1 Score (%),Clean Case FPR (%),Defect Detection Rate (%),Failed Runs,Partial Runs,Static Preserved (C),Confirmed Triage (C),Likely FP Triage (C),Additional Candidates (C),Delta TP over C (D),Delta FP over C (D),Duration (s),Cost (USD)
+Config A,18,18,0,3,126,20,129,23,2.33,13.04,3.95,N/A (0 clean cases),16.67,0,0,N/A,N/A,N/A,N/A,N/A,N/A,74.97,N/A
+Config B,18,18,0,6,94,17,100,23,6.00,26.09,9.76,N/A (0 clean cases),33.33,0,0,N/A,N/A,N/A,N/A,N/A,N/A,689.20,N/A
+Config C,18,18,0,8,87,15,95,23,8.42,34.78,13.56,N/A (0 clean cases),38.89,1,0,0,0,0,95,N/A,N/A,1009.88,N/A
+Config D,18,18,0,7,85,16,92,23,7.61,30.43,12.17,N/A (0 clean cases),33.33,3,0,0,0,0,92,-1,-2,1262.20,$1.5271

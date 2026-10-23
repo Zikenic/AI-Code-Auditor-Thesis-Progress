@@ -1,0 +1,148 @@
+{
+  "metadata": {
+    "run_id": "ablation-run-5cc08b04",
+    "generated_at": "2026-10-23T17:19:38.017097+00:00",
+    "mode": "live",
+    "requested_model_id": "ag/claude-sonnet-4-6",
+    "total_fixtures": 1,
+    "total_slots": 2
+  },
+  "results": [
+    {
+      "fixture_id": "ABL-0001",
+      "arm": "N",
+      "status": "success",
+      "target_file": "storage.py",
+      "duration_seconds": 19.313,
+      "prompt_tokens": 3450,
+      "completion_tokens": 954,
+      "total_tokens": 4404,
+      "cost_usd": 0.02466,
+      "findings_count": 2,
+      "findings": [
+        {
+          "finding_id": "llm-605c5ebf94",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 4,
+          "primary_cwe": "CWE-22",
+          "alternative_cwes": [
+            "CWE-706"
+          ],
+          "file_path": "storage.py",
+          "start_line": 21,
+          "end_line": 21,
+          "severity": "high",
+          "confidence": "high",
+          "title": "Path traversal check uses string prefix matching, allowing bypass via similarly-named directories",
+          "description": "The containment check on line 21 uses `str(target_path).startswith(str(target_dir))` to verify that the resolved target path stays within the intended upload directory. This approach has a well-known bypass: if `target_dir` is, for example, `/uploads`, a path like `/uploads_evil/malicious.txt` would pass the check because the string `/uploads_evil/malicious.txt` does indeed start with `/uploads`. An attacker who can control the directory name suffix or who tricks the sanitizer into producing a filename beginning with certain characters could write files outside the intended upload root. The correct approach is to compare using `Path.is_relative_to()` (Python 3.9+) or by checking `target_path.parts` against `target_dir.parts`, or by ensuring a path separator follows the prefix: `str(target_path).startswith(str(target_dir) + os.sep)`.",
+          "suggestion": "Replace the string-prefix check with a proper path-based containment check. In Python 3.9+, use `target_path.is_relative_to(target_dir)`. For earlier versions, use `str(target_path).startswith(str(target_dir) + os.sep)` or compare via `target_dir` being one of `target_path.parents`. Example fix:\n```python\nif not target_path.is_relative_to(target_dir):\n    raise PermissionError(\"Attempted path escape outside root upload directory\")\n```",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-5bbd070037",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 4,
+          "primary_cwe": "CWE-73",
+          "alternative_cwes": [
+            "CWE-22"
+          ],
+          "file_path": "storage.py",
+          "start_line": 16,
+          "end_line": 16,
+          "severity": "medium",
+          "confidence": "medium",
+          "title": "Path traversal neutralization fully delegated to opaque external sanitizer with no fallback validation",
+          "description": "The code delegates all filename sanitization to `validators.sanitize_filename`, an external function whose implementation and guarantees are not visible in this module. If `sanitize_filename` returns an empty string, a string containing only dots (e.g., `..`), or a string containing null bytes or special OS-level characters, the subsequent path resolution and containment check may still fail to prevent unintended file operations. For instance, an empty `clean_name` would cause `target_path` to resolve to `target_dir` itself, and `open(target_dir, 'wb')` would raise an `IsADirectoryError` rather than producing a clean error. There is no defensive validation of `clean_name` after sanitization (e.g., checking it is non-empty and does not equal `.` or `..`).",
+          "suggestion": "After calling `sanitize_filename`, add explicit validation of `clean_name`: check that it is non-empty, does not equal `.` or `..`, contains no path separators (`/` or `\\`), and contains no null bytes. Example:\n```python\nclean_name = sanitize_filename(raw_filename)\nif not clean_name or clean_name in ('.', '..') or os.sep in clean_name or '\\x00' in clean_name:\n    raise ValueError(f\"Invalid sanitized filename: {clean_name!r}\")\n```",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        }
+      ],
+      "context_tokens_approx": 0,
+      "context_symbols": [],
+      "context_files": [],
+      "raw_response": "{\n  \"findings\": [\n    {\n      \"file_path\": \"storage.py\",\n      \"start_line\": 21,\n      \"end_line\": 21,\n      \"category_id\": 4,\n      \"primary_cwe\": \"CWE-22\",\n      \"alternative_cwes\": [\"CWE-706\"],\n      \"severity\": \"high\",\n      \"confidence\": \"high\",\n      \"title\": \"Path traversal check uses string prefix matching, allowing bypass via similarly-named directories\",\n      \"description\": \"The containment check on line 21 uses `str(target_path).startswith(str(target_dir))` to verify that the resolved target path stays within the intended upload directory. This approach has a well-known bypass: if `target_dir` is, for example, `/uploads`, a path like `/uploads_evil/malicious.txt` would pass the check because the string `/uploads_evil/malicious.txt` does indeed start with `/uploads`. An attacker who can control the directory name suffix or who tricks the sanitizer into producing a filename beginning with certain characters could write files outside the intended upload root. The correct approach is to compare using `Path.is_relative_to()` (Python 3.9+) or by checking `target_path.parts` against `target_dir.parts`, or by ensuring a path separator follows the prefix: `str(target_path).startswith(str(target_dir) + os.sep)`.\",\n      \"suggestion\": \"Replace the string-prefix check with a proper path-based containment check. In Python 3.9+, use `target_path.is_relative_to(target_dir)`. For earlier versions, use `str(target_path).startswith(str(target_dir) + os.sep)` or compare via `target_dir` being one of `target_path.parents`. Example fix:\\n```python\\nif not target_path.is_relative_to(target_dir):\\n    raise PermissionError(\\\"Attempted path escape outside root upload directory\\\")\\n```\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"storage.py\",\n      \"start_line\": 16,\n      \"end_line\": 16,\n      \"category_id\": 4,\n      \"primary_cwe\": \"CWE-73\",\n      \"alternative_cwes\": [\"CWE-22\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\",\n      \"title\": \"Path traversal neutralization fully delegated to opaque external sanitizer with no fallback validation\",\n      \"description\": \"The code delegates all filename sanitization to `validators.sanitize_filename`, an external function whose implementation and guarantees are not visible in this module. If `sanitize_filename` returns an empty string, a string containing only dots (e.g., `..`), or a string containing null bytes or special OS-level characters, the subsequent path resolution and containment check may still fail to prevent unintended file operations. For instance, an empty `clean_name` would cause `target_path` to resolve to `target_dir` itself, and `open(target_dir, 'wb')` would raise an `IsADirectoryError` rather than producing a clean error. There is no defensive validation of `clean_name` after sanitization (e.g., checking it is non-empty and does not equal `.` or `..`).\",\n      \"suggestion\": \"After calling `sanitize_filename`, add explicit validation of `clean_name`: check that it is non-empty, does not equal `.` or `..`, contains no path separators (`/` or `\\\\`), and contains no null bytes. Example:\\n```python\\nclean_name = sanitize_filename(raw_filename)\\nif not clean_name or clean_name in ('.', '..') or os.sep in clean_name or '\\\\x00' in clean_name:\\n    raise ValueError(f\\\"Invalid sanitized filename: {clean_name!r}\\\")\\n```\",\n      \"category_1_impact\": null\n    }\n  ]\n}",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0001",
+      "arm": "R",
+      "status": "success",
+      "target_file": "storage.py",
+      "duration_seconds": 17.656,
+      "prompt_tokens": 2856,
+      "completion_tokens": 850,
+      "total_tokens": 3706,
+      "cost_usd": 0.021318,
+      "findings_count": 2,
+      "findings": [
+        {
+          "finding_id": "llm-9c37ca0b49",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 4,
+          "primary_cwe": "CWE-22",
+          "alternative_cwes": [
+            "CWE-706"
+          ],
+          "file_path": "storage.py",
+          "start_line": 21,
+          "end_line": 21,
+          "severity": "high",
+          "confidence": "high",
+          "title": "Path containment check vulnerable to prefix confusion attack",
+          "description": "The boundary check `str(target_path).startswith(str(target_dir))` is vulnerable to a path prefix confusion attack. If `target_dir` resolves to something like `/var/uploads`, an attacker could craft a filename that causes `target_path` to resolve to `/var/uploads_evil/malicious` \u2014 a path that starts with the string `/var/uploads` but is outside the intended directory. The `startswith` check would pass even though the path escapes the intended containment boundary. The correct check requires verifying that the target path is a subdirectory of `target_dir` using path-aware comparison (e.g., checking that `target_dir` is among `target_path.parents` or using `target_path.relative_to(target_dir)`).",
+          "suggestion": "Replace the `startswith` string comparison with a proper path-aware check. For example:\n```python\ntry:\n    target_path.relative_to(target_dir)\nexcept ValueError:\n    raise PermissionError(\"Attempted path escape outside root upload directory\")\n```\nAlternatively, ensure the check appends an `os.sep` to the directory string: `str(target_path).startswith(str(target_dir) + os.sep)` and also handle the case where `target_path == target_dir`.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-324e98aab4",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-476",
+          "alternative_cwes": [
+            "CWE-394"
+          ],
+          "file_path": "storage.py",
+          "start_line": 16,
+          "end_line": 18,
+          "severity": "medium",
+          "confidence": "medium",
+          "title": "Empty or dot-only sanitized filename can result in writing to the target directory itself",
+          "description": "Although `sanitize_filename` raises a `ValueError` if the sanitized name is empty, if `clean_name` results in a string like `.` or similar that resolves to the directory itself after `Path.resolve()`, then `target_path` could equal `target_dir`. In that case, `target_path.startswith(str(target_dir))` trivially passes, and the code attempts to open the directory as a file for writing, which will raise an `IsADirectoryError` on POSIX systems or a similar OS error. Additionally, certain edge cases in the `sanitize_filename` implementation (e.g., the `.strip(\" .\")` call stripping all dots and spaces) might not be caught before reaching the file-write step, leading to an unhandled exception rather than a clean `PermissionError`.",
+          "suggestion": "After resolving `target_path`, explicitly verify that `target_path != target_dir` and that `target_path.parent == target_dir` (or that it is strictly within `target_dir`). Also, ensure the resolved filename component is non-empty before proceeding to write.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "unhandled_exception"
+          }
+        }
+      ],
+      "context_tokens_approx": 209,
+      "context_symbols": [
+        "sanitize_filename"
+      ],
+      "context_files": [
+        "validators.py"
+      ],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"storage.py\",\n      \"start_line\": 21,\n      \"end_line\": 21,\n      \"category_id\": 4,\n      \"primary_cwe\": \"CWE-22\",\n      \"alternative_cwes\": [\"CWE-706\"],\n      \"severity\": \"high\",\n      \"confidence\": \"high\",\n      \"title\": \"Path containment check vulnerable to prefix confusion attack\",\n      \"description\": \"The boundary check `str(target_path).startswith(str(target_dir))` is vulnerable to a path prefix confusion attack. If `target_dir` resolves to something like `/var/uploads`, an attacker could craft a filename that causes `target_path` to resolve to `/var/uploads_evil/malicious` \u2014 a path that starts with the string `/var/uploads` but is outside the intended directory. The `startswith` check would pass even though the path escapes the intended containment boundary. The correct check requires verifying that the target path is a subdirectory of `target_dir` using path-aware comparison (e.g., checking that `target_dir` is among `target_path.parents` or using `target_path.relative_to(target_dir)`).\",\n      \"suggestion\": \"Replace the `startswith` string comparison with a proper path-aware check. For example:\\n```python\\ntry:\\n    target_path.relative_to(target_dir)\\nexcept ValueError:\\n    raise PermissionError(\\\"Attempted path escape outside root upload directory\\\")\\n```\\nAlternatively, ensure the check appends an `os.sep` to the directory string: `str(target_path).startswith(str(target_dir) + os.sep)` and also handle the case where `target_path == target_dir`.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"storage.py\",\n      \"start_line\": 16,\n      \"end_line\": 18,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-476\",\n      \"alternative_cwes\": [\"CWE-394\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\",\n      \"title\": \"Empty or dot-only sanitized filename can result in writing to the target directory itself\",\n      \"description\": \"Although `sanitize_filename` raises a `ValueError` if the sanitized name is empty, if `clean_name` results in a string like `.` or similar that resolves to the directory itself after `Path.resolve()`, then `target_path` could equal `target_dir`. In that case, `target_path.startswith(str(target_dir))` trivially passes, and the code attempts to open the directory as a file for writing, which will raise an `IsADirectoryError` on POSIX systems or a similar OS error. Additionally, certain edge cases in the `sanitize_filename` implementation (e.g., the `.strip(\\\" .\\\")` call stripping all dots and spaces) might not be caught before reaching the file-write step, leading to an unhandled exception rather than a clean `PermissionError`.\",\n      \"suggestion\": \"After resolving `target_path`, explicitly verify that `target_path != target_dir` and that `target_path.parent == target_dir` (or that it is strictly within `target_dir`). Also, ensure the resolved filename component is non-empty before proceeding to write.\",\n      \"category_1_impact\": \"unhandled_exception\"\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    }
+  ]
+}

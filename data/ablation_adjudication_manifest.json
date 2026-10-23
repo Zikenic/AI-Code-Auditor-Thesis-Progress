@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.2.0",
+  "generated_at": "2026-10-24T01:56:00+00:00",
+  "pilot_run_id": "ablation-run-1d21ebe5",
+  "methodological_interpretation": "Tiers 1, 2, and 3 are overlapping, post-hoc exploratory sensitivity subsets of the same six original matched fixture pairs evaluated in a single run. They reuse identical underlying model outputs and do NOT constitute independent replications or formal statistical hypothesis tests.",
+  "clean_control_tiers": {
+    "tier_1_online_operational": {
+      "name": "Tier 1: Operational Online-Authentication Cohort",
+      "denominator": 5,
+      "eligible_fixtures": ["ABL-0001", "ABL-0002", "ABL-0003", "ABL-0004", "ABL-0005"],
+      "threat_model": "Narrow single-target online authentication. Assumes sliding-window rate limiting on auth:{username} halts repeated password guessing against a single known account. EXCLUDED THREATS: distributed credential stuffing across multiple accounts, password spraying, offline cracking of stolen database hashes, and memory exhaustion from unbounded payloads. ABL-0004-v1 is conditionally included under this narrow operational assumption only."
+    },
+    "tier_2_comprehensive_security": {
+      "name": "Tier 2: Comprehensive Security-Clean Cohort",
+      "denominator": 4,
+      "eligible_fixtures": ["ABL-0001", "ABL-0002", "ABL-0003", "ABL-0005"],
+      "threat_model": "Comprehensive defensive security hygiene, verifiable caller contracts, and resistance to offline cracking. Excludes ABL-0006 (MIXED_OR_DEFECTIVE: unhandled decode exceptions and session invalidation) and ABL-0004 (UNRESOLVED_SECURITY_CONCERN: unverified caller-provided salt, missing per-user uniqueness/entropy guarantees, 100k < 600k OWASP iterations, and unbounded input length)."
+    },
+    "tier_3_zero_code_smell": {
+      "name": "Tier 3: Lint-Clean / Zero-Code-Smell Cohort",
+      "denominator": 1,
+      "eligible_fixtures": ["ABL-0003"],
+      "threat_model": "Strict code-quality sensitivity filter requiring zero code smells and zero linter warnings. Excludes ABL-0001 (fragile startswith prefix), ABL-0002 (unused argument ARG001), ABL-0004 (unverified salt contract / sub-optimal PBKDF2), ABL-0005 (unused import F401), and ABL-0006 (confirmed reliability defects). Represents a single matched illustrative case (ABL-0003), NOT a cohort-level statistical proof of general efficacy."
+    }
+  },
+  "fixtures": [
+    {
+      "fixture_id": "ABL-0001",
+      "repository_name": "repo_01_storage",
+      "files": ["storage.py", "validators.py", "test_storage.py"],
+      "target_file": "storage.py",
+      "sibling_file": "validators.py",
+      "intended_security_property": "Prevent path traversal on user file uploads via sanitization and canonical directory containment.",
+      "actual_properties_supported": "Strips null bytes, path separators, traversal sequences; validates non-empty safe basename; enforces startswith directory containment check.",
+      "concrete_source_locations": {
+        "storage.py": "lines 10-28",
+        "validators.py": "lines 10-34"
+      },
+      "verification_status": "verified",
+      "categories": {
+        "vulnerabilities": [],
+        "correctness_defects": [],
+        "reliability_defects": [],
+        "maintainability_concerns": ["startswith prefix check is fragile compared to Path.is_relative_to(), though non-exploitable under remote upload threat model"]
+      },
+      "clean_control_eligible": true,
+      "adjudication_outcome": "confirmed_safe",
+      "tier_eligibility": {
+        "tier_1_online_operational": true,
+        "tier_2_comprehensive_security": true,
+        "tier_3_zero_code_smell": false
+      },
+      "confidence": "high",
+      "confidence_rationale": "Filename is stripped of separators and traversal components before joining with upload directory. Escape is physically impossible.",
+      "required_action": "none"
+    },
+    {
+      "fixture_id": "ABL-0002",
+      "repository_name": "repo_02_tenant_doc",
+      "files": ["documents.py", "authz.py", "test_documents.py"],
+      "target_file": "documents.py",
+      "sibling_file": "authz.py",
+      "intended_security_property": "Enforce strict multi-tenant boundary on document retrieval.",
+      "actual_properties_supported": "Rejects empty tenant IDs and mismatched tenant IDs with TenantAccessDenied (fail-closed).",
+      "concrete_source_locations": {
+        "documents.py": "lines 9-35",
+        "authz.py": "lines 11-24"
+      },
+      "verification_status": "verified",
+      "categories": {
+        "vulnerabilities": [],
+        "correctness_defects": [],
+        "reliability_defects": [],
+        "maintainability_concerns": ["requesting_user_id parameter is accepted in retrieve_tenant_document signature but unused (ARG001)"]
+      },
+      "clean_control_eligible": true,
+      "adjudication_outcome": "confirmed_safe",
+      "tier_eligibility": {
+        "tier_1_online_operational": true,
+        "tier_2_comprehensive_security": true,
+        "tier_3_zero_code_smell": false
+      },
+      "confidence": "high",
+      "confidence_rationale": "Tenant isolation is fully enforced on every code path. Missing or mismatched tenant IDs immediately raise TenantAccessDenied.",
+      "required_action": "provide_v2_clarification"
+    },
+    {
+      "fixture_id": "ABL-0003",
+      "repository_name": "repo_03_query_builder",
+      "files": ["reports.py", "schema_whitelist.py", "test_reports.py"],
+      "target_file": "reports.py",
+      "sibling_file": "schema_whitelist.py",
+      "intended_security_property": "Prevent SQL injection in dynamic table identifier queries via immutable whitelist validation.",
+      "actual_properties_supported": "Table names strictly restricted to 4 hardcoded string constants in frozenset; invalid identifiers raise ValueError.",
+      "concrete_source_locations": {
+        "reports.py": "lines 9-21",
+        "schema_whitelist.py": "lines 5-26"
+      },
+      "verification_status": "verified",
+      "categories": {
+        "vulnerabilities": [],
+        "correctness_defects": [],
+        "reliability_defects": [],
+        "maintainability_concerns": []
+      },
+      "clean_control_eligible": true,
+      "adjudication_outcome": "confirmed_safe",
+      "tier_eligibility": {
+        "tier_1_online_operational": true,
+        "tier_2_comprehensive_security": true,
+        "tier_3_zero_code_smell": true
+      },
+      "confidence": "high",
+      "confidence_rationale": "Only static whitelist members are returned. Value cannot escape or inject SQL syntax.",
+      "required_action": "none"
+    },
+    {
+      "fixture_id": "ABL-0004",
+      "repository_name": "repo_04_auth_service",
+      "files": ["login_handler.py", "rate_limiter.py", "test_login.py"],
+      "target_file": "login_handler.py",
+      "sibling_file": "rate_limiter.py",
+      "intended_security_property": "Protect login endpoints from brute-force attacks via sliding-window rate limiting and constant-time password verification.",
+      "actual_properties_supported": "Rate limit check executes before hashing and raises RateLimitExceeded (max 5/60s); password verified via PBKDF2-HMAC-SHA256 and hmac.compare_digest.",
+      "concrete_source_locations": {
+        "login_handler.py": "lines 11-34",
+        "rate_limiter.py": "lines 14-35"
+      },
+      "verification_status": "partially_verified",
+      "categories": {
+        "vulnerabilities": [],
+        "correctness_defects": [],
+        "reliability_defects": [],
+        "maintainability_concerns": [
+          "Accepts caller-provided salt string without verifying minimum entropy (>= 32 bits per NIST SP 800-63B Rev 4) or managing salt generation/uniqueness",
+          "Hardcoded PBKDF2 iteration count (100,000) is below current OWASP Password Storage guidance (600,000 iterations for PBKDF2-HMAC-SHA256)",
+          "Lacks explicit maximum length validation on password_attempt string before memory allocation"
+        ]
+      },
+      "clean_control_eligible": true,
+      "adjudication_outcome": "unresolved_security_concern",
+      "tier_eligibility": {
+        "tier_1_online_operational": true,
+        "tier_2_comprehensive_security": false,
+        "tier_3_zero_code_smell": false
+      },
+      "confidence": "high",
+      "confidence_rationale": "Under the narrow online authentication threat model, sliding-window rate limiting on auth:{username} halts single-account guessing; constant-time comparison prevents timing leaks. Under comprehensive security evaluation, caller-provided salt handling is unverified, credential stuffing across accounts is unthrottled, and 100k iterations is below OWASP recommendations. Classified as UNRESOLVED_SECURITY_CONCERN (conditionally eligible in Tier 1 D=5; excluded in Tier 2 D=4 and Tier 3 D=1). Fully resolved in ABL-0004-v2.",
+      "required_action": "provide_v2_hardened_fixture"
+    },
+    {
+      "fixture_id": "ABL-0005",
+      "repository_name": "repo_05_stream_parser",
+      "files": ["chunk_consumer.py", "bounded_stream.py", "test_chunk_consumer.py"],
+      "target_file": "chunk_consumer.py",
+      "sibling_file": "bounded_stream.py",
+      "intended_security_property": "Protect stream consumption against memory exhaustion / unbounded stream DoS via cumulative byte and chunk caps.",
+      "actual_properties_supported": "BoundedStreamReader raises StreamCapExceeded if total bytes read exceeds 500,000 or chunks exceed 500.",
+      "concrete_source_locations": {
+        "chunk_consumer.py": "lines 9-24",
+        "bounded_stream.py": "lines 14-43"
+      },
+      "verification_status": "verified",
+      "categories": {
+        "vulnerabilities": [],
+        "correctness_defects": [],
+        "reliability_defects": [],
+        "maintainability_concerns": ["StreamCapExceeded is imported in chunk_consumer.py without being referenced locally (F401 unused import)"]
+      },
+      "clean_control_eligible": true,
+      "adjudication_outcome": "confirmed_safe",
+      "tier_eligibility": {
+        "tier_1_online_operational": true,
+        "tier_2_comprehensive_security": true,
+        "tier_3_zero_code_smell": false
+      },
+      "confidence": "high",
+      "confidence_rationale": "Memory safety guarantee is fully enforced. StreamCapExceeded propagates to caller as specified by unit tests.",
+      "required_action": "provide_v2_clarification"
+    },
+    {
+      "fixture_id": "ABL-0006",
+      "repository_name": "repo_06_crypto_signer",
+      "files": ["token_signer.py", "key_vault.py", "test_token_signer.py"],
+      "target_file": "token_signer.py",
+      "sibling_file": "key_vault.py",
+      "intended_security_property": "Issue and verify HMAC-SHA256 session tokens with high-entropy CSPRNG keys.",
+      "actual_properties_supported": "HMAC-SHA256 computed with 256-bit CSPRNG secrets and verified using hmac.compare_digest.",
+      "concrete_source_locations": {
+        "token_signer.py": "lines 13-40",
+        "key_vault.py": "lines 9-29"
+      },
+      "verification_status": "partially_verified",
+      "categories": {
+        "vulnerabilities": [],
+        "correctness_defects": [
+          "base64.urlsafe_b64decode raises unhandled binascii.Error on malformed token padding instead of a structured domain exception"
+        ],
+        "reliability_defects": [
+          "EphemeralSigningKeyVault single-key rotation without key-id or grace period invalidates all active sessions upon key rotation"
+        ],
+        "maintainability_concerns": []
+      },
+      "clean_control_eligible": false,
+      "adjudication_outcome": "mixed_defective_control",
+      "tier_eligibility": {
+        "tier_1_online_operational": false,
+        "tier_2_comprehensive_security": false,
+        "tier_3_zero_code_smell": false
+      },
+      "confidence": "high",
+      "confidence_rationale": "Cryptographic signature verification is secure, but the module possesses confirmed reliability and error-handling defects under key rotation and malformed input. Excluded from all clean-control cohorts.",
+      "required_action": "exclude_from_clean_control_denominator_and_provide_v2"
+    }
+  ]
+}

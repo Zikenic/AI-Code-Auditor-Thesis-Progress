@@ -1,0 +1,3 @@
+Fixture ID,Arm,Status,Target File,Findings Count,Context Symbols,Prompt Tokens,Completion Tokens,Cost USD,Duration (s)
+ABL-0001,Arm N,success,storage.py,2,None,3450,954,$0.0247,19.31
+ABL-0001,Arm R,success,storage.py,2,sanitize_filename,2856,850,$0.0213,17.66

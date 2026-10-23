@@ -1,0 +1,892 @@
+{
+  "metadata": {
+    "run_id": "ablation-run-1d21ebe5",
+    "generated_at": "2026-10-23T17:24:30.485588+00:00",
+    "mode": "live",
+    "requested_model_id": "ag/claude-sonnet-4-6",
+    "total_fixtures": 6,
+    "total_slots": 12
+  },
+  "results": [
+    {
+      "fixture_id": "ABL-0001",
+      "arm": "N",
+      "status": "success",
+      "target_file": "storage.py",
+      "duration_seconds": 16.156,
+      "prompt_tokens": 2426,
+      "completion_tokens": 867,
+      "total_tokens": 3293,
+      "cost_usd": 0.020283,
+      "findings_count": 2,
+      "findings": [
+        {
+          "finding_id": "llm-b78b711f43",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 4,
+          "primary_cwe": "CWE-22",
+          "alternative_cwes": [
+            "CWE-706"
+          ],
+          "file_path": "storage.py",
+          "start_line": 21,
+          "end_line": 21,
+          "severity": "high",
+          "confidence": "high",
+          "title": "Path Traversal via String Prefix Check Instead of Path Prefix Check",
+          "description": "The containment check on line 21 uses `str(target_path).startswith(str(target_dir))` to verify that the resolved target path remains within the upload directory. This check is vulnerable to a path traversal bypass because a directory whose string representation is a prefix of another directory's string can produce false positives. For example, if `target_dir` is `/uploads` and `clean_name` resolves to something inside `/uploads_evil/` (e.g., through a symlink or other mechanism), the string `/uploads_evil/file` starts with `/uploads` but is outside the intended directory. The correct approach is to use `Path.is_relative_to()` (Python 3.9+) or compare `Path` parents, not raw string prefix matching.",
+          "suggestion": "Replace the string-based prefix check with a proper path containment check. In Python 3.9+, use `target_path.is_relative_to(target_dir)`. For earlier versions, use `target_dir in target_path.parents` or compare `os.path.commonpath([target_path, target_dir]) == str(target_dir)`. Example:\n```python\nif not target_path.is_relative_to(target_dir):\n    raise PermissionError(\"Attempted path escape outside root upload directory\")\n```",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-5301efd2c4",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 4,
+          "primary_cwe": "CWE-73",
+          "alternative_cwes": [
+            "CWE-22"
+          ],
+          "file_path": "storage.py",
+          "start_line": 16,
+          "end_line": 16,
+          "severity": "medium",
+          "confidence": "medium",
+          "title": "Blind Trust in External sanitize_filename Without Null/Empty Result Validation",
+          "description": "`sanitize_filename` is called on line 16 and its result is used directly without validating that it returns a non-empty, non-null string. If `sanitize_filename` returns an empty string (e.g., because the entire filename was composed of forbidden characters), then `target_dir / ''` resolves to `target_dir` itself, causing `open(target_path, 'wb')` to attempt to open and truncate the upload directory path as a file, which on most operating systems raises an `IsADirectoryError`. Depending on the implementation of `sanitize_filename`, it may also return `None`, causing a `TypeError` when passed to `Path.__truediv__`.",
+          "suggestion": "After calling `sanitize_filename`, validate the result: ensure it is a non-empty string and does not consist solely of dots or whitespace. Raise a `ValueError` with an appropriate message if the sanitized filename is invalid. Example:\n```python\nclean_name = sanitize_filename(raw_filename)\nif not clean_name or clean_name.strip() in ('', '.'):\n    raise ValueError(\"Invalid or empty filename after sanitization\")\n```",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "unhandled_exception"
+          }
+        }
+      ],
+      "context_tokens_approx": 0,
+      "context_symbols": [],
+      "context_files": [],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"storage.py\",\n      \"start_line\": 21,\n      \"end_line\": 21,\n      \"category_id\": 4,\n      \"primary_cwe\": \"CWE-22\",\n      \"alternative_cwes\": [\"CWE-706\"],\n      \"severity\": \"high\",\n      \"confidence\": \"high\",\n      \"title\": \"Path Traversal via String Prefix Check Instead of Path Prefix Check\",\n      \"description\": \"The containment check on line 21 uses `str(target_path).startswith(str(target_dir))` to verify that the resolved target path remains within the upload directory. This check is vulnerable to a path traversal bypass because a directory whose string representation is a prefix of another directory's string can produce false positives. For example, if `target_dir` is `/uploads` and `clean_name` resolves to something inside `/uploads_evil/` (e.g., through a symlink or other mechanism), the string `/uploads_evil/file` starts with `/uploads` but is outside the intended directory. The correct approach is to use `Path.is_relative_to()` (Python 3.9+) or compare `Path` parents, not raw string prefix matching.\",\n      \"suggestion\": \"Replace the string-based prefix check with a proper path containment check. In Python 3.9+, use `target_path.is_relative_to(target_dir)`. For earlier versions, use `target_dir in target_path.parents` or compare `os.path.commonpath([target_path, target_dir]) == str(target_dir)`. Example:\\n```python\\nif not target_path.is_relative_to(target_dir):\\n    raise PermissionError(\\\"Attempted path escape outside root upload directory\\\")\\n```\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"storage.py\",\n      \"start_line\": 16,\n      \"end_line\": 16,\n      \"category_id\": 4,\n      \"primary_cwe\": \"CWE-73\",\n      \"alternative_cwes\": [\"CWE-22\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\",\n      \"title\": \"Blind Trust in External sanitize_filename Without Null/Empty Result Validation\",\n      \"description\": \"`sanitize_filename` is called on line 16 and its result is used directly without validating that it returns a non-empty, non-null string. If `sanitize_filename` returns an empty string (e.g., because the entire filename was composed of forbidden characters), then `target_dir / ''` resolves to `target_dir` itself, causing `open(target_path, 'wb')` to attempt to open and truncate the upload directory path as a file, which on most operating systems raises an `IsADirectoryError`. Depending on the implementation of `sanitize_filename`, it may also return `None`, causing a `TypeError` when passed to `Path.__truediv__`.\",\n      \"suggestion\": \"After calling `sanitize_filename`, validate the result: ensure it is a non-empty string and does not consist solely of dots or whitespace. Raise a `ValueError` with an appropriate message if the sanitized filename is invalid. Example:\\n```python\\nclean_name = sanitize_filename(raw_filename)\\nif not clean_name or clean_name.strip() in ('', '.'):\\n    raise ValueError(\\\"Invalid or empty filename after sanitization\\\")\\n```\",\n      \"category_1_impact\": \"unhandled_exception\"\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0001",
+      "arm": "R",
+      "status": "success",
+      "target_file": "storage.py",
+      "duration_seconds": 24.063,
+      "prompt_tokens": 2856,
+      "completion_tokens": 1179,
+      "total_tokens": 4035,
+      "cost_usd": 0.026253,
+      "findings_count": 3,
+      "findings": [
+        {
+          "finding_id": "llm-9076214b9d",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 4,
+          "primary_cwe": "CWE-22",
+          "alternative_cwes": [
+            "CWE-647"
+          ],
+          "file_path": "storage.py",
+          "start_line": 21,
+          "end_line": 21,
+          "severity": "high",
+          "confidence": "high",
+          "title": "Path containment check vulnerable to prefix confusion attack",
+          "description": "The directory containment check uses a simple string prefix comparison (`str(target_path).startswith(str(target_dir))`). This is vulnerable when `target_dir` is a prefix of a sibling directory name. For example, if `upload_dir` resolves to `/var/uploads`, an attacker could craft a filename that results in `target_path` resolving to `/var/uploads_evil/malicious.txt`. The string `/var/uploads_evil/malicious.txt` starts with `/var/uploads`, so the check passes even though the file is written outside the intended directory. The correct approach is to append a path separator to `target_dir` before the startswith check, or use `target_path.is_relative_to(target_dir)` (Python 3.9+).",
+          "suggestion": "Replace the startswith check with either:\n1. `if not str(target_path).startswith(str(target_dir) + os.sep):` \u2014 ensure the separator is appended so sibling directories are not matched.\n2. `if not target_path.is_relative_to(target_dir):` \u2014 use Python 3.9+ built-in that correctly handles path boundaries.\nAlso note that the `str(target_dir)` should handle the case where `target_dir` itself is the root `/`, though that is an edge case.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-38c58d6c09",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-476",
+          "alternative_cwes": [
+            "CWE-252"
+          ],
+          "file_path": "storage.py",
+          "start_line": 16,
+          "end_line": 18,
+          "severity": "medium",
+          "confidence": "medium",
+          "title": "Empty or whitespace-only clean_name causes target_path to equal target_dir",
+          "description": "Although `sanitize_filename` raises a `ValueError` for a fully empty sanitized result, it uses `.strip(\" .\")` which could theoretically return a non-empty string that only consists of underscores (replaced by the regex), producing a valid but unintended filename. More critically, if `sanitize_filename` returns a filename starting with a path separator (unlikely given current sanitizer but possible if the sanitizer changes), `(target_dir / clean_name).resolve()` would resolve to an absolute path rooted elsewhere. Additionally, if `clean_name` is `.` or resolves to nothing meaningful, `target_path` could equal `target_dir`, and writing to it would attempt to overwrite a directory. The containment check `startswith` would pass since `target_dir.startswith(target_dir)` is true when both paths are equal.",
+          "suggestion": "After computing `target_path`, assert it is not equal to `target_dir`: `if target_path == target_dir: raise ValueError(\"Resolved path is the upload directory itself\")`. Also ensure the containment check uses a trailing separator as described in the other finding.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "state_corruption"
+          }
+        },
+        {
+          "finding_id": "llm-854091ac5f",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 4,
+          "primary_cwe": "CWE-377",
+          "alternative_cwes": [
+            "CWE-362"
+          ],
+          "file_path": "storage.py",
+          "start_line": 24,
+          "end_line": 26,
+          "severity": "low",
+          "confidence": "low",
+          "title": "TOCTOU race condition between directory check and file write",
+          "description": "The upload directory is created with `mkdir` and then the file is opened. Between these two operations, a symlink could be placed at `target_dir` or any parent component, redirecting subsequent writes to an unintended location. Similarly, if the application is deployed with multiple workers, simultaneous uploads could create a race on directory creation or path validation. While `.resolve()` is called before the security check, the actual file system state may change between the check and the `open()` call.",
+          "suggestion": "Use OS-level mechanisms such as opening the directory with `O_DIRECTORY` and `O_NOFOLLOW` flags, then using `openat()` to create the file relative to the validated directory descriptor. In Python, consider using the `os.open` API with appropriate flags, or deploy with appropriate filesystem-level controls (e.g., no write access to parent directories by untrusted users).",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        }
+      ],
+      "context_tokens_approx": 209,
+      "context_symbols": [
+        "sanitize_filename"
+      ],
+      "context_files": [
+        "validators.py"
+      ],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"storage.py\",\n      \"start_line\": 21,\n      \"end_line\": 21,\n      \"category_id\": 4,\n      \"primary_cwe\": \"CWE-22\",\n      \"alternative_cwes\": [\"CWE-647\"],\n      \"severity\": \"high\",\n      \"confidence\": \"high\",\n      \"title\": \"Path containment check vulnerable to prefix confusion attack\",\n      \"description\": \"The directory containment check uses a simple string prefix comparison (`str(target_path).startswith(str(target_dir))`). This is vulnerable when `target_dir` is a prefix of a sibling directory name. For example, if `upload_dir` resolves to `/var/uploads`, an attacker could craft a filename that results in `target_path` resolving to `/var/uploads_evil/malicious.txt`. The string `/var/uploads_evil/malicious.txt` starts with `/var/uploads`, so the check passes even though the file is written outside the intended directory. The correct approach is to append a path separator to `target_dir` before the startswith check, or use `target_path.is_relative_to(target_dir)` (Python 3.9+).\",\n      \"suggestion\": \"Replace the startswith check with either:\\n1. `if not str(target_path).startswith(str(target_dir) + os.sep):` \u2014 ensure the separator is appended so sibling directories are not matched.\\n2. `if not target_path.is_relative_to(target_dir):` \u2014 use Python 3.9+ built-in that correctly handles path boundaries.\\nAlso note that the `str(target_dir)` should handle the case where `target_dir` itself is the root `/`, though that is an edge case.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"storage.py\",\n      \"start_line\": 16,\n      \"end_line\": 18,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-476\",\n      \"alternative_cwes\": [\"CWE-252\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\",\n      \"title\": \"Empty or whitespace-only clean_name causes target_path to equal target_dir\",\n      \"description\": \"Although `sanitize_filename` raises a `ValueError` for a fully empty sanitized result, it uses `.strip(\\\" .\\\")` which could theoretically return a non-empty string that only consists of underscores (replaced by the regex), producing a valid but unintended filename. More critically, if `sanitize_filename` returns a filename starting with a path separator (unlikely given current sanitizer but possible if the sanitizer changes), `(target_dir / clean_name).resolve()` would resolve to an absolute path rooted elsewhere. Additionally, if `clean_name` is `.` or resolves to nothing meaningful, `target_path` could equal `target_dir`, and writing to it would attempt to overwrite a directory. The containment check `startswith` would pass since `target_dir.startswith(target_dir)` is true when both paths are equal.\",\n      \"suggestion\": \"After computing `target_path`, assert it is not equal to `target_dir`: `if target_path == target_dir: raise ValueError(\\\"Resolved path is the upload directory itself\\\")`. Also ensure the containment check uses a trailing separator as described in the other finding.\",\n      \"category_1_impact\": \"state_corruption\"\n    },\n    {\n      \"file_path\": \"storage.py\",\n      \"start_line\": 24,\n      \"end_line\": 26,\n      \"category_id\": 4,\n      \"primary_cwe\": \"CWE-377\",\n      \"alternative_cwes\": [\"CWE-362\"],\n      \"severity\": \"low\",\n      \"confidence\": \"low\",\n      \"title\": \"TOCTOU race condition between directory check and file write\",\n      \"description\": \"The upload directory is created with `mkdir` and then the file is opened. Between these two operations, a symlink could be placed at `target_dir` or any parent component, redirecting subsequent writes to an unintended location. Similarly, if the application is deployed with multiple workers, simultaneous uploads could create a race on directory creation or path validation. While `.resolve()` is called before the security check, the actual file system state may change between the check and the `open()` call.\",\n      \"suggestion\": \"Use OS-level mechanisms such as opening the directory with `O_DIRECTORY` and `O_NOFOLLOW` flags, then using `openat()` to create the file relative to the validated directory descriptor. In Python, consider using the `os.open` API with appropriate flags, or deploy with appropriate filesystem-level controls (e.g., no write access to parent directories by untrusted users).\",\n      \"category_1_impact\": null\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0002",
+      "arm": "N",
+      "status": "success",
+      "target_file": "documents.py",
+      "duration_seconds": 22.765,
+      "prompt_tokens": 2467,
+      "completion_tokens": 1135,
+      "total_tokens": 3602,
+      "cost_usd": 0.024426,
+      "findings_count": 3,
+      "findings": [
+        {
+          "finding_id": "llm-fc9dac934b",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 6,
+          "primary_cwe": "CWE-862",
+          "alternative_cwes": [
+            "CWE-285",
+            "CWE-639"
+          ],
+          "file_path": "documents.py",
+          "start_line": 25,
+          "end_line": 28,
+          "severity": "critical",
+          "confidence": "high",
+          "title": "Authorization check does not validate requesting_user_id \u2014 user identity ignored",
+          "description": "The call to `assert_tenant_boundary` passes only `requesting_tenant_id` and the document's `tenant_id`. The `requesting_user_id` parameter received by `retrieve_tenant_document` is never used in the authorization check. This means any user who supplies a matching tenant ID\u2014regardless of whether they are actually associated with that tenant, or whether the document is restricted to a specific user within the tenant\u2014will pass the boundary check. If the authorization logic should also verify that the user belongs to the stated tenant (i.e., that the caller-supplied `requesting_tenant_id` is genuinely the caller's tenant), the omission of the user identity check creates a privilege escalation path: an attacker can supply an arbitrary `requesting_tenant_id` matching the target document and bypass user-level access control.",
+          "suggestion": "Pass `requesting_user_id` to the authorization function so it can verify the user's actual tenant membership before granting access. For example: `assert_tenant_boundary(user_id=requesting_user_id, user_tenant_id=requesting_tenant_id, document_tenant_id=record.get('tenant_id', ''))`. Additionally, consider validating server-side that `requesting_tenant_id` truly belongs to `requesting_user_id` rather than trusting the caller-supplied value.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-0d5769cddc",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 6,
+          "primary_cwe": "CWE-639",
+          "alternative_cwes": [
+            "CWE-285"
+          ],
+          "file_path": "documents.py",
+          "start_line": 27,
+          "end_line": 27,
+          "severity": "high",
+          "confidence": "medium",
+          "title": "Fallback empty string for missing tenant_id bypasses tenant boundary enforcement",
+          "description": "When the document record does not contain a `tenant_id` field, `record.get('tenant_id', '')` returns an empty string `''`. This value is passed as `document_tenant_id` to `assert_tenant_boundary`. If `assert_tenant_boundary` treats an empty string as a wildcard, as equal to another empty tenant, or simply does not raise on a mismatch between a real tenant ID and `''`, any tenant could successfully retrieve documents that lack a `tenant_id`. Documents without a tenant affiliation should either be explicitly handled (e.g., treated as inaccessible or as belonging to a system tenant) rather than silently substituting an empty string that may short-circuit the boundary check.",
+          "suggestion": "Instead of defaulting to `''`, raise an error or treat a missing `tenant_id` in the record as an exceptional case: `doc_tenant = record.get('tenant_id'); if not doc_tenant: raise ValueError('Document has no tenant_id; access denied')`. This prevents undefined authorization behavior for malformed records.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-eb5dc5b880",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-476",
+          "alternative_cwes": [],
+          "file_path": "documents.py",
+          "start_line": 34,
+          "end_line": 34,
+          "severity": "medium",
+          "confidence": "medium",
+          "title": "KeyError on record['tenant_id'] if tenant_id key is absent in record",
+          "description": "At line 27, the code safely uses `record.get('tenant_id', '')` to avoid a KeyError when `tenant_id` is missing. However, at line 34 in the return statement, `record['tenant_id']` is accessed with a direct key lookup. If the document record does not contain a `tenant_id` key, this will raise an unhandled `KeyError` after the authorization check has already passed. This is an inconsistency in key access that can cause a runtime exception for any document missing the `tenant_id` field.",
+          "suggestion": "Use `record.get('tenant_id', '')` consistently in the return dictionary, or validate the presence of required keys (including `id` and `tenant_id`) immediately after fetching the record and before performing any authorization or data access.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "unhandled_exception"
+          }
+        }
+      ],
+      "context_tokens_approx": 0,
+      "context_symbols": [],
+      "context_files": [],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"documents.py\",\n      \"start_line\": 25,\n      \"end_line\": 28,\n      \"category_id\": 6,\n      \"primary_cwe\": \"CWE-862\",\n      \"alternative_cwes\": [\"CWE-285\", \"CWE-639\"],\n      \"severity\": \"critical\",\n      \"confidence\": \"high\",\n      \"title\": \"Authorization check does not validate requesting_user_id \u2014 user identity ignored\",\n      \"description\": \"The call to `assert_tenant_boundary` passes only `requesting_tenant_id` and the document's `tenant_id`. The `requesting_user_id` parameter received by `retrieve_tenant_document` is never used in the authorization check. This means any user who supplies a matching tenant ID\u2014regardless of whether they are actually associated with that tenant, or whether the document is restricted to a specific user within the tenant\u2014will pass the boundary check. If the authorization logic should also verify that the user belongs to the stated tenant (i.e., that the caller-supplied `requesting_tenant_id` is genuinely the caller's tenant), the omission of the user identity check creates a privilege escalation path: an attacker can supply an arbitrary `requesting_tenant_id` matching the target document and bypass user-level access control.\",\n      \"suggestion\": \"Pass `requesting_user_id` to the authorization function so it can verify the user's actual tenant membership before granting access. For example: `assert_tenant_boundary(user_id=requesting_user_id, user_tenant_id=requesting_tenant_id, document_tenant_id=record.get('tenant_id', ''))`. Additionally, consider validating server-side that `requesting_tenant_id` truly belongs to `requesting_user_id` rather than trusting the caller-supplied value.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"documents.py\",\n      \"start_line\": 27,\n      \"end_line\": 27,\n      \"category_id\": 6,\n      \"primary_cwe\": \"CWE-639\",\n      \"alternative_cwes\": [\"CWE-285\"],\n      \"severity\": \"high\",\n      \"confidence\": \"medium\",\n      \"title\": \"Fallback empty string for missing tenant_id bypasses tenant boundary enforcement\",\n      \"description\": \"When the document record does not contain a `tenant_id` field, `record.get('tenant_id', '')` returns an empty string `''`. This value is passed as `document_tenant_id` to `assert_tenant_boundary`. If `assert_tenant_boundary` treats an empty string as a wildcard, as equal to another empty tenant, or simply does not raise on a mismatch between a real tenant ID and `''`, any tenant could successfully retrieve documents that lack a `tenant_id`. Documents without a tenant affiliation should either be explicitly handled (e.g., treated as inaccessible or as belonging to a system tenant) rather than silently substituting an empty string that may short-circuit the boundary check.\",\n      \"suggestion\": \"Instead of defaulting to `''`, raise an error or treat a missing `tenant_id` in the record as an exceptional case: `doc_tenant = record.get('tenant_id'); if not doc_tenant: raise ValueError('Document has no tenant_id; access denied')`. This prevents undefined authorization behavior for malformed records.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"documents.py\",\n      \"start_line\": 34,\n      \"end_line\": 34,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-476\",\n      \"alternative_cwes\": [],\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\",\n      \"title\": \"KeyError on record['tenant_id'] if tenant_id key is absent in record\",\n      \"description\": \"At line 27, the code safely uses `record.get('tenant_id', '')` to avoid a KeyError when `tenant_id` is missing. However, at line 34 in the return statement, `record['tenant_id']` is accessed with a direct key lookup. If the document record does not contain a `tenant_id` key, this will raise an unhandled `KeyError` after the authorization check has already passed. This is an inconsistency in key access that can cause a runtime exception for any document missing the `tenant_id` field.\",\n      \"suggestion\": \"Use `record.get('tenant_id', '')` consistently in the return dictionary, or validate the presence of required keys (including `id` and `tenant_id`) immediately after fetching the record and before performing any authorization or data access.\",\n      \"category_1_impact\": \"unhandled_exception\"\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0002",
+      "arm": "R",
+      "status": "success",
+      "target_file": "documents.py",
+      "duration_seconds": 20.969,
+      "prompt_tokens": 2798,
+      "completion_tokens": 942,
+      "total_tokens": 3740,
+      "cost_usd": 0.022524,
+      "findings_count": 2,
+      "findings": [
+        {
+          "finding_id": "llm-c972d81f3f",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 6,
+          "primary_cwe": "CWE-285",
+          "alternative_cwes": [
+            "CWE-863",
+            "CWE-639"
+          ],
+          "file_path": "documents.py",
+          "start_line": 25,
+          "end_line": 28,
+          "severity": "critical",
+          "confidence": "high",
+          "title": "Tenant boundary check bypassed when document has no tenant_id",
+          "description": "On line 27, `record.get(\"tenant_id\", \"\")` substitutes an empty string when the document record lacks a `tenant_id` field. Inside `assert_tenant_boundary` (authz.py line 17), the guard `if not user_tenant_id or not document_tenant_id` raises `TenantAccessDenied` when either value is falsy \u2014 including an empty string. This means a document that was stored without a `tenant_id` field will always trigger the 'Missing required tenant identification context' exception, making it permanently inaccessible to any legitimate tenant. More critically, if `requesting_tenant_id` is also empty or absent (e.g., due to a bug or crafted request upstream), both values become empty strings, the condition `not user_tenant_id or not document_tenant_id` evaluates to True and raises `TenantAccessDenied` \u2014 so that path is blocked. However, the real risk is the inverse: a document whose `tenant_id` is stored as an empty string `\"\"` in the record itself would be treated the same as a missing tenant_id, raising a TenantAccessDenied rather than performing the actual equality check. This architectural ambiguity means the authorization decision depends on the sentinel value chosen, creating a fragile and potentially exploitable boundary. Furthermore, the `requesting_user_id` parameter is accepted but never used in any authorization decision \u2014 only `requesting_tenant_id` is checked \u2014 meaning user-level access control within a tenant is entirely absent.",
+          "suggestion": "1) Do not use an empty string as a sentinel for a missing tenant_id. Instead, treat a document with no tenant_id as a data integrity error and raise an explicit exception before calling assert_tenant_boundary. 2) Use `record[\"tenant_id\"]` directly (without a default) so a missing field surfaces as a KeyError, which is unambiguous. 3) Evaluate whether `requesting_user_id` should be incorporated into authorization logic (e.g., per-document ACLs or ownership checks).",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-55f69d77d5",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 5,
+          "primary_cwe": "CWE-862",
+          "alternative_cwes": [],
+          "file_path": "documents.py",
+          "start_line": 9,
+          "end_line": 35,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "requesting_user_id accepted but never used in authorization",
+          "description": "The function signature accepts `requesting_user_id` (line 12) as an explicit parameter, implying it participates in access control. However, it is never passed to `assert_tenant_boundary` and is not used anywhere in the function body. Authorization is performed solely at the tenant level. Any intra-tenant access control (e.g., ensuring that only the document owner or specific roles within a tenant can read it) is entirely missing. An attacker who belongs to the correct tenant but should not have access to a specific document (e.g., another tenant member's private document) will receive the full document contents.",
+          "suggestion": "Either remove the `requesting_user_id` parameter if intra-tenant access control is intentionally out of scope (and document this clearly), or implement user-level authorization by checking the document's owner/ACL fields against `requesting_user_id` before returning the record.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        }
+      ],
+      "context_tokens_approx": 156,
+      "context_symbols": [
+        "assert_tenant_boundary"
+      ],
+      "context_files": [
+        "authz.py"
+      ],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"documents.py\",\n      \"start_line\": 25,\n      \"end_line\": 28,\n      \"category_id\": 6,\n      \"primary_cwe\": \"CWE-285\",\n      \"alternative_cwes\": [\"CWE-863\", \"CWE-639\"],\n      \"severity\": \"critical\",\n      \"confidence\": \"high\",\n      \"title\": \"Tenant boundary check bypassed when document has no tenant_id\",\n      \"description\": \"On line 27, `record.get(\\\"tenant_id\\\", \\\"\\\")` substitutes an empty string when the document record lacks a `tenant_id` field. Inside `assert_tenant_boundary` (authz.py line 17), the guard `if not user_tenant_id or not document_tenant_id` raises `TenantAccessDenied` when either value is falsy \u2014 including an empty string. This means a document that was stored without a `tenant_id` field will always trigger the 'Missing required tenant identification context' exception, making it permanently inaccessible to any legitimate tenant. More critically, if `requesting_tenant_id` is also empty or absent (e.g., due to a bug or crafted request upstream), both values become empty strings, the condition `not user_tenant_id or not document_tenant_id` evaluates to True and raises `TenantAccessDenied` \u2014 so that path is blocked. However, the real risk is the inverse: a document whose `tenant_id` is stored as an empty string `\\\"\\\"` in the record itself would be treated the same as a missing tenant_id, raising a TenantAccessDenied rather than performing the actual equality check. This architectural ambiguity means the authorization decision depends on the sentinel value chosen, creating a fragile and potentially exploitable boundary. Furthermore, the `requesting_user_id` parameter is accepted but never used in any authorization decision \u2014 only `requesting_tenant_id` is checked \u2014 meaning user-level access control within a tenant is entirely absent.\",\n      \"suggestion\": \"1) Do not use an empty string as a sentinel for a missing tenant_id. Instead, treat a document with no tenant_id as a data integrity error and raise an explicit exception before calling assert_tenant_boundary. 2) Use `record[\\\"tenant_id\\\"]` directly (without a default) so a missing field surfaces as a KeyError, which is unambiguous. 3) Evaluate whether `requesting_user_id` should be incorporated into authorization logic (e.g., per-document ACLs or ownership checks).\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"documents.py\",\n      \"start_line\": 9,\n      \"end_line\": 35,\n      \"category_id\": 5,\n      \"primary_cwe\": \"CWE-862\",\n      \"alternative_cwes\": [],\n      \"severity\": \"medium\",\n      \"confidence\": \"high\",\n      \"title\": \"requesting_user_id accepted but never used in authorization\",\n      \"description\": \"The function signature accepts `requesting_user_id` (line 12) as an explicit parameter, implying it participates in access control. However, it is never passed to `assert_tenant_boundary` and is not used anywhere in the function body. Authorization is performed solely at the tenant level. Any intra-tenant access control (e.g., ensuring that only the document owner or specific roles within a tenant can read it) is entirely missing. An attacker who belongs to the correct tenant but should not have access to a specific document (e.g., another tenant member's private document) will receive the full document contents.\",\n      \"suggestion\": \"Either remove the `requesting_user_id` parameter if intra-tenant access control is intentionally out of scope (and document this clearly), or implement user-level authorization by checking the document's owner/ACL fields against `requesting_user_id` before returning the record.\",\n      \"category_1_impact\": null\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0003",
+      "arm": "N",
+      "status": "success",
+      "target_file": "reports.py",
+      "duration_seconds": 19.219,
+      "prompt_tokens": 2346,
+      "completion_tokens": 967,
+      "total_tokens": 3313,
+      "cost_usd": 0.021543,
+      "findings_count": 2,
+      "findings": [
+        {
+          "finding_id": "llm-556374f962",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 3,
+          "primary_cwe": "CWE-89",
+          "alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "reports.py",
+          "start_line": 15,
+          "end_line": 18,
+          "severity": "high",
+          "confidence": "medium",
+          "title": "Potential SQL Injection via Unverified Whitelist Return Value Used in f-string Interpolation",
+          "description": "The code delegates table name validation to `validate_table_whitelist` and then directly interpolates its return value into an SQL query string via an f-string on line 18. The security of this pattern depends entirely on the correctness and robustness of the external `validate_table_whitelist` function \u2014 which is not auditable here. If `validate_table_whitelist` returns the caller-supplied `requested_table` value verbatim (e.g., after a failed or partial validation), or if it can be bypassed to return attacker-controlled content, the f-string interpolation at line 18 would permit SQL injection against the table identifier position. Since SQL drivers do not support parameterized table identifiers, any error or weakness in the whitelist function directly leads to injection. Additionally, there is no local assertion or secondary check verifying the return value is from a known-safe set before interpolation.",
+          "suggestion": "In addition to calling `validate_table_whitelist`, add a local defense-in-depth check in `build_metric_query` itself. Maintain an explicit local set of allowed table names and verify `safe_table` is a member before interpolation, e.g.:\n\n```python\nALLOWED_TABLES = frozenset({'metrics_daily', 'metrics_hourly', 'metrics_summary'})\nif safe_table not in ALLOWED_TABLES:\n    raise ValueError(f'Table {safe_table!r} is not permitted')\nsql = f'SELECT count(*), max(recorded_at) FROM {safe_table} WHERE category = %s'\n```\n\nThis ensures that even if `validate_table_whitelist` is misconfigured or compromised, the query cannot be constructed with an unsafe identifier.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-93dc823d12",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-476",
+          "alternative_cwes": [
+            "CWE-754"
+          ],
+          "file_path": "reports.py",
+          "start_line": 15,
+          "end_line": 15,
+          "severity": "medium",
+          "confidence": "medium",
+          "title": "No Null/None Return Guard After validate_table_whitelist Call",
+          "description": "The return value of `validate_table_whitelist(requested_table)` is assigned to `safe_table` and immediately used in an f-string on line 18 without any check for a `None` or empty-string return. If `validate_table_whitelist` returns `None` (e.g., when the table name is not found in the whitelist but the implementation signals failure by returning `None` rather than raising an exception), the resulting SQL will contain the literal string `None` as the table name: `SELECT count(*), max(recorded_at) FROM None WHERE category = %s`. This would cause a database error at runtime rather than a clear application-level rejection, potentially leaking internal error details. If it returns an empty string, the SQL would be syntactically malformed.",
+          "suggestion": "After calling `validate_table_whitelist`, explicitly check that the return value is a non-empty string before proceeding:\n\n```python\nsafe_table = validate_table_whitelist(requested_table)\nif not safe_table or not isinstance(safe_table, str):\n    raise ValueError(f'Invalid or disallowed table name: {requested_table!r}')\n```",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "unhandled_exception"
+          }
+        }
+      ],
+      "context_tokens_approx": 0,
+      "context_symbols": [],
+      "context_files": [],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"reports.py\",\n      \"start_line\": 15,\n      \"end_line\": 18,\n      \"category_id\": 3,\n      \"primary_cwe\": \"CWE-89\",\n      \"alternative_cwes\": [\"CWE-20\"],\n      \"severity\": \"high\",\n      \"confidence\": \"medium\",\n      \"title\": \"Potential SQL Injection via Unverified Whitelist Return Value Used in f-string Interpolation\",\n      \"description\": \"The code delegates table name validation to `validate_table_whitelist` and then directly interpolates its return value into an SQL query string via an f-string on line 18. The security of this pattern depends entirely on the correctness and robustness of the external `validate_table_whitelist` function \u2014 which is not auditable here. If `validate_table_whitelist` returns the caller-supplied `requested_table` value verbatim (e.g., after a failed or partial validation), or if it can be bypassed to return attacker-controlled content, the f-string interpolation at line 18 would permit SQL injection against the table identifier position. Since SQL drivers do not support parameterized table identifiers, any error or weakness in the whitelist function directly leads to injection. Additionally, there is no local assertion or secondary check verifying the return value is from a known-safe set before interpolation.\",\n      \"suggestion\": \"In addition to calling `validate_table_whitelist`, add a local defense-in-depth check in `build_metric_query` itself. Maintain an explicit local set of allowed table names and verify `safe_table` is a member before interpolation, e.g.:\\n\\n```python\\nALLOWED_TABLES = frozenset({'metrics_daily', 'metrics_hourly', 'metrics_summary'})\\nif safe_table not in ALLOWED_TABLES:\\n    raise ValueError(f'Table {safe_table!r} is not permitted')\\nsql = f'SELECT count(*), max(recorded_at) FROM {safe_table} WHERE category = %s'\\n```\\n\\nThis ensures that even if `validate_table_whitelist` is misconfigured or compromised, the query cannot be constructed with an unsafe identifier.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"reports.py\",\n      \"start_line\": 15,\n      \"end_line\": 15,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-476\",\n      \"alternative_cwes\": [\"CWE-754\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\",\n      \"title\": \"No Null/None Return Guard After validate_table_whitelist Call\",\n      \"description\": \"The return value of `validate_table_whitelist(requested_table)` is assigned to `safe_table` and immediately used in an f-string on line 18 without any check for a `None` or empty-string return. If `validate_table_whitelist` returns `None` (e.g., when the table name is not found in the whitelist but the implementation signals failure by returning `None` rather than raising an exception), the resulting SQL will contain the literal string `None` as the table name: `SELECT count(*), max(recorded_at) FROM None WHERE category = %s`. This would cause a database error at runtime rather than a clear application-level rejection, potentially leaking internal error details. If it returns an empty string, the SQL would be syntactically malformed.\",\n      \"suggestion\": \"After calling `validate_table_whitelist`, explicitly check that the return value is a non-empty string before proceeding:\\n\\n```python\\nsafe_table = validate_table_whitelist(requested_table)\\nif not safe_table or not isinstance(safe_table, str):\\n    raise ValueError(f'Invalid or disallowed table name: {requested_table!r}')\\n```\",\n      \"category_1_impact\": \"unhandled_exception\"\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0003",
+      "arm": "R",
+      "status": "success",
+      "target_file": "reports.py",
+      "duration_seconds": 3.297,
+      "prompt_tokens": 2644,
+      "completion_tokens": 8,
+      "total_tokens": 2652,
+      "cost_usd": 0.008052,
+      "findings_count": 0,
+      "findings": [],
+      "context_tokens_approx": 157,
+      "context_symbols": [
+        "validate_table_whitelist"
+      ],
+      "context_files": [
+        "schema_whitelist.py"
+      ],
+      "raw_response": "{\"findings\": []}",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0004",
+      "arm": "N",
+      "status": "success",
+      "target_file": "login_handler.py",
+      "duration_seconds": 30.359,
+      "prompt_tokens": 2466,
+      "completion_tokens": 1481,
+      "total_tokens": 3947,
+      "cost_usd": 0.029613,
+      "findings_count": 3,
+      "findings": [
+        {
+          "finding_id": "llm-7abc86dbd3",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 5,
+          "primary_cwe": "CWE-307",
+          "alternative_cwes": [
+            "CWE-799"
+          ],
+          "file_path": "login_handler.py",
+          "start_line": 24,
+          "end_line": 24,
+          "severity": "high",
+          "confidence": "high",
+          "title": "Rate limit check does not block execution on failure \u2014 authentication proceeds after RateLimitExceeded",
+          "description": "The call to `limiter.check_and_record(key=f\"auth:{username}\")` on line 24 raises a `RateLimitExceeded` exception when the limit is exceeded (as implied by the import of `RateLimitExceeded`). However, the function does not catch or handle this exception, which means the exception propagates up the call stack. If the caller catches `RateLimitExceeded` and continues execution, or if the exception is silently swallowed by generic exception handling upstream (e.g., `except Exception: pass`), the rate-limit protection is completely bypassed. More critically, the rate limit is checked and recorded *before* the password hash is computed, but if the limiter raises no exception (i.e., it returns normally), there is no explicit return or guard \u2014 however, the deeper issue is that the design relies entirely on the caller to propagate the exception correctly. Additionally, if `check_and_record` raises on the *first* call for a new key even due to an internal error, it could also block legitimate logins (denial of service). The correctness of authentication is entirely contingent on exception propagation behavior that is not enforced within this function.",
+          "suggestion": "Wrap the `limiter.check_and_record` call in a try/except that explicitly re-raises `RateLimitExceeded` and returns `False` or raises to signal rejection, or restructure the function to return `False` when the rate limit is exceeded. Alternatively, use a guard pattern:\n```python\ntry:\n    limiter.check_and_record(key=f\"auth:{username}\")\nexcept RateLimitExceeded:\n    return False\n```\nThis makes the control flow explicit and prevents accidental bypass.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-2a7de0a03e",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-916",
+          "alternative_cwes": [
+            "CWE-326"
+          ],
+          "file_path": "login_handler.py",
+          "start_line": 27,
+          "end_line": 32,
+          "severity": "medium",
+          "confidence": "medium",
+          "title": "PBKDF2 output compared as hex string to stored_hash without validating stored_hash format or encoding",
+          "description": "The derived hash is converted to a hex string via `.hex()` (line 32) and then compared to `stored_hash` (line 34). This introduces two issues:\n1. If `stored_hash` is stored in a different format (e.g., raw bytes encoded as base64, or with a different iteration count or algorithm prefix as used by modern password hashing libraries), the comparison will always return `False` even for correct passwords, causing a functional denial-of-service for legitimate users.\n2. If `stored_hash` is empty or has incorrect length, `hmac.compare_digest` will still complete without error, but the result is meaningless. An attacker who can influence the `stored_hash` value (e.g., via a database injection or a race condition returning a default/empty hash) could potentially manipulate the outcome.\nFurthermore, the `salt` parameter is accepted as a plain string parameter alongside `stored_hash` \u2014 there is no validation that the salt and hash are consistent (e.g., extracted from the same stored credential record), which could allow a confused deputy attack if these are sourced independently.",
+          "suggestion": "Validate that `stored_hash` is a non-empty string of the expected length (64 hex characters for SHA-256 PBKDF2). Consider using a dedicated password hashing library such as `passlib` or `argon2-cffi` that encodes the algorithm, salt, and iterations together, preventing format mismatches and simplifying verification. Example:\n```python\nif not stored_hash or len(stored_hash) != 64:\n    return False\n```",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "incorrect_computation"
+          }
+        },
+        {
+          "finding_id": "llm-228b34206c",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 2,
+          "primary_cwe": "CWE-20",
+          "alternative_cwes": [
+            "CWE-400"
+          ],
+          "file_path": "login_handler.py",
+          "start_line": 11,
+          "end_line": 34,
+          "severity": "medium",
+          "confidence": "medium",
+          "title": "No validation on username, password_attempt, or salt length \u2014 potential resource exhaustion via large inputs",
+          "description": "The function accepts `username`, `password_attempt`, and `salt` as arbitrary strings with no length or content validation. The `password_attempt` is passed directly to `hashlib.pbkdf2_hmac` after UTF-8 encoding. A caller supplying an extremely large `password_attempt` (e.g., several megabytes) will cause the PBKDF2 computation to consume excessive CPU and memory, since PBKDF2 processes the password as the HMAC key material. With 100,000 iterations, this creates a denial-of-service vector: an attacker can submit very long passwords to exhaust server resources, even if they are rate-limited per-username (since multiple usernames can be targeted). BCrypt-based implementations historically capped input at 72 bytes for this reason.",
+          "suggestion": "Enforce a maximum length on `password_attempt` before hashing. A typical safe upper bound is 72\u20131000 bytes. Example:\n```python\nif len(password_attempt.encode('utf-8')) > 1000:\n    return False\n```\nSimilarly, validate that `username` and `salt` are within expected bounds and character sets.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        }
+      ],
+      "context_tokens_approx": 0,
+      "context_symbols": [],
+      "context_files": [],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"login_handler.py\",\n      \"start_line\": 24,\n      \"end_line\": 24,\n      \"category_id\": 5,\n      \"primary_cwe\": \"CWE-307\",\n      \"alternative_cwes\": [\"CWE-799\"],\n      \"severity\": \"high\",\n      \"confidence\": \"high\",\n      \"title\": \"Rate limit check does not block execution on failure \u2014 authentication proceeds after RateLimitExceeded\",\n      \"description\": \"The call to `limiter.check_and_record(key=f\\\"auth:{username}\\\")` on line 24 raises a `RateLimitExceeded` exception when the limit is exceeded (as implied by the import of `RateLimitExceeded`). However, the function does not catch or handle this exception, which means the exception propagates up the call stack. If the caller catches `RateLimitExceeded` and continues execution, or if the exception is silently swallowed by generic exception handling upstream (e.g., `except Exception: pass`), the rate-limit protection is completely bypassed. More critically, the rate limit is checked and recorded *before* the password hash is computed, but if the limiter raises no exception (i.e., it returns normally), there is no explicit return or guard \u2014 however, the deeper issue is that the design relies entirely on the caller to propagate the exception correctly. Additionally, if `check_and_record` raises on the *first* call for a new key even due to an internal error, it could also block legitimate logins (denial of service). The correctness of authentication is entirely contingent on exception propagation behavior that is not enforced within this function.\",\n      \"suggestion\": \"Wrap the `limiter.check_and_record` call in a try/except that explicitly re-raises `RateLimitExceeded` and returns `False` or raises to signal rejection, or restructure the function to return `False` when the rate limit is exceeded. Alternatively, use a guard pattern:\\n```python\\ntry:\\n    limiter.check_and_record(key=f\\\"auth:{username}\\\")\\nexcept RateLimitExceeded:\\n    return False\\n```\\nThis makes the control flow explicit and prevents accidental bypass.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"login_handler.py\",\n      \"start_line\": 27,\n      \"end_line\": 32,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-916\",\n      \"alternative_cwes\": [\"CWE-326\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\",\n      \"title\": \"PBKDF2 output compared as hex string to stored_hash without validating stored_hash format or encoding\",\n      \"description\": \"The derived hash is converted to a hex string via `.hex()` (line 32) and then compared to `stored_hash` (line 34). This introduces two issues:\\n1. If `stored_hash` is stored in a different format (e.g., raw bytes encoded as base64, or with a different iteration count or algorithm prefix as used by modern password hashing libraries), the comparison will always return `False` even for correct passwords, causing a functional denial-of-service for legitimate users.\\n2. If `stored_hash` is empty or has incorrect length, `hmac.compare_digest` will still complete without error, but the result is meaningless. An attacker who can influence the `stored_hash` value (e.g., via a database injection or a race condition returning a default/empty hash) could potentially manipulate the outcome.\\nFurthermore, the `salt` parameter is accepted as a plain string parameter alongside `stored_hash` \u2014 there is no validation that the salt and hash are consistent (e.g., extracted from the same stored credential record), which could allow a confused deputy attack if these are sourced independently.\",\n      \"suggestion\": \"Validate that `stored_hash` is a non-empty string of the expected length (64 hex characters for SHA-256 PBKDF2). Consider using a dedicated password hashing library such as `passlib` or `argon2-cffi` that encodes the algorithm, salt, and iterations together, preventing format mismatches and simplifying verification. Example:\\n```python\\nif not stored_hash or len(stored_hash) != 64:\\n    return False\\n```\",\n      \"category_1_impact\": \"incorrect_computation\"\n    },\n    {\n      \"file_path\": \"login_handler.py\",\n      \"start_line\": 11,\n      \"end_line\": 34,\n      \"category_id\": 2,\n      \"primary_cwe\": \"CWE-20\",\n      \"alternative_cwes\": [\"CWE-400\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\",\n      \"title\": \"No validation on username, password_attempt, or salt length \u2014 potential resource exhaustion via large inputs\",\n      \"description\": \"The function accepts `username`, `password_attempt`, and `salt` as arbitrary strings with no length or content validation. The `password_attempt` is passed directly to `hashlib.pbkdf2_hmac` after UTF-8 encoding. A caller supplying an extremely large `password_attempt` (e.g., several megabytes) will cause the PBKDF2 computation to consume excessive CPU and memory, since PBKDF2 processes the password as the HMAC key material. With 100,000 iterations, this creates a denial-of-service vector: an attacker can submit very long passwords to exhaust server resources, even if they are rate-limited per-username (since multiple usernames can be targeted). BCrypt-based implementations historically capped input at 72 bytes for this reason.\",\n      \"suggestion\": \"Enforce a maximum length on `password_attempt` before hashing. A typical safe upper bound is 72\u20131000 bytes. Example:\\n```python\\nif len(password_attempt.encode('utf-8')) > 1000:\\n    return False\\n```\\nSimilarly, validate that `username` and `salt` are within expected bounds and character sets.\",\n      \"category_1_impact\": null\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0004",
+      "arm": "R",
+      "status": "success",
+      "target_file": "login_handler.py",
+      "duration_seconds": 22.875,
+      "prompt_tokens": 3201,
+      "completion_tokens": 1056,
+      "total_tokens": 4257,
+      "cost_usd": 0.025443,
+      "findings_count": 3,
+      "findings": [
+        {
+          "finding_id": "llm-fdb2b2b50a",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 5,
+          "primary_cwe": "CWE-307",
+          "alternative_cwes": [
+            "CWE-799"
+          ],
+          "file_path": "login_handler.py",
+          "start_line": 24,
+          "end_line": 24,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Rate limit check occurs before password hashing, allowing timing-based username enumeration",
+          "description": "The rate limiter raises `RateLimitExceeded` only for keys that have exceeded the threshold. An attacker can distinguish valid usernames from invalid ones: valid usernames will eventually trigger rate limiting (because the system records attempts against them), while the behavior may differ for non-existent accounts depending on how the caller handles missing stored hashes. More critically, if `RateLimitExceeded` is raised, the expensive pbkdf2_hmac computation is skipped, creating a distinguishable timing difference compared to non-rate-limited paths. This can be exploited to confirm which usernames exist in the system.",
+          "suggestion": "Ensure that both valid and invalid usernames follow the same code path and timing. Consider always performing the hash computation (using a dummy hash for non-existent users) before returning. Also ensure rate limiting applies uniformly regardless of whether the account exists.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-dd34401389",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-916",
+          "alternative_cwes": [],
+          "file_path": "login_handler.py",
+          "start_line": 27,
+          "end_line": 32,
+          "severity": "low",
+          "confidence": "medium",
+          "title": "PBKDF2 iteration count of 100,000 may be insufficient for modern threat models",
+          "description": "The `pbkdf2_hmac` call uses 100,000 iterations with SHA-256. While this was a reasonable baseline at one point, current NIST and OWASP guidance recommends at least 210,000 iterations for PBKDF2-HMAC-SHA256 (as of 2023). If the stored hashes were generated with a higher iteration count (or a different algorithm like bcrypt/scrypt/argon2), the comparison on line 34 would always fail since `derived` would not match `stored_hash`, causing a functional logic defect where valid credentials are rejected.",
+          "suggestion": "Use a configurable iteration count that matches the value used when storing the hash. Consider migrating to a stronger KDF such as Argon2 (via the `argon2-cffi` library). At minimum, increase iterations to \u2265210,000 and ensure the iteration count used during login matches the one used during registration.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "incorrect_computation"
+          }
+        },
+        {
+          "finding_id": "llm-73d964ab27",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 5,
+          "primary_cwe": "CWE-697",
+          "alternative_cwes": [
+            "CWE-187"
+          ],
+          "file_path": "login_handler.py",
+          "start_line": 34,
+          "end_line": 34,
+          "severity": "medium",
+          "confidence": "medium",
+          "title": "`hmac.compare_digest` called with hex string vs potentially raw-bytes stored_hash",
+          "description": "The `derived` variable is a hex-encoded string (due to `.hex()` on line 32), but `stored_hash` is an externally supplied string whose encoding format is not validated or documented. If `stored_hash` contains the raw bytes representation, a base64-encoded value, or any format other than lowercase hex, the comparison will always return `False`, causing valid users to be unable to log in. Additionally, if `stored_hash` is not a `str` or `bytes` object, `hmac.compare_digest` will raise a `TypeError`, causing an unhandled exception. There is no input validation ensuring `stored_hash` is in the correct format.",
+          "suggestion": "Document and enforce the expected format of `stored_hash`. Add a type/format guard (e.g., ensure it is a hex string of the correct length) before the comparison. Consider storing and comparing raw bytes consistently rather than converting to hex, to avoid encoding mismatches.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "unhandled_exception"
+          }
+        }
+      ],
+      "context_tokens_approx": 306,
+      "context_symbols": [
+        "RateLimitExceeded",
+        "SlidingWindowRateLimiter",
+        "check_and_record"
+      ],
+      "context_files": [
+        "rate_limiter.py"
+      ],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"login_handler.py\",\n      \"start_line\": 24,\n      \"end_line\": 24,\n      \"category_id\": 5,\n      \"primary_cwe\": \"CWE-307\",\n      \"alternative_cwes\": [\"CWE-799\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"high\",\n      \"title\": \"Rate limit check occurs before password hashing, allowing timing-based username enumeration\",\n      \"description\": \"The rate limiter raises `RateLimitExceeded` only for keys that have exceeded the threshold. An attacker can distinguish valid usernames from invalid ones: valid usernames will eventually trigger rate limiting (because the system records attempts against them), while the behavior may differ for non-existent accounts depending on how the caller handles missing stored hashes. More critically, if `RateLimitExceeded` is raised, the expensive pbkdf2_hmac computation is skipped, creating a distinguishable timing difference compared to non-rate-limited paths. This can be exploited to confirm which usernames exist in the system.\",\n      \"suggestion\": \"Ensure that both valid and invalid usernames follow the same code path and timing. Consider always performing the hash computation (using a dummy hash for non-existent users) before returning. Also ensure rate limiting applies uniformly regardless of whether the account exists.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"login_handler.py\",\n      \"start_line\": 27,\n      \"end_line\": 32,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-916\",\n      \"alternative_cwes\": [],\n      \"severity\": \"low\",\n      \"confidence\": \"medium\",\n      \"title\": \"PBKDF2 iteration count of 100,000 may be insufficient for modern threat models\",\n      \"description\": \"The `pbkdf2_hmac` call uses 100,000 iterations with SHA-256. While this was a reasonable baseline at one point, current NIST and OWASP guidance recommends at least 210,000 iterations for PBKDF2-HMAC-SHA256 (as of 2023). If the stored hashes were generated with a higher iteration count (or a different algorithm like bcrypt/scrypt/argon2), the comparison on line 34 would always fail since `derived` would not match `stored_hash`, causing a functional logic defect where valid credentials are rejected.\",\n      \"suggestion\": \"Use a configurable iteration count that matches the value used when storing the hash. Consider migrating to a stronger KDF such as Argon2 (via the `argon2-cffi` library). At minimum, increase iterations to \u2265210,000 and ensure the iteration count used during login matches the one used during registration.\",\n      \"category_1_impact\": \"incorrect_computation\"\n    },\n    {\n      \"file_path\": \"login_handler.py\",\n      \"start_line\": 34,\n      \"end_line\": 34,\n      \"category_id\": 5,\n      \"primary_cwe\": \"CWE-697\",\n      \"alternative_cwes\": [\"CWE-187\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\",\n      \"title\": \"`hmac.compare_digest` called with hex string vs potentially raw-bytes stored_hash\",\n      \"description\": \"The `derived` variable is a hex-encoded string (due to `.hex()` on line 32), but `stored_hash` is an externally supplied string whose encoding format is not validated or documented. If `stored_hash` contains the raw bytes representation, a base64-encoded value, or any format other than lowercase hex, the comparison will always return `False`, causing valid users to be unable to log in. Additionally, if `stored_hash` is not a `str` or `bytes` object, `hmac.compare_digest` will raise a `TypeError`, causing an unhandled exception. There is no input validation ensuring `stored_hash` is in the correct format.\",\n      \"suggestion\": \"Document and enforce the expected format of `stored_hash`. Add a type/format guard (e.g., ensure it is a hex string of the correct length) before the comparison. Consider storing and comparing raw bytes consistently rather than converting to hex, to avoid encoding mismatches.\",\n      \"category_1_impact\": \"unhandled_exception\"\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0005",
+      "arm": "N",
+      "status": "success",
+      "target_file": "chunk_consumer.py",
+      "duration_seconds": 3.828,
+      "prompt_tokens": 2372,
+      "completion_tokens": 13,
+      "total_tokens": 2385,
+      "cost_usd": 0.007311,
+      "findings_count": 0,
+      "findings": [],
+      "context_tokens_approx": 0,
+      "context_symbols": [],
+      "context_files": [],
+      "raw_response": "```json\n{\"findings\": []}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0005",
+      "arm": "R",
+      "status": "success",
+      "target_file": "chunk_consumer.py",
+      "duration_seconds": 19.688,
+      "prompt_tokens": 3229,
+      "completion_tokens": 932,
+      "total_tokens": 4161,
+      "cost_usd": 0.023667,
+      "findings_count": 1,
+      "findings": [
+        {
+          "finding_id": "llm-c4b6fb5ce0",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-390",
+          "alternative_cwes": [
+            "CWE-755"
+          ],
+          "file_path": "chunk_consumer.py",
+          "start_line": 18,
+          "end_line": 22,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "StreamCapExceeded exception raised by BoundedStreamReader is never caught",
+          "description": "`StreamCapExceeded` is imported at line 6 but never used in a try/except block. The `BoundedStreamReader.read_chunk()` raises `StreamCapExceeded` (a ValueError subclass) when either the cumulative byte cap or the maximum chunk count is exceeded. Inside the `while True` loop (lines 18-22), `reader.read_chunk()` is called without any exception handling, so `StreamCapExceeded` propagates uncaught to the caller. The unused import of `StreamCapExceeded` strongly signals that handling was intended but accidentally omitted. Callers that are not prepared for this ValueError subclass will crash unexpectedly, potentially causing denial of service or leaving resources in an inconsistent state.",
+          "suggestion": "Wrap the read loop in a try/except block catching `StreamCapExceeded` and handle it gracefully \u2014 either re-raise with a meaningful message, return a partial result, or log and reject the payload. Example:\n```python\ntry:\n    while True:\n        chunk = reader.read_chunk(chunk_size=8192)\n        if not chunk:\n            break\n        buffer.extend(chunk)\nexcept StreamCapExceeded as exc:\n    raise ValueError(f\"Payload too large: {exc}\") from exc\n```",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "unhandled_exception"
+          }
+        }
+      ],
+      "context_tokens_approx": 340,
+      "context_symbols": [
+        "StreamCapExceeded",
+        "BoundedStreamReader",
+        "read_chunk"
+      ],
+      "context_files": [
+        "bounded_stream.py"
+      ],
+      "raw_response": "Looking at the audit target code, I need to analyze `process_stream_payload` and its interaction with `BoundedStreamReader`.\n\n**Key observations:**\n\n1. **Unhandled `StreamCapExceeded` exception**: The `BoundedStreamReader.read_chunk()` raises `StreamCapExceeded` (a `ValueError` subclass) in two conditions:\n   - When `chunks_read >= max_chunks` (default 500 chunks)\n   - When `total_bytes_read > max_total_bytes`\n   \n   The `process_stream_payload` function in the audit target never catches `StreamCapExceeded`. This means:\n   - The exception propagates uncaught to the caller\n   - While this *could* be intentional (callers handle it), looking at the import: `StreamCapExceeded` is imported but **never used** in the audit target code \u2014 it's imported only as a name but there's no `try/except` block utilizing it\n   - This is a functional defect: the import signals intent to handle it, but no handling exists\n\n2. **`max_chunks` mismatch**: `BoundedStreamReader` defaults to `max_chunks=500`, but the caller doesn't pass `max_chunks`. With `chunk_size=8192` bytes per chunk and default `max_chunks=500`, the reader can process at most `500 \u00d7 8192 = 4,096,000 bytes` worth of chunks before hitting the chunk cap \u2014 even if `max_size_bytes` is set lower. However, since `max_size_bytes=500_000` is much smaller, the byte cap triggers first in the normal case. But the chunk limit at 500 chunks \u00d7 8192 = ~4MB means a stream of exactly `max_size_bytes=500,000` bytes would be fine (only ~61 chunks needed).\n\n3. **Unused import of `StreamCapExceeded`**: The import strongly implies the author intended to catch this exception but forgot to implement the error handling, making this a functional logic defect.\n\n```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"chunk_consumer.py\",\n      \"start_line\": 18,\n      \"end_line\": 22,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-390\",\n      \"alternative_cwes\": [\"CWE-755\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"high\",\n      \"title\": \"StreamCapExceeded exception raised by BoundedStreamReader is never caught\",\n      \"description\": \"`StreamCapExceeded` is imported at line 6 but never used in a try/except block. The `BoundedStreamReader.read_chunk()` raises `StreamCapExceeded` (a ValueError subclass) when either the cumulative byte cap or the maximum chunk count is exceeded. Inside the `while True` loop (lines 18-22), `reader.read_chunk()` is called without any exception handling, so `StreamCapExceeded` propagates uncaught to the caller. The unused import of `StreamCapExceeded` strongly signals that handling was intended but accidentally omitted. Callers that are not prepared for this ValueError subclass will crash unexpectedly, potentially causing denial of service or leaving resources in an inconsistent state.\",\n      \"suggestion\": \"Wrap the read loop in a try/except block catching `StreamCapExceeded` and handle it gracefully \u2014 either re-raise with a meaningful message, return a partial result, or log and reject the payload. Example:\\n```python\\ntry:\\n    while True:\\n        chunk = reader.read_chunk(chunk_size=8192)\\n        if not chunk:\\n            break\\n        buffer.extend(chunk)\\nexcept StreamCapExceeded as exc:\\n    raise ValueError(f\\\"Payload too large: {exc}\\\") from exc\\n```\",\n      \"category_1_impact\": \"unhandled_exception\"\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0006",
+      "arm": "N",
+      "status": "success",
+      "target_file": "token_signer.py",
+      "duration_seconds": 30.344,
+      "prompt_tokens": 2647,
+      "completion_tokens": 1494,
+      "total_tokens": 4141,
+      "cost_usd": 0.030351,
+      "findings_count": 4,
+      "findings": [
+        {
+          "finding_id": "llm-20c4fd858d",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-628",
+          "alternative_cwes": [
+            "CWE-327"
+          ],
+          "file_path": "token_signer.py",
+          "start_line": 23,
+          "end_line": 23,
+          "severity": "high",
+          "confidence": "high",
+          "title": "Use of non-existent `hmac.new()` \u2014 should be `hmac.new()` does not exist; correct API is `hmac.new()`",
+          "description": "Python's `hmac` module does not expose a `hmac.new()` function at the top-level namespace. The correct callable is `hmac.new(key, msg, digestmod)`. Wait \u2014 actually `hmac.new` IS the correct API (it is an alias for `hmac.HMAC`). However, the `key` argument returned by `vault.get_signing_key()` must be a `bytes`-like object. If the vault returns a string or other non-bytes type, `hmac.new()` will raise a `TypeError` at runtime, causing a denial of service on every token issuance or verification attempt. More critically, there is no type assertion or guard ensuring `key` is `bytes`. This is a latent runtime crash depending on vault implementation.",
+          "suggestion": "Assert or convert the key to bytes before passing it to `hmac.new()`: `if not isinstance(key, (bytes, bytearray)): raise TypeError('Signing key must be bytes')`. Additionally, document the required return type of `EphemeralSigningKeyVault.get_signing_key()` as `bytes`.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "unhandled_exception"
+          }
+        },
+        {
+          "finding_id": "llm-8c1627d5b4",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 2,
+          "primary_cwe": "CWE-20",
+          "alternative_cwes": [
+            "CWE-400"
+          ],
+          "file_path": "token_signer.py",
+          "start_line": 34,
+          "end_line": 34,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Missing padding validation on base64 token segment before decoding",
+          "description": "`base64.urlsafe_b64decode()` in Python automatically adds padding only if it is missing in certain conditions, but an attacker supplying a malformed `payload_b64` segment with incorrect length can trigger a `binascii.Error` (invalid base64-encoded string: number of data characters (X) cannot be 3 more than a multiple of 4) rather than a clean `ValueError`. This unhandled exception propagates to callers without an informative or safe error, and could be used to probe the decoder's behavior or cause unexpected crashes in calling code that only catches `ValueError` or `PermissionError`.",
+          "suggestion": "Wrap the `base64.urlsafe_b64decode()` call in a try/except for `Exception` (or specifically `binascii.Error`) and raise a `ValueError('Malformed token payload')` to provide a consistent, safe error surface.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-c0e00826bd",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 5,
+          "primary_cwe": "CWE-347",
+          "alternative_cwes": [
+            "CWE-295"
+          ],
+          "file_path": "token_signer.py",
+          "start_line": 27,
+          "end_line": 40,
+          "severity": "high",
+          "confidence": "high",
+          "title": "No key versioning \u2014 key rotation invalidates all existing valid tokens silently",
+          "description": "Both `issue_signed_session_token` and `verify_signed_session_token` call `vault.get_signing_key()` which presumably returns the current (latest) ephemeral key. If the vault rotates the key between token issuance and verification (as ephemeral vaults are designed to do), every previously issued valid token will fail verification with `PermissionError('Invalid session token signature')`. This means legitimate sessions will be destroyed on key rotation. More critically, there is no mechanism to embed key version/ID into the token, so the verifier cannot select the correct historical key. This could also be exploited: if an attacker can trigger a key rotation (e.g., by restarting the service or via another API), all active sessions are invalidated \u2014 a denial-of-service against authenticated users.",
+          "suggestion": "Embed a key identifier (e.g., key version or key ID) into the token header or payload, and have the vault support lookup by key ID with a configurable retention window for old keys. A standard approach is a JWT-like header `{\"kid\": \"<key_id>\"}` prepended as a third token segment.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-6561e9c8ce",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-20",
+          "alternative_cwes": [],
+          "file_path": "token_signer.py",
+          "start_line": 32,
+          "end_line": 32,
+          "severity": "low",
+          "confidence": "medium",
+          "title": "Token with multiple '.' separators parsed incorrectly \u2014 only first separator respected but signature may contain '.'",
+          "description": "`token.split('.', 1)` correctly splits on only the first dot, assigning everything after to `signature`. Since `hexdigest()` produces a hex string (characters 0-9, a-f) that never contains dots, this is currently safe. However, if the signature format were ever changed (e.g., to base64 which can contain `+`, `/`, `=`, or `.` in some variants), this splitting logic would silently produce an incorrect signature string without raising an error, causing all tokens to fail verification in a non-obvious way. This is a latent fragility.",
+          "suggestion": "Document the invariant that signatures are hex-encoded (no dots), or use a delimiter that cannot appear in any encoding format used (e.g., `:`). Consider adding an assertion that the signature string matches the expected hex pattern.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "inconsistent_return"
+          }
+        }
+      ],
+      "context_tokens_approx": 0,
+      "context_symbols": [],
+      "context_files": [],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"token_signer.py\",\n      \"start_line\": 23,\n      \"end_line\": 23,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-628\",\n      \"alternative_cwes\": [\"CWE-327\"],\n      \"severity\": \"high\",\n      \"confidence\": \"high\",\n      \"title\": \"Use of non-existent `hmac.new()` \u2014 should be `hmac.new()` does not exist; correct API is `hmac.new()`\",\n      \"description\": \"Python's `hmac` module does not expose a `hmac.new()` function at the top-level namespace. The correct callable is `hmac.new(key, msg, digestmod)`. Wait \u2014 actually `hmac.new` IS the correct API (it is an alias for `hmac.HMAC`). However, the `key` argument returned by `vault.get_signing_key()` must be a `bytes`-like object. If the vault returns a string or other non-bytes type, `hmac.new()` will raise a `TypeError` at runtime, causing a denial of service on every token issuance or verification attempt. More critically, there is no type assertion or guard ensuring `key` is `bytes`. This is a latent runtime crash depending on vault implementation.\",\n      \"suggestion\": \"Assert or convert the key to bytes before passing it to `hmac.new()`: `if not isinstance(key, (bytes, bytearray)): raise TypeError('Signing key must be bytes')`. Additionally, document the required return type of `EphemeralSigningKeyVault.get_signing_key()` as `bytes`.\",\n      \"category_1_impact\": \"unhandled_exception\"\n    },\n    {\n      \"file_path\": \"token_signer.py\",\n      \"start_line\": 34,\n      \"end_line\": 34,\n      \"category_id\": 2,\n      \"primary_cwe\": \"CWE-20\",\n      \"alternative_cwes\": [\"CWE-400\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"high\",\n      \"title\": \"Missing padding validation on base64 token segment before decoding\",\n      \"description\": \"`base64.urlsafe_b64decode()` in Python automatically adds padding only if it is missing in certain conditions, but an attacker supplying a malformed `payload_b64` segment with incorrect length can trigger a `binascii.Error` (invalid base64-encoded string: number of data characters (X) cannot be 3 more than a multiple of 4) rather than a clean `ValueError`. This unhandled exception propagates to callers without an informative or safe error, and could be used to probe the decoder's behavior or cause unexpected crashes in calling code that only catches `ValueError` or `PermissionError`.\",\n      \"suggestion\": \"Wrap the `base64.urlsafe_b64decode()` call in a try/except for `Exception` (or specifically `binascii.Error`) and raise a `ValueError('Malformed token payload')` to provide a consistent, safe error surface.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"token_signer.py\",\n      \"start_line\": 27,\n      \"end_line\": 40,\n      \"category_id\": 5,\n      \"primary_cwe\": \"CWE-347\",\n      \"alternative_cwes\": [\"CWE-295\"],\n      \"severity\": \"high\",\n      \"confidence\": \"high\",\n      \"title\": \"No key versioning \u2014 key rotation invalidates all existing valid tokens silently\",\n      \"description\": \"Both `issue_signed_session_token` and `verify_signed_session_token` call `vault.get_signing_key()` which presumably returns the current (latest) ephemeral key. If the vault rotates the key between token issuance and verification (as ephemeral vaults are designed to do), every previously issued valid token will fail verification with `PermissionError('Invalid session token signature')`. This means legitimate sessions will be destroyed on key rotation. More critically, there is no mechanism to embed key version/ID into the token, so the verifier cannot select the correct historical key. This could also be exploited: if an attacker can trigger a key rotation (e.g., by restarting the service or via another API), all active sessions are invalidated \u2014 a denial-of-service against authenticated users.\",\n      \"suggestion\": \"Embed a key identifier (e.g., key version or key ID) into the token header or payload, and have the vault support lookup by key ID with a configurable retention window for old keys. A standard approach is a JWT-like header `{\\\"kid\\\": \\\"<key_id>\\\"}` prepended as a third token segment.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"token_signer.py\",\n      \"start_line\": 32,\n      \"end_line\": 32,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-20\",\n      \"alternative_cwes\": [],\n      \"severity\": \"low\",\n      \"confidence\": \"medium\",\n      \"title\": \"Token with multiple '.' separators parsed incorrectly \u2014 only first separator respected but signature may contain '.'\",\n      \"description\": \"`token.split('.', 1)` correctly splits on only the first dot, assigning everything after to `signature`. Since `hexdigest()` produces a hex string (characters 0-9, a-f) that never contains dots, this is currently safe. However, if the signature format were ever changed (e.g., to base64 which can contain `+`, `/`, `=`, or `.` in some variants), this splitting logic would silently produce an incorrect signature string without raising an error, causing all tokens to fail verification in a non-obvious way. This is a latent fragility.\",\n      \"suggestion\": \"Document the invariant that signatures are hex-encoded (no dots), or use a delimiter that cannot appear in any encoding format used (e.g., `:`). Consider adding an assertion that the signature string matches the expected hex pattern.\",\n      \"category_1_impact\": \"inconsistent_return\"\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    },
+    {
+      "fixture_id": "ABL-0006",
+      "arm": "R",
+      "status": "success",
+      "target_file": "token_signer.py",
+      "duration_seconds": 34.781,
+      "prompt_tokens": 3309,
+      "completion_tokens": 1712,
+      "total_tokens": 5021,
+      "cost_usd": 0.035607,
+      "findings_count": 4,
+      "findings": [
+        {
+          "finding_id": "llm-8fb57261ab",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-628",
+          "alternative_cwes": [
+            "CWE-327"
+          ],
+          "file_path": "token_signer.py",
+          "start_line": 23,
+          "end_line": 23,
+          "severity": "high",
+          "confidence": "high",
+          "title": "Use of non-existent `hmac.new` \u2014 should be `hmac.new` via `hmac.new` is invalid; correct API is `hmac.new`",
+          "description": "The code calls `hmac.new(key, payload_bytes, hashlib.sha256)` on line 23. The Python `hmac` module does not have a `hmac.new` function in modern Python (Python 3). The correct function is `hmac.new` \u2014 wait, actually `hmac.new` does exist in Python 2 but was removed. In Python 3 the correct callable is `hmac.new` which is actually available as `hmac.new` \u2014 let me be precise: Python 3's `hmac` module exposes `hmac.new(key, msg=None, digestmod='')`. However, `hmac.new` was deprecated and then the module-level function `hmac.new` was removed in Python 3.4+. The correct API is `hmac.HMAC(key, msg, digestmod)` or the constructor form. Actually in standard Python 3, `hmac.new` IS available as a module-level function and is simply an alias. Let me re-examine: this is actually a valid call in Python 3 \u2014 `hmac.new` exists. The real bug here is that `hmac.new` requires `digestmod` to not be `None` in Python 3.8+, but `hashlib.sha256` (the class, not an instance) is a valid digestmod. This call is functionally correct. Re-evaluating \u2014 the call `hmac.new(key, payload_bytes, hashlib.sha256)` is valid Python 3 syntax. No bug here from API misuse.",
+          "suggestion": "No change needed for the hmac.new call itself \u2014 it is valid. This finding should be disregarded.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": null
+          }
+        },
+        {
+          "finding_id": "llm-2f2b716a3d",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 5,
+          "primary_cwe": "CWE-347",
+          "alternative_cwes": [
+            "CWE-672"
+          ],
+          "file_path": "token_signer.py",
+          "start_line": 19,
+          "end_line": 24,
+          "severity": "high",
+          "confidence": "high",
+          "title": "Key rotation between token issuance and verification breaks signature validation",
+          "description": "The vault rotates its signing key automatically after `key_ttl_seconds`. The `issue_signed_session_token` function signs with whatever key is current at issuance time, and `verify_signed_session_token` verifies using whatever key is current at verification time. If the vault rotates the key between issuance and verification (e.g., after 1 hour by default), ALL previously issued tokens become permanently invalid \u2014 `compare_digest` will fail and a `PermissionError` is raised for every previously legitimate token. Conversely, if a token was issued with an old key that has since rotated, it cannot be verified. The vault only ever holds one active key with no support for prior key verification. This is a functional correctness defect that also constitutes an authentication reliability failure: valid sessions are rejected after key rotation.",
+          "suggestion": "Implement key versioning: embed a key ID (kid) in the token header/payload, and have the vault retain recently-rotated keys for a grace period long enough to cover the maximum token lifetime. Alternatively, use a dedicated token framework (e.g., PyJWT with explicit key management) that handles key rotation gracefully.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "unhandled_exception"
+          }
+        },
+        {
+          "finding_id": "llm-86552d33ad",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-20",
+          "alternative_cwes": [
+            "CWE-119"
+          ],
+          "file_path": "token_signer.py",
+          "start_line": 34,
+          "end_line": 34,
+          "severity": "medium",
+          "confidence": "high",
+          "title": "Missing padding handling in base64 URL-safe decode may raise `binascii.Error`",
+          "description": "The `base64.urlsafe_b64decode` function requires the input to have correct base64 padding (`=` characters). When `issue_signed_session_token` encodes the payload on line 21 using `base64.urlsafe_b64encode`, the resulting string may or may not include padding. If the token was constructed by an external source or the `=` padding characters were stripped (a common practice in JWT-like systems), `base64.urlsafe_b64decode` will raise a `binascii.Error: Incorrect padding` exception. This exception is not caught, and the caller receives an unhandled exception rather than a clean `ValueError` indicating a malformed token, potentially leaking implementation details and crashing the caller.",
+          "suggestion": "Add padding before decoding: `payload_b64_padded = payload_b64 + '=' * (4 - len(payload_b64) % 4)` (or use `% 4` with modulo correction). Alternatively, wrap the decode in a try/except and raise a consistent `ValueError('Malformed token format')` to avoid leaking internal error types.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "unhandled_exception"
+          }
+        },
+        {
+          "finding_id": "llm-9eca3bc3b6",
+          "detection_layer": "heuristic_llm",
+          "tool_name": "ag/claude-sonnet-4-6",
+          "category_id": 1,
+          "primary_cwe": "CWE-20",
+          "alternative_cwes": [],
+          "file_path": "token_signer.py",
+          "start_line": 32,
+          "end_line": 32,
+          "severity": "low",
+          "confidence": "medium",
+          "title": "Token split on first `.` only \u2014 multi-dot payloads parsed incorrectly",
+          "description": "The token is split using `token.split('.', 1)` which correctly splits on the first period, assigning everything after to `signature`. However, the `issue_signed_session_token` function produces a hexdigest signature that contains no dots, so this is safe in normal operation. The check on line 29 only verifies that at least one `.` exists but does not validate that the signature portion is a valid 64-character hex string. If a malformed token is submitted with a `.` at the very end (empty signature), the `compare_digest` call will safely fail, but there is no early rejection that would prevent unnecessary cryptographic work. The impact is minimal but constitutes incomplete input validation.",
+          "suggestion": "After splitting, validate that `signature` matches the expected format (e.g., 64 hex characters for SHA-256 hexdigest) before performing HMAC computation, to provide fast-fail behavior and improve clarity.",
+          "provenance": {
+            "model": "ag/claude-sonnet-4-6",
+            "layer": "heuristic_llm",
+            "category_1_impact": "incorrect_computation"
+          }
+        }
+      ],
+      "context_tokens_approx": 263,
+      "context_symbols": [
+        "EphemeralSigningKeyVault",
+        "get_signing_key"
+      ],
+      "context_files": [
+        "key_vault.py"
+      ],
+      "raw_response": "```json\n{\n  \"findings\": [\n    {\n      \"file_path\": \"token_signer.py\",\n      \"start_line\": 23,\n      \"end_line\": 23,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-628\",\n      \"alternative_cwes\": [\"CWE-327\"],\n      \"severity\": \"high\",\n      \"confidence\": \"high\",\n      \"title\": \"Use of non-existent `hmac.new` \u2014 should be `hmac.new` via `hmac.new` is invalid; correct API is `hmac.new`\",\n      \"description\": \"The code calls `hmac.new(key, payload_bytes, hashlib.sha256)` on line 23. The Python `hmac` module does not have a `hmac.new` function in modern Python (Python 3). The correct function is `hmac.new` \u2014 wait, actually `hmac.new` does exist in Python 2 but was removed. In Python 3 the correct callable is `hmac.new` which is actually available as `hmac.new` \u2014 let me be precise: Python 3's `hmac` module exposes `hmac.new(key, msg=None, digestmod='')`. However, `hmac.new` was deprecated and then the module-level function `hmac.new` was removed in Python 3.4+. The correct API is `hmac.HMAC(key, msg, digestmod)` or the constructor form. Actually in standard Python 3, `hmac.new` IS available as a module-level function and is simply an alias. Let me re-examine: this is actually a valid call in Python 3 \u2014 `hmac.new` exists. The real bug here is that `hmac.new` requires `digestmod` to not be `None` in Python 3.8+, but `hashlib.sha256` (the class, not an instance) is a valid digestmod. This call is functionally correct. Re-evaluating \u2014 the call `hmac.new(key, payload_bytes, hashlib.sha256)` is valid Python 3 syntax. No bug here from API misuse.\",\n      \"suggestion\": \"No change needed for the hmac.new call itself \u2014 it is valid. This finding should be disregarded.\",\n      \"category_1_impact\": null\n    },\n    {\n      \"file_path\": \"token_signer.py\",\n      \"start_line\": 19,\n      \"end_line\": 24,\n      \"category_id\": 5,\n      \"primary_cwe\": \"CWE-347\",\n      \"alternative_cwes\": [\"CWE-672\"],\n      \"severity\": \"high\",\n      \"confidence\": \"high\",\n      \"title\": \"Key rotation between token issuance and verification breaks signature validation\",\n      \"description\": \"The vault rotates its signing key automatically after `key_ttl_seconds`. The `issue_signed_session_token` function signs with whatever key is current at issuance time, and `verify_signed_session_token` verifies using whatever key is current at verification time. If the vault rotates the key between issuance and verification (e.g., after 1 hour by default), ALL previously issued tokens become permanently invalid \u2014 `compare_digest` will fail and a `PermissionError` is raised for every previously legitimate token. Conversely, if a token was issued with an old key that has since rotated, it cannot be verified. The vault only ever holds one active key with no support for prior key verification. This is a functional correctness defect that also constitutes an authentication reliability failure: valid sessions are rejected after key rotation.\",\n      \"suggestion\": \"Implement key versioning: embed a key ID (kid) in the token header/payload, and have the vault retain recently-rotated keys for a grace period long enough to cover the maximum token lifetime. Alternatively, use a dedicated token framework (e.g., PyJWT with explicit key management) that handles key rotation gracefully.\",\n      \"category_1_impact\": \"unhandled_exception\"\n    },\n    {\n      \"file_path\": \"token_signer.py\",\n      \"start_line\": 34,\n      \"end_line\": 34,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-20\",\n      \"alternative_cwes\": [\"CWE-119\"],\n      \"severity\": \"medium\",\n      \"confidence\": \"high\",\n      \"title\": \"Missing padding handling in base64 URL-safe decode may raise `binascii.Error`\",\n      \"description\": \"The `base64.urlsafe_b64decode` function requires the input to have correct base64 padding (`=` characters). When `issue_signed_session_token` encodes the payload on line 21 using `base64.urlsafe_b64encode`, the resulting string may or may not include padding. If the token was constructed by an external source or the `=` padding characters were stripped (a common practice in JWT-like systems), `base64.urlsafe_b64decode` will raise a `binascii.Error: Incorrect padding` exception. This exception is not caught, and the caller receives an unhandled exception rather than a clean `ValueError` indicating a malformed token, potentially leaking implementation details and crashing the caller.\",\n      \"suggestion\": \"Add padding before decoding: `payload_b64_padded = payload_b64 + '=' * (4 - len(payload_b64) % 4)` (or use `% 4` with modulo correction). Alternatively, wrap the decode in a try/except and raise a consistent `ValueError('Malformed token format')` to avoid leaking internal error types.\",\n      \"category_1_impact\": \"unhandled_exception\"\n    },\n    {\n      \"file_path\": \"token_signer.py\",\n      \"start_line\": 32,\n      \"end_line\": 32,\n      \"category_id\": 1,\n      \"primary_cwe\": \"CWE-20\",\n      \"alternative_cwes\": [],\n      \"severity\": \"low\",\n      \"confidence\": \"medium\",\n      \"title\": \"Token split on first `.` only \u2014 multi-dot payloads parsed incorrectly\",\n      \"description\": \"The token is split using `token.split('.', 1)` which correctly splits on the first period, assigning everything after to `signature`. However, the `issue_signed_session_token` function produces a hexdigest signature that contains no dots, so this is safe in normal operation. The check on line 29 only verifies that at least one `.` exists but does not validate that the signature portion is a valid 64-character hex string. If a malformed token is submitted with a `.` at the very end (empty signature), the `compare_digest` call will safely fail, but there is no early rejection that would prevent unnecessary cryptographic work. The impact is minimal but constitutes incomplete input validation.\",\n      \"suggestion\": \"After splitting, validate that `signature` matches the expected format (e.g., 64 hex characters for SHA-256 hexdigest) before performing HMAC computation, to provide fast-fail behavior and improve clarity.\",\n      \"category_1_impact\": \"incorrect_computation\"\n    }\n  ]\n}\n```",
+      "error_message": null,
+      "request_attempts": 1
+    }
+  ]
+}

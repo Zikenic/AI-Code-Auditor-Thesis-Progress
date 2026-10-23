@@ -1,0 +1,2822 @@
+{
+  "metadata": {
+    "generated_at": "2026-10-23T16:07:22.546323+00:00",
+    "dataset_description": "AI Code Auditor Benchmark Manifest (18 Defective Pilot Cases + 18 Clean Control Cases)",
+    "total_cases": 36,
+    "verified_cases": 18,
+    "clean_cases": 18,
+    "unknown_cases": 0,
+    "run_id": "eval-run-85aeb9b9",
+    "mode": "live",
+    "tolerance": 10
+  },
+  "configurations": {
+    "A": {
+      "configuration": "A",
+      "total_cases_evaluated": 18,
+      "cases_attempted": 18,
+      "cases_successful": 18,
+      "cases_failed": 0,
+      "cases_partial": 0,
+      "cases_skipped": 0,
+      "buggy_cases_evaluated": 0,
+      "clean_cases_evaluated": 18,
+      "clean_cases_attempted": 18,
+      "clean_cases_successful": 18,
+      "clean_cases_mocked_count": 0,
+      "unknown_cases_excluded": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "confirmed_false_positives": 0,
+      "unadjudicated_predictions": 0,
+      "false_negatives": 0,
+      "total_predictions": 0,
+      "total_ground_truth_defects": 0,
+      "precision": null,
+      "historical_naive_precision": null,
+      "confirmed_precision": null,
+      "confirmed_precision_status": "unavailable_zero_denominator",
+      "confirmed_precision_note": "Unavailable: Zero predictions emitted.",
+      "recall": null,
+      "f1_score": null,
+      "clean_cases_flagged": 0,
+      "clean_case_false_positive_rate": 0.0,
+      "clean_case_fpr_status": "eligible",
+      "clean_case_fpr_note": "Observed warning rate on curated sample (0/18 clean fixtures flagged).",
+      "buggy_cases_detected": 0,
+      "defect_case_detection_rate": null,
+      "failed_runs_count": 0,
+      "partial_runs_count": 0,
+      "static_findings_total": 0,
+      "static_findings_preserved": 0,
+      "static_findings_confirmed": 0,
+      "static_findings_likely_fp": 0,
+      "static_findings_inconclusive": 0,
+      "additional_llm_candidates": 0,
+      "triage_correct_fp_count": 0,
+      "triage_incorrect_fp_count": 0,
+      "incremental_tp_over_c": null,
+      "incremental_fp_over_c": null,
+      "common_subset_metrics": {
+        "cases_count": 18,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": null,
+        "recall": null,
+        "f1_score": null
+      },
+      "provenance_breakdown": {
+        "real_deterministic": 18
+      },
+      "is_mock_evaluation": false,
+      "total_duration_seconds": 92.375,
+      "total_cost_usd": null
+    },
+    "B": {
+      "configuration": "B",
+      "total_cases_evaluated": 18,
+      "cases_attempted": 18,
+      "cases_successful": 18,
+      "cases_failed": 0,
+      "cases_partial": 0,
+      "cases_skipped": 0,
+      "buggy_cases_evaluated": 0,
+      "clean_cases_evaluated": 18,
+      "clean_cases_attempted": 18,
+      "clean_cases_successful": 18,
+      "clean_cases_mocked_count": 0,
+      "unknown_cases_excluded": 0,
+      "true_positives": 0,
+      "false_positives": 6,
+      "confirmed_false_positives": 6,
+      "unadjudicated_predictions": 0,
+      "false_negatives": 0,
+      "total_predictions": 6,
+      "total_ground_truth_defects": 0,
+      "precision": 0.0,
+      "historical_naive_precision": 0.0,
+      "confirmed_precision": 0.0,
+      "confirmed_precision_status": "eligible",
+      "confirmed_precision_note": null,
+      "recall": null,
+      "f1_score": null,
+      "clean_cases_flagged": 3,
+      "clean_case_false_positive_rate": 0.1667,
+      "clean_case_fpr_status": "eligible",
+      "clean_case_fpr_note": "Observed warning rate on curated sample (3/18 clean fixtures flagged).",
+      "buggy_cases_detected": 0,
+      "defect_case_detection_rate": null,
+      "failed_runs_count": 0,
+      "partial_runs_count": 0,
+      "static_findings_total": 0,
+      "static_findings_preserved": 0,
+      "static_findings_confirmed": 0,
+      "static_findings_likely_fp": 0,
+      "static_findings_inconclusive": 0,
+      "additional_llm_candidates": 6,
+      "triage_correct_fp_count": 0,
+      "triage_incorrect_fp_count": 0,
+      "incremental_tp_over_c": null,
+      "incremental_fp_over_c": null,
+      "common_subset_metrics": {
+        "cases_count": 18,
+        "true_positives": 0,
+        "false_positives": 6,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": null,
+        "f1_score": null
+      },
+      "provenance_breakdown": {
+        "real_model": 18
+      },
+      "is_mock_evaluation": false,
+      "total_duration_seconds": 110.484,
+      "total_cost_usd": 0.230787
+    },
+    "C": {
+      "configuration": "C",
+      "total_cases_evaluated": 18,
+      "cases_attempted": 18,
+      "cases_successful": 18,
+      "cases_failed": 0,
+      "cases_partial": 0,
+      "cases_skipped": 0,
+      "buggy_cases_evaluated": 0,
+      "clean_cases_evaluated": 18,
+      "clean_cases_attempted": 18,
+      "clean_cases_successful": 18,
+      "clean_cases_mocked_count": 0,
+      "unknown_cases_excluded": 0,
+      "true_positives": 0,
+      "false_positives": 8,
+      "confirmed_false_positives": 8,
+      "unadjudicated_predictions": 0,
+      "false_negatives": 0,
+      "total_predictions": 8,
+      "total_ground_truth_defects": 0,
+      "precision": 0.0,
+      "historical_naive_precision": 0.0,
+      "confirmed_precision": 0.0,
+      "confirmed_precision_status": "eligible",
+      "confirmed_precision_note": null,
+      "recall": null,
+      "f1_score": null,
+      "clean_cases_flagged": 6,
+      "clean_case_false_positive_rate": 0.3333,
+      "clean_case_fpr_status": "eligible",
+      "clean_case_fpr_note": "Observed warning rate on curated sample (6/18 clean fixtures flagged).",
+      "buggy_cases_detected": 0,
+      "defect_case_detection_rate": null,
+      "failed_runs_count": 0,
+      "partial_runs_count": 0,
+      "static_findings_total": 0,
+      "static_findings_preserved": 0,
+      "static_findings_confirmed": 0,
+      "static_findings_likely_fp": 0,
+      "static_findings_inconclusive": 0,
+      "additional_llm_candidates": 8,
+      "triage_correct_fp_count": 0,
+      "triage_incorrect_fp_count": 0,
+      "incremental_tp_over_c": null,
+      "incremental_fp_over_c": null,
+      "common_subset_metrics": {
+        "cases_count": 18,
+        "true_positives": 0,
+        "false_positives": 8,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": null,
+        "f1_score": null
+      },
+      "provenance_breakdown": {
+        "real_model": 18
+      },
+      "is_mock_evaluation": false,
+      "total_duration_seconds": 130.095,
+      "total_cost_usd": 0.198942
+    },
+    "D": {
+      "configuration": "D",
+      "total_cases_evaluated": 18,
+      "cases_attempted": 18,
+      "cases_successful": 18,
+      "cases_failed": 0,
+      "cases_partial": 0,
+      "cases_skipped": 0,
+      "buggy_cases_evaluated": 0,
+      "clean_cases_evaluated": 18,
+      "clean_cases_attempted": 18,
+      "clean_cases_successful": 18,
+      "clean_cases_mocked_count": 0,
+      "unknown_cases_excluded": 0,
+      "true_positives": 0,
+      "false_positives": 4,
+      "confirmed_false_positives": 4,
+      "unadjudicated_predictions": 0,
+      "false_negatives": 0,
+      "total_predictions": 4,
+      "total_ground_truth_defects": 0,
+      "precision": 0.0,
+      "historical_naive_precision": 0.0,
+      "confirmed_precision": 0.0,
+      "confirmed_precision_status": "eligible",
+      "confirmed_precision_note": null,
+      "recall": null,
+      "f1_score": null,
+      "clean_cases_flagged": 2,
+      "clean_case_false_positive_rate": 0.1111,
+      "clean_case_fpr_status": "eligible",
+      "clean_case_fpr_note": "Observed warning rate on curated sample (2/18 clean fixtures flagged).",
+      "buggy_cases_detected": 0,
+      "defect_case_detection_rate": null,
+      "failed_runs_count": 0,
+      "partial_runs_count": 0,
+      "static_findings_total": 0,
+      "static_findings_preserved": 0,
+      "static_findings_confirmed": 0,
+      "static_findings_likely_fp": 0,
+      "static_findings_inconclusive": 0,
+      "additional_llm_candidates": 4,
+      "triage_correct_fp_count": 0,
+      "triage_incorrect_fp_count": 0,
+      "incremental_tp_over_c": 0,
+      "incremental_fp_over_c": -4,
+      "common_subset_metrics": {
+        "cases_count": 18,
+        "true_positives": 0,
+        "false_positives": 4,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": null,
+        "f1_score": null
+      },
+      "provenance_breakdown": {
+        "real_model": 18
+      },
+      "is_mock_evaluation": false,
+      "total_duration_seconds": 101.562,
+      "total_cost_usd": null
+    }
+  },
+  "case_level_details": {
+    "A": [
+      {
+        "case_id": "CTRL-0001",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.016,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0002",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.219,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0003",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.125,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0004",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.078,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0005",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.047,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0006",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.0,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0007",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.156,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0008",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.141,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0009",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.062,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0010",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.25,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0011",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.203,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0012",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.235,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0013",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.468,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0014",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.079,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0015",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.093,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0016",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.125,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0017",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 5.11,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0018",
+        "configuration": "A",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_deterministic",
+        "model_id": "Ruff 0.16.10 + Semgrep CE 1.180.0",
+        "execution_status": "success",
+        "duration_seconds": 4.968,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      }
+    ],
+    "B": [
+      {
+        "case_id": "CTRL-0001",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 4.313,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0002",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.421,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0003",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.563,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0004",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.437,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0005",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.391,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0006",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.219,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0007",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.25,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0008",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.375,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0009",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.328,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0010",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.625,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0011",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.984,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0012",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 18.937,
+        "true_positives": 0,
+        "false_positives": 2,
+        "confirmed_false_positives": 2,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-377b6686f2",
+          "llm-79ac44aaed"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 2
+        }
+      },
+      {
+        "case_id": "CTRL-0013",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 13.86,
+        "true_positives": 0,
+        "false_positives": 1,
+        "confirmed_false_positives": 1,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-bf9e8b8466"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 1
+        }
+      },
+      {
+        "case_id": "CTRL-0014",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 24.5,
+        "true_positives": 0,
+        "false_positives": 3,
+        "confirmed_false_positives": 3,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 3,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-98c6401037",
+          "llm-ce44f91687",
+          "llm-03e2dcaef0"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 3
+        }
+      },
+      {
+        "case_id": "CTRL-0015",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.953,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0016",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.187,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0017",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.375,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0018",
+        "configuration": "B",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.766,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      }
+    ],
+    "C": [
+      {
+        "case_id": "CTRL-0001",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 9.578,
+        "true_positives": 0,
+        "false_positives": 1,
+        "confirmed_false_positives": 1,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-c-92e456895c"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 1
+        }
+      },
+      {
+        "case_id": "CTRL-0002",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.594,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0003",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 11.625,
+        "true_positives": 0,
+        "false_positives": 1,
+        "confirmed_false_positives": 1,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-c-df3dc819bf"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 1
+        }
+      },
+      {
+        "case_id": "CTRL-0004",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.782,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0005",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.734,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0006",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 10.812,
+        "true_positives": 0,
+        "false_positives": 1,
+        "confirmed_false_positives": 1,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-c-48d95cf106"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 1
+        }
+      },
+      {
+        "case_id": "CTRL-0007",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.453,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0008",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.938,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0009",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 4.828,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0010",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.344,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0011",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.422,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0012",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.672,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0013",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 12.922,
+        "true_positives": 0,
+        "false_positives": 1,
+        "confirmed_false_positives": 1,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-c-b97dbada1d"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 1
+        }
+      },
+      {
+        "case_id": "CTRL-0014",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 27.0,
+        "true_positives": 0,
+        "false_positives": 3,
+        "confirmed_false_positives": 3,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 3,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-c-6b078a54ae",
+          "llm-c-c508807c9f",
+          "llm-c-91cdd8f4e7"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 3
+        }
+      },
+      {
+        "case_id": "CTRL-0015",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.594,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0016",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 13.563,
+        "true_positives": 0,
+        "false_positives": 1,
+        "confirmed_false_positives": 1,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 1,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-c-5b3e85ae71"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 1
+        }
+      },
+      {
+        "case_id": "CTRL-0017",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.718,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0018",
+        "configuration": "C",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.516,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      }
+    ],
+    "D": [
+      {
+        "case_id": "CTRL-0001",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.469,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0002",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.688,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0003",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.672,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0004",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.844,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0005",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.672,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0006",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.703,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0007",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.437,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0008",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.515,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0009",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.469,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0010",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.782,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0011",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.844,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0012",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 21.312,
+        "true_positives": 0,
+        "false_positives": 2,
+        "confirmed_false_positives": 2,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-2980efcbaa",
+          "llm-dd85bde1c1"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 2
+        }
+      },
+      {
+        "case_id": "CTRL-0013",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.578,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0014",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 22.312,
+        "true_positives": 0,
+        "false_positives": 2,
+        "confirmed_false_positives": 2,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 2,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [
+          "llm-c76264c652",
+          "llm-920f710324"
+        ],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 2
+        }
+      },
+      {
+        "case_id": "CTRL-0015",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.797,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0016",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.25,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0017",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.578,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      },
+      {
+        "case_id": "CTRL-0018",
+        "configuration": "D",
+        "is_buggy": false,
+        "annotation_state": "clean",
+        "annotation_completeness": "exhaustive",
+        "provenance": "real_model",
+        "model_id": "ag/claude-sonnet-4-6",
+        "execution_status": "success",
+        "duration_seconds": 3.64,
+        "true_positives": 0,
+        "false_positives": 0,
+        "confirmed_false_positives": 0,
+        "unadjudicated_predictions": 0,
+        "false_negatives": 0,
+        "emitted_findings_count": 0,
+        "matched_pairs": [],
+        "unmatched_prediction_ids": [],
+        "unmatched_defect_ids": [],
+        "metric_eligibility": {
+          "recall": false,
+          "clean_fpr": true,
+          "confirmed_precision": true
+        },
+        "exclusion_reasons": {
+          "recall": "Clean control case contains no gold defects."
+        },
+        "failure_reason": null,
+        "triage_summary": {
+          "confirmed": 0,
+          "likely_false_positive": 0,
+          "inconclusive": 0,
+          "additional": 0
+        }
+      }
+    ]
+  }
+}
