@@ -1,0 +1,159 @@
+[
+  {
+    "fixture_id": "ABL-0001",
+    "target_file": "storage.py",
+    "repo_dir": "data\\fixtures\\ablation_fixtures\\repo_01_storage",
+    "files_discovered": [
+      "storage.py",
+      "validators.py"
+    ],
+    "files_selected": [
+      "validators.py"
+    ],
+    "symbols_retrieved": [
+      [
+        "sanitize_filename",
+        "validators.py",
+        "L10-34"
+      ]
+    ],
+    "context_token_count_approx": 209,
+    "context_characters": 1559,
+    "retrieval_status": "SUCCESS"
+  },
+  {
+    "fixture_id": "ABL-0002",
+    "target_file": "documents.py",
+    "repo_dir": "data\\fixtures\\ablation_fixtures\\repo_02_tenant_doc",
+    "files_discovered": [
+      "authz.py",
+      "documents.py"
+    ],
+    "files_selected": [
+      "authz.py"
+    ],
+    "symbols_retrieved": [
+      [
+        "assert_tenant_boundary",
+        "authz.py",
+        "L11-24"
+      ]
+    ],
+    "context_token_count_approx": 156,
+    "context_characters": 1255,
+    "retrieval_status": "SUCCESS"
+  },
+  {
+    "fixture_id": "ABL-0003",
+    "target_file": "reports.py",
+    "repo_dir": "data\\fixtures\\ablation_fixtures\\repo_03_query_builder",
+    "files_discovered": [
+      "reports.py",
+      "schema_whitelist.py"
+    ],
+    "files_selected": [
+      "schema_whitelist.py"
+    ],
+    "symbols_retrieved": [
+      [
+        "validate_table_whitelist",
+        "schema_whitelist.py",
+        "L13-26"
+      ]
+    ],
+    "context_token_count_approx": 157,
+    "context_characters": 1193,
+    "retrieval_status": "SUCCESS"
+  },
+  {
+    "fixture_id": "ABL-0004",
+    "target_file": "login_handler.py",
+    "repo_dir": "data\\fixtures\\ablation_fixtures\\repo_04_auth_service",
+    "files_discovered": [
+      "login_handler.py",
+      "rate_limiter.py"
+    ],
+    "files_selected": [
+      "rate_limiter.py"
+    ],
+    "symbols_retrieved": [
+      [
+        "RateLimitExceeded",
+        "rate_limiter.py",
+        "L9-11"
+      ],
+      [
+        "SlidingWindowRateLimiter",
+        "rate_limiter.py",
+        "L14-35"
+      ],
+      [
+        "check_and_record",
+        "rate_limiter.py",
+        "L22-35"
+      ]
+    ],
+    "context_token_count_approx": 306,
+    "context_characters": 2459,
+    "retrieval_status": "SUCCESS"
+  },
+  {
+    "fixture_id": "ABL-0005",
+    "target_file": "chunk_consumer.py",
+    "repo_dir": "data\\fixtures\\ablation_fixtures\\repo_05_stream_parser",
+    "files_discovered": [
+      "bounded_stream.py",
+      "chunk_consumer.py"
+    ],
+    "files_selected": [
+      "bounded_stream.py"
+    ],
+    "symbols_retrieved": [
+      [
+        "StreamCapExceeded",
+        "bounded_stream.py",
+        "L9-11"
+      ],
+      [
+        "BoundedStreamReader",
+        "bounded_stream.py",
+        "L14-43"
+      ],
+      [
+        "read_chunk",
+        "bounded_stream.py",
+        "L27-43"
+      ]
+    ],
+    "context_token_count_approx": 340,
+    "context_characters": 2855,
+    "retrieval_status": "SUCCESS"
+  },
+  {
+    "fixture_id": "ABL-0006",
+    "target_file": "token_signer.py",
+    "repo_dir": "data\\fixtures\\ablation_fixtures\\repo_06_crypto_signer",
+    "files_discovered": [
+      "key_vault.py",
+      "token_signer.py"
+    ],
+    "files_selected": [
+      "key_vault.py"
+    ],
+    "symbols_retrieved": [
+      [
+        "EphemeralSigningKeyVault",
+        "key_vault.py",
+        "L9-29"
+      ],
+      [
+        "get_signing_key",
+        "key_vault.py",
+        "L17-29"
+      ]
+    ],
+    "context_token_count_approx": 263,
+    "context_characters": 2202,
+    "retrieval_status": "SUCCESS"
+  }
+]

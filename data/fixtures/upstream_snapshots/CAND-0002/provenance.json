@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0002",
+  "repository": "tiangolo/fastapi",
+  "commit_hash": "210af1fd3dc0f612a08fa02a0cb3f5adb81e5bfb",
+  "target_file": "fastapi/routing.py",
+  "source_url": "https://raw.githubusercontent.com/tiangolo/fastapi/210af1fd3dc0f612a08fa02a0cb3f5adb81e5bfb/fastapi/routing.py",
+  "sha256": "5ab4aac4c7c8e30a761a5e35f57f747231bce18177c1d4a5723e487005a9fb05",
+  "line_count": 991,
+  "line_ranges": [
+    [
+      498,
+      502
+    ]
+  ],
+  "primary_cwe": "CWE-670"
+}

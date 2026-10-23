@@ -28,24 +28,27 @@ The project's core contribution directions are formally confirmed around three p
 
 ## 4. System Architecture
 
-> Proposed specification pending student review/approval: [`architecture/system_architecture.md`](architecture/system_architecture.md)
+> Architecture baseline approved and implemented: [`architecture/system_architecture.md`](architecture/system_architecture.md)
 
 ```
-PR Event (GitHub Actions / Webhook)
+PR Event (GitHub Webhook HMAC-SHA256 / API Request)
+  |
+  v
+Intake & Idempotency Layer (X-GitHub-Delivery deduplication & Atomic DB Persistence)
   |
   v
 Checkout & Revision Manager (head revision, base diff)
   |
   +---> [Config A, C, D] Deterministic Static Analysis (Ruff + Semgrep CE) --+
   |                                                                           |
-  +---> [Config D] Repo Context Engine (AST Symbols + pgvector Embeddings) ---+
+  +---> [Config D] Repo Context Engine (AST Symbols + Repository Index) ------+
   |                                                                           |
   +---> [Config B, C, D] LLM Semantic Review (Prompt + Diff + Context) -------+
                                                                               |
                                                                               v
                                                           Finding Normalizer & Deduplicator
                                                                               |
-                                                                              +---> PostgreSQL / pgvector Persistence
+                                                                              +---> Physical DB Persistence (SQLite WAL / PostgreSQL)
                                                                               +---> GitHub PR Review Publisher (Prod)
                                                                               +---> Benchmark Metric Matcher (Eval)
 ```
@@ -54,10 +57,12 @@ Checkout & Revision Manager (head revision, base diff)
 ## 5. Tech Stack
 | Layer | Choice |
 |---|---|
-| Backend & Worker | Python (FastAPI recommended; ADR-03 pending student approval) |
-| Frontend UI | React |
-| Database | PostgreSQL (+ pgvector for Repo RAG embeddings) |
-| Static Analysis | Python AST, Ruff, Semgrep |
+| Backend & Worker | Python (FastAPI approved and implemented; in-process BackgroundTasks prototype) |
+| Frontend UI | React (deferred) |
+| Database | SQLite physical database with WAL mode (PRAGMA journal_mode=WAL) implemented; PostgreSQL planned for production |
+| Static Analysis | Python AST, Ruff 0.16.10, Semgrep CE 1.180.0 |
+| Tokenizer / Accounting | Official Anthropic Messages API (`/v1/messages/count_tokens` with model `ag/claude-sonnet-4-6`) |
+| Benchmark Dataset | 100-Case Ground-Truth Benchmark (50 Defective + 50 Clean Controls; 100% locally runnable) |
 | CI/CD & Deploy | GitHub Actions, Docker |
 | LLM Integration | Third-party LLM API (model chosen after baseline testing) |
 | Standards/Taxonomy | CWE, OWASP Benchmark |

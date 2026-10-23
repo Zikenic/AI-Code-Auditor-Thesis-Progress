@@ -1,0 +1,20 @@
+{
+  "case_id": "CAND-0032",
+  "repository": "zulip/zulip",
+  "commit_hash": "ea0b8cc01133c79033868efee3edc6c1e3fa0f2b",
+  "target_file": "zerver/lib/message.py",
+  "source_url": "https://raw.githubusercontent.com/zulip/zulip/ea0b8cc01133c79033868efee3edc6c1e3fa0f2b/zerver/lib/message.py",
+  "sha256": "4efd923275b85c8d480525bd2980ffc79e1f819d0324ca364b5c01d64423ee63",
+  "line_count": 1658,
+  "line_ranges": [
+    [
+      825,
+      827
+    ],
+    [
+      842,
+      856
+    ]
+  ],
+  "primary_cwe": "CWE-863"
+}

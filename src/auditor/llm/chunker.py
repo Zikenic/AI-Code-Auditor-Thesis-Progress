@@ -29,13 +29,16 @@ class SourceChunk:
     token_estimate: int
     tier: int  # 1, 2, or 3
     scope_description: str
+    token_count_method: str = "tokenizer"
 
 
 def default_token_estimator(text: str) -> int:
-    """Conservative token estimator used when official tokenizer is offline/unconfigured.
+    """Fallback heuristic token estimator used ONLY when official tokenizer is unavailable.
 
     Approximates tokens as character count / 3.2 with a minimum of words count.
     Provides safety margin over the standard 3.5-4.0 characters/token ratio.
+    NOTE: This is a fallback heuristic approximation and must NOT masquerade
+    as an authoritative tokenizer measurement.
     """
     by_chars = int(len(text) / 3.2) + 1
     by_words = int(len(text.split()) * 1.25) + 1
@@ -76,9 +79,15 @@ class SourceChunker:
         token_budget: int = 16_000,
         token_counter: Callable[[str], int] | None = None,
         tier3_overlap: int = 100,
+        token_count_method: str | None = None,
     ):
         self.token_budget = token_budget
-        self.count_tokens = token_counter or default_token_estimator
+        if token_counter is not None:
+            self.count_tokens = token_counter
+            self.token_count_method = token_count_method or "tokenizer"
+        else:
+            self.count_tokens = default_token_estimator
+            self.token_count_method = token_count_method or "fallback_heuristic"
         self.tier3_overlap = tier3_overlap
 
     def chunk_source(self, raw_source: str, file_path: str) -> list[SourceChunk]:
@@ -110,6 +119,7 @@ class SourceChunker:
                     token_estimate=full_tokens,
                     tier=1,
                     scope_description="Whole file (Tier 1 single-pass)",
+                    token_count_method=self.token_count_method,
                 )
             ]
 
@@ -289,6 +299,7 @@ class SourceChunker:
                     token_estimate=c.token_estimate,
                     tier=2,
                     scope_description=c.scope_description,
+                    token_count_method=self.token_count_method,
                 )
             )
 
@@ -370,6 +381,7 @@ class SourceChunker:
                     token_estimate=c.token_estimate,
                     tier=3,
                     scope_description=c.scope_description,
+                    token_count_method=self.token_count_method,
                 )
             )
 

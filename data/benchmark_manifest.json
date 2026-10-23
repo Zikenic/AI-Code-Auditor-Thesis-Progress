@@ -1,0 +1,4373 @@
+{
+  "manifest_version": "2.0.0",
+  "description": "AI Code Auditor Benchmark Manifest (50 Defective Cases + 50 Clean Controls = 100 Cases)",
+  "total_cases": 100,
+  "defective_cases_count": 50,
+  "clean_cases_count": 50,
+  "cases": [
+    {
+      "case_id": "CAND-0001",
+      "candidate_id": "CAND-0001",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "tornadoweb/tornado",
+      "commit_hash": "2ca8821d006f6693f920a4b183a3a7c985a5c8ad",
+      "buggy_commit": "2ca8821d006f6693f920a4b183a3a7c985a5c8ad",
+      "fixed_commit": "4f486a4aec746e9d66441600ee3b0743228b061c",
+      "is_buggy": true,
+      "category_id": 1,
+      "impact": "functional",
+      "primary_cwe": "CWE-670",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-440"
+      ],
+      "target_file": "tornado/http1connection.py",
+      "line_ranges": [
+        [
+          390,
+          394
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0001-DEF-1",
+          "category_id": 1,
+          "impact": "functional",
+          "primary_cwe": "CWE-670",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-440"
+          ],
+          "file_path": "tornado/http1connection.py",
+          "start_line": 390,
+          "end_line": 394,
+          "description": "Ground-truth locus 390-394"
+        }
+      ],
+      "reproducer": "Upstream regression test `tornado/test/httpclient_test.py::test_redirect_put_with_body`.",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in tornado/http1connection.py",
+      "reviewed_categories": [
+        1
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0001/tornado/http1connection.py"
+    },
+    {
+      "case_id": "CAND-0002",
+      "candidate_id": "CAND-0002",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "tiangolo/fastapi",
+      "commit_hash": "210af1fd3dc0f612a08fa02a0cb3f5adb81e5bfb",
+      "buggy_commit": "210af1fd3dc0f612a08fa02a0cb3f5adb81e5bfb",
+      "fixed_commit": "02441ff0313d5b471b662293244c53e712f1243f",
+      "is_buggy": true,
+      "category_id": 1,
+      "impact": "functional",
+      "primary_cwe": "CWE-670",
+      "acceptable_alternative_cwes": [
+        "CWE-440"
+      ],
+      "target_file": "fastapi/routing.py",
+      "line_ranges": [
+        [
+          498,
+          502
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0002-DEF-1",
+          "category_id": 1,
+          "impact": "functional",
+          "primary_cwe": "CWE-670",
+          "acceptable_alternative_cwes": [
+            "CWE-440"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 498,
+          "end_line": 502,
+          "description": "Ground-truth locus 498-502"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_ws_router.py::test_router_ws_depends_with_override`.",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in fastapi/routing.py",
+      "reviewed_categories": [
+        1
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0002/fastapi/routing.py"
+    },
+    {
+      "case_id": "CAND-0003",
+      "candidate_id": "CAND-0003",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 1,
+      "impact": "security",
+      "primary_cwe": "CWE-193",
+      "acceptable_alternative_cwes": [
+        "CWE-670",
+        "CWE-20"
+      ],
+      "target_file": "cand_0003_pagination_offset.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0003_pagination_offset.py",
+      "line_ranges": [
+        [
+          11,
+          12
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0003-DEF-1",
+          "category_id": 1,
+          "impact": "security",
+          "primary_cwe": "CWE-193",
+          "acceptable_alternative_cwes": [
+            "CWE-670",
+            "CWE-20"
+          ],
+          "file_path": "cand_0003_pagination_offset.py",
+          "start_line": 11,
+          "end_line": 12,
+          "description": "Ground-truth locus 11-12 in cand_0003_pagination_offset.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Pagination offset computation and slice indexing",
+      "reviewed_categories": [
+        1
+      ],
+      "validation_notes": "Deterministic fixture for Pagination offset computation and slice indexing.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0004",
+      "candidate_id": "CAND-0004",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 1,
+      "impact": "security",
+      "primary_cwe": "CWE-682",
+      "acceptable_alternative_cwes": [
+        "CWE-670",
+        "CWE-480"
+      ],
+      "target_file": "cand_0004_token_bucket.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0004_token_bucket.py",
+      "line_ranges": [
+        [
+          16,
+          18
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0004-DEF-1",
+          "category_id": 1,
+          "impact": "security",
+          "primary_cwe": "CWE-682",
+          "acceptable_alternative_cwes": [
+            "CWE-670",
+            "CWE-480"
+          ],
+          "file_path": "cand_0004_token_bucket.py",
+          "start_line": 16,
+          "end_line": 18,
+          "description": "Ground-truth locus 16-18 in cand_0004_token_bucket.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Token bucket rate-limiter allowance calculation",
+      "reviewed_categories": [
+        1
+      ],
+      "validation_notes": "Deterministic fixture for Token bucket rate-limiter allowance calculation.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0005",
+      "candidate_id": "CAND-0005",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 1,
+      "impact": "security",
+      "primary_cwe": "CWE-125",
+      "acceptable_alternative_cwes": [
+        "CWE-670",
+        "CWE-193"
+      ],
+      "target_file": "cand_0005_bisect_boundary.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0005_bisect_boundary.py",
+      "line_ranges": [
+        [
+          14,
+          15
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0005-DEF-1",
+          "category_id": 1,
+          "impact": "security",
+          "primary_cwe": "CWE-125",
+          "acceptable_alternative_cwes": [
+            "CWE-670",
+            "CWE-193"
+          ],
+          "file_path": "cand_0005_bisect_boundary.py",
+          "start_line": 14,
+          "end_line": 15,
+          "description": "Ground-truth locus 14-15 in cand_0005_bisect_boundary.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Binary search index boundary clamp",
+      "reviewed_categories": [
+        1
+      ],
+      "validation_notes": "Deterministic fixture for Binary search index boundary clamp.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0006",
+      "candidate_id": "CAND-0006",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "scrapy/scrapy",
+      "commit_hash": "f02c3d1dcf3e4880388d19e961e7911be5dc54ff",
+      "buggy_commit": "f02c3d1dcf3e4880388d19e961e7911be5dc54ff",
+      "fixed_commit": "439a3e59b8e858441f8d97dbc32f398db392330d",
+      "is_buggy": true,
+      "category_id": 1,
+      "impact": "functional",
+      "primary_cwe": "CWE-476",
+      "acceptable_alternative_cwes": [
+        "CWE-670"
+      ],
+      "target_file": "scrapy/utils/datatypes.py",
+      "line_ranges": [
+        [
+          318,
+          319
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0006-DEF-1",
+          "category_id": 1,
+          "impact": "functional",
+          "primary_cwe": "CWE-476",
+          "acceptable_alternative_cwes": [
+            "CWE-670"
+          ],
+          "file_path": "scrapy/utils/datatypes.py",
+          "start_line": 318,
+          "end_line": 319,
+          "description": "Missing NoneType boundary check on self.limit before relational comparison len(self) >= self.limit in LocalCache.__setitem__"
+        }
+      ],
+      "reproducer": "Executed test reproducing TypeError ('>=' not supported between 'int' and 'NoneType') on LocalCache() without limit; verified fixed revision resolves defect (tests/test_utils_datatypes.py::LocalCacheTest::test_cache_without_limit).",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md",
+        "replaces_case_id": "CAND-0003",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "executed_confirmed",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in scrapy/utils/datatypes.py",
+      "reviewed_categories": [
+        1
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0006/scrapy/utils/datatypes.py"
+    },
+    {
+      "case_id": "CAND-0007",
+      "candidate_id": "CAND-0007",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "tiangolo/fastapi",
+      "commit_hash": "90120dd6e83d997fa2f7f54119a2e0cf906b1ded",
+      "buggy_commit": "90120dd6e83d997fa2f7f54119a2e0cf906b1ded",
+      "fixed_commit": "fa7e3c996edf2d5482fff8f9d890ac2390dede4d",
+      "is_buggy": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-352",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-345"
+      ],
+      "target_file": "fastapi/routing.py",
+      "line_ranges": [
+        [
+          182,
+          184
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0007-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-352",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-345"
+          ],
+          "file_path": "fastapi/routing.py",
+          "start_line": 182,
+          "end_line": 184,
+          "description": "Ground-truth locus 182-184"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_tutorial/test_body/test_tutorial001.py::test_wrong_headers`.",
+      "provenance": {
+        "advisory": "GHSA-8h2j-cgx8-6xv7 / CVE-2021-32677",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in fastapi/routing.py",
+      "reviewed_categories": [
+        2
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0007/fastapi/routing.py"
+    },
+    {
+      "case_id": "CAND-0008",
+      "candidate_id": "CAND-0008",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "Kludex/python-multipart",
+      "commit_hash": "d3d16dae4b061c34fe9d3c9081d9800c49fc1f7a",
+      "buggy_commit": "d3d16dae4b061c34fe9d3c9081d9800c49fc1f7a",
+      "fixed_commit": "20f0ef6b4e4caf7d69a667c54dff57fe467109a4",
+      "is_buggy": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-1333",
+      "acceptable_alternative_cwes": [
+        "CWE-400"
+      ],
+      "target_file": "multipart/multipart.py",
+      "line_ranges": [
+        [
+          72,
+          75
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0008-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-1333",
+          "acceptable_alternative_cwes": [
+            "CWE-400"
+          ],
+          "file_path": "multipart/multipart.py",
+          "start_line": 72,
+          "end_line": 75,
+          "description": "Vulnerable OPTION_RE regular expression prone to ReDoS (call site in parse_options_header at lines 101-117)"
+        }
+      ],
+      "reproducer": "Exact advisory PoC payload (`header = 'application/x-www-form-urlencoded; !=\"' + ('\\\\' * N)`) executed locally in controlled benchmark subprocess across commits `d3d16dae` vs `20f0ef6b`; demonstrated exponential backtracking (O(2^(N/2))), stalling at 2.1266s at N=37 on buggy unpatched revision vs 0.00002s on fixed (92,461.7x slowdown).",
+      "provenance": {
+        "advisory": "GHSA-2jv5-9r88-3w3p / CVE-2024-24762",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "executed_confirmed",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in multipart/multipart.py",
+      "reviewed_categories": [
+        2
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0008/multipart/multipart.py"
+    },
+    {
+      "case_id": "CAND-0009",
+      "candidate_id": "CAND-0009",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "pallets/jinja",
+      "commit_hash": "a7863ba9d3521f1450f821119c50d19d7ecea329",
+      "buggy_commit": "a7863ba9d3521f1450f821119c50d19d7ecea329",
+      "fixed_commit": "0668239dc6b44ef38e7a6c9f91f312fd4ca581cb",
+      "is_buggy": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-79",
+      "acceptable_alternative_cwes": [
+        "CWE-116",
+        "CWE-20"
+      ],
+      "target_file": "src/jinja2/filters.py",
+      "line_ranges": [
+        [
+          250,
+          250
+        ],
+        [
+          292,
+          293
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0009-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-79",
+          "acceptable_alternative_cwes": [
+            "CWE-116",
+            "CWE-20"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 250,
+          "end_line": 250,
+          "description": "Ground-truth locus 250-250"
+        },
+        {
+          "defect_id": "CAND-0009-DEF-2",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-79",
+          "acceptable_alternative_cwes": [
+            "CWE-116",
+            "CWE-20"
+          ],
+          "file_path": "src/jinja2/filters.py",
+          "start_line": 292,
+          "end_line": 293,
+          "description": "Ground-truth locus 292-293"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_filters.py::test_xmlattr_key_invalid`.",
+      "provenance": {
+        "advisory": "GHSA-h75v-3vvj-5mfj / CVE-2024-34064",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in src/jinja2/filters.py",
+      "reviewed_categories": [
+        2
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0009/src/jinja2/filters.py"
+    },
+    {
+      "case_id": "CAND-0010",
+      "candidate_id": "CAND-0010",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 1,
+      "impact": "security",
+      "primary_cwe": "CWE-835",
+      "acceptable_alternative_cwes": [
+        "CWE-670",
+        "CWE-400"
+      ],
+      "target_file": "cand_0010_ring_buffer_loop.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0010_ring_buffer_loop.py",
+      "line_ranges": [
+        [
+          19,
+          21
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0010-DEF-1",
+          "category_id": 1,
+          "impact": "security",
+          "primary_cwe": "CWE-835",
+          "acceptable_alternative_cwes": [
+            "CWE-670",
+            "CWE-400"
+          ],
+          "file_path": "cand_0010_ring_buffer_loop.py",
+          "start_line": 19,
+          "end_line": 21,
+          "description": "Ground-truth locus 19-21 in cand_0010_ring_buffer_loop.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Circular buffer drain loop termination",
+      "reviewed_categories": [
+        1
+      ],
+      "validation_notes": "Deterministic fixture for Circular buffer drain loop termination.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0011",
+      "candidate_id": "CAND-0011",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 1,
+      "impact": "security",
+      "primary_cwe": "CWE-670",
+      "acceptable_alternative_cwes": [
+        "CWE-480",
+        "CWE-20"
+      ],
+      "target_file": "cand_0011_retry_backoff_jitter.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0011_retry_backoff_jitter.py",
+      "line_ranges": [
+        [
+          12,
+          14
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0011-DEF-1",
+          "category_id": 1,
+          "impact": "security",
+          "primary_cwe": "CWE-670",
+          "acceptable_alternative_cwes": [
+            "CWE-480",
+            "CWE-20"
+          ],
+          "file_path": "cand_0011_retry_backoff_jitter.py",
+          "start_line": 12,
+          "end_line": 14,
+          "description": "Ground-truth locus 12-14 in cand_0011_retry_backoff_jitter.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Exponential backoff calculation with jitter",
+      "reviewed_categories": [
+        1
+      ],
+      "validation_notes": "Deterministic fixture for Exponential backoff calculation with jitter.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0012",
+      "candidate_id": "CAND-0012",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-918",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "cand_0012_ssrf_fetcher.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0012_ssrf_fetcher.py",
+      "line_ranges": [
+        [
+          11,
+          13
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0012-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-918",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "cand_0012_ssrf_fetcher.py",
+          "start_line": 11,
+          "end_line": 13,
+          "description": "Ground-truth locus 11-13 in cand_0012_ssrf_fetcher.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Webhook URL retrieval and HTTP dispatch",
+      "reviewed_categories": [
+        2
+      ],
+      "validation_notes": "Deterministic fixture for Webhook URL retrieval and HTTP dispatch.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0013",
+      "candidate_id": "CAND-0013",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-601",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "cand_0013_open_redirect.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0013_open_redirect.py",
+      "line_ranges": [
+        [
+          10,
+          11
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0013-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-601",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "cand_0013_open_redirect.py",
+          "start_line": 10,
+          "end_line": 11,
+          "description": "Ground-truth locus 10-11 in cand_0013_open_redirect.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Authentication redirect target URL validation",
+      "reviewed_categories": [
+        2
+      ],
+      "validation_notes": "Deterministic fixture for Authentication redirect target URL validation.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0014",
+      "candidate_id": "CAND-0014",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "django/django",
+      "commit_hash": "425718726b7d2edd7b8a043f8976e437262b5098",
+      "buggy_commit": "425718726b7d2edd7b8a043f8976e437262b5098",
+      "fixed_commit": "54eb8a374d5d98594b264e8ec22337819b37443c",
+      "is_buggy": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-943"
+      ],
+      "target_file": "django/db/models/functions/datetime.py",
+      "line_ranges": [
+        [
+          45,
+          51
+        ],
+        [
+          225,
+          236
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0014-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-943"
+          ],
+          "file_path": "django/db/models/functions/datetime.py",
+          "start_line": 45,
+          "end_line": 51,
+          "description": "Ground-truth locus 45-51"
+        },
+        {
+          "defect_id": "CAND-0014-DEF-2",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-943"
+          ],
+          "file_path": "django/db/models/functions/datetime.py",
+          "start_line": 225,
+          "end_line": 236,
+          "description": "Ground-truth locus 225-236"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/db_functions/datetime/test_extract_trunc.py::test_extract_lookup_name_sql_injection`.",
+      "provenance": {
+        "advisory": "GHSA-p64x-8rxx-wf6q / CVE-2022-34265",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in django/db/models/functions/datetime.py",
+      "reviewed_categories": [
+        3
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0014/django/db/models/functions/datetime.py"
+    },
+    {
+      "case_id": "CAND-0015",
+      "candidate_id": "CAND-0015",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "django/django",
+      "commit_hash": "6b178a3e930f72069f3cda2e6a09d1b320fc09ec",
+      "buggy_commit": "6b178a3e930f72069f3cda2e6a09d1b320fc09ec",
+      "fixed_commit": "eb31d845323618d688ad429479c6dda973056136",
+      "is_buggy": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-943"
+      ],
+      "target_file": "django/contrib/postgres/aggregates/general.py",
+      "line_ranges": [
+        [
+          54,
+          58
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0015-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-943"
+          ],
+          "file_path": "django/contrib/postgres/aggregates/general.py",
+          "start_line": 54,
+          "end_line": 58,
+          "description": "Raw string interpolation of delimiter in StringAgg SQL template"
+        }
+      ],
+      "reproducer": "Cited upstream regression test tests/postgres_tests/test_aggregates.py::test_string_agg_delimiter_escaping (requires PostgreSQL database setup; not run locally).",
+      "provenance": {
+        "advisory": "GHSA-hmr4-m2h5-33qx / CVE-2020-7471",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "cited_not_run",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in django/contrib/postgres/aggregates/general.py",
+      "reviewed_categories": [
+        3
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0015/django/contrib/postgres/aggregates/general.py"
+    },
+    {
+      "case_id": "CAND-0016",
+      "candidate_id": "CAND-0016",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-1333",
+      "acceptable_alternative_cwes": [
+        "CWE-400",
+        "CWE-20"
+      ],
+      "target_file": "cand_0016_redos_email.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0016_redos_email.py",
+      "line_ranges": [
+        [
+          9,
+          9
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0016-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-1333",
+          "acceptable_alternative_cwes": [
+            "CWE-400",
+            "CWE-20"
+          ],
+          "file_path": "cand_0016_redos_email.py",
+          "start_line": 9,
+          "end_line": 9,
+          "description": "Ground-truth locus 9-9 in cand_0016_redos_email.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Email format regular expression validation",
+      "reviewed_categories": [
+        2
+      ],
+      "validation_notes": "Deterministic fixture for Email format regular expression validation.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0017",
+      "candidate_id": "CAND-0017",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "tortoise/tortoise-orm",
+      "commit_hash": "816ff00e988f79b4ff1601f247062bb5eb9db802",
+      "buggy_commit": "816ff00e988f79b4ff1601f247062bb5eb9db802",
+      "fixed_commit": "91c364053e0ddf77edc5442914c6f049512678b3",
+      "is_buggy": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-943"
+      ],
+      "target_file": "tortoise/backends/mysql/executor.py",
+      "line_ranges": [
+        [
+          19,
+          45
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0017-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-943"
+          ],
+          "file_path": "tortoise/backends/mysql/executor.py",
+          "start_line": 19,
+          "end_line": 45,
+          "description": "Ground-truth locus 19-45"
+        }
+      ],
+      "reproducer": "Upstream fuzz test harness `tests/test_fuzz.py`.",
+      "provenance": {
+        "advisory": "GHSA-9j2c-x8qm-qmjq / CVE-2020-11010",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in tortoise/backends/mysql/executor.py",
+      "reviewed_categories": [
+        3
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0017/tortoise/backends/mysql/executor.py"
+    },
+    {
+      "case_id": "CAND-0018",
+      "candidate_id": "CAND-0018",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-611",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "cand_0018_xxe_parser.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0018_xxe_parser.py",
+      "line_ranges": [
+        [
+          11,
+          12
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0018-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-611",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "cand_0018_xxe_parser.py",
+          "start_line": 11,
+          "end_line": 12,
+          "description": "Ground-truth locus 11-12 in cand_0018_xxe_parser.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "XML document deserialization and parsing",
+      "reviewed_categories": [
+        2
+      ],
+      "validation_notes": "Deterministic fixture for XML document deserialization and parsing.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0019",
+      "candidate_id": "CAND-0019",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "aio-libs/aiohttp",
+      "commit_hash": "33ccdfb0a12690af5bb49bda2319ec0907fa7827",
+      "buggy_commit": "33ccdfb0a12690af5bb49bda2319ec0907fa7827",
+      "fixed_commit": "1c335944d6a8b1298baf179b7c0b3069f10c514b",
+      "is_buggy": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20",
+        "CWE-59"
+      ],
+      "target_file": "aiohttp/web_urldispatcher.py",
+      "line_ranges": [
+        [
+          643,
+          645
+        ],
+        [
+          574,
+          576
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0019-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-59"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 643,
+          "end_line": 645,
+          "description": "Ground-truth locus 643-645"
+        },
+        {
+          "defect_id": "CAND-0019-DEF-2",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-20",
+            "CWE-59"
+          ],
+          "file_path": "aiohttp/web_urldispatcher.py",
+          "start_line": 574,
+          "end_line": 576,
+          "description": "Ground-truth locus 574-576"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_web_urldispatcher.py::test_follow_symlink_directory_traversal`.",
+      "provenance": {
+        "advisory": "GHSA-5h86-8mv2-jq9f / CVE-2024-23334",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in aiohttp/web_urldispatcher.py",
+      "reviewed_categories": [
+        4
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0019/aiohttp/web_urldispatcher.py"
+    },
+    {
+      "case_id": "CAND-0020",
+      "candidate_id": "CAND-0020",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "pallets/werkzeug",
+      "commit_hash": "50cfeebcb0727e18cc52ffbeb125f4a66551179b",
+      "buggy_commit": "50cfeebcb0727e18cc52ffbeb125f4a66551179b",
+      "fixed_commit": "2767bcb10a7dd1c297d812cc5e6d11a474c1f092",
+      "is_buggy": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "src/werkzeug/security.py",
+      "line_ranges": [
+        [
+          151,
+          157
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0020-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "src/werkzeug/security.py",
+          "start_line": 151,
+          "end_line": 157,
+          "description": "safe_join fails to block UNC / leading slash paths on Windows"
+        }
+      ],
+      "reproducer": "Cited upstream regression test tests/test_security.py::test_safe_join with //b/c UNC path. Defect requires Windows + Python < 3.11; not reproducible in local Windows Python 3.12.10 environment because ntpath.isabs already treats //b/c as absolute.",
+      "provenance": {
+        "advisory": "GHSA-f9vj-2wh5-fj8j / CVE-2024-49766",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "attempted_blocked",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in src/werkzeug/security.py",
+      "reviewed_categories": [
+        4
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0020/src/werkzeug/security.py"
+    },
+    {
+      "case_id": "CAND-0021",
+      "candidate_id": "CAND-0021",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "encode/starlette",
+      "commit_hash": "24c1fac62a80bb153c6548145334fc643991e35a",
+      "buggy_commit": "24c1fac62a80bb153c6548145334fc643991e35a",
+      "fixed_commit": "1797de464124b090f10cf570441e8292936d63e3",
+      "is_buggy": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "starlette/staticfiles.py",
+      "line_ranges": [
+        [
+          172,
+          172
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0021-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "starlette/staticfiles.py",
+          "start_line": 172,
+          "end_line": 172,
+          "description": "Ground-truth locus 172-172"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_staticfiles.py::test_staticfiles_avoids_path_traversal`.",
+      "provenance": {
+        "advisory": "GHSA-v5gw-mw7f-84px / CVE-2023-29159",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in starlette/staticfiles.py",
+      "reviewed_categories": [
+        4
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0021/starlette/staticfiles.py"
+    },
+    {
+      "case_id": "CAND-0022",
+      "candidate_id": "CAND-0022",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-502",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "cand_0022_insecure_deserializer.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0022_insecure_deserializer.py",
+      "line_ranges": [
+        [
+          13,
+          14
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0022-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-502",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "cand_0022_insecure_deserializer.py",
+          "start_line": 13,
+          "end_line": 14,
+          "description": "Ground-truth locus 13-14 in cand_0022_insecure_deserializer.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Session cookie data deserialization",
+      "reviewed_categories": [
+        2
+      ],
+      "validation_notes": "Deterministic fixture for Session cookie data deserialization.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0023",
+      "candidate_id": "CAND-0023",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 2,
+      "impact": null,
+      "primary_cwe": "CWE-78",
+      "acceptable_alternative_cwes": [
+        "CWE-88",
+        "CWE-20"
+      ],
+      "target_file": "cand_0023_command_injection.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0023_command_injection.py",
+      "line_ranges": [
+        [
+          11,
+          12
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0023-DEF-1",
+          "category_id": 2,
+          "impact": null,
+          "primary_cwe": "CWE-78",
+          "acceptable_alternative_cwes": [
+            "CWE-88",
+            "CWE-20"
+          ],
+          "file_path": "cand_0023_command_injection.py",
+          "start_line": 11,
+          "end_line": 12,
+          "description": "Ground-truth locus 11-12 in cand_0023_command_injection.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Host diagnostics ping execution",
+      "reviewed_categories": [
+        2
+      ],
+      "validation_notes": "Deterministic fixture for Host diagnostics ping execution.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0024",
+      "candidate_id": "CAND-0024",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-943"
+      ],
+      "target_file": "cand_0024_order_by_sqli.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0024_order_by_sqli.py",
+      "line_ranges": [
+        [
+          11,
+          13
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0024-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-943"
+          ],
+          "file_path": "cand_0024_order_by_sqli.py",
+          "start_line": 11,
+          "end_line": 13,
+          "description": "Ground-truth locus 11-13 in cand_0024_order_by_sqli.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Dynamic query sorting clause generation",
+      "reviewed_categories": [
+        3
+      ],
+      "validation_notes": "Deterministic fixture for Dynamic query sorting clause generation.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0025",
+      "candidate_id": "CAND-0025",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "jpadilla/pyjwt",
+      "commit_hash": "24b29adfebcb4f057a3cef5aaf35653bc0c1c8cc",
+      "buggy_commit": "24b29adfebcb4f057a3cef5aaf35653bc0c1c8cc",
+      "fixed_commit": "9c528670c455b8d948aff95ed50e22940d1ad3fc",
+      "is_buggy": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-347",
+      "acceptable_alternative_cwes": [
+        "CWE-287",
+        "CWE-327"
+      ],
+      "target_file": "jwt/algorithms.py",
+      "line_ranges": [
+        [
+          186,
+          197
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0025-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-347",
+          "acceptable_alternative_cwes": [
+            "CWE-287",
+            "CWE-327"
+          ],
+          "file_path": "jwt/algorithms.py",
+          "start_line": 186,
+          "end_line": 197,
+          "description": "Ground-truth locus 186-197"
+        }
+      ],
+      "reproducer": "Upstream regression test `tests/test_advisory.py::TestAdvisory::test_ghsa_ffqj_6fqr_9h24`.",
+      "provenance": {
+        "advisory": "GHSA-ffqj-6fqr-9h24 / CVE-2022-29217",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in jwt/algorithms.py",
+      "reviewed_categories": [
+        5
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0025/jwt/algorithms.py"
+    },
+    {
+      "case_id": "CAND-0026",
+      "candidate_id": "CAND-0026",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "paramiko/paramiko",
+      "commit_hash": "aefd28a7f00c4250d113d375e96abf5da3eb89f9",
+      "buggy_commit": "aefd28a7f00c4250d113d375e96abf5da3eb89f9",
+      "fixed_commit": "fa29bd8446c8eab237f5187d28787727b4610516",
+      "is_buggy": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-287",
+      "acceptable_alternative_cwes": [
+        "CWE-305"
+      ],
+      "target_file": "paramiko/transport.py",
+      "contextual_files": [
+        "paramiko/common.py"
+      ],
+      "line_ranges": [
+        [
+          1822,
+          1828
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0026-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-287",
+          "acceptable_alternative_cwes": [
+            "CWE-305"
+          ],
+          "file_path": "paramiko/transport.py",
+          "start_line": 1822,
+          "end_line": 1828,
+          "description": "Transport dispatch loop executes message handlers before authentication"
+        }
+      ],
+      "reproducer": "Cited upstream issue #1175. End-to-end SSH protocol verification requires interactive SSH test harness; not run locally.",
+      "provenance": {
+        "advisory": "GHSA-232r-66cg-79px / CVE-2018-7750",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "cited_not_run",
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in paramiko/transport.py",
+      "reviewed_categories": [
+        5
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0026/paramiko/transport.py"
+    },
+    {
+      "case_id": "CAND-0027",
+      "candidate_id": "CAND-0027",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "lepture/authlib",
+      "commit_hash": "bb7a315befbad333faf9a23ef574d6e3134a6774",
+      "buggy_commit": "bb7a315befbad333faf9a23ef574d6e3134a6774",
+      "fixed_commit": "b87c32ed07b8ae7f805873e1c9cafd1016761df7",
+      "is_buggy": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-347",
+      "acceptable_alternative_cwes": [
+        "CWE-287",
+        "CWE-327"
+      ],
+      "target_file": "authlib/jose/__init__.py",
+      "line_ranges": [
+        [
+          49,
+          49
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0027-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-347",
+          "acceptable_alternative_cwes": [
+            "CWE-287",
+            "CWE-327"
+          ],
+          "file_path": "authlib/jose/__init__.py",
+          "start_line": 49,
+          "end_line": 49,
+          "description": "Ground-truth locus 49-49"
+        }
+      ],
+      "reproducer": "Upstream tests in `tests/flask/test_oauth2/test_jwt_authorization_request.py::test_server_require_request_object_alg_none`.",
+      "provenance": {
+        "advisory": "GHSA-7wc2-qxgw-g8gg / CVE-2026-28802",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in authlib/jose/__init__.py",
+      "reviewed_categories": [
+        5
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0027/authlib/jose/__init__.py"
+    },
+    {
+      "case_id": "CAND-0028",
+      "candidate_id": "CAND-0028",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "cand_0028_raw_query_format.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0028_raw_query_format.py",
+      "line_ranges": [
+        [
+          11,
+          13
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0028-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "cand_0028_raw_query_format.py",
+          "start_line": 11,
+          "end_line": 13,
+          "description": "Ground-truth locus 11-13 in cand_0028_raw_query_format.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "User lookup query construction",
+      "reviewed_categories": [
+        3
+      ],
+      "validation_notes": "Deterministic fixture for User lookup query construction.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0029",
+      "candidate_id": "CAND-0029",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-943"
+      ],
+      "target_file": "cand_0029_second_order_sqli.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0029_second_order_sqli.py",
+      "line_ranges": [
+        [
+          11,
+          13
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0029-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-943"
+          ],
+          "file_path": "cand_0029_second_order_sqli.py",
+          "start_line": 11,
+          "end_line": 13,
+          "description": "Ground-truth locus 11-13 in cand_0029_second_order_sqli.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Report generation from stored user preference",
+      "reviewed_categories": [
+        3
+      ],
+      "validation_notes": "Deterministic fixture for Report generation from stored user preference.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0030",
+      "candidate_id": "CAND-0030",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-943"
+      ],
+      "target_file": "cand_0030_orm_raw_filter.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0030_orm_raw_filter.py",
+      "line_ranges": [
+        [
+          11,
+          11
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0030-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-943"
+          ],
+          "file_path": "cand_0030_orm_raw_filter.py",
+          "start_line": 11,
+          "end_line": 11,
+          "description": "Ground-truth locus 11-11 in cand_0030_orm_raw_filter.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "ORM raw text clause filtering",
+      "reviewed_categories": [
+        3
+      ],
+      "validation_notes": "Deterministic fixture for ORM raw text clause filtering.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0031",
+      "candidate_id": "CAND-0031",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "jupyterhub/jupyterhub",
+      "commit_hash": "b4053616743eb011e5bb568700f25afca17aef53",
+      "buggy_commit": "b4053616743eb011e5bb568700f25afca17aef53",
+      "fixed_commit": "99e2720b0fc626cbeeca3c6337f917fdacfaa428",
+      "is_buggy": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-269",
+      "acceptable_alternative_cwes": [
+        "CWE-285",
+        "CWE-863"
+      ],
+      "target_file": "jupyterhub/apihandlers/users.py",
+      "line_ranges": [
+        [
+          265,
+          267
+        ],
+        [
+          328,
+          331
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0031-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-269",
+          "acceptable_alternative_cwes": [
+            "CWE-285",
+            "CWE-863"
+          ],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 265,
+          "end_line": 267,
+          "description": "Ground-truth locus 265-267"
+        },
+        {
+          "defect_id": "CAND-0031-DEF-2",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-269",
+          "acceptable_alternative_cwes": [
+            "CWE-285",
+            "CWE-863"
+          ],
+          "file_path": "jupyterhub/apihandlers/users.py",
+          "start_line": 328,
+          "end_line": 331,
+          "description": "Ground-truth locus 328-331"
+        }
+      ],
+      "reproducer": "Upstream regression tests `jupyterhub/tests/test_api.py::test_add_admin` and `test_user_make_admin` (parametrized across `is_admin: True, False`).",
+      "provenance": {
+        "advisory": "GHSA-9x4q-3gxw-849f / CVE-2024-41942",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in jupyterhub/apihandlers/users.py",
+      "reviewed_categories": [
+        6
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0031/jupyterhub/apihandlers/users.py"
+    },
+    {
+      "case_id": "CAND-0032",
+      "candidate_id": "CAND-0032",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "zulip/zulip",
+      "commit_hash": "ea0b8cc01133c79033868efee3edc6c1e3fa0f2b",
+      "buggy_commit": "ea0b8cc01133c79033868efee3edc6c1e3fa0f2b",
+      "fixed_commit": "a30cd12433e3a9f7764763ba38849ac635da5283",
+      "is_buggy": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-863",
+      "acceptable_alternative_cwes": [
+        "CWE-285",
+        "CWE-639"
+      ],
+      "target_file": "zerver/lib/message.py",
+      "line_ranges": [
+        [
+          825,
+          827
+        ],
+        [
+          842,
+          856
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0032-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-863",
+          "acceptable_alternative_cwes": [
+            "CWE-285",
+            "CWE-639"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 825,
+          "end_line": 827,
+          "description": "Ground-truth locus 825-827"
+        },
+        {
+          "defect_id": "CAND-0032-DEF-2",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-863",
+          "acceptable_alternative_cwes": [
+            "CWE-285",
+            "CWE-639"
+          ],
+          "file_path": "zerver/lib/message.py",
+          "start_line": 842,
+          "end_line": 856,
+          "description": "Ground-truth locus 842-856"
+        }
+      ],
+      "reproducer": "Upstream regression test `zerver/tests/test_message_edit.py::test_edit_message_in_unsubscribed_private_stream`.",
+      "provenance": {
+        "advisory": "GHSA-q3wg-jm9p-35fj / CVE-2023-32678",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_pilot.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "historical_claim_unverified",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in zerver/lib/message.py",
+      "reviewed_categories": [
+        6
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0032/zerver/lib/message.py"
+    },
+    {
+      "case_id": "CAND-0033",
+      "candidate_id": "CAND-0033",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "zulip/zulip",
+      "commit_hash": "b1007916b03a40841ba141f5e4f041aeaeaaa010",
+      "buggy_commit": "b1007916b03a40841ba141f5e4f041aeaeaaa010",
+      "fixed_commit": "0cdfe767edca25901ae0922e4e71bd1d2e96084a",
+      "is_buggy": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-863",
+      "acceptable_alternative_cwes": [
+        "CWE-639"
+      ],
+      "target_file": "zerver/actions/typing.py",
+      "line_ranges": [
+        [
+          83,
+          85
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0033-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-863",
+          "acceptable_alternative_cwes": [
+            "CWE-639"
+          ],
+          "file_path": "zerver/actions/typing.py",
+          "start_line": 83,
+          "end_line": 85,
+          "description": "check_send_typing_notification fails to verify sender access to recipients"
+        }
+      ],
+      "reproducer": "Cited upstream regression test zerver/tests/test_typing.py::TypingRestrictedUserAccessTest::test_direct_typing_notification_to_inaccessible_user (requires Zulip backend services; not run locally).",
+      "provenance": {
+        "advisory": "GHSA-wj5v-8mqg-gvqw",
+        "source_doc": "Project Documents/dataset/ground_truth_validation_batch1.md",
+        "source_type": "upstream_repository_snapshot",
+        "synthetic": false
+      },
+      "reproducer_status": "cited_not_run",
+      "contextual_files": [],
+      "annotation_completeness": "partial",
+      "target_scope": "Target commit bug locus in zerver/actions/typing.py",
+      "reviewed_categories": [
+        6
+      ],
+      "validation_notes": "Historical candidate from CVE/advisory patch. Locus annotated; whole file not exhaustively audited.",
+      "synthetic": false,
+      "source_type": "upstream_repository_snapshot",
+      "fixture_path": "data/fixtures/upstream_snapshots/CAND-0033/zerver/actions/typing.py"
+    },
+    {
+      "case_id": "CAND-0034",
+      "candidate_id": "CAND-0034",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 3,
+      "impact": null,
+      "primary_cwe": "CWE-89",
+      "acceptable_alternative_cwes": [
+        "CWE-20"
+      ],
+      "target_file": "cand_0034_blind_sqli_counter.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0034_blind_sqli_counter.py",
+      "line_ranges": [
+        [
+          11,
+          13
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0034-DEF-1",
+          "category_id": 3,
+          "impact": null,
+          "primary_cwe": "CWE-89",
+          "acceptable_alternative_cwes": [
+            "CWE-20"
+          ],
+          "file_path": "cand_0034_blind_sqli_counter.py",
+          "start_line": 11,
+          "end_line": 13,
+          "description": "Ground-truth locus 11-13 in cand_0034_blind_sqli_counter.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Tenant audit log record count check",
+      "reviewed_categories": [
+        3
+      ],
+      "validation_notes": "Deterministic fixture for Tenant audit log record count check.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0035",
+      "candidate_id": "CAND-0035",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-73"
+      ],
+      "target_file": "cand_0035_file_reader_traversal.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0035_file_reader_traversal.py",
+      "line_ranges": [
+        [
+          13,
+          15
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0035-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-73"
+          ],
+          "file_path": "cand_0035_file_reader_traversal.py",
+          "start_line": 13,
+          "end_line": 15,
+          "description": "Ground-truth locus 13-15 in cand_0035_file_reader_traversal.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Document repository file content extraction",
+      "reviewed_categories": [
+        4
+      ],
+      "validation_notes": "Deterministic fixture for Document repository file content extraction.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0036",
+      "candidate_id": "CAND-0036",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-22",
+      "acceptable_alternative_cwes": [
+        "CWE-29"
+      ],
+      "target_file": "cand_0036_zip_slip.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0036_zip_slip.py",
+      "line_ranges": [
+        [
+          12,
+          12
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0036-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-22",
+          "acceptable_alternative_cwes": [
+            "CWE-29"
+          ],
+          "file_path": "cand_0036_zip_slip.py",
+          "start_line": 12,
+          "end_line": 12,
+          "description": "Ground-truth locus 12-12 in cand_0036_zip_slip.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Compressed archive extraction directory safety",
+      "reviewed_categories": [
+        4
+      ],
+      "validation_notes": "Deterministic fixture for Compressed archive extraction directory safety.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0037",
+      "candidate_id": "CAND-0037",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-59",
+      "acceptable_alternative_cwes": [
+        "CWE-22"
+      ],
+      "target_file": "cand_0037_symlink_traversal.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0037_symlink_traversal.py",
+      "line_ranges": [
+        [
+          13,
+          15
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0037-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-59",
+          "acceptable_alternative_cwes": [
+            "CWE-22"
+          ],
+          "file_path": "cand_0037_symlink_traversal.py",
+          "start_line": 13,
+          "end_line": 15,
+          "description": "Ground-truth locus 13-15 in cand_0037_symlink_traversal.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Filesystem link resolution and traversal safety",
+      "reviewed_categories": [
+        4
+      ],
+      "validation_notes": "Deterministic fixture for Filesystem link resolution and traversal safety.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0038",
+      "candidate_id": "CAND-0038",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-434",
+      "acceptable_alternative_cwes": [
+        "CWE-22"
+      ],
+      "target_file": "cand_0038_file_upload_ext.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0038_file_upload_ext.py",
+      "line_ranges": [
+        [
+          13,
+          17
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0038-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-434",
+          "acceptable_alternative_cwes": [
+            "CWE-22"
+          ],
+          "file_path": "cand_0038_file_upload_ext.py",
+          "start_line": 13,
+          "end_line": 17,
+          "description": "Ground-truth locus 13-17 in cand_0038_file_upload_ext.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "User avatar file upload name and extension sanitization",
+      "reviewed_categories": [
+        4
+      ],
+      "validation_notes": "Deterministic fixture for User avatar file upload name and extension sanitization.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0039",
+      "candidate_id": "CAND-0039",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 4,
+      "impact": null,
+      "primary_cwe": "CWE-377",
+      "acceptable_alternative_cwes": [
+        "CWE-378"
+      ],
+      "target_file": "cand_0039_insecure_tempfile.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0039_insecure_tempfile.py",
+      "line_ranges": [
+        [
+          11,
+          13
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0039-DEF-1",
+          "category_id": 4,
+          "impact": null,
+          "primary_cwe": "CWE-377",
+          "acceptable_alternative_cwes": [
+            "CWE-378"
+          ],
+          "file_path": "cand_0039_insecure_tempfile.py",
+          "start_line": 11,
+          "end_line": 13,
+          "description": "Ground-truth locus 11-13 in cand_0039_insecure_tempfile.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Temporary file creation for intermediate processing",
+      "reviewed_categories": [
+        4
+      ],
+      "validation_notes": "Deterministic fixture for Temporary file creation for intermediate processing.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0040",
+      "candidate_id": "CAND-0040",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-798",
+      "acceptable_alternative_cwes": [
+        "CWE-287"
+      ],
+      "target_file": "cand_0040_hardcoded_jwt_secret.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0040_hardcoded_jwt_secret.py",
+      "line_ranges": [
+        [
+          8,
+          8
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0040-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-798",
+          "acceptable_alternative_cwes": [
+            "CWE-287"
+          ],
+          "file_path": "cand_0040_hardcoded_jwt_secret.py",
+          "start_line": 8,
+          "end_line": 8,
+          "description": "Ground-truth locus 8-8 in cand_0040_hardcoded_jwt_secret.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "JWT signing secret key configuration",
+      "reviewed_categories": [
+        5
+      ],
+      "validation_notes": "Deterministic fixture for JWT signing secret key configuration.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0041",
+      "candidate_id": "CAND-0041",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-208",
+      "acceptable_alternative_cwes": [
+        "CWE-287"
+      ],
+      "target_file": "cand_0041_timing_attack_hmac.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0041_timing_attack_hmac.py",
+      "line_ranges": [
+        [
+          13,
+          13
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0041-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-208",
+          "acceptable_alternative_cwes": [
+            "CWE-287"
+          ],
+          "file_path": "cand_0041_timing_attack_hmac.py",
+          "start_line": 13,
+          "end_line": 13,
+          "description": "Ground-truth locus 13-13 in cand_0041_timing_attack_hmac.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "API webhook HMAC signature verification",
+      "reviewed_categories": [
+        5
+      ],
+      "validation_notes": "Deterministic fixture for API webhook HMAC signature verification.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0042",
+      "candidate_id": "CAND-0042",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-613",
+      "acceptable_alternative_cwes": [
+        "CWE-287"
+      ],
+      "target_file": "cand_0042_missing_token_expiration.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0042_missing_token_expiration.py",
+      "line_ranges": [
+        [
+          11,
+          12
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0042-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-613",
+          "acceptable_alternative_cwes": [
+            "CWE-287"
+          ],
+          "file_path": "cand_0042_missing_token_expiration.py",
+          "start_line": 11,
+          "end_line": 12,
+          "description": "Ground-truth locus 11-12 in cand_0042_missing_token_expiration.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Authentication token validity claim verification",
+      "reviewed_categories": [
+        5
+      ],
+      "validation_notes": "Deterministic fixture for Authentication token validity claim verification.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0043",
+      "candidate_id": "CAND-0043",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-327",
+      "acceptable_alternative_cwes": [
+        "CWE-328",
+        "CWE-287"
+      ],
+      "target_file": "cand_0043_weak_hash_md5.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0043_weak_hash_md5.py",
+      "line_ranges": [
+        [
+          11,
+          11
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0043-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-327",
+          "acceptable_alternative_cwes": [
+            "CWE-328",
+            "CWE-287"
+          ],
+          "file_path": "cand_0043_weak_hash_md5.py",
+          "start_line": 11,
+          "end_line": 11,
+          "description": "Ground-truth locus 11-11 in cand_0043_weak_hash_md5.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "User password hashing mechanism",
+      "reviewed_categories": [
+        5
+      ],
+      "validation_notes": "Deterministic fixture for User password hashing mechanism.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0044",
+      "candidate_id": "CAND-0044",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 5,
+      "impact": null,
+      "primary_cwe": "CWE-384",
+      "acceptable_alternative_cwes": [
+        "CWE-287"
+      ],
+      "target_file": "cand_0044_session_fixation.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0044_session_fixation.py",
+      "line_ranges": [
+        [
+          11,
+          13
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0044-DEF-1",
+          "category_id": 5,
+          "impact": null,
+          "primary_cwe": "CWE-384",
+          "acceptable_alternative_cwes": [
+            "CWE-287"
+          ],
+          "file_path": "cand_0044_session_fixation.py",
+          "start_line": 11,
+          "end_line": 13,
+          "description": "Ground-truth locus 11-13 in cand_0044_session_fixation.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Post-authentication session lifecycle renewal",
+      "reviewed_categories": [
+        5
+      ],
+      "validation_notes": "Deterministic fixture for Post-authentication session lifecycle renewal.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0045",
+      "candidate_id": "CAND-0045",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-639",
+      "acceptable_alternative_cwes": [
+        "CWE-862"
+      ],
+      "target_file": "cand_0045_idor_document_access.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0045_idor_document_access.py",
+      "line_ranges": [
+        [
+          11,
+          11
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0045-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-639",
+          "acceptable_alternative_cwes": [
+            "CWE-862"
+          ],
+          "file_path": "cand_0045_idor_document_access.py",
+          "start_line": 11,
+          "end_line": 11,
+          "description": "Ground-truth locus 11-11 in cand_0045_idor_document_access.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Document record retrieval by client identifier",
+      "reviewed_categories": [
+        6
+      ],
+      "validation_notes": "Deterministic fixture for Document record retrieval by client identifier.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0046",
+      "candidate_id": "CAND-0046",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-862",
+      "acceptable_alternative_cwes": [
+        "CWE-285"
+      ],
+      "target_file": "cand_0046_missing_admin_authz.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0046_missing_admin_authz.py",
+      "line_ranges": [
+        [
+          11,
+          14
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0046-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-862",
+          "acceptable_alternative_cwes": [
+            "CWE-285"
+          ],
+          "file_path": "cand_0046_missing_admin_authz.py",
+          "start_line": 11,
+          "end_line": 14,
+          "description": "Ground-truth locus 11-14 in cand_0046_missing_admin_authz.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Administrative user deletion action gate",
+      "reviewed_categories": [
+        6
+      ],
+      "validation_notes": "Deterministic fixture for Administrative user deletion action gate.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0047",
+      "candidate_id": "CAND-0047",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-863",
+      "acceptable_alternative_cwes": [
+        "CWE-639"
+      ],
+      "target_file": "cand_0047_tenant_isolation_bola.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0047_tenant_isolation_bola.py",
+      "line_ranges": [
+        [
+          11,
+          12
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0047-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-863",
+          "acceptable_alternative_cwes": [
+            "CWE-639"
+          ],
+          "file_path": "cand_0047_tenant_isolation_bola.py",
+          "start_line": 11,
+          "end_line": 12,
+          "description": "Ground-truth locus 11-12 in cand_0047_tenant_isolation_bola.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Multi-tenant resource modification authorization",
+      "reviewed_categories": [
+        6
+      ],
+      "validation_notes": "Deterministic fixture for Multi-tenant resource modification authorization.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0048",
+      "candidate_id": "CAND-0048",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-915",
+      "acceptable_alternative_cwes": [
+        "CWE-863"
+      ],
+      "target_file": "cand_0048_mass_assignment.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0048_mass_assignment.py",
+      "line_ranges": [
+        [
+          11,
+          12
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0048-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-915",
+          "acceptable_alternative_cwes": [
+            "CWE-863"
+          ],
+          "file_path": "cand_0048_mass_assignment.py",
+          "start_line": 11,
+          "end_line": 12,
+          "description": "Ground-truth locus 11-12 in cand_0048_mass_assignment.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "User profile attribute update filtering",
+      "reviewed_categories": [
+        6
+      ],
+      "validation_notes": "Deterministic fixture for User profile attribute update filtering.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0049",
+      "candidate_id": "CAND-0049",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-862",
+      "acceptable_alternative_cwes": [
+        "CWE-639"
+      ],
+      "target_file": "cand_0049_reset_token_binding.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0049_reset_token_binding.py",
+      "line_ranges": [
+        [
+          11,
+          14
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0049-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-862",
+          "acceptable_alternative_cwes": [
+            "CWE-639"
+          ],
+          "file_path": "cand_0049_reset_token_binding.py",
+          "start_line": 11,
+          "end_line": 14,
+          "description": "Ground-truth locus 11-14 in cand_0049_reset_token_binding.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "Password reset token identity binding check",
+      "reviewed_categories": [
+        6
+      ],
+      "validation_notes": "Deterministic fixture for Password reset token identity binding check.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CAND-0050",
+      "candidate_id": "CAND-0050",
+      "verification_status": "GROUND_TRUTH_VERIFIED",
+      "quality_level": "Level A",
+      "repository": "local/buggy-cases",
+      "commit_hash": "buggy-fixture-v1",
+      "buggy_commit": "buggy-fixture-v1",
+      "fixed_commit": "clean-fixture-v1",
+      "is_buggy": true,
+      "synthetic": true,
+      "category_id": 6,
+      "impact": null,
+      "primary_cwe": "CWE-942",
+      "acceptable_alternative_cwes": [
+        "CWE-284"
+      ],
+      "target_file": "cand_0050_cors_credentials.py",
+      "fixture_path": "data/fixtures/buggy_cases/cand_0050_cors_credentials.py",
+      "line_ranges": [
+        [
+          10,
+          13
+        ]
+      ],
+      "defects": [
+        {
+          "defect_id": "CAND-0050-DEF-1",
+          "category_id": 6,
+          "impact": null,
+          "primary_cwe": "CWE-942",
+          "acceptable_alternative_cwes": [
+            "CWE-284"
+          ],
+          "file_path": "cand_0050_cors_credentials.py",
+          "start_line": 10,
+          "end_line": 13,
+          "description": "Ground-truth locus 10-13 in cand_0050_cors_credentials.py"
+        }
+      ],
+      "reproducer": "Unit test fixture in tests/test_benchmark_manifest.py",
+      "provenance": {
+        "advisory": null,
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "reproducer_status": "verified_fixture",
+      "contextual_files": [],
+      "annotation_completeness": "exhaustive",
+      "target_scope": "CORS response headers origin verification",
+      "reviewed_categories": [
+        6
+      ],
+      "validation_notes": "Deterministic fixture for CORS response headers origin verification.",
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0001",
+      "paired_case_id": "CAND-0001",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0001_http_chunking.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0001_http_chunking.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 1,
+      "reviewed_categories": [
+        1,
+        2
+      ],
+      "target_scope": "HTTP/1.1 chunked transfer framing and header determination",
+      "intended_behavior": "Correctly determines whether chunked encoding is requested without inverse condition bug.",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 1 & 2. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0002",
+      "paired_case_id": "CAND-0002",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0002_route_override.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0002_route_override.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 1,
+      "reviewed_categories": [
+        1,
+        6
+      ],
+      "target_scope": "Routing dependency resolution and dependency override mapping",
+      "intended_behavior": "Resolves endpoint dependencies with explicit fallback to base provider when override is not present.",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 1 & 6. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0003",
+      "paired_case_id": "CAND-0006",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0003_safe_datatypes.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0003_safe_datatypes.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 1,
+      "reviewed_categories": [
+        1
+      ],
+      "target_scope": "Mapping data structure with safe key lookup and None-guarding",
+      "intended_behavior": "Implements dictionary-like access with explicit None checks and KeyError handling.",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 1. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0004",
+      "paired_case_id": "CAND-0007",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0004_form_csrf.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0004_form_csrf.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 2,
+      "reviewed_categories": [
+        2,
+        5
+      ],
+      "target_scope": "Request form validation with constant-time CSRF token verification",
+      "intended_behavior": "Validates form submission with constant-time HMAC token comparison, preventing CSRF (CWE-352).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 2 & 5. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0005",
+      "paired_case_id": "CAND-0009",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0005_html_escape.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0005_html_escape.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 2,
+      "reviewed_categories": [
+        2
+      ],
+      "target_scope": "HTML template escaping and markup attribute sanitization",
+      "intended_behavior": "Sanitizes user input using html.escape(s, quote=True), preventing XSS (CWE-79).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 2. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0006",
+      "paired_case_id": "CAND-0008",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0006_bounded_multipart.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0006_bounded_multipart.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 2,
+      "reviewed_categories": [
+        2
+      ],
+      "target_scope": "Multipart boundary extraction and linear-time delimiter searching",
+      "intended_behavior": "Uses linear string search and size limits to parse multipart headers without ReDoS (CWE-1333).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 2. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0007",
+      "paired_case_id": "CAND-0014",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0007_parameterized_query.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0007_parameterized_query.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 3,
+      "reviewed_categories": [
+        3
+      ],
+      "target_scope": "Database query construction with parameterized date filters",
+      "intended_behavior": "Uses SQL placeholders (%s) and parameter binding, eliminating SQL Injection (CWE-89).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 3. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0008",
+      "paired_case_id": "CAND-0017",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0008_sql_executor.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0008_sql_executor.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 3,
+      "reviewed_categories": [
+        3
+      ],
+      "target_scope": "Database cursor execution wrapper with parameter binding",
+      "intended_behavior": "Executes queries via DB-API parameter tuples, preventing SQL Injection (CWE-89).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 3. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0009",
+      "paired_case_id": "CAND-0015",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0009_safe_identifier_quote.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0009_safe_identifier_quote.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 3,
+      "reviewed_categories": [
+        3
+      ],
+      "target_scope": "SQL column and ordering identifier validation",
+      "intended_behavior": "Enforces strict whitelist validation for dynamic column names, preventing SQL injection (CWE-89).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 3. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0010",
+      "paired_case_id": "CAND-0019",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0010_path_dispatcher.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0010_path_dispatcher.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 4,
+      "reviewed_categories": [
+        4
+      ],
+      "target_scope": "Static file dispatcher path resolution",
+      "intended_behavior": "Resolves file path and verifies containment inside base directory using pathlib.Path.is_relative_to (CWE-22).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 4. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0011",
+      "paired_case_id": "CAND-0021",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0011_staticfiles_safe.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0011_staticfiles_safe.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 4,
+      "reviewed_categories": [
+        4
+      ],
+      "target_scope": "Static files asset lookup",
+      "intended_behavior": "Checks canonical common path between base directory and target file, preventing path traversal (CWE-22).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 4. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0012",
+      "paired_case_id": "CAND-0020",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0012_secure_filename.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0012_secure_filename.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 4,
+      "reviewed_categories": [
+        4
+      ],
+      "target_scope": "Uploaded filename sanitization and secure destination join",
+      "intended_behavior": "Strips directory components and traversal markers from filenames before saving (CWE-22).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 4. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0013",
+      "paired_case_id": "CAND-0025",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0013_jwt_alg_whitelist.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0013_jwt_alg_whitelist.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 5,
+      "reviewed_categories": [
+        5
+      ],
+      "target_scope": "JWT algorithm whitelist validation and signature checking",
+      "intended_behavior": "Enforces strict whitelist of allowed algorithms and verifies signatures using constant-time comparison (CWE-347).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 5. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0014",
+      "paired_case_id": "CAND-0027",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0014_jose_key_verifier.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0014_jose_key_verifier.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 5,
+      "reviewed_categories": [
+        5
+      ],
+      "target_scope": "Cryptographic key structure and parameter validation for JOSE",
+      "intended_behavior": "Validates cryptographic key type and curve parameters explicitly before verification (CWE-347).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 5. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0015",
+      "paired_case_id": "CAND-0026",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0015_transport_auth.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0015_transport_auth.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 5,
+      "reviewed_categories": [
+        5
+      ],
+      "target_scope": "Transport authentication handshake and credential verification",
+      "intended_behavior": "Authenticates credentials using secrets.compare_digest in constant time, preventing timing leaks (CWE-287 / CWE-208).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 5. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0016",
+      "paired_case_id": "CAND-0031",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0016_user_api_authz.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0016_user_api_authz.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 6,
+      "reviewed_categories": [
+        6
+      ],
+      "target_scope": "User API authorization policy and role verification",
+      "intended_behavior": "Enforces role checks and owner identity matching before permitting user profile updates (CWE-269 / CWE-863).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 6. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0017",
+      "paired_case_id": "CAND-0032",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0017_message_access.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0017_message_access.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 6,
+      "reviewed_categories": [
+        6
+      ],
+      "target_scope": "Message retrieval access control and room membership validation",
+      "intended_behavior": "Checks caller membership in room before returning message content, preventing BOLA (CWE-863 / CWE-639).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 6. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0018",
+      "paired_case_id": "CAND-0033",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0018_event_subscription.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0018_event_subscription.py",
+      "language": "python",
+      "is_buggy": false,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 6,
+      "reviewed_categories": [
+        6
+      ],
+      "target_scope": "Typing notification and event broadcast authorization",
+      "intended_behavior": "Checks that sender has active write permissions on target topic before broadcasting notifications (CWE-863).",
+      "validation_notes": "Self-contained deterministic fixture. Audited against Category 6. 0 SAST alerts.",
+      "defects": [],
+      "contextual_files": [],
+      "synthetic": true,
+      "source_type": "handcrafted_clean_fixture",
+      "provenance": {
+        "source_type": "handcrafted_clean_fixture",
+        "synthetic": true
+      }
+    },
+    {
+      "case_id": "CTRL-0019",
+      "paired_case_id": "CAND-0003",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0019_pagination_offset.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0019_pagination_offset.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 1,
+      "reviewed_categories": [
+        1
+      ],
+      "target_scope": "Pagination offset computation and slice indexing",
+      "intended_behavior": "Calculates zero-based slice start from one-based page number",
+      "validation_notes": "Self-contained clean control fixture for Pagination offset computation and slice indexing.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0020",
+      "paired_case_id": "CAND-0004",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0020_token_bucket.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0020_token_bucket.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 1,
+      "reviewed_categories": [
+        1
+      ],
+      "target_scope": "Token bucket rate-limiter allowance calculation",
+      "intended_behavior": "Deducts tokens only when balance is sufficient",
+      "validation_notes": "Self-contained clean control fixture for Token bucket rate-limiter allowance calculation.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0021",
+      "paired_case_id": "CAND-0005",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0021_bisect_boundary.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0021_bisect_boundary.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 1,
+      "reviewed_categories": [
+        1
+      ],
+      "target_scope": "Binary search index boundary clamp",
+      "intended_behavior": "Finds element insertion index without out-of-bounds access",
+      "validation_notes": "Self-contained clean control fixture for Binary search index boundary clamp.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0022",
+      "paired_case_id": "CAND-0010",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0022_ring_buffer_loop.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0022_ring_buffer_loop.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 1,
+      "reviewed_categories": [
+        1
+      ],
+      "target_scope": "Circular buffer drain loop termination",
+      "intended_behavior": "Drains circular buffer elements without infinite looping",
+      "validation_notes": "Self-contained clean control fixture for Circular buffer drain loop termination.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0023",
+      "paired_case_id": "CAND-0011",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0023_retry_backoff_jitter.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0023_retry_backoff_jitter.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 1,
+      "reviewed_categories": [
+        1
+      ],
+      "target_scope": "Exponential backoff calculation with jitter",
+      "intended_behavior": "Computes non-negative exponential delay interval",
+      "validation_notes": "Self-contained clean control fixture for Exponential backoff calculation with jitter.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0024",
+      "paired_case_id": "CAND-0012",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0024_ssrf_fetcher.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0024_ssrf_fetcher.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 2,
+      "reviewed_categories": [
+        2
+      ],
+      "target_scope": "Webhook URL retrieval and HTTP dispatch",
+      "intended_behavior": "Validates target URL scheme and blocks loopback/private addresses",
+      "validation_notes": "Self-contained clean control fixture for Webhook URL retrieval and HTTP dispatch.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0025",
+      "paired_case_id": "CAND-0013",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0025_open_redirect.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0025_open_redirect.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 2,
+      "reviewed_categories": [
+        2
+      ],
+      "target_scope": "Authentication redirect target URL validation",
+      "intended_behavior": "Restricts redirect destination to relative paths or trusted hosts",
+      "validation_notes": "Self-contained clean control fixture for Authentication redirect target URL validation.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0026",
+      "paired_case_id": "CAND-0016",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0026_redos_email.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0026_redos_email.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 2,
+      "reviewed_categories": [
+        2
+      ],
+      "target_scope": "Email format regular expression validation",
+      "intended_behavior": "Validates email structure with linear computational complexity",
+      "validation_notes": "Self-contained clean control fixture for Email format regular expression validation.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0027",
+      "paired_case_id": "CAND-0018",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0027_xxe_parser.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0027_xxe_parser.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 2,
+      "reviewed_categories": [
+        2
+      ],
+      "target_scope": "XML document deserialization and parsing",
+      "intended_behavior": "Parses XML documents with external entity resolution disabled",
+      "validation_notes": "Self-contained clean control fixture for XML document deserialization and parsing.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0028",
+      "paired_case_id": "CAND-0022",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0028_insecure_deserializer.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0028_insecure_deserializer.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 2,
+      "reviewed_categories": [
+        2
+      ],
+      "target_scope": "Session cookie data deserialization",
+      "intended_behavior": "Deserializes session payloads using secure structured format (JSON)",
+      "validation_notes": "Self-contained clean control fixture for Session cookie data deserialization.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0029",
+      "paired_case_id": "CAND-0023",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0029_command_injection.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0029_command_injection.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 2,
+      "reviewed_categories": [
+        2
+      ],
+      "target_scope": "Host diagnostics ping execution",
+      "intended_behavior": "Executes system utility without shell interpolation",
+      "validation_notes": "Self-contained clean control fixture for Host diagnostics ping execution.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0030",
+      "paired_case_id": "CAND-0024",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0030_order_by_sqli.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0030_order_by_sqli.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 3,
+      "reviewed_categories": [
+        3
+      ],
+      "target_scope": "Dynamic query sorting clause generation",
+      "intended_behavior": "Enforces column whitelist for dynamic ORDER BY statements",
+      "validation_notes": "Self-contained clean control fixture for Dynamic query sorting clause generation.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0031",
+      "paired_case_id": "CAND-0028",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0031_raw_query_format.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0031_raw_query_format.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 3,
+      "reviewed_categories": [
+        3
+      ],
+      "target_scope": "User lookup query construction",
+      "intended_behavior": "Executes parameterized SQL queries using db driver bindings",
+      "validation_notes": "Self-contained clean control fixture for User lookup query construction.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0032",
+      "paired_case_id": "CAND-0029",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0032_second_order_sqli.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0032_second_order_sqli.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 3,
+      "reviewed_categories": [
+        3
+      ],
+      "target_scope": "Report generation from stored user preference",
+      "intended_behavior": "Parameterizes queries referencing stored attributes",
+      "validation_notes": "Self-contained clean control fixture for Report generation from stored user preference.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0033",
+      "paired_case_id": "CAND-0030",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0033_orm_raw_filter.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0033_orm_raw_filter.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 3,
+      "reviewed_categories": [
+        3
+      ],
+      "target_scope": "ORM raw text clause filtering",
+      "intended_behavior": "Uses ORM bindparams or safe keyword filtering",
+      "validation_notes": "Self-contained clean control fixture for ORM raw text clause filtering.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0034",
+      "paired_case_id": "CAND-0034",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0034_blind_sqli_counter.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0034_blind_sqli_counter.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 3,
+      "reviewed_categories": [
+        3
+      ],
+      "target_scope": "Tenant audit log record count check",
+      "intended_behavior": "Uses positional placeholders in count query",
+      "validation_notes": "Self-contained clean control fixture for Tenant audit log record count check.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0035",
+      "paired_case_id": "CAND-0035",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0035_file_reader_traversal.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0035_file_reader_traversal.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 4,
+      "reviewed_categories": [
+        4
+      ],
+      "target_scope": "Document repository file content extraction",
+      "intended_behavior": "Verifies resolved path remains inside base storage directory",
+      "validation_notes": "Self-contained clean control fixture for Document repository file content extraction.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0036",
+      "paired_case_id": "CAND-0036",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0036_zip_slip.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0036_zip_slip.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 4,
+      "reviewed_categories": [
+        4
+      ],
+      "target_scope": "Compressed archive extraction directory safety",
+      "intended_behavior": "Validates archive member destinations before extraction",
+      "validation_notes": "Self-contained clean control fixture for Compressed archive extraction directory safety.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0037",
+      "paired_case_id": "CAND-0037",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0037_symlink_traversal.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0037_symlink_traversal.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 4,
+      "reviewed_categories": [
+        4
+      ],
+      "target_scope": "Filesystem link resolution and traversal safety",
+      "intended_behavior": "Rejects symbolic links escaping sandbox directory",
+      "validation_notes": "Self-contained clean control fixture for Filesystem link resolution and traversal safety.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0038",
+      "paired_case_id": "CAND-0038",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0038_file_upload_ext.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0038_file_upload_ext.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 4,
+      "reviewed_categories": [
+        4
+      ],
+      "target_scope": "User avatar file upload name and extension sanitization",
+      "intended_behavior": "Assigns unique server-side UUID filename with verified extension",
+      "validation_notes": "Self-contained clean control fixture for User avatar file upload name and extension sanitization.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0039",
+      "paired_case_id": "CAND-0039",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0039_insecure_tempfile.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0039_insecure_tempfile.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 4,
+      "reviewed_categories": [
+        4
+      ],
+      "target_scope": "Temporary file creation for intermediate processing",
+      "intended_behavior": "Creates temporary files atomically with restricted permissions",
+      "validation_notes": "Self-contained clean control fixture for Temporary file creation for intermediate processing.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0040",
+      "paired_case_id": "CAND-0040",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0040_hardcoded_jwt_secret.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0040_hardcoded_jwt_secret.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 5,
+      "reviewed_categories": [
+        5
+      ],
+      "target_scope": "JWT signing secret key configuration",
+      "intended_behavior": "Loads cryptographic signing key from secure environment variable",
+      "validation_notes": "Self-contained clean control fixture for JWT signing secret key configuration.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0041",
+      "paired_case_id": "CAND-0041",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0041_timing_attack_hmac.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0041_timing_attack_hmac.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 5,
+      "reviewed_categories": [
+        5
+      ],
+      "target_scope": "API webhook HMAC signature verification",
+      "intended_behavior": "Verifies cryptographic digest using constant-time comparison",
+      "validation_notes": "Self-contained clean control fixture for API webhook HMAC signature verification.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0042",
+      "paired_case_id": "CAND-0042",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0042_missing_token_expiration.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0042_missing_token_expiration.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 5,
+      "reviewed_categories": [
+        5
+      ],
+      "target_scope": "Authentication token validity claim verification",
+      "intended_behavior": "Validates token expiration claim against current Unix timestamp",
+      "validation_notes": "Self-contained clean control fixture for Authentication token validity claim verification.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0043",
+      "paired_case_id": "CAND-0043",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0043_weak_hash_md5.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0043_weak_hash_md5.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 5,
+      "reviewed_categories": [
+        5
+      ],
+      "target_scope": "User password hashing mechanism",
+      "intended_behavior": "Employs modern salted key-derivation function (PBKDF2/Argon2)",
+      "validation_notes": "Self-contained clean control fixture for User password hashing mechanism.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0044",
+      "paired_case_id": "CAND-0044",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0044_session_fixation.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0044_session_fixation.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 5,
+      "reviewed_categories": [
+        5
+      ],
+      "target_scope": "Post-authentication session lifecycle renewal",
+      "intended_behavior": "Invalidates previous session ID and generates fresh token upon login",
+      "validation_notes": "Self-contained clean control fixture for Post-authentication session lifecycle renewal.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0045",
+      "paired_case_id": "CAND-0045",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0045_idor_document_access.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0045_idor_document_access.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 6,
+      "reviewed_categories": [
+        6
+      ],
+      "target_scope": "Document record retrieval by client identifier",
+      "intended_behavior": "Enforces resource ownership check before returning document",
+      "validation_notes": "Self-contained clean control fixture for Document record retrieval by client identifier.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0046",
+      "paired_case_id": "CAND-0046",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0046_missing_admin_authz.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0046_missing_admin_authz.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 6,
+      "reviewed_categories": [
+        6
+      ],
+      "target_scope": "Administrative user deletion action gate",
+      "intended_behavior": "Enforces administrator role check before sensitive operations",
+      "validation_notes": "Self-contained clean control fixture for Administrative user deletion action gate.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0047",
+      "paired_case_id": "CAND-0047",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0047_tenant_isolation_bola.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0047_tenant_isolation_bola.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 6,
+      "reviewed_categories": [
+        6
+      ],
+      "target_scope": "Multi-tenant resource modification authorization",
+      "intended_behavior": "Derives tenant boundary strictly from authenticated session token",
+      "validation_notes": "Self-contained clean control fixture for Multi-tenant resource modification authorization.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0048",
+      "paired_case_id": "CAND-0048",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0048_mass_assignment.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0048_mass_assignment.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 6,
+      "reviewed_categories": [
+        6
+      ],
+      "target_scope": "User profile attribute update filtering",
+      "intended_behavior": "Enforces strict whitelist of editable user profile attributes",
+      "validation_notes": "Self-contained clean control fixture for User profile attribute update filtering.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0049",
+      "paired_case_id": "CAND-0049",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0049_reset_token_binding.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0049_reset_token_binding.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 6,
+      "reviewed_categories": [
+        6
+      ],
+      "target_scope": "Password reset token identity binding check",
+      "intended_behavior": "Verifies reset token specifically binds to requested user ID",
+      "validation_notes": "Self-contained clean control fixture for Password reset token identity binding check.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    },
+    {
+      "case_id": "CTRL-0050",
+      "paired_case_id": "CAND-0050",
+      "repository": "local/clean-controls",
+      "commit_hash": "clean-fixture-v1",
+      "target_file": "ctrl_0050_cors_credentials.py",
+      "fixture_path": "data/fixtures/clean_controls/ctrl_0050_cors_credentials.py",
+      "language": "python",
+      "is_buggy": false,
+      "synthetic": true,
+      "annotation_state": "clean",
+      "annotation_completeness": "exhaustive",
+      "category_id": 6,
+      "reviewed_categories": [
+        6
+      ],
+      "target_scope": "CORS response headers origin verification",
+      "intended_behavior": "Verifies origin against whitelist before returning credentials allow",
+      "validation_notes": "Self-contained clean control fixture for CORS response headers origin verification.",
+      "defects": [],
+      "provenance": {
+        "source_doc": "Benchmark Expansion to 100 cases",
+        "source_type": "synthetic_fixture",
+        "synthetic": true
+      },
+      "contextual_files": [],
+      "source_type": "synthetic_fixture"
+    }
+  ]
+}

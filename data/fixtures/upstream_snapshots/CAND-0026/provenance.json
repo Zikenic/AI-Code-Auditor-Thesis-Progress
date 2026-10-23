@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0026",
+  "repository": "paramiko/paramiko",
+  "commit_hash": "aefd28a7f00c4250d113d375e96abf5da3eb89f9",
+  "target_file": "paramiko/transport.py",
+  "source_url": "https://raw.githubusercontent.com/paramiko/paramiko/aefd28a7f00c4250d113d375e96abf5da3eb89f9/paramiko/transport.py",
+  "sha256": "cc9731ce05b3ec1b38ba0005eb62abb42a892dee2dafea92e60383c34eb5e747",
+  "line_count": 2673,
+  "line_ranges": [
+    [
+      1822,
+      1828
+    ]
+  ],
+  "primary_cwe": "CWE-287"
+}

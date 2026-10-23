@@ -133,11 +133,20 @@ class ConfigurationDispatcher:
                 )
 
             try:
-                llm_findings = self.llm_engine.run_llm_review(
-                    diff_content=diff_content,
-                    static_findings=static_findings,
-                    repo_context=None,
-                )
+                try:
+                    llm_findings = self.llm_engine.run_llm_review(
+                        diff_content=diff_content,
+                        static_findings=static_findings,
+                        repo_context=None,
+                        workspace_path=request.workspace_path,
+                        changed_files=changed_files,
+                    )
+                except TypeError:
+                    llm_findings = self.llm_engine.run_llm_review(
+                        diff_content=diff_content,
+                        static_findings=static_findings,
+                        repo_context=None,
+                    )
                 all_findings = self._combine_findings(static_findings, llm_findings)
                 return AuditRunResult(
                     run_id=run_id,
@@ -226,14 +235,43 @@ class ConfigurationDispatcher:
         static_findings: list[PredictedFinding],
         llm_findings: list[PredictedFinding],
     ) -> list[PredictedFinding]:
-        """Aggregate static and LLM findings preserving distinct layer tags."""
+        """Aggregate static and LLM findings, merging triage metadata into static findings."""
+        from auditor.models.finding import DetectionLayer
+
         combined: list[PredictedFinding] = []
+        static_by_id = {f.finding_id: f for f in static_findings}
         seen_keys = set()
 
-        for f in static_findings + llm_findings:
+        # 1. Merge triage annotations into static findings if present in llm_findings
+        for f in llm_findings:
+            if f.finding_id in static_by_id:
+                target = static_by_id[f.finding_id]
+                target.provenance.update(f.provenance)
+                if f.suggestion and not target.suggestion:
+                    target.suggestion = f.suggestion
+            elif f.detection_layer == DetectionLayer.DETERMINISTIC_STATIC:
+                for target in static_findings:
+                    if (
+                        target.file_path == f.file_path
+                        and target.start_line == f.start_line
+                        and target.primary_cwe == f.primary_cwe
+                    ):
+                        target.provenance.update(f.provenance)
+                        break
+
+        # 2. Add static findings (with merged triage metadata)
+        for f in static_findings:
             key = (f.file_path, f.start_line, f.primary_cwe, f.detection_layer)
             if key not in seen_keys:
                 seen_keys.add(key)
                 combined.append(f)
+
+        # 3. Add additional LLM findings (layer HEURISTIC_LLM or new IDs)
+        for f in llm_findings:
+            if f.finding_id not in static_by_id:
+                key = (f.file_path, f.start_line, f.primary_cwe, f.detection_layer)
+                if key not in seen_keys:
+                    seen_keys.add(key)
+                    combined.append(f)
 
         return combined

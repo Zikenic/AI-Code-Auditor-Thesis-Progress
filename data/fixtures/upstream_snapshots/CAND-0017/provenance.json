@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0017",
+  "repository": "tortoise/tortoise-orm",
+  "commit_hash": "816ff00e988f79b4ff1601f247062bb5eb9db802",
+  "target_file": "tortoise/backends/mysql/executor.py",
+  "source_url": "https://raw.githubusercontent.com/tortoise/tortoise-orm/816ff00e988f79b4ff1601f247062bb5eb9db802/tortoise/backends/mysql/executor.py",
+  "sha256": "62e7f8dacab2a0874d4735f748d4c093d0fa519e83c041935f4af1b19164f7af",
+  "line_count": 71,
+  "line_ranges": [
+    [
+      19,
+      45
+    ]
+  ],
+  "primary_cwe": "CWE-89"
+}

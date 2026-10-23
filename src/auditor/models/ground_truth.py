@@ -108,6 +108,10 @@ class BenchmarkCase(BaseModel):
         default="GROUND_TRUTH_VERIFIED",
         description="Verification lifecycle status (e.g. GROUND_TRUTH_VERIFIED, SOURCE_VERIFIED, PENDING_DECISION).",
     )
+    annotation_completeness: str = Field(
+        default="partial",
+        description="Annotation completeness: exhaustive, partial, or unknown.",
+    )
     reproducer_status: ReproducerStatus = Field(
         default=ReproducerStatus.NOT_ATTEMPTED,
         description="Execution status for candidate reproduction.",

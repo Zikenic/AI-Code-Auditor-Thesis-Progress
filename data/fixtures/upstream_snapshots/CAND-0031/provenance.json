@@ -1,0 +1,20 @@
+{
+  "case_id": "CAND-0031",
+  "repository": "jupyterhub/jupyterhub",
+  "commit_hash": "b4053616743eb011e5bb568700f25afca17aef53",
+  "target_file": "jupyterhub/apihandlers/users.py",
+  "source_url": "https://raw.githubusercontent.com/jupyterhub/jupyterhub/b4053616743eb011e5bb568700f25afca17aef53/jupyterhub/apihandlers/users.py",
+  "sha256": "524c406652901dfac5483e40696b19f409ccac73b4fdadcba65bb9483c9b3c58",
+  "line_count": 931,
+  "line_ranges": [
+    [
+      265,
+      267
+    ],
+    [
+      328,
+      331
+    ]
+  ],
+  "primary_cwe": "CWE-269"
+}

@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0006",
+  "repository": "scrapy/scrapy",
+  "commit_hash": "f02c3d1dcf3e4880388d19e961e7911be5dc54ff",
+  "target_file": "scrapy/utils/datatypes.py",
+  "source_url": "https://raw.githubusercontent.com/scrapy/scrapy/f02c3d1dcf3e4880388d19e961e7911be5dc54ff/scrapy/utils/datatypes.py",
+  "sha256": "33d1dbfc6232d84ed98bbf5a73121e3c3f163ff9ecd20238186ce5ae3fca5e15",
+  "line_count": 330,
+  "line_ranges": [
+    [
+      318,
+      319
+    ]
+  ],
+  "primary_cwe": "CWE-476"
+}

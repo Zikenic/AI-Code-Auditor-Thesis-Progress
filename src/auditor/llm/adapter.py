@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from auditor.llm.engine import ConfigBAuditEngine
+from auditor.llm.hybrid_engine import ConfigCHybridReviewEngine
 from auditor.models.finding import PredictedFinding
 from auditor.models.result import AuditStatus
 from auditor.orchestration.interfaces import ILlmReviewEngine
@@ -20,6 +21,7 @@ class ConfigBLlmReviewEngineAdapter(ILlmReviewEngine):
         diff_content: str,
         static_findings: list[PredictedFinding] | None = None,
         repo_context: str | None = None,
+        **kwargs,
     ) -> list[PredictedFinding]:
         """Execute LLM review through ConfigBAuditEngine.
 
@@ -33,3 +35,9 @@ class ConfigBLlmReviewEngineAdapter(ILlmReviewEngine):
         if status != AuditStatus.SUCCESS:
             raise RuntimeError(f"ConfigBAuditEngine execution failed (status: {status.value})")
         return findings
+
+
+class ConfigCLlmReviewEngineAdapter(ConfigCHybridReviewEngine):
+    """Adapter for Configuration C hybrid review engine adhering to ILlmReviewEngine."""
+
+    pass

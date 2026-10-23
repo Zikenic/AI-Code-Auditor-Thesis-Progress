@@ -9,7 +9,7 @@
 - Duration: 07/09/2026 - 26/12/2026 (16 weeks)
 
 ## Current Phase
-Week 3–4 (21/09/2026 – 04/10/2026, closed out) — Session 50: Completed Week 3–4 Closeout deliverables. Formalized complete, implementable API design contracts in `Project Documents/architecture/system_architecture.md` (Section 7.1) covering GitHub webhook HMAC-SHA256 intake, manual/CI audit execution, and lifecycle/findings polling. Implemented minimal, offline local repository demonstration CLI (`tools/demo_audit.py`) using existing `StaticAnalysisEngine` with suppression isolation, verified by 7 dedicated unit tests (`tests/test_demo_audit.py`) and smoke tests. Reconciled architecture approval records. Zero LLM calls made; Semgrep rule text strictly unread and untransmitted; all frozen research hashes intact.
+Week 5–6 (05/10/2026 – 18/10/2026, closed out) — Session 51: Completed Week 5–6 Milestone Closeout deliverables. Expanded and materialized 100-Case Benchmark (50 defective cases, 50 clean controls; 82 synthetic/handcrafted, 18 upstream snapshots materialized with SHA256 integrity and defect locus verification; 100% locally runnable, zero silent placeholder fallbacks). Integrated model-compatible token counting via official Anthropic Messages API (`/v1/messages/count_tokens` with model `ag/claude-sonnet-4-6`) measuring complete rendered prompt in a single call with completion budget reservation (16,384 tokens); isolated TikToken BPE and character estimation as approximate heuristics. Implemented and verified backend API (FastAPI across 7 routers), physical SQLite database persistence in WAL mode with cross-subprocess restart persistence proof, and GitHub webhook intake with constant-time HMAC-SHA256 signature verification, `X-GitHub-Delivery` idempotency, atomic DB persistence, and workspace path allowlist security. Updated cumulative progress workbook (`Week_3-4_and_subsequent_progress.xlsx`) with normalized public repository hyperlinks. Automated test suite: 306/306 tests passing; Ruff 0 lint errors; $0.00 spent on live inference.
 
 ## Deliverables Status
 - [x] Detailed Outline
@@ -39,6 +39,11 @@ Week 3–4 (21/09/2026 – 04/10/2026, closed out) — Session 50: Completed Wee
 - [x] Phase 5D.1 Correct Remaining Audit Documentation Inconsistencies (Chunk census arithmetic reconciled, CAND-0007 boundary blank lines verified, context-budget verification qualified)
 - [x] Phase 5E Human Root-Cause Adjudication Evidence Dossier (`Project Documents/dataset/adjudication_review_5e.md`, `data/results/adjudication_review_5e.json`, 21 matches prepared, student review pending)
 - [x] Week 3–4 Closeout: Local Repository Demonstration (`tools/demo_audit.py`, `tests/test_demo_audit.py`, 140 tests passing)
+- [x] Week 5–6 Deliverable 1: 100-Case Benchmark Expansion & Provenance Reconciliation (`data/benchmark_manifest.json`, 50 defective, 50 clean controls, 18 upstream snapshots materialized with SHA256 integrity, 100% locally runnable)
+- [x] Week 5–6 Deliverable 2: Model-Compatible Tokenizer Integration (`src/auditor/llm/token_counter.py`, `/v1/messages/count_tokens` with model `ag/claude-sonnet-4-6`, complete prompt accounting, budget completion reservation)
+- [x] Week 5–6 Deliverable 3: Backend API, Physical SQLite Persistence & GitHub Webhook Intake (`src/auditor/api/webhooks.py`, `src/auditor/database.py`, HMAC-SHA256 verification, `X-GitHub-Delivery` idempotency, path allowlist security)
+- [x] Week 5–6 Independent Acceptance Audit & Gap Closure (`reports/week5_6_deliverables_acceptance_report.md`, `week5_6_acceptance_checklist.json`, 306/306 tests passing)
+- [x] Week 5–6 Milestone Closeout & Cumulative Progress Workbook (`reports/Week_3-4_and_subsequent_progress.xlsx`, tasks 20–23 appended, public hyperlinks normalized)
 
 ## Active Checklist (Week 1-2 & Week 3-4 Implementation)
 - [x] 1. Finalize scope & target language (Python, FastAPI/Flask, GitHub PR review scope, commercial/open LLM API, no fine-tuning — validated implementation stack)
@@ -67,6 +72,12 @@ Week 3–4 (21/09/2026 – 04/10/2026, closed out) — Session 50: Completed Wee
 > Working content for all items above lives in requirements, dataset, architecture, and specs/ directories.
 
 ## Decisions Made So Far
+- Week 5–6 Deliverables Acceptance, Benchmark Materialization & Milestone Closeout (Session 51):
+  - 100-Case Benchmark Materialization: Expanded manifest `data/benchmark_manifest.json` to 100 cases (50 defective, 50 clean controls). Fully materialized all 18 upstream repository fixtures (`tests/fixtures/upstream_snapshots/`) with verified cryptographic SHA256 hashes and defect line loci. Eliminated all placeholder synthetic fallbacks; 100% of benchmark cases are locally executable.
+  - Official Anthropic Token Accounting Integration: Refactored `token_counter.py` to route primary token counting through official Anthropic Messages API (`/v1/messages/count_tokens` with model `ag/claude-sonnet-4-6`). Accounting covers full rendered prompt including system prompt, messages, and schemas in a single API call, with a fixed completion budget reservation (16,384 tokens). BPE (TikToken) and character heuristics are isolated as approximate local fallbacks.
+  - Production-Grade Backend, SQLite Persistence & Webhook Intake: Hardened FastAPI backend with SQLite WAL mode persistence, cross-subprocess restart persistence proof (`tests/test_backend_e2e_persistence.py`), and GitHub webhook intake with constant-time HMAC-SHA256 signature verification, `X-GitHub-Delivery` idempotency, atomic DB persistence, and workspace path allowlist security.
+  - Milestone Closeout & Sanitized Public Snapshot: Updated cumulative thesis workbook `Project Documents/reports/Week_3-4_and_subsequent_progress.xlsx` (rows 29–32 / Tasks 20–23) with normalized public GitHub URLs. Maintained strict sanitization: `.env`, `python_security.yaml`, and `build_ruleset_manifest.py` strictly excluded from public staging and commits.
+  - Zero-Spend Offline Discipline: Verified 306/306 unit and integration tests passing; Ruff 0 lint errors; $0.00 spent on live model completions.
 - Human Root-Cause Adjudication Evidence Dossier (Session 49 — Phase 5E):
   - Prepared Adjudication Evidence Dossier: Created `Project Documents/dataset/adjudication_review_5e.md` and machine-readable companion `data/results/adjudication_review_5e.json` for all 21 mechanical matches across Configurations B, C, and D (covering 9 unique GT defects).
   - Mandatory Investigation CAND-0007: Documented clear threat-model conflict. GT defines defect as CWE-352 (CSRF) via missing `Content-Type` validation on JSON bodies allowing simple cross-origin requests without CORS preflight. Config C (`llm-b884c5f510`) flags CWE-400/20 large JSON body DoS memory exhaustion (PROXIMITY_ONLY recommendation). Config D (`llm-89945e4935`) notes missing Content-Type validation but characterizes impact as DoS/parser error (INDETERMINATE recommendation).
@@ -298,22 +309,22 @@ Configs C and D send restricted-pack rule IDs and/or rule messages to a hosted L
 
 > **Project Benchmark Status Summary**:
 > - **Methodology**: `FINAL / VALIDATED`
-> - **Test-Case Construction Workflow**: `DEFINED & AUDITABLE`
-> - **Candidate Ingestion Schema**: `DEFINED (44 fields across 7 groups)`
-> - **Candidate Ingestion Queue**: `36 Records (19 Ground-Truth Verified, 17 Source-Verified; 32 Level A, 4 Level B)`
-> - **Rejected Leads Logged**: `7 Records (REJ-0001 to REJ-0007)`
-> - **Canonical Pilot Dataset**: `18 / 18 Ground-Truth Verified (3 per category across all 6 categories, 23 defects total)`
-> - **Accepted Benchmark Cases**: `0 / 100 Minimum` (Strict gate: zero cases accepted prior to full Phase 2 completion)
-> - **Benchmark Construction Status**: `PHASE 5B COMPLETED (CONFIG D EXECUTED & EVALUATED) — READY FOR ADJUDICATION & BENCHMARK SCALE-UP`
+> - **100-Case Benchmark**: `MATERIALIZED & AUDITED (50 defective, 50 clean controls, 18 upstream snapshots materialized with SHA256 integrity, 100% locally runnable, zero placeholders)`
+> - **Token Counting Fidelity**: `NATIVE ANTHROPIC MESSAGES API (/v1/messages/count_tokens with model ag/claude-sonnet-4-6, complete prompt accounting + 16,384 completion budget reservation)`
+> - **Backend & Persistence**: `FASTAPI + SQLITE WAL + GITHUB WEBHOOKS (HMAC-SHA256, delivery idempotency, DB restart persistence verified)`
+> - **Week 5–6 Closeout**: `COMPLETED (Progress workbook updated, private branch documented, sanitized public repo snapshot prepared)`
 
-1. **Human Root-Cause Adjudication of Mechanical TPs**:
-   - Conduct structured human adjudication across all 21 mechanical true positive detections emitted across Config B (6), Config C (8), and Config D (7) using `tools/generate_adjudication_packet_bcd.py` and the Secondary Root-Cause Alignment Rubric v1.0.
-   - Separate mechanical proximity hits from true causal understanding.
-2. **Phase 2 Benchmark Scale-up (Target >= 100 Cases)**:
-   - Scale dataset from 18 development pilot cases to the required >= 100 benchmark cases across the 6 locked categories.
-   - Maintain strict evidence-gate criteria, atomic patches, and reproducer scripts.
-3. **Deferred independent alternative-ruleset research**:
-   - Retain this as a separately tracked future task. Do not block continued private historical research while it is deferred, but do not publish restricted artifacts or claim licensing clearance.
+1. **Week 7–8: GitHub Pull-Request Integration**:
+   - Complete GitHub PR integration: fetch real PR diffs via GitHub API, parse unified diff hunks, map to auditor targets, and publish structured check runs / inline review comments with finding severity.
+2. **Week 7–8: Meaningful End-to-End Verification**:
+   - Establish end-to-end audit pipelines for all 4 configurations (Config A, Config B, Config C, Config D) triggered via webhook payloads or CLI PR workflows.
+3. **Week 7–8: Optimize Configuration D Retrieval & Token Budgeting**:
+   - Optimize AST symbol-graph context retriever and lexical search; benchmark retrieval latency and token budget utilization.
+4. **Week 7–8: Midterm Demonstration & Defense Readiness**:
+   - Prepare comprehensive presentation materials, reproducible demo scripts, benchmark performance visualizations, and thesis report chapters for midterm defense.
+5. **Deferred Tasks**:
+   - Human root-cause adjudication of mechanical TPs across pilot cases.
+   - Independent alternative Semgrep rule pack research (open source license suitable for public release).
 
 ## Update Protocol
 At the end of every session: (1) move newly-checked items in Deliverables Status/Active Checklist, (2) add new bullets to "Decisions Made So Far" (keep ~5 most recent, full history stays in devlog.md), (3) add anything newly learned to "Known Pitfalls," (4) refresh "Immediate Next Steps."

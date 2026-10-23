@@ -32,6 +32,14 @@ class ConfidenceLevel(StrEnum):
     HIGH = "high"
 
 
+class TriageStatus(StrEnum):
+    """Triage verdict assigned by LLM review in hybrid configurations."""
+
+    CONFIRMED = "confirmed"
+    LIKELY_FALSE_POSITIVE = "likely_false_positive"
+    INCONCLUSIVE = "inconclusive"
+
+
 class PredictedFinding(BaseModel):
     """Normalized finding emitted by the static or LLM auditing engines."""
 
@@ -95,3 +103,33 @@ class PredictedFinding(BaseModel):
     def has_line_coordinates(self) -> bool:
         """Return True if the finding has usable positive line coordinates."""
         return self.start_line is not None and self.end_line is not None and self.start_line >= 1
+
+    def is_confirmed(self) -> bool:
+        """Check if finding was confirmed by LLM triage."""
+        return self.provenance.get("triage") == TriageStatus.CONFIRMED.value
+
+    def is_likely_false_positive(self) -> bool:
+        """Check if finding was marked as a likely false positive by LLM triage."""
+        return self.provenance.get("triage") == TriageStatus.LIKELY_FALSE_POSITIVE.value
+
+    def is_inconclusive(self) -> bool:
+        """Check if finding triage was deemed inconclusive by LLM review."""
+        return self.provenance.get("triage") == TriageStatus.INCONCLUSIVE.value
+
+    def apply_triage(
+        self,
+        triage: TriageStatus | str,
+        rationale: str,
+        triaged_by: str = "llm",
+        refined_title: str | None = None,
+        refined_description: str | None = None,
+    ) -> None:
+        """Enrich finding provenance with LLM triage decision without discarding static evidence."""
+        triage_str = triage.value if isinstance(triage, TriageStatus) else str(triage).lower()
+        self.provenance["triage"] = triage_str
+        self.provenance["triage_rationale"] = rationale
+        self.provenance["triaged_by"] = triaged_by
+        if refined_title:
+            self.provenance["refined_title"] = refined_title
+        if refined_description:
+            self.provenance["refined_description"] = refined_description

@@ -1,0 +1,135 @@
+{
+  "audit_metadata": {
+    "audit_target": "Week 5-6 Thesis Deliverables Acceptance Closure",
+    "baseline_commit": "ffbbe76",
+    "working_branch": "fix/week5-6-final-acceptance-gaps",
+    "audit_timestamp_iso": "2026-10-24T03:30:00Z",
+    "live_inference_tokens_generated": 0,
+    "live_inference_cost_usd": 0.00
+  },
+  "overall_verdict": "PASS",
+  "deliverables": {
+    "deliverable_1_100_case_benchmark": {
+      "status": "PASS",
+      "registered_cases_count": 100,
+      "registered_buggy_count": 50,
+      "registered_clean_count": 50,
+      "runnable_cases_count": 100,
+      "runnable_buggy_count": 50,
+      "runnable_clean_count": 50,
+      "historical_only_cases_count": 0,
+      "cases_with_verified_ground_truth": 100,
+      "provenance_breakdown": {
+        "upstream_repository_snapshots": 18,
+        "synthetic_buggy_fixtures": 32,
+        "handcrafted_clean_fixtures": 18,
+        "synthetic_clean_fixtures": 32,
+        "total_synthetic_or_handcrafted": 82,
+        "total_externally_sourced": 18
+      },
+      "source_reproducibility": {
+        "upstream_snapshots_directory": "data/fixtures/upstream_snapshots/",
+        "sha256_verified": true,
+        "locus_lines_verified": true,
+        "silent_placeholder_fallback_eliminated": true
+      },
+      "evidence_references": [
+        "data/benchmark_manifest.json",
+        "data/fixtures/upstream_snapshots/",
+        "data/fixtures/buggy_cases/",
+        "data/fixtures/clean_controls/",
+        "tests/test_benchmark_100_provenance.py"
+      ]
+    },
+    "deliverable_2_real_tokenizer": {
+      "status": "PASS",
+      "native_counting_endpoint": "/v1/messages/count_tokens",
+      "model_identifier_parity": {
+        "requested_inference_model_id": "ag/claude-sonnet-4-6",
+        "token_counter_model_id": "ag/claude-sonnet-4-6",
+        "parity_verified": true
+      },
+      "complete_rendered_prompt_counting": {
+        "system_prompt_included": true,
+        "user_content_included": true,
+        "static_evidence_included": true,
+        "repo_context_included": true,
+        "schema_instructions_included": true,
+        "single_request_measuring": true,
+        "component_summation_masquerading_prevented": true
+      },
+      "budget_and_completion_reservation": {
+        "completion_budget_reserved": 16384,
+        "budget_guard_enforced": true
+      },
+      "approximate_fallback_policy": {
+        "tiktoken_and_mock_marked_heuristic": true,
+        "silent_downgrade_forbidden": true,
+        "strict_mode_raises_on_failure": true
+      },
+      "evidence_references": [
+        "src/auditor/llm/token_counter.py",
+        "src/auditor/llm/chunker.py",
+        "src/auditor/llm/engine.py",
+        "tests/test_token_counting.py"
+      ]
+    },
+    "deliverable_3_backend_integration": {
+      "status": "PASS",
+      "endpoints_verified": [
+        "POST /api/v1/audits",
+        "GET /api/v1/audits/{audit_id}",
+        "POST /api/v1/webhooks/github",
+        "GET /api/v1/runs",
+        "GET /api/v1/runs/{id}",
+        "GET /api/v1/configurations",
+        "GET /api/v1/rules",
+        "GET /health/ready",
+        "GET /health/live"
+      ],
+      "physical_database": {
+        "engine": "SQLite",
+        "journal_mode": "WAL",
+        "foreign_keys": "ON",
+        "subprocess_restart_persistence_proven": true
+      },
+      "webhook_workflow": {
+        "hmac_sha256_raw_body_verification": true,
+        "constant_time_comparison": true,
+        "event_action_validation": true,
+        "idempotency_via_delivery_id": true,
+        "invalid_signature_rejected_before_dispatch": true,
+        "atomic_db_persistence": true,
+        "db_failure_rejects_and_prevents_job": true,
+        "status_and_findings_retrievable_via_get": true
+      },
+      "security_and_boundaries": {
+        "workspace_path_allowlist_enforced": true,
+        "system_temp_globally_untrusted": true,
+        "repo_and_commit_regex_sanitized": true
+      },
+      "prototype_limitations": {
+        "execution_model": "FastAPI in-process BackgroundTasks",
+        "durable_distributed_broker": false,
+        "crash_recovery_note": "In-process BackgroundTasks do not survive OS process termination; production deployment requires Celery/Redis."
+      },
+      "evidence_references": [
+        "src/auditor/api/webhooks.py",
+        "src/auditor/api/audits.py",
+        "src/auditor/api/processor.py",
+        "tests/test_api_physical_db.py",
+        "tests/test_webhook_intake.py"
+      ]
+    }
+  },
+  "test_execution_summary": {
+    "ruff_lint_status": "PASS",
+    "total_tests_collected": 285,
+    "total_tests_passed": 285,
+    "ablation_v2_tests_passed": 21,
+    "total_tests_passed_combined": 306,
+    "total_tests_failed": 0,
+    "total_warnings": 2,
+    "zero_generation_calls_verified": true
+  }
+}

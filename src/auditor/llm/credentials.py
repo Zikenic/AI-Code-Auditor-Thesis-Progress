@@ -32,17 +32,24 @@ def load_gateway_credentials(env_path: Path | None = None) -> GatewayCredentials
         FileNotFoundError: If .env.txt is missing.
         ValueError: If required keys are missing or malformed.
     """
-    target_path = env_path or ENV_FILE_PATH
+    if env_path is not None:
+        target_path = env_path
+    elif (REPO_ROOT / ".env").exists():
+        target_path = REPO_ROOT / ".env"
+    else:
+        target_path = ENV_FILE_PATH
 
     if not target_path.exists():
-        raise FileNotFoundError(f"Credential file not found at {target_path}. Stop and verify .env.txt presence.")
+        raise FileNotFoundError(f"Credential file not found at {target_path}. Stop and verify .env or .env.txt presence.")
 
     # Load values without polluting os.environ unless missing
     vals = dotenv_values(target_path)
 
     api_key = (vals.get("OPENAI_API_KEY") or os.environ.get("OPENAI_API_KEY") or "").strip()
     base_url = (vals.get("OPENAI_BASE_URL") or os.environ.get("OPENAI_BASE_URL") or "").strip()
-    model_id = (vals.get("OPEN_AI_MODEL") or os.environ.get("OPEN_AI_MODEL") or "ag/claude-sonnet-4.6").strip()
+    model_id = (vals.get("OPEN_AI_MODEL") or os.environ.get("OPEN_AI_MODEL") or "ag/claude-sonnet-4-6").strip()
+    if model_id == "ag/claude-sonnet-4.6":
+        model_id = "ag/claude-sonnet-4-6"
 
     if not api_key:
         raise ValueError("OPENAI_API_KEY is missing or empty in .env.txt.")

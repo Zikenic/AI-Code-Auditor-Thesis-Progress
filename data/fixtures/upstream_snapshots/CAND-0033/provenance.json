@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0033",
+  "repository": "zulip/zulip",
+  "commit_hash": "b1007916b03a40841ba141f5e4f041aeaeaaa010",
+  "target_file": "zerver/actions/typing.py",
+  "source_url": "https://raw.githubusercontent.com/zulip/zulip/b1007916b03a40841ba141f5e4f041aeaeaaa010/zerver/actions/typing.py",
+  "sha256": "027ca8745c056927b4a5a7aeedc152b4feab522af46a367ce14fc1ef3c645276",
+  "line_count": 210,
+  "line_ranges": [
+    [
+      83,
+      85
+    ]
+  ],
+  "primary_cwe": "CWE-863"
+}

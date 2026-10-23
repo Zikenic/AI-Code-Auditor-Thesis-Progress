@@ -5,8 +5,11 @@ from __future__ import annotations
 import ast
 import re
 import subprocess
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
+
+from auditor.llm.chunker import default_token_estimator
 
 
 @dataclass(frozen=True)
@@ -31,35 +34,55 @@ class RepositoryIndex:
         self._build_index()
 
     def _build_index(self) -> None:
-        """Extract and index all .py files in git tree at commit_hash using fast git archive."""
+        """Extract and index all .py files in git tree at commit_hash using fast git archive, or fallback to directory."""
         import io
         import tarfile
 
-        res = subprocess.run(
-            ["git", "-C", str(self.repo_dir), "archive", self.commit_hash],
-            capture_output=True,
-            check=True,
-        )
-        bio = io.BytesIO(res.stdout)
-        with tarfile.open(fileobj=bio) as tar:
-            for member in tar.getmembers():
-                name = member.name
-                if not name.endswith(".py"):
-                    continue
-                parts = name.split("/")
-                if any(
-                    part in parts
-                    for part in ["tests", "testing", "test", "docs", "doc", "build", "dist", "migrations", ".github"]
-                ):
-                    continue
-                if parts[-1].startswith("test_") or parts[-1].endswith("_test.py"):
-                    continue
+        try:
+            res = subprocess.run(
+                ["git", "-C", str(self.repo_dir), "archive", self.commit_hash],
+                capture_output=True,
+                check=True,
+            )
+            bio = io.BytesIO(res.stdout)
+            with tarfile.open(fileobj=bio) as tar:
+                for member in tar.getmembers():
+                    name = member.name
+                    if not name.endswith(".py"):
+                        continue
+                    parts = name.split("/")
+                    if any(
+                        part in parts
+                        for part in ["tests", "testing", "test", "docs", "doc", "build", "dist", "migrations", ".github"]
+                    ):
+                        continue
+                    if parts[-1].startswith("test_") or parts[-1].endswith("_test.py"):
+                        continue
 
-                f = tar.extractfile(member)
-                if f:
-                    content = f.read().decode("utf-8", errors="replace")
-                    self.files[name] = content
-                    self._index_file_ast(name, content)
+                    f = tar.extractfile(member)
+                    if f:
+                        content = f.read().decode("utf-8", errors="replace")
+                        self.files[name] = content
+                        self._index_file_ast(name, content)
+        except Exception:
+            # Fallback: Index local .py files directly from self.repo_dir
+            if self.repo_dir.exists():
+                for py_path in self.repo_dir.rglob("*.py"):
+                    name = str(py_path.relative_to(self.repo_dir)).replace("\\", "/")
+                    parts = name.split("/")
+                    if any(
+                        part in parts
+                        for part in ["tests", "testing", "test", "docs", "doc", "build", "dist", "migrations", ".github"]
+                    ):
+                        continue
+                    if parts[-1].startswith("test_") or parts[-1].endswith("_test.py"):
+                        continue
+                    try:
+                        content = py_path.read_text(encoding="utf-8", errors="replace")
+                        self.files[name] = content
+                        self._index_file_ast(name, content)
+                    except Exception:
+                        pass
 
     def _index_file_ast(self, rel_path: str, content: str) -> None:
         """Parse top-level classes and functions in AST."""
@@ -96,8 +119,9 @@ class RepositoryIndex:
 class RepositoryContextRetriever:
     """Mechanical context retriever enforcing all Config D constraints."""
 
-    def __init__(self, index: RepositoryIndex):
+    def __init__(self, index: RepositoryIndex, token_counter: Callable[[str], int] | None = None):
         self.index = index
+        self.token_counter = token_counter
 
     def retrieve_context(
         self,
@@ -106,6 +130,7 @@ class RepositoryContextRetriever:
         chunk_end: int,
         chunk_code: str,
         max_tokens: int = 4000,
+        token_counter: Callable[[str], int] | None = None,
     ) -> tuple[str, list[ContextItem], int]:
         """Retrieve deduplicated, ranked repository context items within the token budget."""
         # 1. Derive queries strictly from the chunk's code
@@ -205,11 +230,11 @@ class RepositoryContextRetriever:
         current_tokens = 0
         omitted_count = 0
 
-        # Rough conservative token counter (1 token ~ 3.5 chars)
+        counter = token_counter or self.token_counter or default_token_estimator
         for item in candidates:
             # Render item
             item_text = self._render_context_item(item)
-            item_tokens = int(len(item_text) / 3.2) + 20
+            item_tokens = counter(item_text)
 
             if current_tokens + item_tokens <= max_tokens:
                 accepted.append(item)

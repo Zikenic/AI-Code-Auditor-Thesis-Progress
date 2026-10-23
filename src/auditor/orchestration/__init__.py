@@ -1,6 +1,22 @@
 """Auditor core orchestration and configuration dispatch."""
 
 from auditor.orchestration.dispatcher import ConfigurationDispatcher
+from auditor.orchestration.git_provider import (
+    CommitNotFoundError,
+    GitCommandError,
+    GitDiffProvider,
+    GitTimeoutError,
+    GitWorkspaceError,
+    GitWorkspaceProvider,
+    InvalidCommitShaError,
+    InvalidPrNumberError,
+    InvalidRepositoryError,
+    MaterializedWorkspace,
+    PrecomputedDiffProvider,
+    validate_commit_sha,
+    validate_pr_number,
+    validate_repository,
+)
 from auditor.orchestration.interfaces import (
     IDiffProvider,
     ILlmReviewEngine,
@@ -13,13 +29,27 @@ from auditor.orchestration.interfaces import (
 )
 
 __all__ = [
+    "CommitNotFoundError",
     "ConfigurationDispatcher",
+    "GitCommandError",
+    "GitDiffProvider",
+    "GitTimeoutError",
+    "GitWorkspaceError",
+    "GitWorkspaceProvider",
     "IDiffProvider",
     "ILlmReviewEngine",
     "IRepoContextRetriever",
     "IStaticAnalysisEngine",
+    "InvalidCommitShaError",
+    "InvalidPrNumberError",
+    "InvalidRepositoryError",
+    "MaterializedWorkspace",
+    "PrecomputedDiffProvider",
     "UnimplementedDiffProvider",
     "UnimplementedLlmReviewEngine",
     "UnimplementedRepoContextRetriever",
     "UnimplementedStaticAnalysisEngine",
+    "validate_commit_sha",
+    "validate_pr_number",
+    "validate_repository",
 ]

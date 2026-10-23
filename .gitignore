@@ -54,3 +54,6 @@ htmlcov/
 
 # Evidence extracted revisions (fetched dynamically on demand)
 data/evidence/*/revisions/
+
+# Agent configs
+.agents/

@@ -1,0 +1,20 @@
+{
+  "case_id": "CAND-0009",
+  "repository": "pallets/jinja",
+  "commit_hash": "a7863ba9d3521f1450f821119c50d19d7ecea329",
+  "target_file": "src/jinja2/filters.py",
+  "source_url": "https://raw.githubusercontent.com/pallets/jinja/a7863ba9d3521f1450f821119c50d19d7ecea329/src/jinja2/filters.py",
+  "sha256": "5521f3d550f0b01cb1503c814d2ed94c272c5301dfbb6121b7dbfd5ef93eb83a",
+  "line_count": 1854,
+  "line_ranges": [
+    [
+      250,
+      250
+    ],
+    [
+      292,
+      293
+    ]
+  ],
+  "primary_cwe": "CWE-79"
+}

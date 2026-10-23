@@ -1,0 +1,20 @@
+{
+  "case_id": "CAND-0014",
+  "repository": "django/django",
+  "commit_hash": "425718726b7d2edd7b8a043f8976e437262b5098",
+  "target_file": "django/db/models/functions/datetime.py",
+  "source_url": "https://raw.githubusercontent.com/django/django/425718726b7d2edd7b8a043f8976e437262b5098/django/db/models/functions/datetime.py",
+  "sha256": "f93d4dad7cb4270e282d704d1e975e7f4e8735810fd7e8de0ca7abd80fc4e1a9",
+  "line_count": 415,
+  "line_ranges": [
+    [
+      45,
+      51
+    ],
+    [
+      225,
+      236
+    ]
+  ],
+  "primary_cwe": "CWE-89"
+}

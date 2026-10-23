@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0020",
+  "repository": "pallets/werkzeug",
+  "commit_hash": "50cfeebcb0727e18cc52ffbeb125f4a66551179b",
+  "target_file": "src/werkzeug/security.py",
+  "source_url": "https://raw.githubusercontent.com/pallets/werkzeug/50cfeebcb0727e18cc52ffbeb125f4a66551179b/src/werkzeug/security.py",
+  "sha256": "4ab51f809846cd6fc4c7baa370120d44671f59d8a46a2a689c0e5bb29b3890b0",
+  "line_count": 161,
+  "line_ranges": [
+    [
+      151,
+      157
+    ]
+  ],
+  "primary_cwe": "CWE-22"
+}

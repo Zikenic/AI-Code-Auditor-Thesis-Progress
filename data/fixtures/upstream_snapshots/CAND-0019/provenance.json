@@ -1,0 +1,20 @@
+{
+  "case_id": "CAND-0019",
+  "repository": "aio-libs/aiohttp",
+  "commit_hash": "33ccdfb0a12690af5bb49bda2319ec0907fa7827",
+  "target_file": "aiohttp/web_urldispatcher.py",
+  "source_url": "https://raw.githubusercontent.com/aio-libs/aiohttp/33ccdfb0a12690af5bb49bda2319ec0907fa7827/aiohttp/web_urldispatcher.py",
+  "sha256": "aaa86823d42cc61c66b6ebf56ea81b2a1a3224c7dba6db2a7b230596a59e29c4",
+  "line_count": 1252,
+  "line_ranges": [
+    [
+      643,
+      645
+    ],
+    [
+      574,
+      576
+    ]
+  ],
+  "primary_cwe": "CWE-22"
+}

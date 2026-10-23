@@ -55,10 +55,15 @@ class ConfigBAuditEngine:
         config: ConfigBExecutionConfig = DEFAULT_CONFIG_B_PARAMS,
         chunker: SourceChunker | None = None,
         cost_tracker: CostTracker | None = None,
+        token_counter: Any | None = None,
     ):
         self.api_client = api_client
         self.config = config
-        self.chunker = chunker or SourceChunker(token_budget=config.source_token_budget)
+        self.token_counter = token_counter
+        self.chunker = chunker or SourceChunker(
+            token_budget=config.source_token_budget,
+            token_counter=token_counter.count_source_tokens if token_counter else None,
+        )
         self.cost_tracker = cost_tracker or CostTracker(
             cost_per_input_million=config.cost_per_input_million,
             cost_per_output_million=config.cost_per_output_million,
@@ -117,6 +122,7 @@ class ConfigBAuditEngine:
                     findings=static_findings or [],
                     chunk=chunk,
                     token_budget=getattr(self.config, "static_token_budget", 2000),
+                    token_counter=self.chunker.count_tokens,
                 )
                 user_prompt = build_config_c_user_prompt(chunk, static_section=static_section)
             else:
@@ -125,10 +131,20 @@ class ConfigBAuditEngine:
             # Safeguard: Assert zero answer leakage
             assert_zero_answer_leakage(user_prompt, forbidden_leakage_terms)
 
-            # Budget guard check
+            # Budget guard check: Submit complete rendered prompt for exact counting & reserve completion budget
+            if self.token_counter is not None and hasattr(self.token_counter, "count_tokens"):
+                rendered_prompt_tokens = self.token_counter.count_tokens(
+                    user_content=user_prompt,
+                    system_prompt=system_prompt,
+                    thinking_type=self.config.thinking_type,
+                    thinking_effort=self.config.thinking_effort,
+                )
+            else:
+                rendered_prompt_tokens = chunk.token_estimate + 1000
+
             if self.cost_tracker.would_exceed_ceiling(
-                reserved_prompt_tokens=chunk.token_estimate + 1000,
-                reserved_completion_tokens=2000,
+                reserved_prompt_tokens=rendered_prompt_tokens,
+                reserved_completion_tokens=self.config.max_completion_tokens,
             ):
                 # Budget exceeded: discard and fail
                 return (
@@ -178,6 +194,11 @@ class ConfigBAuditEngine:
                 {
                     "chunk_index": chunk.chunk_index,
                     "tokens": {"prompt": p_tokens, "completion": c_tokens},
+                    "rendered_prompt_tokens": rendered_prompt_tokens,
+                    "token_count_method": getattr(
+                        self.token_counter, "method", "api_gateway" if self.token_counter else "heuristic_fallback"
+                    ),
+                    "is_heuristic": getattr(self.token_counter, "is_heuristic", self.token_counter is None),
                     "cost_usd": cost_rec.cost_usd,
                     "duration_seconds": cost_rec.duration_seconds,
                     "raw_response": response_text,

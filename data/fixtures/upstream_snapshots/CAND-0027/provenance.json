@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0027",
+  "repository": "lepture/authlib",
+  "commit_hash": "bb7a315befbad333faf9a23ef574d6e3134a6774",
+  "target_file": "authlib/jose/__init__.py",
+  "source_url": "https://raw.githubusercontent.com/lepture/authlib/bb7a315befbad333faf9a23ef574d6e3134a6774/authlib/jose/__init__.py",
+  "sha256": "c2d766b47ad05776b7faeb3d2ba9d55461eb0bcdb3489dbb157d74eae53178b2",
+  "line_count": 73,
+  "line_ranges": [
+    [
+      49,
+      49
+    ]
+  ],
+  "primary_cwe": "CWE-347"
+}

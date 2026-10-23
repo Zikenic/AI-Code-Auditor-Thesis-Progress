@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0015",
+  "repository": "django/django",
+  "commit_hash": "6b178a3e930f72069f3cda2e6a09d1b320fc09ec",
+  "target_file": "django/contrib/postgres/aggregates/general.py",
+  "source_url": "https://raw.githubusercontent.com/django/django/6b178a3e930f72069f3cda2e6a09d1b320fc09ec/django/contrib/postgres/aggregates/general.py",
+  "sha256": "c3a1a2c6a87f66d189c24a43d53b582ce00a112a65ced2e523a6eb02dfc509ca",
+  "line_count": 63,
+  "line_ranges": [
+    [
+      54,
+      58
+    ]
+  ],
+  "primary_cwe": "CWE-89"
+}

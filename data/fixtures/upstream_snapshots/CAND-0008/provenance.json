@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0008",
+  "repository": "Kludex/python-multipart",
+  "commit_hash": "d3d16dae4b061c34fe9d3c9081d9800c49fc1f7a",
+  "target_file": "multipart/multipart.py",
+  "source_url": "https://raw.githubusercontent.com/Kludex/python-multipart/d3d16dae4b061c34fe9d3c9081d9800c49fc1f7a/multipart/multipart.py",
+  "sha256": "6517356de6428022179187b45f0c61fe0e2715dae9dde1227785ce0d821faa04",
+  "line_count": 1893,
+  "line_ranges": [
+    [
+      72,
+      75
+    ]
+  ],
+  "primary_cwe": "CWE-1333"
+}

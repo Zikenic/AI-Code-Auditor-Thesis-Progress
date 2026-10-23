@@ -63,13 +63,13 @@ for col_idx, h_text in enumerate(headers, start=1):
 ws.row_dimensions[header_row].height = 28
 
 # GitHub Base URLs
-GH_PUB_BASE = "https://github.com/Zikenic/AI-Code-Auditor-Thesis-Progress/blob/main/"
-GH_W12_BASE = GH_PUB_BASE
+GH_W12_BASE = "https://github.com/Zikenic/AI-Code-Auditor-Thesis-Progress/blob/main/"
+GH_PRIV_BASE = "https://github.com/Zikenic/AI-Code-Auditor-Thesis1/blob/master/"
 
-def make_pub_link(rel_path: str) -> str:
+def make_priv_link(rel_path: str) -> str:
     parts = rel_path.split("/")
     encoded = "/".join(urllib.parse.quote(p) for p in parts)
-    return GH_PUB_BASE + encoded
+    return GH_PRIV_BASE + encoded
 
 # Rows 1 to 8 (Week 1-2 baseline items preserved from ROP_Week1-2.md)
 w12_tasks = [
@@ -147,7 +147,7 @@ subsequent_tasks = [
         "Hoàn thành thiết kế; chưa triển khai",
         "Hoàn thiện thiết kế kiến trúc hệ thống 5 tầng (Ingestion, Pre-analysis, Context Retrieval, LLM Engine, Reporting & Feedback); định nghĩa luồng xử lý Webhook và CI/CD.",
         "system_architecture.md",
-        make_pub_link("Project Documents/architecture/system_architecture.md")
+        make_priv_link("Project Documents/architecture/system_architecture.md")
     ),
     (
         10,
@@ -155,7 +155,7 @@ subsequent_tasks = [
         "Hoàn thành thiết kế; chưa triển khai",
         "Thiết kế lược đồ quan hệ logic 5 thực thể (Audits, Findings, Rules, Repositories, FileSnapshots) cùng cấu trúc AST Symbols và Code Embeddings (pgvector). Tầng bảng vật lý, Alembic migrations và production indexes chưa triển khai.",
         "system_architecture.md (Section 4)",
-        make_pub_link("Project Documents/architecture/system_architecture.md")
+        make_priv_link("Project Documents/architecture/system_architecture.md")
     ),
     (
         11,
@@ -163,7 +163,7 @@ subsequent_tasks = [
         "Hoàn thành thiết kế; chưa triển khai",
         "Đặc tả kỹ thuật 4 REST endpoints chính (POST webhook, POST audits, GET audits/{id}, GET findings) và 1 endpoint hoãn lại (POST evaluations/run). Chuẩn hóa định dạng lỗi theo JSON error envelope nội bộ dự án (không phải RFC 7807). Xác thực Bearer token ở trạng thái đề xuất chờ duyệt. Chưa triển khai FastAPI routes.",
         "system_architecture.md (Section 7.1)",
-        make_pub_link("Project Documents/architecture/system_architecture.md")
+        make_priv_link("Project Documents/architecture/system_architecture.md")
     ),
     (
         12,
@@ -171,7 +171,7 @@ subsequent_tasks = [
         "Hoàn thành trong phạm vi thí điểm",
         "Tích hợp engine phân tích tĩnh kết hợp Ruff và Semgrep CE; ánh xạ tập luật đóng băng (ruleset manifest 286 luật) sang finding chuẩn; hỗ trợ cơ chế nén phát hiện lặp. Hoàn thành kiểm thử đơn vị nội bộ.",
         "static_analysis/engine.py",
-        make_pub_link("src/auditor/static_analysis/engine.py")
+        make_priv_link("src/auditor/static_analysis/engine.py")
     ),
     (
         13,
@@ -179,7 +179,7 @@ subsequent_tasks = [
         "Hoàn thành trong phạm vi thí điểm",
         "Xây dựng và đóng băng bộ dữ liệu thí điểm gồm đúng 18 ca kiểm thử (6 nhóm CWE) với 23 ground-truth defects; mã băm SHA-256 bảo toàn bitwise. Mục tiêu mở rộng 100 ca kiểm thử toàn diện vẫn đang tiếp tục thu thập.",
         "data/pilot_cases.json",
-        make_pub_link("data/pilot_cases.json")
+        make_priv_link("data/pilot_cases.json")
     ),
     (
         14,
@@ -187,7 +187,7 @@ subsequent_tasks = [
         "Hoàn thành trong phạm vi thí điểm",
         "Thực thi trên 18 ca thí điểm (23 defects). Config B: 100 predictions, TP 6, FP 94, FN 17, Precision 6.00%, Recall 26.09%, F1 9.76%, chi phí $1.3728. Config C (17 ca hoàn thành, CAND-0008 lỗi JSON): 95 predictions, TP 8, FP 87, FN 15, Precision 8.42%, Recall 34.78%, F1 13.56%, chi phí $1.3386. So sánh cặp (17 ca loại CAND-0008): Config B (TP 6, FP 86, FN 16, P 6.52%, R 27.27%, F1 10.53%) vs Config C (TP 8, FP 87, FN 14, P 8.42%, R 36.36%, F1 13.68%). Kết quả mang tính mô tả thực nghiệm, chưa khẳng định ý nghĩa thống kê hay quan hệ nhân quả.",
         "config_b_pilot_run.json",
-        make_pub_link("data/results/config_b_pilot_run.json")
+        make_priv_link("data/results/config_b_pilot_run.json")
     ),
     (
         15,
@@ -195,7 +195,7 @@ subsequent_tasks = [
         "Còn giới hạn xác minh",
         "Hiện thực hóa module trích xuất ngữ cảnh AST Graph & chunking. Thực nghiệm Config D trên 18 ca: TP 7, FP 85, FN 16, Precision 7.61%, Recall 30.43%, F1 12.17%, chi phí $1.5271. Giới hạn xác minh: ước tính ngữ cảnh từ 607–3,924 tokens dựa trên công thức heuristic floor(len/3.2)+20, chưa đo lường bằng tokenizer thực tế; trích xuất xuyên tệp chưa được xác thực toàn diện.",
         "config_d_pilot_run.json",
-        make_pub_link("data/results/config_d_pilot_run.json")
+        make_priv_link("data/results/config_d_pilot_run.json")
     ),
     (
         16,
@@ -203,7 +203,7 @@ subsequent_tasks = [
         "Hoàn thành trong phạm vi thí điểm",
         "Thực hiện thẩm định căn nguyên mang tính khám phá bởi 1 sinh viên (single-student-rater) theo rubric v1.0, không phải đồng thuận chuyên gia độc lập hay thử nghiệm mù. Kết quả thẩm định trên 21 cặp so khớp cơ học TP: 15 ROOT_CAUSE_ALIGNED, 6 PROXIMITY_ONLY, 0 INDETERMINATE.",
         "adjudication_review_5e.md",
-        make_pub_link("Project Documents/dataset/adjudication_review_5e.md")
+        make_priv_link("Project Documents/dataset/adjudication_review_5e.md")
     ),
     (
         17,
@@ -211,7 +211,7 @@ subsequent_tasks = [
         "Hoàn thành",
         "Xây dựng công cụ CLI độc lập tools/demo_audit.py cho phép quét tĩnh thư mục cục bộ với các tùy chọn (--path, --format, --severity-threshold, --fail-on-findings), xuất bảng Rich/JSON và mã thoát chuẩn; đạt 7/7 unit tests. Chưa bao gồm dịch vụ web FastAPI hay tích hợp GitHub PR trực tiếp.",
         "tools/demo_audit.py",
-        make_pub_link("tools/demo_audit.py")
+        make_priv_link("tools/demo_audit.py")
     ),
     (
         18,
@@ -219,15 +219,15 @@ subsequent_tasks = [
         "Hoàn thành",
         "Toàn bộ bộ kiểm thử tự động toàn dự án đạt 140/140 tests passed; kiểm tra Ruff 0 lỗi; xác thực bitwise 5/5 mã băm SHA-256 của các artifact nghiên cứu đã đóng băng (pilot_cases.json và 4 tệp kết quả thực nghiệm A/B/C/D).",
         "tests/test_demo_audit.py",
-        make_pub_link("tests/test_demo_audit.py")
+        make_priv_link("tests/test_demo_audit.py")
     ),
     (
         19,
         "Rà soát và chuẩn hóa tài liệu kỹ thuật & Giấy phép (Documentation Review)",
         "Hoàn thành",
-        "Chuẩn hóa Section 7.1.1 (JSON error envelope nội bộ dự án, xác thực Bearer token ở trạng thái đề xuất), đồng bộ trạng thái bàn giao AI_hand_off.md và nhật ký devlog.md; bảo vệ an toàn sở hữu trí tuệ quy tắc Semgrep trên bản phát hành công khai.",
+        "Chuẩn hóa Section 7.1.1 (JSON error envelope nội bộ dự án, xác thực Bearer token ở trạng thái đề xuất), đồng bộ trạng thái bàn giao AI_hand_off.md và nhật ký devlog.md; bảo vệ an toàn sở hữu trí tuệ quy tắc Semgrep trên kho lưu trữ riêng tư.",
         "devlog.md",
-        make_pub_link("Project Documents/devlog.md")
+        make_priv_link("Project Documents/devlog.md")
     )
 ]
 

@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0001",
+  "repository": "tornadoweb/tornado",
+  "commit_hash": "2ca8821d006f6693f920a4b183a3a7c985a5c8ad",
+  "target_file": "tornado/http1connection.py",
+  "source_url": "https://raw.githubusercontent.com/tornadoweb/tornado/2ca8821d006f6693f920a4b183a3a7c985a5c8ad/tornado/http1connection.py",
+  "sha256": "cf37a84a1687899b1881916dbc52b56d166374a8a8baaba02a228daf4eaff93a",
+  "line_count": 833,
+  "line_ranges": [
+    [
+      390,
+      394
+    ]
+  ],
+  "primary_cwe": "CWE-670"
+}

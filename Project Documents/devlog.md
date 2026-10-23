@@ -2,6 +2,48 @@
 
 > Append-only. One entry per session. Never edit or delete past entries — if a decision changes, add a new entry that supersedes it and say so explicitly. Newest entry at the top.
 
+## [2026-10-24] Session 51 — Week 5–6 Milestone Closeout: 100-Case Benchmark, Tokenizer Fidelity, and Backend Integration
+
+- **Target Files**:
+  - Benchmark Manifest & Fixtures: `data/benchmark_manifest.json`, `data/fixtures/upstream_snapshots/`, `data/fixtures/buggy_cases/`, `data/fixtures/clean_controls/`
+  - Token Counter & Prompt Chunker: `src/auditor/llm/token_counter.py`, `src/auditor/llm/chunker.py`, `src/auditor/llm/engine.py`, `tests/test_token_counting.py`
+  - Backend API & Webhook Intake: `src/auditor/api/webhooks.py`, `src/auditor/api/audits.py`, `src/auditor/api/processor.py`, `src/auditor/database.py`, `tests/test_api_physical_db.py`, `tests/test_webhook_intake.py`
+  - Acceptance Audit & Evidence: `Project Documents/reports/week5_6_deliverables_acceptance_report.md`, `data/results/week5_6_acceptance_checklist.json`
+  - Cumulative Progress Workbook: `Project Documents/reports/Week_3-4_and_subsequent_progress.xlsx`
+  - Project Handoff & Manifesto: `Project Documents/AI_hand_off.md`, `Project Documents/manifesto.md`
+- **Purpose**: Execute the formal Week 5–6 milestone closeout for the AI Code Auditor thesis. Reconcile benchmark provenance and runnable census, verify model-compatible token counting and backend webhooks, update the cumulative progress workbook, and prepare the sanitized public snapshot for supervisor review.
+- **Actions Completed**:
+  - *Deliverable 1: 100-Case Benchmark Provenance Reconciliation & Materialization*:
+    - Audited git history and dataset records, correcting an erroneous historical classification: confirmed that the original 18 clean controls were hand-designed fixtures (`synthetic: true`, `source_type: "handcrafted_clean_fixture"`), not external repositories.
+    - Verified the true census: 18 upstream repository snapshots, 32 synthetic defective fixtures, 18 handcrafted clean controls, and 32 synthetic clean controls (total: 82 synthetic/handcrafted, 18 upstream; 50 defective, 50 clean).
+    - Materialized all 18 authentic upstream target files at their exact recorded vulnerable commits under `data/fixtures/upstream_snapshots/{case_id}/{target_file}` with exact UNIX LF line endings and cryptographic `provenance.json` records matching upstream SHA256 hashes.
+    - Verified all ground-truth defect loci extract valid, non-empty code text.
+    - Eliminated silent fallback placeholder in `runner._resolve_case_code()`; verified that 100% (100/100) of registered cases resolve to authentic on-disk code with zero placeholders.
+  - *Deliverable 2: Model-Compatible Tokenizer Fidelity*:
+    - Integrated the official Anthropic Messages `POST /v1/messages/count_tokens` endpoint via local gateway, confirming model identifier parity (`ag/claude-sonnet-4-6`).
+    - Implemented `count_full_request` in `ApiTokenCounter`: submits the complete rendered prompt (system prompt, user content, code diffs, static findings, repo context, schema instructions) in a single request, preventing naive string summation.
+    - Distinguished full-request input tokens from isolated component tokens (capturing message framing overhead).
+    - Isolated TikToken BPE and character estimation as approximate (`is_heuristic: true`), explicitly noting Anthropic guidance that tiktoken is an OpenAI tokenizer.
+    - Enforced strict error handling in production execution (`TokenCounterError` raised on network/gateway failure; zero silent downgrade).
+    - Threaded `max_completion_tokens` reservation (16,384 tokens) in engine budget ceiling guards.
+  - *Deliverable 3: Backend API, Physical SQLite Persistence & Webhook Intake*:
+    - Implemented and verified FastAPI backend across 7 routers (`audits`, `webhooks`, `runs`, `configurations`, `rules`, `health/ready`, `health/live`).
+    - Verified physical SQLite database persistence in WAL mode (`PRAGMA journal_mode=WAL`), foreign key enforcement, and cross-subprocess restart persistence in `test_persistence_across_true_subprocess_restart`.
+    - Implemented the full 10-step webhook intake lifecycle: raw body reception, constant-time HMAC-SHA256 signature verification, event validation (`pull_request`), `X-GitHub-Delivery` idempotency (deduplication prevents duplicate jobs), atomic database persistence, failure rollback, single-job dispatch, and retrievability via `GET /api/v1/audits/{id}`.
+    - Security boundaries: restricted `validate_workspace_path` strictly to project repository root and explicit `AUDITOR_ALLOWED_WORKSPACE_ROOTS` (removed global trust for shared system tempdir), and enforced regex sanitization on repo names and git commit references.
+    - Documented prototype boundary: in-process `BackgroundTasks` execution model does not guarantee durability across process crashes (Celery/Redis required for production).
+  - *Cumulative Progress Workbook Updates*:
+    - Updated `Project Documents/reports/Week_3-4_and_subsequent_progress.xlsx` with tasks 20, 21, 22, and 23 covering all three supervisor deliverables and the independent acceptance audit.
+    - Normalized all public-facing evidence hyperlinks to `https://github.com/Zikenic/AI-Code-Auditor-Thesis-Progress/blob/main/...`.
+- **Verification Outcomes**:
+  - `uv run ruff check src tests tools`: Clean (0 errors).
+  - `uv run pytest tests/`: 285 passed in 68.37s.
+  - `uv run pytest data/fixtures/ablation_fixtures_v2/`: 21 passed in 0.27s.
+  - Combined automated regression suite: **306 passed, 0 failed**.
+  - Live model generation inference spend: **$0.00** (zero completion tokens generated).
+  - Frozen historical evaluation results in `data/results/` verified intact and unmodified.
+- **Next Step**: Proceed to Week 7–8 priorities: GitHub PR feedback posting integration, end-to-end integration testing, Config D repository-context retrieval optimization, and midterm defense preparation.
+
 ## [2026-10-10] Session 50 — Week 3–4 Closeout: API Specification & Local Repository Demo
 
 - **Target Files**:

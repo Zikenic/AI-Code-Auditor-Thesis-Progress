@@ -1,0 +1,16 @@
+{
+  "case_id": "CAND-0021",
+  "repository": "encode/starlette",
+  "commit_hash": "24c1fac62a80bb153c6548145334fc643991e35a",
+  "target_file": "starlette/staticfiles.py",
+  "source_url": "https://raw.githubusercontent.com/encode/starlette/24c1fac62a80bb153c6548145334fc643991e35a/starlette/staticfiles.py",
+  "sha256": "8c59da75accc2f80f437847dec9aab5a3adf40d0221322a9a69d9a4aa37377ff",
+  "line_count": 246,
+  "line_ranges": [
+    [
+      172,
+      172
+    ]
+  ],
+  "primary_cwe": "CWE-22"
+}

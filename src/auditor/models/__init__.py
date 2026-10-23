@@ -6,6 +6,7 @@ from auditor.models.finding import (
     DetectionLayer,
     PredictedFinding,
     SeverityLevel,
+    TriageStatus,
 )
 from auditor.models.ground_truth import (
     BenchmarkCase,
@@ -40,4 +41,5 @@ __all__ = [
     "ReproducerStatus",
     "SeverityLevel",
     "TaxonomyConfig",
+    "TriageStatus",
 ]
