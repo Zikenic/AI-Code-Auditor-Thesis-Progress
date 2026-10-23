@@ -2,6 +2,40 @@
 
 > Append-only. One entry per session. Never edit or delete past entries — if a decision changes, add a new entry that supersedes it and say so explicitly. Newest entry at the top.
 
+## [2026-10-24] Session 53 — Workbook Separation: Standalone Week 5–6 Progress Report & Cumulative Workbook Restoration
+
+- **Target Files**:
+  - Standalone Week 5–6 Workbook: `Project Documents/reports/BaoCaoTienDo_DA1_Tuan5-6.xlsx`, `reports/BaoCaoTienDo_DA1_Tuan5-6.xlsx`
+  - Restored Cumulative Workbook: `Project Documents/reports/Week_3-4_and_subsequent_progress.xlsx`
+  - Generation Tool: `tools/create_week5_6_workbook.py`
+  - Handoff & Acceptance Report: `Project Documents/AI_hand_off.md`, `reports/week5_6_deliverables_acceptance_report.md`
+- **Purpose**: Correct the prior reporting arrangement by separating Week 5–6 deliverables into a dedicated, standalone Excel workbook (`BaoCaoTienDo_DA1_Tuan5-6.xlsx`) with 15 granular tasks instead of appending four aggregate milestone rows to the cumulative Week 3–4 report.
+- **Actions Completed**:
+  - *Restored Cumulative Workbook*: Checked out `Week_3-4_and_subsequent_progress.xlsx` from pre-closeout commit `4dfb614`, strictly preserving its original 19 tasks (rows 10–28, max_row 28) with zero Week 5–6 appended rows.
+  - *Created Standalone Week 5–6 Workbook*: Generated `BaoCaoTienDo_DA1_Tuan5-6.xlsx` adopting the exact visual style, metadata header, navy blue table header (`001F497D`), Calibri fonts, borders, wrap text, and column dimensions of the reference report.
+  - *Granular 15-Task Breakdown*: Populated 15 detailed tasks covering:
+    1. 100-case benchmark manifest completion (50/50 balance).
+    2. Materialization of 18 upstream repository snapshots with SHA256 integrity and defect loci.
+    3. Supplementation of 32 local synthetic/handcrafted defective fixtures.
+    4. Construction of 50 clean control fixtures (18 handcrafted + 32 synthetic).
+    5. Benchmark structure, schema, and locus regression tests (`test_benchmark_100_provenance.py`).
+    6. Native model-compatible token counting integration (`POST /v1/messages/count_tokens` with model `ag/claude-sonnet-4-6`).
+    7. Full prompt accounting and 16,384-token completion budget reservation.
+    8. Error handling and approximate fallback character/tiktoken isolation.
+    9. FastAPI backend API modular router implementation.
+    10. Physical SQLite database persistence with WAL mode and restart verification.
+    11. GitHub webhook HMAC-SHA256 signature verification with constant-time comparison.
+    12. Delivery deduplication (`X-GitHub-Delivery`) and workspace path allowlist enforcement.
+    13. Regression test execution, ablation tests, and linting (reconciling private 306 vs public 305/1-skipped).
+    14. Architectural documentation and handoff synchronization.
+    15. Sanitized acceptance reporting and public snapshot packaging.
+  - *Verified Evidence Hyperlinks*: All 15 evidence paths correspond to real, existing project artifacts. Public hyperlinks point to valid files on branch `main` of `Zikenic/AI-Code-Auditor-Thesis-Progress`.
+  - *Sanitized Public Publication*: Mirrored `BaoCaoTienDo_DA1_Tuan5-6.xlsx` into `pub_staging/reports/` and restored the public cumulative workbook to its original 19 tasks.
+- **Verification Outcomes**:
+  - Cumulative workbook: exactly 19 tasks (STT 1–19).
+  - Standalone Week 5–6 workbook: exactly 15 tasks (STT 1–15).
+  - Test suites: 306/306 passing in private checkout; 305/1-skipped in public checkout; Ruff clean.
+
 ## [2026-10-24] Session 52 — Final Week 5–6 Publication Integrity Audit & Test Scope Reconciliation
 
 - **Target Files**:

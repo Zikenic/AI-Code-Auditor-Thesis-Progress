@@ -170,4 +170,5 @@ All automated test suites, linting checks, and provenance tests passed with zero
 - **Master Branch**: Unmodified and untouched.
 - **Environment Secrets**: `.env` and API credentials remain strictly untracked, unstaged, uncommitted, and unlogged.
 - **Historical Evaluation Artifacts**: All frozen historical result records (`config_a_pilot_run.json`, `config_b_pilot_run.json`, `config_c_pilot_run.json`, `config_d_pilot_run.json`) remain untouched in `data/results/`.
+- **Progress Tracking Separation**: Week 5–6 progress is tracked in dedicated standalone workbook `BaoCaoTienDo_DA1_Tuan5-6.xlsx` across 15 granular tasks; the cumulative Week 3–4 progress workbook (`Week_3-4_and_subsequent_progress.xlsx`) remains preserved with its original tasks 1–19.
 - **Inference Cost**: Zero live model generation inference calls were executed during this verification task, incurring **$0.00** in live API spend.
